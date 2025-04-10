@@ -325,35 +325,41 @@ Un \textbf{IDS} generalmente cuenta con las siguientes partes:
 
 \subsection{Funcionalidades}
 
+El sistema incorpora una serie de funcionalidades principalmente orientadas a la supervisión continua, la respuesta ante incidentes y la integración con otras herramientas de ciberseguridad.
+
 \begin{itemize}
 	\item \textbf{Monitoreo en tiempo real}: el monitoreo está siempre activo con el objetivo de captar cualquier tipo de intrusión de manera inmediata y poder actuar con rapidez.
 	
 	\item \textbf{Generación de alertas}: por cada tipo de intrusión o sospecha, se genera un determinado tipo de alerta con descripciones relevantes para que de un rápido vistazo el administrador encargado pueda tomar acción rápidamente.
 	
-	\item \textbf{Registro de eventos}: se documentan los incidentes ocurridos para posterior análisis forense y cumplimiento normativo facilitando el trabajo del especialista que se encargue de un determinado ataque.
+	\item \textbf{Registro de eventos}: se documentan los incidentes ocurridos para posterior análisis forense y cumplimiento normativo, facilitando el trabajo del especialista que se encargue de un determinado ataque.
 	
 	\item \textbf{Integración con otros sistemas de seguridad}: trabaja en conjunto con \textit{cortafuegos}, sistemas de gestión de eventos (\textbf{SIEM}), entre otras herramientas, con el objetivo de mejorar la defensa continuamente y estar preparados para amenazas posteriores.
 \end{itemize}
 
 
 
+
 \subsection{Ventajas y limitaciones de los IDS}
+
+Como todo sistema de seguridad, los IDS tienen puntos fuertes y aspectos mejorables. A continuación se resumen sus principales ventajas y limitaciones:
 
 \subsubsection{Ventajas}
 
 \begin{itemize}
-	\item Detección temprana de amenazas, permitiendo actuar con rapidez.
-	\item Mejora en la respuesta a incidentes.
-	\item Cumplimiento de normativas de seguridad y facilitación del análisis forense.
+	\item Permiten detectar amenazas en etapas tempranas, lo que ayuda a responder antes de que causen daños.
+	\item Mejoran la capacidad de reacción ante incidentes de seguridad.
+	\item Facilitan el cumplimiento de normativas y ayudan en el análisis posterior de eventos.
 \end{itemize}
 
 \subsubsection{Limitaciones}
 
 \begin{itemize}
-	\item Aunque con cada actualización son más fiables, aún existen casos de \textbf{falsos positivos y negativos}.
-	\item Necesidad de actualización constante para reconocer nuevas amenazas. Aunque existen alternativas para actualizar automáticamente, muchas de ellas son de pago.
-	\item Consumo de recursos y posible impacto en el rendimiento del sistema; sin embargo, esto es poco relevante, ya que la protección es el propósito principal del sistema.
+	\item Pueden generar falsos positivos o no detectar ciertas amenazas.
+	\item Requieren actualizaciones constantes para seguir siendo efectivos, y algunas opciones automáticas son de pago.
+	\item Suponen un cierto consumo de recursos, aunque esto suele ser aceptable si se prioriza la seguridad.
 \end{itemize}
+
 
 
 \subsection{Contexto actual}
@@ -374,23 +380,28 @@ Desarrollado por Martin Roesch en 1998, Snort ha evolucionado hasta convertirse 
 
 \subsection{Características principales}
 
+Snort se distingue por algunas funciones que le permiten adaptarse a distintos escenarios y necesidades. Entre las más destacadas se encuentran:
+
 \begin{itemize}
-    \item \textbf{Motor de detección basado en firmas}: utiliza reglas para identificar patrones de ataque conocidos.
-    \item \textbf{Modos de operación}:
-    \begin{itemize}
-        \item \textbf{Sniffer}: captura y muestra paquetes en tiempo real.
-        \item \textbf{Packet Logger}: guarda paquetes en disco para análisis posterior.
-        \item \textbf{Network Intrusion Detection}: analiza tráfico y detecta intrusiones.
-    \end{itemize}
+	\item \textbf{Motor de detección basado en firmas}: utiliza reglas predefinidas para detectar patrones de ataque conocidos.
+	\item \textbf{Modos de operación}:
+	\begin{itemize}
+		\item \textbf{Sniffer}: captura y muestra los paquetes de red en tiempo real.
+		\item \textbf{Packet Logger}: guarda los paquetes para analizarlos más adelante.
+		\item \textbf{Network Intrusion Detection}: examina el tráfico y lanza alertas si detecta algo sospechoso.
+	\end{itemize}
 \end{itemize}
 
 \subsection{Arquitectura de Snort}
 
+El funcionamiento de Snort se basa en una arquitectura modular, donde cada componente cumple un papel específico dentro del proceso de detección. Sus principales elementos son:
+
 \begin{itemize}
-    \item \textbf{Preprocesadores}: preparan el tráfico para su análisis, manejando tareas como la normalización y la desfragmentación.
-    \item \textbf{Motor de detección}: aplica reglas al tráfico para identificar posibles amenazas.
-    \item \textbf{Plugins de salida}: definen cómo se reportan las alertas, ya sea a través de archivos, bases de datos o syslog.
+	\item \textbf{Preprocesadores}: adaptan el tráfico para su análisis, resolviendo fragmentaciones y otros detalles técnicos.
+	\item \textbf{Motor de detección}: compara el tráfico con las reglas definidas para identificar amenazas.
+	\item \textbf{Plugins de salida}: se encargan de registrar o enviar las alertas generadas, ya sea a archivos, bases de datos o servicios como syslog.
 \end{itemize}
+
 
 \subsection{Reglas y actualizaciones}
 
@@ -408,13 +419,16 @@ Esta regla genera una alerta si se detecta una conexión TCP desde cualquier ori
 
 \subsubsection{Tipos de reglas}
 
+Snort utiliza distintos conjuntos de reglas que varían en disponibilidad, frecuencia de actualización y nivel de protección. Los tipos principales son:
+
 \begin{itemize}
 	\item \textbf{Community Rules}: reglas creadas y mantenidas por la comunidad de usuarios de \textit{Snort}, disponibles de forma gratuita bajo la licencia \textit{GPLv2}.
 	
-	\item \textbf{Registered Rules}: reglas proporcionadas por \textit{Cisco Talos}, disponibles para usuarios registrados con un retraso de 30 días respecto a su lanzamiento para suscriptores.
+	\item \textbf{Registered Rules}: proporcionadas por \textit{Cisco Talos}, disponibles para usuarios registrados, aunque con un retraso de 30 días respecto al lanzamiento para suscriptores.
 	
-	\item \textbf{Subscriber Rules}: reglas actualizadas en tiempo real, disponibles para suscriptores de pago, ofreciendo protección contra amenazas emergentes sin retrasos \cite{snort_talos} (\textit{no usadas en este proyecto}).
+	\item \textbf{Subscriber Rules}: reglas actualizadas en tiempo real, pensadas para usuarios de pago. Ofrecen protección frente a amenazas emergentes sin retrasos \cite{snort_talos} (\textit{no usadas en este proyecto}).
 \end{itemize}
+
 
 \subsubsection{Gestión de reglas}
 
@@ -465,35 +479,43 @@ Las redes \textbf{SOHO} suelen estar compuestas por un número reducido de dispo
 
 \subsection{Amenazas y vulnerabilidades comunes}
 
+Toda red, por pequeña que sea, está expuesta a distintos tipos de amenazas. Algunas vienen del exterior, otras desde dentro, y muchas están relacionadas con dispositivos mal configurados. A continuación se describen las más relevantes:
+
 \subsubsection{Amenazas externas}
 
-Incluyen \textit{malware}, \textit{phishing} y ataques de fuerza bruta dirigidos a servicios expuestos a \textit{Internet}.
+Incluyen el uso de \textit{malware}, ataques de \textit{phishing} y fuerza bruta contra servicios accesibles desde Internet.
 
 \subsubsection{Amenazas internas}
 
-Pueden surgir del uso inapropiado de recursos, dispositivos no seguros conectados a la red y falta de políticas de seguridad claras.
+Pueden deberse a un mal uso de los recursos, conexiones inseguras desde dispositivos personales o la falta de normas claras sobre seguridad en la red.
 
 \subsubsection{Dispositivos IoT}
-La proliferación de dispositivos IoT (cámaras IP, sensores inteligentes, dispositivos \textit{wearables}) introduce riesgos debido a:
+
+El crecimiento del número de dispositivos conectados (como cámaras, sensores o dispositivos \textit{wearables}) supone un riesgo añadido. Entre los problemas más frecuentes se encuentran:
+
 \begin{itemize}
-	\item Configuraciones por defecto con credenciales no modificables.
-	\item Protocolos de comunicación sin cifrado (como MQTT en versión no segura).
-	\item Actualizaciones de firmware inconsistentes \cite{bakhshi2024review}.
+	\item Uso de credenciales por defecto que no pueden cambiarse.
+	\item Comunicación sin cifrado, como en versiones inseguras de MQTT.
+	\item Falta de actualizaciones o mantenimiento del firmware \cite{bakhshi2024review}.
 \end{itemize}
+
 
 Una solución práctica es implementar segmentación de red mediante VLANs para aislar estos dispositivos, combinado con reglas específicas en \textit{Snort 3} para monitorizar tráfico en puertos comunes IoT (ej: 1883 para MQTT, 5683 para CoAP).
 
 \subsection{Retos específicos}
 
 \subsubsection{Limitaciones de recursos}
-Para optimizar recursos:
+
+Al tratarse de una solución orientada a entornos pequeños, optimizar el consumo de recursos pertenece a la lista de objetivos principales. Para ello, se aplican medidas como:
+
 \begin{itemize}
-	\item Uso de hardware de bajo consumo (\textit{Raspberry Pi 5} consume <10W).
-	\item Reglas comunitarias gratuitas (\textit{Emerging Threats Open}).
-	\item Configuraciones predefinidas para \textit{Snort 3} que priorizan detección de amenazas críticas.
+	\item Uso de hardware eficiente como la \textit{Raspberry Pi 5}, con un consumo inferior a 10W.
+	\item Empleo de reglas gratuitas, como las de \textit{Emerging Threats Open}.
+	\item Configuraciones predefinidas en \textit{Snort 3} enfocadas a detectar amenazas críticas.
 \end{itemize}
 
-La versión 3 de \textit{Snort} mejora el rendimiento en hardware limitado gracias a su motor multi-hilo \cite{park2017performance} y procesamiento selectivo de paquetes.
+Además, la versión 3 de Snort introduce un motor multi-hilo que mejora el rendimiento en sistemas con pocos recursos, gracias a un procesamiento más selectivo del tráfico \cite{park2017performance}.
+
 
 \subsubsection{Conectividad constante}
 Estrategias de mitigación:
@@ -505,64 +527,88 @@ Estrategias de mitigación:
 
 \subsection{Necesidades de seguridad}
 
+En entornos pequeños o domésticos, la seguridad debe abordarse por capas. A continuación se describen las necesidades más importantes:
+
 \subsubsection{Protección básica}
-En capas:
+
+Una configuración mínima debería incluir:
+
 \begin{itemize}
-	\item Cortafuegos basado en \texttt{iptables} con políticas restrictivas.
-	\item Antivirus de red mediante \textit{ClamAV} integrado.
-	\item Actualizaciones automáticas con repositorios firmados digitalmente.
+	\item Cortafuegos basado en \texttt{iptables} con políticas restrictivas por defecto.
+	\item Integración de un \textit{antivirus de red}, como \textit{ClamAV}, para inspeccionar tráfico sospechoso.
+	\item Mecanismos de actualización automática mediante repositorios firmados digitalmente.
 \end{itemize}
 
 \subsubsection{Monitoreo y detección}
-\textit{Snort 3} ofrece:
+
+\textit{Snort 3} refuerza esta protección con funciones avanzadas como:
+
 \begin{itemize}
-	\item Detección de patrones en capa de aplicación (HTTP, DNS, FTP).
-	\item Soporte para formatos modernos (JSON, HTTP/2).
+	\item Detección de patrones en protocolos de aplicación (HTTP, DNS, FTP).
+	\item Soporte nativo para formatos modernos como \textit{JSON} y \textit{HTTP/2}.
 \end{itemize}
+
+\vspace{0.5cm}
 
 \subsection{Soluciones adecuadas para SOHO}
 
+Las pequeñas oficinas o entornos domésticos SOHO suelen contar con presupuestos limitados y pocos recursos técnicos. En estos casos, el uso de soluciones de código abierto es una alternativa muy viable por su bajo coste y flexibilidad.
+
 \subsubsection{Herramientas de código abierto}
-Ventajas:
+
+Optar por software libre tiene múltiples beneficios:
+
 \begin{itemize}
-	\item Comunidades activas de desarrollo (más de 500 reglas actualizadas mensualmente en \textit{Snort}).
-	\item Compatibilidad multiplataforma.
-	\item Auditoría pública del código fuente.
+	\item \textbf{Comunidades activas} que mantienen más de 500 reglas actualizadas mensualmente en herramientas como \textit{Snort}.
+	\item \textbf{Compatibilidad multiplataforma}, lo que facilita su uso en distintos dispositivos y sistemas operativos.
+	\item \textbf{Auditoría del código fuente}, que permite identificar vulnerabilidades o errores de seguridad antes de que sean explotados.
 \end{itemize}
 
+
 \subsubsection{Dispositivos de bajo costo}
-Configuración recomendada para \textit{Raspberry Pi 5}:
+
+Una solución económica y funcional puede construirse sobre una \textit{Raspberry Pi 5} con:
+
 \begin{itemize}
-	\item Sistema operativo seguro (\textit{Ubuntu Server LTS, Raspbian OS o Debian}).
-	\item Monitoreo hardware (temperatura, consumo).
+	\item Un sistema operativo seguro, como \textit{Ubuntu Server LTS}, \textit{Raspbian OS} o \textit{Debian}.
+	\item Supervisión de parámetros físicos: temperatura, voltaje y consumo energético.
 \end{itemize}
 
 \subsubsection{Servicios gestionados}
-Modelo híbrido propuesto:
+
+Una estrategia híbrida permite combinar simplicidad con eficacia:
+
 \begin{itemize}
-	\item Detección local con \textit{Snort} en \textit{Raspberry Pi}.
-	\item Respuesta automatizada básica (bloqueo IP vía API de cortafuegos).
+	\item \textit{Detección local} mediante \textit{Snort} en la Raspberry Pi.
+	\item \textit{Respuesta automatizada básica}, como el bloqueo de IPs mediante una API de cortafuegos.
 \end{itemize}
 
-Este enfoque equilibra costos y seguridad, utilizando capacidades actuales de \textit{Snort 3} y hardware accesible, sin requerir inversiones elevadas en infraestructura o personal especializado.
+Este enfoque equilibra costes y protección, utilizando capacidades reales de \textit{Snort 3} y hardware accesible, sin necesidad de grandes inversiones ni personal técnico dedicado.
 
-
+\vspace{0.5cm}
 
 \section{Beneficios de los sistemas de detección en redes reducidas}
 
+Implementar un sistema de detección en redes pequeñas ofrece múltiples ventajas:
+
 \begin{itemize}
-	\item \textbf{Identificación preventiva de riesgos}: los mecanismos de monitorización continua posibilitan el reconocimiento temprano de patrones sospechosos, optimizando los tiempos de reacción.
-	\item \textbf{Análisis integral del flujo de datos}: ofrece capacidades de auditoría sobre las interacciones entre dispositivos, revelando puntos débiles en la arquitectura del sistema general.
-	\item \textbf{Cumplimiento con protocolos de protección}: contribuye al cumplimiento de los requisitos establecidos por entidades correspondientes de ciberseguridad.
+	\item \textbf{Identificación preventiva de riesgos}: el monitoreo continuo permite detectar comportamientos sospechosos a tiempo, mejorando la capacidad de respuesta.
+	\item \textbf{Análisis del tráfico de red}: facilita auditorías internas al observar cómo se comunican los dispositivos entre sí, ayudando a detectar puntos débiles.
+	\item \textbf{Cumplimiento de normativas de seguridad}: aporta trazabilidad y evidencia para cumplir con protocolos básicos de protección de datos.
 \end{itemize}
+
+\vspace{0.5cm}
 
 \subsection{Prácticas recomendadas de seguridad para entornos SOHO}
 
+Para mejorar la seguridad general en redes pequeñas, se recomienda adoptar las siguientes medidas:
+
 \begin{itemize}
-	\item \textbf{Autenticación reforzada}: implementar criterios complejos para las claves de acceso, con renovaciones programadas de forma periódica, usar contraseñas con símbolos, números, mayúsculas y minúsculas y evitar incluir datos personales o de la empresa.
-	\item \textbf{Distribución zonificada}: establecer subdivisiones lógicas en la infraestructura para contener eventuales brechas de seguridad, modulando la red se tiene la posibilidad de aislar zonas infectadas.
-	\item \textbf{Preservación de la información}: ejecutar rutinas automatizadas de respaldo para garantizar copias de seguridad de los datos en caso de vulnerarse el sistema de cualquier modo.
+	\item \textbf{Autenticación reforzada}: emplear contraseñas robustas, que incluyan símbolos, números, mayúsculas y minúsculas, y actualizarlas periódicamente. Evitar datos personales o corporativos.
+	\item \textbf{Segmentación de red}: dividir la red en zonas lógicas para contener posibles incidentes y limitar la propagación en caso de intrusión.
+	\item \textbf{Copias de seguridad}: automatizar el respaldo de datos críticos para garantizar su recuperación ante fallos o ataques.
 \end{itemize}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% HECHO1
 
@@ -570,7 +616,7 @@ Este enfoque equilibra costos y seguridad, utilizando capacidades actuales de \t
 
 \section{Complementos y plugins para Snort}
 
-Snort 3 adopta una arquitectura modular que permite activar o desactivar complementos según las necesidades de cada entorno. Esto resulta especialmente útil en entornos de recursos limitados como una Raspberry Pi (o cualquier otro sistema similar), donde es necesario encontrar un equilibrio entre capacidad de inspección y rendimiento. En el caso de R-SNORT, se han seleccionado e integrado los módulos más relevantes para proteger la red de una PYME sin comprometer la estabilidad del sistema.
+Snort 3 adopta una arquitectura modular que permite activar o desactivar complementos según las necesidades de cada entorno. Esto resulta especialmente útil en entornos de recursos limitados como una Raspberry Pi (o cualquier otro sistema similar), donde es necesario encontrar un equilibrio entre capacidad de inspección y rendimiento. En el caso de R-SNORT, se han seleccionado e integrado los módulos más relevantes para proteger la red de una PYME sin comprometer la estabilidad del sistema.\newline
 
 A continuación, se detallan los complementos activados y configurados en el archivo, agrupados por su funcionalidad:
 
@@ -980,7 +1026,7 @@ Descargamos las \textit{Community Rules} de Snort utilizando el comando \texttt{
 
 \pagebreak
 
-Posteriormente, editamos el archivo \texttt{snort.lua}, ubicado en \texttt{/usr/local/snort/etc/snort/}, para incluir la ruta del archivo \texttt{community.rules}. Esto permite que Snort cargue automáticamente estas reglas al iniciar y pueda utilizarlas para detectar patrones maliciosos en el tráfico de red. La edición del archivo puede realizarse con herramientas como \texttt{nano}, \texttt{vim} o cualquier otro editor de texto de preferencia.
+Posteriormente, editamos el archivo \texttt{snort.lua} \cite{snort_user_manual}, ubicado en \path{/usr/local/snort/etc/snort/}, para incluir la ruta del archivo \texttt{community.rules}. Esto permite que Snort cargue automáticamente estas reglas al iniciar y pueda utilizarlas para detectar patrones maliciosos en el tráfico de red. La edición del archivo puede realizarse con herramientas como \texttt{nano}, \texttt{vim} o cualquier otro editor de texto de preferencia.
 
 \begin{figure}[H]
 	\centering
@@ -1099,7 +1145,7 @@ Otro preprocesador que puede marcar la diferencia en protección de redes SOHO e
 
 \subsection{Reputation}
 
-Este preprocesador permite bloquear IPs clasificadas como maliciosas utilizando listas negras. Para su funcionamiento se ha creado una carpeta \texttt{/reputation}, donde se almacena un archivo con IPs sospechosas, obtenidas del repositorio de \textit{emergingthreats.net} \cite{emerging_block_ips}. Esta funcionalidad es útil para evitar conexiones no deseadas hacia o desde nodos peligrosos.\newline
+Este preprocesador permite bloquear IPs clasificadas como maliciosas utilizando listas negras. Para su funcionamiento se ha creado una carpeta \texttt{/reputation}, donde se almacena un archivo con IPs sospechosas, obtenidas del repositorio de \textit{emergingthreats.net} \cite{emerging_block_ips}.  Esta funcionalidad es útil para evitar conexiones no deseadas hacia o desde nodos peligrosos.\newline
 
 Como en los casos anteriores, tras configurar el módulo, se valida la sintaxis y se reinicia Snort para aplicar los cambios.
 
@@ -1160,7 +1206,7 @@ Tras la instalación, se detiene el servicio, se actualizan las firmas de virus 
 
 \subsection{Esquema de red de monitorización con R-SNORT}
 
-Para permitir la inspección total del tráfico en una red local, se diseñó un esquema de red específico que garantiza que todo el tráfico —tanto el generado entre dispositivos locales como el que entra y sale hacia Internet— pueda ser observado por el sistema \textbf{R-SNORT} de manera eficiente y no intrusiva.
+Para permitir la inspección total del tráfico en una red local, se diseñó un esquema de red específico que garantiza que todo el tráfico tanto el generado entre dispositivos locales como el que entra y sale hacia Internet pueda ser observado por el sistema \textbf{R-SNORT} de manera eficiente y no intrusiva.
 
 \begin{figure}[H]
 	\centering
@@ -1196,7 +1242,7 @@ El objetivo principal de esta arquitectura es que \textbf{R-SNORT} funcione como
 
 \subsubsection{Justificación técnica}
 
-Este tipo de arquitectura es común en entornos profesionales donde se desea realizar \textit{inspección profunda de paquetes} (\textit{Deep Packet Inspection}) sin introducir latencia ni crear puntos únicos de fallo en la red. Además, permite mantener completamente aislado el sistema IDS del resto de dispositivos, lo cual incrementa la seguridad del propio entorno de monitorización.\newline
+Este tipo de arquitectura es común en entornos profesionales donde se desea realizar \textit{inspección profunda de paquetes} (\textit{Deep Packet Inspection}) sin introducir latencia ni crear puntos únicos de fallo en la red \cite{song2020dpi}. Además, permite mantener completamente aislado el sistema IDS del resto de dispositivos, lo cual incrementa la seguridad del propio entorno de monitorización.\newline
 
 La elección de una \textbf{Raspberry Pi 5} se justifica por su bajo consumo energético, su arquitectura ARM eficiente, y su capacidad para operar con interfaces Ethernet Gigabit, siempre que se utilice un adaptador USB 3.0 para incorporar una segunda interfaz de red.
 
@@ -1316,7 +1362,7 @@ Además, se ha verificado que, tras una ejecución limpia del instalador, Snort 
 
 \subsection{Transición a paquete \texttt{.deb}}
 
-Con el objetivo de profesionalizar el despliegue de \textbf{R-SNORT} y facilitar su uso en entornos reales, se reestructuró el proyecto como un paquete Debian estándar. Esta decisión permite que el propio sistema operativo gestione la instalación, dependencias, configuración y servicio a través de scripts como \texttt{postinst} (ver Figura~\ref{fig:postinst}), \texttt{prerm} (ver Figura~\ref{fig:prerm}) y \texttt{postrm} (ver Figura~\ref{fig:postrm}), alineándose con las buenas prácticas del ecosistema Debian.
+Con el objetivo de profesionalizar el despliegue de \textbf{R-SNORT} y facilitar su uso en entornos reales, se reestructuró el proyecto como un paquete Debian estándar. Esta decisión permite que el propio sistema operativo gestione la instalación, dependencias, configuración y servicio a través de scripts como \texttt{postinst} (ver Figura~\ref{fig:postinst}), \texttt{prerm} (ver Figura~\ref{fig:prerm}) y \texttt{postrm} (ver Figura~\ref{fig:postrm}), alineándose con las buenas prácticas del ecosistema Debian \cite{debian_packaging_guide}.
 \newline
 
 El resultado es una arquitectura empaquetada bajo el nombre \texttt{r-snort-deb.deb}, que se instala fácilmente mediante un único comando y permite revertir el proceso de instalación sin dejar rastros en el sistema.
@@ -1444,8 +1490,6 @@ Para configurar el port mirroring es necesario acceder al panel web del switch. 
 	\caption{Pantalla de acceso al panel de administración.}
 \end{figure}
 
-\pagebreak
-
 \subsection*{Seguridad inicial del dispositivo}
 
 En el primer acceso al switch, el sistema solicita el cambio obligatorio de la contraseña predeterminada para mejorar la seguridad del entorno.
@@ -1455,6 +1499,8 @@ En el primer acceso al switch, el sistema solicita el cambio obligatorio de la c
 	\includegraphics[width=0.5\textwidth]{pruebas_config/6-cambio_pass_tenda.png}
 	\caption{Cambio obligatorio de contraseña en el primer inicio.}
 \end{figure}
+
+\pagebreak
 
 \subsection*{Configuración avanzada del switch}
 
@@ -1466,21 +1512,21 @@ Una vez autenticados, accedemos a la interfaz de administración, donde es posib
 	\caption{Vista general del panel de gestión del switch.}
 \end{figure}
 
-\pagebreak
-
 \subsection*{Activación del Port Mirroring}
 
 Desde el apartado \texttt{switching > port mirroring}, activamos esta funcionalidad para duplicar el tráfico de red. Se configura el switch para replicar el tráfico de los puertos donde están conectados el router y los PCs (puertos 1, 2 y 3) hacia el puerto 4, que está vinculado a la interfaz de análisis de la Raspberry Pi. Esto permite que Snort reciba una copia completa del tráfico local y externo.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.65\textwidth]{pruebas_config/9-asignacion_port.png}
+	\includegraphics[width=0.8\textwidth]{pruebas_config/9-asignacion_port.png}
 	\caption{Verificación del estado de los puertos tras la configuración.}
 \end{figure}
 
+Una vez la Raspberry Pi 5 sea capaz de recibir todo el tráfico en modo espejo por la interfaz correspondiente de toda la red local al mismo tiempo que tiene conexión a internet externo por la interfaz predeterminada del sistema se pone en marcha el paquete automatizado para instalar la Snort junto con la configuración completa.
+
 \pagebreak
 
-Finalmente, ejecutamos como administrador el script \texttt{installer\_snort.sh} para iniciar la instalación de R-Snort. Se selecciona la interfaz de red correspondiente al puerto 4 del switch, que es el que recibe el tráfico duplicado. Una vez finalizado el proceso, el sistema queda completamente operativo. El código fuente del instalador puede consultarse en el Anexo~\ref{anexo_repositorio}.
+Finalmente, ejecutamos como administrador el script \texttt{installer\_snort.sh} para iniciar la instalación de R-Snort. Se selecciona la interfaz de red correspondiente al puerto 4 del switch, que es el que recibe el tráfico duplicado \cite{bartman2016snort}. Una vez finalizado el proceso, el sistema queda completamente operativo. El código fuente del instalador puede consultarse en el Anexo~\ref{anexo_repositorio}.
 
 \begin{figure}[H]
 	\centering
@@ -1498,13 +1544,15 @@ Finalmente, ejecutamos como administrador el script \texttt{installer\_snort.sh}
 	\caption{Proceso completo de instalación automática de R-Snort.}
 \end{figure}
 
+\pagebreak
+
 %HECHO8
 
 % --> Aquí se insertan las figuras
 
 \section{Utilización y pruebas}
 
-Una vez completada la instalación, se procedió a la validación funcional del sistema y a su evaluación de rendimiento. El objetivo principal es demostrar que R-Snort es capaz de monitorizar eficazmente todo el tráfico de red y detectar amenazas sin saturar los recursos del sistema.
+Una vez completada la instalación, se procedió a la validación funcional del sistema y a su evaluación de rendimiento. El objetivo principal es demostrar que R-Snort es capaz de monitorizar eficazmente el tráfico de red y detectar amenazas sin sobresaturar los recursos del sistema.
 
 \subsection{Benchmark de rendimiento}
 
@@ -1597,7 +1645,7 @@ Las pruebas de rendimiento se han enfocado en dos métricas principales:
 	\item \textbf{Capacidad de análisis:} se evaluó la cantidad de paquetes por segundo que Snort puede procesar sin pérdidas ni errores, mediante herramientas de generación de tráfico como \texttt{iperf3} y \texttt{ping flood} desde los dos PCs.
 \end{itemize}
 
-Para poner estos datos en contexto, se compararon con estudios previos presentes en la literatura sobre el rendimiento de sistemas IDS en dispositivos embebidos. Los resultados obtenidos confirman que R-Snort ofrece un rendimiento competitivo incluso en hardware de bajo consumo.
+Para poner estos datos en contexto, se compararon con estudios previos presentes en la literatura sobre el rendimiento de sistemas IDS en dispositivos embebidos \cite{delacruz2020ids}. Los resultados obtenidos confirman que R-Snort ofrece un rendimiento competitivo incluso en hardware de bajo consumo.
 
 
 \subsection{Pruebas}
@@ -1624,7 +1672,7 @@ Desde el equipo Ubuntu Server (\texttt{192.168.1.171}) se ejecutó un ping conti
 	ping 8.8.8.8
 \end{verbatim}
 
-Snort generó múltiples alertas relacionadas con tráfico ICMP, incluyendo paquetes tipo \texttt{Unix ping}, \texttt{Echo reply} y PINGs anómalos. Esto confirma el correcto funcionamiento de los preprocesadores \texttt{stream}, \texttt{icmp} y la inspección de TTLs habilitada en \texttt{stream\_ip}.
+Snort generó múltiples alertas relacionadas con tráfico ICMP, incluyendo paquetes tipo \texttt{Unix ping}, \texttt{Echo reply} y PINGs anómalos. Esto confirma el correcto funcionamiento de los preprocesadores \texttt{stream}, \texttt{icmp} y la inspección de TTLs habilitada en \texttt{stream\_ip}.\newline
 
 \textbf{Configuración personalizada validada:} ajuste de parámetros como \texttt{min\_ttl}, \texttt{max\_overlaps} y \texttt{policy} en el bloque \texttt{stream\_ip}.
 
@@ -1645,7 +1693,7 @@ Se evaluó el funcionamiento de las reglas definidas en \texttt{custom.rules}, s
 	curl -d "Mi tarjeta es 4111111111111111" http://192.168.1.1
 \end{verbatim}
 
-Snort detectó ambas cadenas mediante expresiones regulares, generando alertas en tiempo real por detección de datos sensibles.
+Snort detectó ambas cadenas mediante expresiones regulares, generando alertas en tiempo real por detección de datos sensibles.\newline
 
 \textbf{Configuración personalizada validada:} uso de reglas propias con \texttt{pcre} y \texttt{flow}, integradas correctamente desde \texttt{custom.rules} en el archivo \texttt{snort.lua}.
 
@@ -1659,7 +1707,7 @@ Snort detectó ambas cadenas mediante expresiones regulares, generando alertas e
 
 \subsubsection*{3. Tráfico DNS sospechoso detectado automáticamente}
 
-Sin necesidad de ejecutar comandos específicos, Snort detectó respuestas DNS con TTL muy bajo y sin autoridad, consideradas como posibles intentos de \textit{spoofing}.
+Sin necesidad de ejecutar comandos específicos, Snort detectó respuestas DNS con TTL muy bajo y sin autoridad, consideradas como posibles intentos de \textit{spoofing}.\newline
 
 Estas alertas se originaron durante la navegación web desde el PC con Windows, demostrando la efectividad de las reglas comunitarias aplicadas sobre el módulo DNS.
 
@@ -1681,7 +1729,7 @@ Se realizó un escaneo UDP desde el Ubuntu Server al equipo Windows para evaluar
 	sudo nmap -sU -p 161,705 192.168.1.152
 \end{verbatim}
 
-Snort identificó intentos de conexión tanto al puerto SNMP clásico como al puerto de AgentX, clasificándolos como intentos de reconocimiento o fuga de información.
+Snort identificó intentos de conexión tanto al puerto SNMP clásico como al puerto de AgentX, clasificándolos como intentos de reconocimiento o fuga de información.\newline
 
 \textbf{Configuración personalizada validada:} activación explícita de \texttt{rpc\_decode} y \texttt{snmp} en \texttt{snort.lua}, además de reglas comunitarias específicas para tráfico SNMP.
 
@@ -1713,7 +1761,7 @@ Snort detectó la cadena como una posible violación de privacidad, generando un
 
 \section{Resumen}
 
-Una vez completada la instalación de R-Snort, se ha evaluado su comportamiento en un entorno de red real, midiendo tanto su impacto en los recursos de la Raspberry Pi como su capacidad de detección. Para ello, se utilizó la herramienta \texttt{dstat} con el fin de comparar el rendimiento del sistema con Snort activado y desactivado. Los resultados indican que, aunque se observa un incremento en el uso de CPU, memoria y escritura en disco, dicho impacto es moderado y asumible para un dispositivo de recursos limitados. Asimismo, el tráfico de red presenta una leve alteración con Snort activo, lo que sugiere una ligera contención de paquetes provocada por el procesamiento en tiempo real.\newline
+Una vez completada la instalación de R-Snort, se ha evaluado su comportamiento en un entorno de red real, midiendo tanto su impacto en los recursos de la Raspberry Pi como su capacidad de detección. Para ello, se utilizó la herramienta \texttt{dstat} con el fin de comparar el rendimiento del sistema con Snort activado y desactivado. Los resultados indican que, aunque se observa un incremento en el uso de CPU, memoria y escritura en disco, dicho impacto es moderado y esperable para un dispositivo de recursos limitados. Asimismo, el tráfico de red presenta una leve alteración con Snort activo, lo que sugiere una ligera contención de paquetes provocada por el procesamiento en tiempo real.\newline
 
 Además, se llevaron a cabo pruebas prácticas orientadas a validar las capacidades de detección del sistema. Acciones como escaneos de puertos con \texttt{Nmap} o el envío de datos sensibles (correos electrónicos, números de tarjeta o NUSS) fueron correctamente identificadas y notificadas mediante alertas. El sistema demostró una buena capacidad de diferenciación entre tráfico legítimo (por ejemplo, navegación web, transferencia de archivos o pings) y actividades potencialmente maliciosas. Estas alertas fueron reflejadas de forma inmediata en el panel web desarrollado, validando la integración completa entre el motor de detección y la interfaz de visualización.\newline
 
@@ -1723,7 +1771,47 @@ En conjunto, los resultados confirman que R-Snort es una solución eficaz para p
 % Resultados y discusión
 \chapter*{Resultados y discusión}
 \addcontentsline{toc}{chapter}{Resultados y discusión}
-% Contenido de resultados y discusión
+
+\section{Síntesis de resultados}
+
+A lo largo de las pruebas realizadas, R-Snort ha demostrado ser una herramienta capaz de cara a la detección de intrusos en redes pequeñas. Los resultados del benchmark muestran un consumo de recursos moderado incluso en condiciones de tráfico elevado. Las gráficas obtenidas mediante \texttt{dstat} y procesadas con \texttt{Python} indican que la carga adicional generada por el sistema es asumible en términos de CPU, RAM y E/S en disco. Este comportamiento encaja con las expectativas de un sistema NIDS pasivo, diseñado para operar en segundo plano sin degradar la experiencia de los usuarios legítimos de la red.\newline
+
+Además, las pruebas funcionales con tráfico real han validado el correcto funcionamiento de los preprocesadores de Snort, así como la eficacia tanto de las reglas comunitarias como de las reglas personalizadas definidas para este proyecto. Casos como la detección de fugas de datos (emails, tarjetas, NUSS), escaneos activos o respuestas DNS anómalas fueron correctamente identificados y registrados.
+
+\section{Discusión crítica}
+
+\subsection{Robustez del sistema}
+
+Uno de los principales hallazgos es la robustez operativa de R-Snort en un entorno embebido. Aunque Snort es tradicionalmente utilizado en servidores más potentes, su compilación y despliegue en una Raspberry Pi 5, junto con su correcta ejecución, demuestran que es viable trasladar capacidades avanzadas de inspección a plataformas de bajo consumo. La inclusión de mecanismos como \textit{port mirroring}, configuración en modo promiscuo y despliegue como servicio \texttt{systemd}, junto a la modularidad del paquete \texttt{.deb}, refuerzan este hecho.
+
+\subsection{Impacto en el rendimiento}
+
+Los resultados del benchmark reflejan que el sistema introduce una carga ligera pero estable indicando que es perfectamente viable su uso en sistemas de menor potencia. El incremento de context switches, uso de CPU en espacio de sistema y la escritura en disco (asociada al logueo de eventos) es coherente con lo esperado en sistemas de inspección profunda. No obstante, el rendimiento general de la Raspberry Pi se mantuvo estable, sin caídas ni congestión apreciable, lo que sugiere que Snort está bien optimizado para su función en este contexto.
+
+\subsection{Eficacia en la detección}
+
+La capacidad de detección ha sido prometedora. Snort detectó escaneos de puertos, tráfico DNS sospechoso, anomalías en ICMP y transmisiones de datos sensibles. La reacción del sistema fue inmediata y coherente con los patrones definidos. Sin embargo, hay que matizar que todas las pruebas fueron realizadas en un entorno controlado. La efectividad en redes más complejas y dinámicas con mayor volumen de tráfico y ataques más sofisticados quizá requiera ajustes adicionales en las reglas, thresholds de alertas y quizás el uso de motores de correlación adicionales.
+
+\subsection{Usabilidad y mantenimiento}
+
+La experiencia de usuario ha sido positiva, en todo momento se ha tratado de ser user-friendly, tanto en la instalación como en la supervisión del sistema. El instalador modular automatizado y la arquitectura empaquetada facilitan el mantenimiento y reducen la necesidad de intervención del usuario. Este aspecto fue el objetivo desde el principio para que soluciones como R-Snort puedan ser adoptadas en entornos SOHO o por usuarios no expertos sin un alto impacto económico.
+
+\section{Limitaciones del proyecto}
+
+A pesar de los buenos resultados, deben reconocerse varias limitaciones:
+
+\begin{itemize}
+	\item Las pruebas se realizaron en un entorno de red pequeño, con tráfico moderado y escasa variabilidad. No se evaluó el rendimiento bajo ataques simultáneos o flujos de datos cifrados intensivos.
+	\item Snort no realizó inspección activa sobre tráfico TLS/HTTPS más allá de los metadatos, lo cual limita su alcance en un contexto donde el cifrado es predominante.
+	\item La recolección de datos para el benchmark se centró en métricas de sistema, sin incluir análisis del ratio de falsos positivos o falsos negativos.
+\end{itemize}
+
+\section{Conclusión de los resultados}
+
+En conjunto, los resultados respaldan la viabilidad del proyecto: R-Snort es capaz de proporcionar vigilancia activa sobre una red pequeña sin requerir hardware costoso ni administración compleja. Su desempeño, adaptabilidad y facilidad de despliegue lo convierten en una alternativa prometedora para quienes buscan una solución IDS ligera, efectiva y de código abierto.\newline
+
+No obstante, su uso debe entenderse como una primera capa de defensa. Para entornos más exigentes o críticos, sería recomendable complementarlo con herramientas de análisis forense, correlación de eventos y sistemas de respuesta automática.
+
 
 % Conclusiones
 \chapter*{Conclusiones}
@@ -1737,9 +1825,72 @@ Un aspecto especialmente relevante es que la inspección continua del tráfico n
 
 En resumen, desplegar R-Snort en un dispositivo tan compacto como una Raspberry Pi proporciona una solución de monitorización efectiva, de bajo impacto y con resultados fiables. Su capacidad para detectar comportamientos anómalos, generar alertas útiles y operar de forma transparente en la red lo convierten en una herramienta idónea para entornos domésticos o pequeñas oficinas, ofreciendo una capa adicional de seguridad sin requerir una infraestructura compleja ni costosa.
 
+\chapter*{Trabajo futuro}
+\addcontentsline{toc}{chapter}{Trabajo futuro}
+
+Si bien R-Snort demuestra ser una solución funcional y eficiente en entornos SOHO, existen múltiples líneas de mejora que podrían explorarse para ampliar sus capacidades. A continuación, se detallan algunas propuestas que podrían aportar valor al sistema en versiones futuras:
+
+\section*{1. Soporte mejorado para tráfico cifrado}
+
+Snort puede detectar metadatos de sesiones TLS, pero no realiza inspección profunda del contenido cifrado. Para mejorar la cobertura:
+
+\begin{itemize}
+	\item Se podría integrar un proxy TLS para inspección SSL mediante técnicas de \textit{SSL interception}, aunque esto plantea implicaciones legales y éticas.
+	\item Alternativamente, se podrían usar heurísticas sobre patrones de tráfico cifrado (frecuencia, duración, tamaño) para inferir comportamientos anómalos.
+\end{itemize}
+
+\section*{2. Correlación de eventos y análisis de comportamiento}
+
+El uso de reglas aisladas tiene limitaciones frente a ataques distribuidos o técnicas evasivas. Por ello, se propone:
+
+\begin{itemize}
+	\item Integrar un motor de correlación simple que agrupe alertas relacionadas por IP, hora o tipo.
+	\item Desarrollar reglas basadas en comportamiento (por ejemplo, múltiples conexiones en puertos no estándar en un corto intervalo de tiempo).
+	\item Implementar funciones de \textit{rate limiting} y alertas por umbral para detectar escaneos o ataques de fuerza bruta progresivos.
+\end{itemize}
+
+\section*{3. Integración con herramientas de respuesta activa}
+
+R-Snort actúa como sistema de detección pasiva. En un futuro, podría complementarse con capacidades de respuesta automatizada:
+
+\begin{itemize}
+	\item Bloqueo temporal de IPs detectadas como maliciosas mediante reglas en \texttt{iptables} o listas negras.
+	\item Integración con fail2ban o sistemas similares para el bloqueo parcial o definitivo de los atacantes.
+	\item Notificaciones en tiempo real por correo o servicios como Telegram o Discord Webhooks.
+\end{itemize}
+
+\section*{4. Paquete multi-plataforma y documentación extendida}
+
+El actual instalador está optimizado para Raspberry Pi 5 y Ubuntu Server. Sería útil ampliar la compatibilidad para:
+
+\begin{itemize}
+	\item Otras arquitecturas ARM (como Orange Pi, Odroid o Rock Pi).
+	\item Versiones de Debian y derivados (como Raspberry Pi OS o Ubuntu Desktop).
+	\item Profesionalizar más el repositorio con documentación técnica detallada, guía de usuario y plantilla de personalización de reglas. Actualmente el repositorio existe pero se podría mejorar.
+\end{itemize}
+
+\section*{5. Métricas de calidad y validación formal}
+
+Para futuras versiones se podrían incluir:
+
+\begin{itemize}
+	\item Pruebas automáticas de regresión tras cada cambio en las reglas.
+	\item Métricas de rendimiento bajo ataques reales generados con herramientas como Metasploit o Scapy.
+	\item Evaluación sistemática del ratio de falsos positivos y negativos.
+\end{itemize}
+
+\section*{6. Incorporación de aprendizaje automático}
+
+Aunque Snort no está diseñado para detección basada en IA, podría integrarse con un módulo externo que analice el tráfico histórico y proponga reglas o patrones de interés. Se podría investigar:
+
+\begin{itemize}
+	\item Detección de anomalías mediante clustering como k-means o DBSCAN.
+	\item Clasificación binaria de tráfico legítimo vs malicioso con árboles de decisión o redes neuronales simples.
+\end{itemize}
+
 
 % Bibliografía
-\begin{thebibliography}{29}
+\begin{thebibliography}{34}
 	
 	\bibitem{enisa_smes}
 	European Union Agency for Cybersecurity (ENISA). \textit{Cybersecurity for SMEs: Challenges and Recommendations}, 2021. Disponible en: \url{https://www.enisa.europa.eu/sites/default/files/publications/ENISA%20Report%20-%20Cybersecurity%20for%20SMES%20Challenges%20and%20Recommendations.pdf}. Último acceso: 9 abril 2025.
@@ -1802,9 +1953,6 @@ En resumen, desplegar R-Snort en un dispositivo tan compacto como una Raspberry 
 	\bibitem{snort3_rules_docs}
 	Cisco Systems. \textit{Rule Writer’s Guide to Snort 3 Rules}. Disponible en: \url{https://snort-org-site.s3.amazonaws.com/production/document_files/files/000/000/596/original/Rules_Writers_Guide_to_Snort_3_Rules.pdf}. Último acceso: 9 abril 2025.
 	
-	\bibitem{snort3_installation_pdf}
-	Cisco Systems. \textit{Snort 3.1.8.0 Installation Guide for Ubuntu 18 and 20}. Disponible en: \url{https://snort-org-site.s3.amazonaws.com/production/document_files/files/000/012/147/original/Snort_3.1.8.0_on_Ubuntu_18_and_20.pdf}. Último acceso: 9 abril 2025.
-	
 	\bibitem{suricata_official}
 	Open Information Security Foundation (OISF). \textit{Suricata Official Website}. Disponible en: \url{https://suricata.io/}. Último acceso: 9 abril 2025.
 	
@@ -1821,13 +1969,30 @@ En resumen, desplegar R-Snort en un dispositivo tan compacto como una Raspberry 
 	Park, W., y Ahn, S. (2017). \textit{Performance comparison and detection analysis in Snort and Suricata environment}. *Wireless Personal Communications*, 94, 241--252. Springer.
 	
 	\bibitem{snort_gui_update}
-	Netgate. \textit{Snort 3.2.9.14 and Snort 4.1.1 Updates – Release Notes for pfSense 2.4.5\_p1 and pfSense 2.5}, 2020. Disponible en: \url{https://forum.netgate.com/topic/155429/snort-3-2-9-14-and-snort-4-1-1-updates-release-notes-for-pfsense-2-4-5_p1-and-pfsense-2-5}. Último acceso: 9 abril 2025.
+	Netgate. \textit{Snort 3.2.9.14 and Snort 4.1.1 Updates – Release Notes for pfSense 2.4.5\_p1 and pfSense 2.5}, 2020. Disponible en: \url{https://forum.netgate.com/topic/155429/snort-3-2-9-14-and-snort-4-1-1-updates-release-notes-for-pfsense-2-4-5_p1-and-pfsense-2-5}. Último acceso: 9 abril 2025.	
 	
-	\bibitem{combs2020snort}
+	\bibitem{snort3_vs_snort2}
 	Combs, R., \& Munshaw, J. (2020). \textit{The major differences that set Snort 3 apart from Snort 2}. Recuperado de \url{https://blog.snort.org/2020/08/snort-3-2-differences.html}. Último acceso: 9 abril 2025.
+	
+	\bibitem{snort3_installation_pdf}
+	Cisco Systems. \textit{Snort 3.1.8.0 Installation Guide for Ubuntu 18 and 20}. Disponible en: \url{https://snort-org-site.s3.amazonaws.com/production/document_files/files/000/012/147/original/Snort_3.1.8.0_on_Ubuntu_18_and_20.pdf}. Último acceso: 9 abril 2025.
+	
+	\bibitem{snort_user_manual}
+	Cisco. (2023). \textit{Snort 3.1.84.0 User Manual}. La documentación oficial proporciona una guía detallada sobre la configuración de \texttt{snort.lua}. Recuperado de \url{https://snort-org-site.s3.amazonaws.com/production/release_files/files/000/038/976/original/snort_user.html}. Último acceso: 10 abril 2025.
 	
 	\bibitem{emerging_block_ips} Emerging Threats. (2025). \textit{Emerging Threats Firewall Block List}. Recuperado de \url{https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt}. Último acceso: 10 abril 2025.
 	
+	\bibitem{song2020dpi}
+	Song, W., Beshley, M., Przystupa, K., Beshley, H., Kochan, O., Pryslupskyi, A., \& Su, J. (2020). \textit{A software deep packet inspection system for network traffic analysis and anomaly detection}. Sensors, 20(6), 1637. Recuperado de \url{https://www.mdpi.com/1424-8220/20/6/1637/pdf}. Último acceso: 10 abril 2025.
+	
+	\bibitem{debian_packaging_guide}
+	Debian Project. (2024). \textit{Debian New Maintainers’ Guide – Chapter 6: Good packaging practices}. Recuperado de \url{https://www.debian.org/doc/manuals/debmake-doc/ch06.en.html}. Último acceso: 10 abril 2025.
+	
+	\bibitem{bartman2016snort}
+	Bartman, T., \& Kraft, J. (2016). \textit{An introduction to applying network intrusion detection for industrial control systems}. Iron \& Steel Technology, 13(12), 70--77. En este trabajo se describe cómo emplear Snort en entornos industriales mediante un switch configurado con port mirroring, lo que permite la inspección pasiva del tráfico sin afectar la red productiva. Recuperado de \url{https://assets.contentstack.io/v3/assets/bltea08f3d94a418a1b/bltfe74dab1ab1bc726/62e949c0e791ec0dc5db3668/6753_IntroductionApplying_TB_20160212_Web2.pdf}. Último acceso: 10 abril 2025.
+	
+	\bibitem{delacruz2020ids}
+	de la Cruz, J. E. C., Goyzueta, C. A. R., \& Cahuana, C. D. (2020, septiembre). \textit{Intrusion detection and prevention system for production supervision in small businesses based on Raspberry Pi and Snort}. En 2020 IEEE XXVII International Conference on Electronics, Electrical Engineering and Computing (INTERCON) (pp. 1–4). IEEE.
 	
 \end{thebibliography}
 
