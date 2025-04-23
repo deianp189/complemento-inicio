@@ -1,6 +1,7 @@
 % !TeX spellcheck = es_ES
-\documentclass[12pt,a4paper]{report}
+\documentclass[11pt,a4paper,twoside]{report}
 
+% ===== Paquetes esenciales =====
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -16,16 +17,30 @@
 \usepackage{xcolor}
 \usepackage{float}
 \usepackage{url}
-\usepackage{listings}
 \usepackage{tikz}
 \usetikzlibrary{shapes, arrows, positioning}
 
+% ===== Configuraciones generales =====
 \setlength{\headheight}{16pt}
+\geometry{left=25mm, right=25mm, top=25mm, bottom=25mm}
+\linespread{1.15} % Interlineado normativo
 
+% ===== Encabezado y pie de página =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textit{Utilización de un NIDS para redes SOHO (R-Snort)}}
+\fancyfoot[CE,CO]{\thepage}
 
+% ===== Formato de títulos =====
+\titleformat{\chapter}[hang]{\bfseries\huge}{\thechapter.}{1pc}{}
+\titleformat{\section}[hang]{\bfseries\Large}{\thesection.}{1pc}{}
+\titleformat{\subsection}[hang]{\bfseries\large}{\thesubsection.}{1pc}{}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+% ===== Configuración de código fuente =====
 \lstdefinestyle{bashstyle}{
 	language=bash,
-	basicstyle=\ttfamily\small,
+	basicstyle=\ttfamily\footnotesize,
 	numbers=left,
 	numberstyle=\tiny,
 	numbersep=5pt,
@@ -37,122 +52,83 @@
 	commentstyle=\color{gray},
 	stringstyle=\color{orange},
 }
-
 \lstset{style=bashstyle}
 
-% Configuración de márgenes
-\geometry{left=3cm, right=2.5cm, top=3cm, bottom=3cm}
-
-% Configuración de encabezados y pies de página
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[RE]{\leftmark}
-\fancyhead[LO]{\rightmark}
-
-% Configuración de la tabla de contenidos
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
-
-% Configuración de títulos
-\titleformat{\chapter}[hang]{\bfseries\huge}{\thechapter.}{2pc}{}
-\titleformat{\section}[hang]{\bfseries\Large}{\thesection.}{1pc}{}
-\titleformat{\subsection}[hang]{\bfseries\large}{\thesubsection.}{1pc}{}
-
-\lstset{
-	language=bash,
-	basicstyle=\ttfamily\footnotesize,
-	keywordstyle=\color{blue},
-	commentstyle=\color{gray},
-	stringstyle=\color{red},
-	showstringspaces=false,
-	numbers=left,
-	numberstyle=\tiny,
-	stepnumber=1,
-	numbersep=8pt,
-	frame=single,
-	breaklines=true,
-	breakatwhitespace=true,
-	backgroundcolor=\color{white},
-	captionpos=b,
-	tabsize=2
-}
-
-% Documento
+% ===== Inicio del documento =====
 \begin{document}
+	
+	% ===== Portada (debes sustituirla por la oficial del Anexo II en la entrega) =====
+	\begin{titlepage}
+		\centering
+		{\scshape\LARGE Universidad de Almería \par}
+		\vspace{1cm}
+		{\scshape\Large Complemento Trabajo Fin de Grado\par}
+		\vspace{1.5cm}
+		{\huge\bfseries Utilización de un NIDS para redes SOHO (R-Snort)\par}
+		\vspace{2cm}
+		{\Large Autor: Petrovics, Deian Orlando\par}
+		\vspace{0.5cm}
+		{\Large Tutor: Gómez López, Julio\par}
+		\vspace{0.5cm}
+		{\Large Cotutor: Padilla Soriano, Nicolás\par}
+		\vfill
+		{\large \today\par}
+	\end{titlepage}
+	
+	% ===== Licencia Creative Commons =====
+	\newpage
+	\thispagestyle{empty}
+	\begin{center}
+		\vspace*{\fill}
+		\includegraphics[width=0.3\textwidth]{adicional/cc.xlarge.png}\\
+		Este trabajo está bajo una licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional.
+		\vspace*{\fill}
+	\end{center}
+	
+	% ===== Índice =====
+	\tableofcontents
+	\newpage
 
-% Portada
-\begin{titlepage}
-    \centering
-    {\scshape\LARGE Universidad de Almería \par}
-    \vspace{1cm}
-    {\scshape\Large Complemento Trabajo Fin de Grado\par}
-    \vspace{1.5cm}
-    {\huge\bfseries Utilización de un NIDS para redes SOHO (R-Snort)\par}
-    \vspace{2cm}
-    {\Large Autor: Petrovics, Deian Orlando\par}
-    \vspace{0.5cm}
-    {\Large Tutor: Gómez López, Julio\par}
-    \vspace{0.5cm}
-    {\Large Cotutor: Padilla Soriano, Nicolás\par}
-    \vfill
-    {\large \today\par}
-\end{titlepage}
-
-% Licencia
-\newpage
-\thispagestyle{empty}
-\begin{center}
-    \vspace*{\fill}
-    \includegraphics[width=0.3\textwidth]{adicional/cc.xlarge.png}\\
-    Este trabajo está bajo una licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional.
-    \vspace*{\fill}
-\end{center}
-
-% Índice
-\tableofcontents
-\newpage
 
 % Abreviaturas
 \chapter*{Abreviaturas}
 \addcontentsline{toc}{chapter}{Abreviaturas}
-(Todavía en proceso)
 \begin{itemize}
-	\item \textbf{APT}: Advanced Persistent Threat. Amenaza Avanzada Persistente. Suele involucrar ataques dirigidos y prolongados contra objetivos concretos.
-	\item \textbf{ClamAV}: antivirus de código abierto que analiza y detecta archivos maliciosos o infecciones. Se integra como complemento en el proyecto.
-	\item \textbf{CPU}: Central Processing Unit. Unidad central de procesamiento, comúnmente conocida como procesador, encargada de ejecutar instrucciones en un sistema.
-	\item \textbf{CSV}: Comma-Separated Values. Formato de archivo de texto plano que representa datos tabulares separados por comas o puntos y coma.
-	\item \textbf{Debian Package (*.deb)}: formato estándar de paquetes en sistemas GNU/Linux basados en Debian/Ubuntu. Facilita la instalación y gestión de software.
-	\item \textbf{DoS}: Denial of Service. Ataque que busca interrumpir el funcionamiento normal de un sistema o red.
-	\item \textbf{FTP}: File Transfer Protocol. Protocolo para la transferencia de archivos en redes IP.
-	\item \textbf{GNU/Linux}: sistema operativo de software libre en el que se basan distribuciones como Ubuntu, Debian, CentOS, etc.
-	\item \textbf{HIDS}: Host Intrusion Detection System. Sistema de Detección de Intrusiones basado en Host, centrado en vigilar el comportamiento interno de un equipo específico.
-	\item \textbf{HTTP}: Hypertext Transfer Protocol. Protocolo de comunicación utilizado en la web para transmitir información entre cliente y servidor.
-	\item \textbf{HTTP2}: segunda versión del protocolo HTTP, optimizada para mayor velocidad y eficiencia.
-	\item \textbf{ICMP}: Internet Control Message Protocol. Protocolo usado para enviar mensajes de error y diagnóstico en redes IP.
-	\item \textbf{IDS}: Intrusion Detection System. Sistema de Detección de Intrusiones (término general). Comprende tanto la detección en host (HIDS) como en red (NIDS).
-	\item \textbf{IEC 104}: protocolo de comunicación utilizado en sistemas de automatización industrial y redes eléctricas.
-	\item \textbf{IMAP}: Internet Message Access Protocol. Protocolo para acceder y gestionar correos electrónicos en servidores remotos.
-	\item \textbf{IPS}: Intrusion Prevention System. Sistema de Prevención de Intrusiones. Además de detectar acciones maliciosas, reacciona automáticamente para bloquearlas.
-	\item \textbf{LuaJIT}: implementación just-in-time (JIT) del lenguaje de scripting Lua, que Snort 3 utiliza para reglas y configuraciones más flexibles.
-	\item \textbf{MIME}: Multipurpose Internet Mail Extensions. Estándar para enviar contenido diverso (como archivos) a través de correos electrónicos.
-	\item \textbf{NIDS}: Network Intrusion Detection System. Sistema de Detección de Intrusiones en Red. Se encarga de monitorear el tráfico que circula por la red en busca de acciones sospechosas o maliciosas.
-	\item \textbf{OT}: Operational Technology. Tecnología usada para controlar procesos físicos en industrias, como sistemas SCADA o PLCs.
-	\item \textbf{POP3}: Post Office Protocol version 3. Protocolo usado para recuperar correos electrónicos desde un servidor.
-	\item \textbf{RAM}: Random Access Memory. Memoria principal de un sistema, necesaria para cargar y ejecutar aplicaciones.
-	\item \textbf{Raspberry Pi (R-Pi)}: máquina de bajo coste y tamaño reducido. Muy popular para proyectos de electrónica, servidores ligeros.
-	\item \textbf{R-SNORT}: adaptación o paquete de Snort diseñado para ejecutarse de forma optimizada en una Raspberry Pi, con funciones específicas para redes SOHO.
-	\item \textbf{SIEM}: Security Information and Event Management. Plataforma que recopila y correlaciona datos de seguridad (logs, alertas, eventos) para proporcionar una visión global y centralizada.
-	\item \textbf{SIP}: Session Initiation Protocol. Protocolo usado principalmente para establecer y controlar sesiones multimedia, como llamadas VoIP.
-	\item \textbf{SMB}: Server Message Block. Protocolo de red para compartir archivos, impresoras y puertos serie entre nodos.
-	\item \textbf{Snort}: herramienta de código abierto usada para la detección de intrusiones en red, muy extendida en el ámbito de la ciberseguridad.
-	\item \textbf{SOHO}: Small Office/Home Office. Redes pequeñas o domésticas, típicas de oficinas y hogares con recursos más limitados que una gran empresa.
-	\item \textbf{SSL/TLS}: Secure Sockets Layer / Transport Layer Security. Protocolos de cifrado que permiten la comunicación segura entre sistemas a través de redes.
+	\item \textbf{APT}: (Advanced Persistent Threat). Amenaza Avanzada Persistente. Suele involucrar ataques dirigidos y prolongados contra objetivos concretos.
+	\item \textbf{ClamAV}: Antivirus de código abierto que analiza y detecta archivos maliciosos o infecciones. Se integra como complemento en el proyecto.
+	\item \textbf{CPU}: (Central Processing Unit). Unidad central de procesamiento, comúnmente conocida como procesador, encargada de ejecutar instrucciones en un sistema.
+	\item \textbf{CSV}: (Comma-Separated Values). Formato de archivo de texto plano que representa datos tabulares separados por comas o puntos y coma.
+	\item \textbf{Debian Package (*.deb)}: Formato estándar de paquetes en sistemas GNU/Linux basados en Debian/Ubuntu. Facilita la instalación y gestión de software.
+	\item \textbf{DoS}: (Denial of Service). Ataque que busca interrumpir el funcionamiento normal de un sistema o red.
+	\item \textbf{FTP}: (File Transfer Protocol). Protocolo para la transferencia de archivos en redes IP.
+	\item \textbf{GNU/Linux}: Sistema operativo de software libre en el que se basan distribuciones como Ubuntu, Debian, CentOS, etc.
+	\item \textbf{HIDS}: (Host Intrusion Detection System). Sistema de Detección de Intrusiones basado en Host, centrado en vigilar el comportamiento interno de un equipo específico.
+	\item \textbf{HTTP}: (Hypertext Transfer Protocol). Protocolo de comunicación utilizado en la web para transmitir información entre cliente y servidor.
+	\item \textbf{HTTP2}: Segunda versión del protocolo HTTP, optimizada para mayor velocidad y eficiencia.
+	\item \textbf{ICMP}: (Internet Control Message Protocol). Protocolo usado para enviar mensajes de error y diagnóstico en redes IP.
+	\item \textbf{IDS}: (Intrusion Detection System). Sistema de Detección de Intrusiones (término general). Comprende tanto la detección en host (HIDS) como en red (NIDS).
+	\item \textbf{IEC 104}: Protocolo de comunicación utilizado en sistemas de automatización industrial y redes eléctricas.
+	\item \textbf{IMAP}: (Internet Message Access Protocol). Protocolo para acceder y gestionar correos electrónicos en servidores remotos.
+	\item \textbf{IPS}: (Intrusion Prevention System). Sistema de Prevención de Intrusiones. Además de detectar acciones maliciosas, reacciona automáticamente para bloquearlas.
+	\item \textbf{LuaJIT}: Implementación just-in-time (JIT) del lenguaje de scripting Lua, que Snort 3 utiliza para reglas y configuraciones más flexibles.
+	\item \textbf{MIME}: (Multipurpose Internet Mail Extensions). Estándar para enviar contenido diverso (como archivos) a través de correos electrónicos.
+	\item \textbf{NIDS}: (Network Intrusion Detection System). Sistema de Detección de Intrusiones en Red. Se encarga de monitorear el tráfico que circula por la red en busca de acciones sospechosas o maliciosas.
+	\item \textbf{OT}: (Operational Technology). Tecnología usada para controlar procesos físicos en industrias, como sistemas SCADA o PLCs.
+	\item \textbf{POP3}: (Post Office Protocol version 3). Protocolo usado para recuperar correos electrónicos desde un servidor.
+	\item \textbf{Raspberry Pi (R-Pi)}: Máquina de bajo coste y tamaño reducido. Muy popular para proyectos de electrónica, servidores ligeros.
+	\item \textbf{R-SNORT}: Adaptación o paquete de Snort diseñado para ejecutarse de forma optimizada en una Raspberry Pi, con funciones específicas para redes SOHO.
+	\item \textbf{SIEM}: (Security Information and Event Management). Plataforma que recopila y correlaciona datos de seguridad (logs, alertas, eventos) para proporcionar una visión global y centralizada.
+	\item \textbf{SIP}: (Session Initiation Protocol). Protocolo usado principalmente para establecer y controlar sesiones multimedia, como llamadas VoIP.
+	\item \textbf{SMB}: (Server Message Block). Protocolo de red para compartir archivos, impresoras y puertos serie entre nodos.
+	\item \textbf{Snort}: Herramienta de código abierto usada para la detección de intrusiones en red, muy extendida en el ámbito de la ciberseguridad.
+	\item \textbf{SOHO}: (Small Office/Home Office). Redes pequeñas o domésticas, típicas de oficinas y hogares con recursos más limitados que una gran empresa.
+	\item \textbf{SSL/TLS}: (Secure Sockets Layer / Transport Layer Security). Protocolos de cifrado que permiten la comunicación segura entre sistemas a través de redes.
 \end{itemize}
 
 % Introducción
 \chapter*{Introducción}
 \addcontentsline{toc}{chapter}{Introducción}
-La dependencia actual del uso de tecnología difiere en gran medida del uso que se le daba hace años. El crecimiento del globalismo, que impulsa la interconexión entre todos nosotros, hace que el conocimiento sobre informática y sus fallas de seguridad se dé a conocer mundialmente, permitiendo a individuos malintencionados aprovechar dichas vulnerabilidades por diversos motivos: económicos, sociales o incluso como competición entre ellos.\newline
+La dependencia actual del uso de tecnología difiere en gran medida del uso que se le daba hace años. El crecimiento del globalismo, que impulsa la interconexión entre todos nosotros, hace que el conocimiento sobre informática y sus fallos de seguridad se dé a conocer mundialmente, permitiendo a individuos malintencionados aprovechar dichas vulnerabilidades por diversos motivos: económicos, sociales o incluso como competición entre ellos.\newline
 
 Organizaciones de renombre cuentan con los mayores expertos en seguridad informática; sin embargo, las redes domésticas o de pequeñas o medianas empresas no gozan de tal presupuesto, quedando normalmente vulnerables a todo tipo de ataques \cite{enisa_smes}. Este trabajo propone una solución accesible que permita a entornos más modestos estar protegidos mediante un sistema de detección de intrusos (IDS) basado en herramientas de bajo impacto económico y fácil implementación.
 
@@ -314,13 +290,13 @@ Los sistemas basados en \textit{firmas} tienen la capacidad de reconocer patrone
 Un \textbf{IDS} generalmente cuenta con las siguientes partes:
 
 \begin{itemize}
-	\item \textbf{Sensores}: estos son los encargados de capturar los datos provenientes de la red o del propio anfitrión.
+	\item \textbf{Sensores}: Estos son los encargados de capturar los datos provenientes de la red o del propio anfitrión.
 	
-	\item \textbf{Analizadores}: se encargan de analizar y examinar los patrones en los paquetes recibidos en busca de coincidencias con comportamientos anómalos o firmas conocidas.
+	\item \textbf{Analizadores}: Se encargan de analizar y examinar los patrones en los paquetes recibidos en busca de coincidencias con comportamientos anómalos o firmas conocidas.
 	
-	\item \textbf{Bases de datos de firmas}: almacenan patrones de ataques conocidos para la detección basada en firmas.
+	\item \textbf{Bases de datos de firmas}: Almacenan patrones de ataques conocidos para la detección basada en firmas.
 	
-	\item \textbf{Interfaz de gestión}: permite a los administradores configurar el sistema, revisar alertas y generar informes.
+	\item \textbf{Interfaz de gestión}: Permite a los administradores configurar el sistema, revisar alertas y generar informes.
 \end{itemize}
 
 \subsection{Funcionalidades}
@@ -328,13 +304,13 @@ Un \textbf{IDS} generalmente cuenta con las siguientes partes:
 El sistema incorpora una serie de funcionalidades principalmente orientadas a la supervisión continua, la respuesta ante incidentes y la integración con otras herramientas de ciberseguridad.
 
 \begin{itemize}
-	\item \textbf{Monitoreo en tiempo real}: el monitoreo está siempre activo con el objetivo de captar cualquier tipo de intrusión de manera inmediata y poder actuar con rapidez.
+	\item \textbf{Monitoreo en tiempo real}: El monitoreo está siempre activo con el objetivo de captar cualquier tipo de intrusión de manera inmediata y poder actuar con rapidez.
 	
-	\item \textbf{Generación de alertas}: por cada tipo de intrusión o sospecha, se genera un determinado tipo de alerta con descripciones relevantes para que de un rápido vistazo el administrador encargado pueda tomar acción rápidamente.
+	\item \textbf{Generación de alertas}: Por cada tipo de intrusión o sospecha, se genera un determinado tipo de alerta con descripciones relevantes para que de un rápido vistazo el administrador encargado pueda tomar acción rápidamente.
 	
-	\item \textbf{Registro de eventos}: se documentan los incidentes ocurridos para posterior análisis forense y cumplimiento normativo, facilitando el trabajo del especialista que se encargue de un determinado ataque.
+	\item \textbf{Registro de eventos}: Se documentan los incidentes ocurridos para posterior análisis forense y cumplimiento normativo, facilitando el trabajo del especialista que se encargue de un determinado ataque.
 	
-	\item \textbf{Integración con otros sistemas de seguridad}: trabaja en conjunto con \textit{cortafuegos}, sistemas de gestión de eventos (\textbf{SIEM}), entre otras herramientas, con el objetivo de mejorar la defensa continuamente y estar preparados para amenazas posteriores.
+	\item \textbf{Integración con otros sistemas de seguridad}: Trabaja en conjunto con \textit{cortafuegos}, sistemas de gestión de eventos (\textbf{SIEM}), entre otras herramientas, con el objetivo de mejorar la defensa continuamente y estar preparados para amenazas posteriores.
 \end{itemize}
 
 
@@ -386,9 +362,9 @@ Snort se distingue por algunas funciones que le permiten adaptarse a distintos e
 	\item \textbf{Motor de detección basado en firmas}: utiliza reglas predefinidas para detectar patrones de ataque conocidos.
 	\item \textbf{Modos de operación}:
 	\begin{itemize}
-		\item \textbf{Sniffer}: captura y muestra los paquetes de red en tiempo real.
-		\item \textbf{Packet Logger}: guarda los paquetes para analizarlos más adelante.
-		\item \textbf{Network Intrusion Detection}: examina el tráfico y lanza alertas si detecta algo sospechoso.
+		\item \textbf{Sniffer}: Captura y muestra los paquetes de red en tiempo real.
+		\item \textbf{Packet Logger}: Guarda los paquetes para analizarlos más adelante.
+		\item \textbf{Network Intrusion Detection}: Examina el tráfico y lanza alertas si detecta algo sospechoso.
 	\end{itemize}
 \end{itemize}
 
@@ -397,9 +373,9 @@ Snort se distingue por algunas funciones que le permiten adaptarse a distintos e
 El funcionamiento de Snort se basa en una arquitectura modular, donde cada componente cumple un papel específico dentro del proceso de detección. Sus principales elementos son:
 
 \begin{itemize}
-	\item \textbf{Preprocesadores}: adaptan el tráfico para su análisis, resolviendo fragmentaciones y otros detalles técnicos.
-	\item \textbf{Motor de detección}: compara el tráfico con las reglas definidas para identificar amenazas.
-	\item \textbf{Plugins de salida}: se encargan de registrar o enviar las alertas generadas, ya sea a archivos, bases de datos o servicios como syslog.
+	\item \textbf{Preprocesadores}: Adaptan el tráfico para su análisis, resolviendo fragmentaciones y otros detalles técnicos.
+	\item \textbf{Motor de detección}: Compara el tráfico con las reglas definidas para identificar amenazas.
+	\item \textbf{Plugins de salida}: Se encargan de registrar o enviar las alertas generadas, ya sea a archivos, bases de datos o servicios como syslog.
 \end{itemize}
 
 
@@ -422,11 +398,11 @@ Esta regla genera una alerta si se detecta una conexión TCP desde cualquier ori
 Snort utiliza distintos conjuntos de reglas que varían en disponibilidad, frecuencia de actualización y nivel de protección. Los tipos principales son:
 
 \begin{itemize}
-	\item \textbf{Community Rules}: reglas creadas y mantenidas por la comunidad de usuarios de \textit{Snort}, disponibles de forma gratuita bajo la licencia \textit{GPLv2}.
+	\item \textbf{Community Rules}: Reglas creadas y mantenidas por la comunidad de usuarios de \textit{Snort}, disponibles de forma gratuita bajo la licencia \textit{GPLv2}.
 	
-	\item \textbf{Registered Rules}: proporcionadas por \textit{Cisco Talos}, disponibles para usuarios registrados, aunque con un retraso de 30 días respecto al lanzamiento para suscriptores.
+	\item \textbf{Registered Rules}: Proporcionadas por \textit{Cisco Talos}, disponibles para usuarios registrados, aunque con un retraso de 30 días respecto al lanzamiento para suscriptores.
 	
-	\item \textbf{Subscriber Rules}: reglas actualizadas en tiempo real, pensadas para usuarios de pago. Ofrecen protección frente a amenazas emergentes sin retrasos \cite{snort_talos} (\textit{no usadas en este proyecto}).
+	\item \textbf{Subscriber Rules}: Reglas actualizadas en tiempo real, pensadas para usuarios de pago. Ofrecen protección frente a amenazas emergentes sin retrasos \cite{snort_talos} (\textit{no usadas en este proyecto}).
 \end{itemize}
 
 
@@ -592,9 +568,9 @@ Este enfoque equilibra costes y protección, utilizando capacidades reales de \t
 Implementar un sistema de detección en redes pequeñas ofrece múltiples ventajas:
 
 \begin{itemize}
-	\item \textbf{Identificación preventiva de riesgos}: el monitoreo continuo permite detectar comportamientos sospechosos a tiempo, mejorando la capacidad de respuesta.
-	\item \textbf{Análisis del tráfico de red}: facilita auditorías internas al observar cómo se comunican los dispositivos entre sí, ayudando a detectar puntos débiles.
-	\item \textbf{Cumplimiento de normativas de seguridad}: aporta trazabilidad y evidencia para cumplir con protocolos básicos de protección de datos.
+	\item \textbf{Identificación preventiva de riesgos}: El monitoreo continuo permite detectar comportamientos sospechosos a tiempo, mejorando la capacidad de respuesta.
+	\item \textbf{Análisis del tráfico de red}: Facilita auditorías internas al observar cómo se comunican los dispositivos entre sí, ayudando a detectar puntos débiles.
+	\item \textbf{Cumplimiento de normativas de seguridad}: Aporta trazabilidad y evidencia para cumplir con protocolos básicos de protección de datos.
 \end{itemize}
 
 \vspace{0.5cm}
@@ -604,9 +580,9 @@ Implementar un sistema de detección en redes pequeñas ofrece múltiples ventaj
 Para mejorar la seguridad general en redes pequeñas, se recomienda adoptar las siguientes medidas:
 
 \begin{itemize}
-	\item \textbf{Autenticación reforzada}: emplear contraseñas robustas, que incluyan símbolos, números, mayúsculas y minúsculas, y actualizarlas periódicamente. Evitar datos personales o corporativos.
-	\item \textbf{Segmentación de red}: dividir la red en zonas lógicas para contener posibles incidentes y limitar la propagación en caso de intrusión.
-	\item \textbf{Copias de seguridad}: automatizar el respaldo de datos críticos para garantizar su recuperación ante fallos o ataques.
+	\item \textbf{Autenticación reforzada}: Emplear contraseñas robustas, que incluyan símbolos, números, mayúsculas y minúsculas, y actualizarlas periódicamente. Evitar datos personales o corporativos.
+	\item \textbf{Segmentación de red}: Dividir la red en zonas lógicas para contener posibles incidentes y limitar la propagación en caso de intrusión.
+	\item \textbf{Copias de seguridad}: Automatizar el respaldo de datos críticos para garantizar su recuperación ante fallos o ataques.
 \end{itemize}
 
 
@@ -668,12 +644,12 @@ En este documento, se describe la instalación y configuración de Snort Versió
 Snort 3 es una versión mejorada de su predecesor, con una arquitectura modular y mejoras significativas en rendimiento y configuración. Algunas de sus características incluyen:
 
 \begin{itemize}
-\item \textbf{Arquitectura modular}: permite una configuración flexible y personalizable apoyada por una gran cantidad de documentación.
-\item \textbf{Mejoras en rendimiento}: optimizaciones en el motor de detección para un procesamiento más eficiente.
-\item \textbf{Soporte para multihilo}: permite el uso de múltiples procesadores para mejorar el rendimiento en sistemas modernos.
-\item \textbf{Reglas en Lua}: facilita una configuración más avanzada y personalizable.
-\item \textbf{Integración con DAQ (Data Acquisition Library)}: ofrece opciones flexibles para la captura de paquetes en la red.
-\item \textbf{Compatibilidad con reglas de Snort 2}: permite utilizar reglas preexistentes.
+\item \textbf{Arquitectura modular}: Permite una configuración flexible y personalizable apoyada por una gran cantidad de documentación.
+\item \textbf{Mejoras en rendimiento}: Optimizaciones en el motor de detección para un procesamiento más eficiente.
+\item \textbf{Soporte para multihilo}: Permite el uso de múltiples procesadores para mejorar el rendimiento en sistemas modernos.
+\item \textbf{Reglas en Lua}: Facilita una configuración más avanzada y personalizable.
+\item \textbf{Integración con DAQ (Data Acquisition Library)}: Ofrece opciones flexibles para la captura de paquetes en la red.
+\item \textbf{Compatibilidad con reglas de Snort 2}: Permite utilizar reglas preexistentes.
 \end{itemize}
 
 \subsection{Requisitos del sistema}
@@ -1224,8 +1200,8 @@ La red está compuesta por:
 	\item Un \textbf{router doméstico} conectado al puerto 1 del switch, encargado de proporcionar acceso a Internet.
 	\item Una \textbf{Raspberry Pi 5} equipada con dos interfaces de red Ethernet:
 	\begin{itemize}
-		\item \texttt{eth0}: conectada directamente al router, proporciona conectividad a Internet para la propia Raspberry Pi.
-		\item \texttt{enxc8a362b4a702}: conectada al puerto 4 del switch, el cual está configurado como puerto espejo.
+		\item \texttt{eth0}: Conectada directamente al router, proporciona conectividad a Internet para la propia Raspberry Pi.
+		\item \texttt{enxc8a362b4a702}: Conectada al puerto 4 del switch, el cual está configurado como puerto espejo.
 	\end{itemize}
 \end{itemize}
 
@@ -1271,19 +1247,19 @@ Automatizar la instalación de herramientas en ciberseguridad como Snort es un p
 El script propuesto sigue una arquitectura modular, dividiendo su lógica en funciones independientes organizadas en ficheros temáticos:
 
 \begin{itemize}
-	\item \texttt{r-snort\_installer.sh}: núcleo del sistema, orquesta las fases del proceso de instalación desde una perspectiva modular, gestionando logs, permisos, selección de interfaz y llamadas a los demás módulos.  
+	\item \texttt{r-snort\_installer.sh}: Núcleo del sistema, orquesta las fases del proceso de instalación desde una perspectiva modular, gestionando logs, permisos, selección de interfaz y llamadas a los demás módulos.  
 	Véase la Figura~\ref{fig:r-snort_installer} para una muestra del flujo de ejecución principal.
 	
-	\item \texttt{core.sh}: módulo responsable de los mensajes de log, errores y el banner de bienvenida, garantizando una salida legible y profesional para el usuario.  
+	\item \texttt{core.sh}: Módulo responsable de los mensajes de log, errores y el banner de bienvenida, garantizando una salida legible y profesional para el usuario.  
 	Véase la Figura~\ref{fig:core-sh}.
 	
-	\item \texttt{checks.sh}: este módulo verifica que el script se ejecute como root y solicita al usuario que seleccione la interfaz de red sobre la que actuará Snort.  
+	\item \texttt{checks.sh}: Este módulo verifica que el script se ejecute como root y solicita al usuario que seleccione la interfaz de red sobre la que actuará Snort.  
 	Representación visual en la Figura~\ref{fig:checks-sh}.
 	
-	\item \texttt{dependencies.sh}: instala los paquetes de compilación y bibliotecas necesarios en entornos Debian/Ubuntu.  
+	\item \texttt{dependencies.sh}: Instala los paquetes de compilación y bibliotecas necesarios en entornos Debian/Ubuntu.  
 	La Figura~\ref{fig:dependencies-sh} muestra un fragmento de esta lógica.
 	
-	\item \texttt{build\_from\_source.sh}: gestiona y compila desde fuentes los componentes adicionales (luajit, daq, openssl, etc.).  
+	\item \texttt{build\_from\_source.sh}: Gestiona y compila desde fuentes los componentes adicionales (luajit, daq, openssl, etc.).  
 	También maneja errores comunes de compatibilidad, como se muestra a continuación:
 	
 	\begin{lstlisting}[language=bash, caption={Corrección de versiones incompatibles de xz/liblzma}, label=lst:xz, basicstyle=\ttfamily\footnotesize, frame=single, numbers=left, numberstyle=\tiny, breaklines=true]
@@ -1292,16 +1268,16 @@ El script propuesto sigue una arquitectura modular, dividiendo su lógica en fun
 		fi
 	\end{lstlisting}
 	
-	\item \texttt{install\_snort.sh}: compila Snort 3.1.84.0 con correcciones específicas para evitar fallos con versiones recientes de OpenSSL y desactiva el soporte NUMA.  
+	\item \texttt{install\_snort.sh}: Compila Snort 3.1.84.0 con correcciones específicas para evitar fallos con versiones recientes de OpenSSL y desactiva el soporte NUMA.  
 	Véase la Figura~\ref{fig:install-snort}.
 	
-	\item \texttt{configure\_snort.sh}: prepara la configuración final de Snort, cargando reglas, scripts \texttt{.lua}, y desplegando el servicio con \texttt{systemd}.  
+	\item \texttt{configure\_snort.sh}: Prepara la configuración final de Snort, cargando reglas, scripts \texttt{.lua}, y desplegando el servicio con \texttt{systemd}.  
 	Representado en la Figura~\ref{fig:configure-snort}.
 	
-	\item \texttt{swap.sh}: activa dinámicamente un archivo de swap temporal si se detecta menos de 1.5\,GB de RAM, evitando fallos de compilación en la Raspberry Pi.  
+	\item \texttt{swap.sh}: Activa dinámicamente un archivo de swap temporal si se detecta menos de 1.5\,GB de RAM, evitando fallos de compilación en la Raspberry Pi.  
 	Ver la Figura~\ref{fig:swap-sh}.
 	
-	\item \texttt{stats.sh}: recopila y presenta estadísticas del sistema tras la instalación, incluyendo versiones de Snort y ClamAV, recursos utilizados y configuración de red.  
+	\item \texttt{stats.sh}: Recopila y presenta estadísticas del sistema tras la instalación, incluyendo versiones de Snort y ClamAV, recursos utilizados y configuración de red.  
 	Ilustrado en la Figura~\ref{fig:stats-sh}.
 \end{itemize}
 
