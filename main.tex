@@ -18,8 +18,10 @@
 \usepackage{float}
 \usepackage{url}
 \usepackage{tikz}
+\usepackage{courier}
 \usepackage{pgfgantt}
 \usepackage{enumitem}
+\usepackage{placeins}
 \usetikzlibrary{shapes, arrows, positioning}
 
 \raggedbottom
@@ -39,26 +41,76 @@
 
 % ===== Formato de títulos =====
 \titleformat{\chapter}[hang]{\bfseries\huge}{\thechapter.}{1pc}{}
+\titlespacing*{\chapter}{0pt}{-10pt}{20pt}
 \titleformat{\section}[hang]{\bfseries\Large}{\thesection.}{1pc}{}
 \titleformat{\subsection}[hang]{\bfseries\large}{\thesubsection.}{1pc}{}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 
-% ===== Configuración de código fuente =====
-\lstdefinestyle{bashstyle}{
+% Definición de colores si aún no los has puesto
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+% Estilo snortstyle completo y compatible
+% Estilo snortstyle completo y compatible
+\lstdefinestyle{snortstyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\footnotesize\ttfamily,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	commentstyle=\color{mygreen},
+	escapeinside={\%*}{*)},
+	extendedchars=true,
+	frame=single,
+	keepspaces=true,
+	keywordstyle=\color{blue},
 	language=bash,
-	basicstyle=\ttfamily\footnotesize,
+	morekeywords={sudo,systemctl,make,cmake,apt,tar,configure},
 	numbers=left,
-	numberstyle=\tiny,
 	numbersep=5pt,
-	backgroundcolor=\color{gray!5},
+	numberstyle=\tiny\color{mygray},
+	rulecolor=\color{black},
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	stepnumber=2,
+	stringstyle=\color{mymauve},
+	tabsize=2,
+	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+	title=\lstname,
+	literate=
+	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1 {¡}{{!`}}1
+	{°}{{\textdegree}}1 {→}{{$\rightarrow$}}1 {⇒}{{$\Rightarrow$}}1
+	{≥}{{$\geq$}}1 {≤}{{$\leq$}}1 {–}{{--}}1
+	{“}{{``}}1 {”}{{''}}1 {’}{{'}}1 {•}{{\textbullet}}1
+	{\{}{{\{}}1 {\}}{{\}}}1
+	{\_}{{\_}}1 {\%}{{\%}}1 {\$}{{\$}}1
+	{\\}{{\textbackslash}}1 {\#}{{\#}}1 {\&}{{\&}}1
+	{\^}{{\^{}}}1 {\~}{{\~{}}}1 {\|}{{\textbar}}1
+	{\033}{{\textbackslash033}}1,
+}
+
+% Activar el estilo globalmente
+\lstset{style=snortstyle}
+
+\lstdefinestyle{commandstyle}{
+	backgroundcolor=\color{gray!10},
+	basicstyle=\ttfamily\small,
 	frame=single,
 	breaklines=true,
-	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+	showstringspaces=false,
+	columns=flexible,
+	xleftmargin=1.5em,
+	framexleftmargin=1.5em,
 	keywordstyle=\color{blue},
-	commentstyle=\color{gray},
-	stringstyle=\color{orange},
+	commentstyle=\color{mygreen},
+	stringstyle=\color{mymauve},
+	morekeywords={sudo,ls,cat,tail,echo,dig,nslookup,grep,awk,cut,printf,find},
+	language=bash,
 }
-\lstset{style=bashstyle}
 
 % ===== Inicio del documento =====
 \begin{document}
@@ -81,6 +133,12 @@
 		{\large \today\par}
 	\end{titlepage}
 	
+	\thispagestyle{empty}
+	\cleardoublepage
+	\thispagestyle{empty}
+	
+	
+	
 	% ===== Licencia Creative Commons =====
 	\newpage
 	\thispagestyle{empty}
@@ -90,6 +148,7 @@
 		Este trabajo está bajo una licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional.
 		\vspace*{\fill}
 	\end{center}
+	\thispagestyle{empty}
 	
 	% ===== Índice =====
 	\tableofcontents
@@ -601,10 +660,19 @@ Cabe destacar que \textbf{Snort 3} ya no utiliza el formato de salida \texttt{Un
 % Continúa con el resto de capítulos y secciones siguiendo la estructura
 \chapter{Utilización de Snort en redes SOHO}
 \section{Introducción}
-Un Sistema de Detección de Intrusos en la Red (NIDS, por sus siglas en inglés) es una herramienta de seguridad que permite la monitorización del tráfico en busca de actividades sospechosas o cualquier tipo de ataque que coincida con patrones ya conocidos y documentados con anterioridad. En el caso de pequeñas redes, un NIDS puede proporcionar una primera línea de defensa sin la necesidad de costosas soluciones empresariales favoreciendo el crecimiento libre de peligro cibernético de las PYMES.
-\newline
 
-En este documento, se describe la instalación y configuración de Snort Versión 3 y complementos como NIDS en una Raspberry Pi 5 con Ubuntu Server, aprovechando su eficiencia en el consumo de recursos y su capacidad de detección de amenazas en redes pequeñas o domésticas.
+Un Sistema de Detección de Intrusos en la Red (NIDS, por sus siglas en inglés) es una herramienta de seguridad que permite la monitorización del tráfico en busca de actividades sospechosas o ataques que coincidan con patrones conocidos. En el contexto de pequeñas redes, como las de hogares o pequeñas oficinas (SOHO), un NIDS puede representar una primera línea de defensa sin recurrir a costosas soluciones empresariales, favoreciendo así una ciberseguridad asequible para PYMES y usuarios particulares.\newline
+
+En este proyecto se ha desarrollado e instalado R-Snort, una solución basada en Snort versión 3 junto con varios complementos, sobre una Raspberry Pi 5 con Ubuntu Server. Esta plataforma de bajo consumo y coste reducido ha demostrado ser suficientemente robusta para tareas avanzadas de inspección de tráfico, gracias a mecanismos como el \textit{port mirroring}, el uso del modo promiscuo y su despliegue como servicios. La construcción modular del sistema y su empaquetado en formato \texttt{.deb} han permitido una instalación automatizada, simplificando su adopción incluso por usuarios con escasos conocimientos técnicos.\newline
+
+Durante las pruebas realizadas, se ha observado que el impacto en el rendimiento del sistema es bajo y controlado. Mediante herramientas profesionales de monitorización como \texttt{pmchart}, se han obtenido gráficas que reflejan un uso moderado de la CPU y la memoria, así como un aumento predecible en la escritura de disco en función de la actividad de red. Bajo condiciones normales, el sistema permanece mayoritariamente inactivo, con una actividad mínima centrada en el análisis de paquetes y la generación de logs. En escenarios de tráfico masivo inducido con \texttt{iperf3}, Snort mostró un comportamiento estable, con un incremento visible en la carga del sistema, pero sin llegar a comprometer su operatividad ni generar cuellos de botella críticos.\newline
+
+En cuanto a la detección, R-Snort logró identificar múltiples tipos de tráfico potencialmente malicioso, incluyendo escaneos de puertos, anomalías en protocolos como ICMP y DNS, así como transmisiones de datos sensibles. Las alertas generadas fueron coherentes con las reglas definidas, tanto comunitarias como personalizadas. Aunque las pruebas se realizaron en un entorno controlado, los resultados obtenidos permiten anticipar una buena capacidad de detección en redes reales, siempre que se realicen los ajustes oportunos a las reglas y umbrales de alerta.\newline
+
+Finalmente, se ha puesto especial énfasis en la usabilidad y el mantenimiento del sistema. La experiencia de usuario ha sido positiva gracias a un instalador modular, claro y autónomo, que permite desplegar R-Snort sin necesidad de configuraciones manuales complejas. Esta accesibilidad ha sido un objetivo clave para facilitar su implementación en entornos SOHO, donde no siempre se cuenta con personal técnico especializado.\newline
+
+En conjunto, este trabajo demuestra que trasladar capacidades de detección de intrusos a dispositivos compactos y asequibles no solo es viable, sino también eficaz, contribuyendo a democratizar la seguridad en redes domésticas y de pequeña escala.
+
 
 \section{Especificaciones, características y requisitos}
 
@@ -995,14 +1063,11 @@ Creamos el directorio de configuración de Snort (\texttt{/usr/local/snort/etc/s
 \newpage
 
 \subsection{Instalación de reglas y plugins}
-\vspace{-1.5em}
 
 Tras la correcta instalación de \textbf{Snort}, aprovecharemos la arquitectura modular introducida en la versión 3, la cual utiliza archivos con extensión \texttt{.lua} para gestionar su configuración de forma más flexible y estructurada. A continuación, se presenta una guía paso a paso sobre cómo instalar las reglas básicas proporcionadas por la comunidad de Snort, conocidas como \textit{Community Rules}.
 
-\vspace{-1.5em}
-
 Descargamos las \textit{Community Rules} de Snort utilizando el comando \texttt{wget}, seguido de su descompresión mediante \texttt{tar}. Estas reglas constituyen un conjunto de firmas predefinidas para detectar amenazas comunes en entornos de red.
-\vspace{-1.5em}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_reglas_snort/1-1.png}
@@ -1104,7 +1169,7 @@ A continuación, verificamos la configuración de Snort para asegurarnos de que 
 
 \newpage
 
-\begin{lstlisting}[language=bash, label={lst:validacion-snort}]
+\begin{lstlisting}[language=bash, label={lst:validacion_snort}]
 	# Validar la configuracion de Snort
 	sudo snort -c /usr/local/snort/etc/snort/snort.lua -T
 	
@@ -1249,16 +1314,16 @@ El script propuesto sigue una arquitectura modular, dividiendo su lógica en fun
 
 \begin{itemize}
 	\item \texttt{r-snort\_installer.sh}: Núcleo del sistema, orquesta las fases del proceso de instalación desde una perspectiva modular, gestionando logs, permisos, selección de interfaz y llamadas a los demás módulos.  
-	Véase la Figura~\ref{fig:r-snort_installer} para una muestra del flujo de ejecución principal.
+	Véase el Código~\ref{lst:r-snort-installer} para una muestra del flujo de ejecución principal.
 	
 	\item \texttt{core.sh}: Módulo responsable de los mensajes de log, errores y el banner de bienvenida, garantizando una salida legible y profesional para el usuario.  
-	Véase la Figura~\ref{fig:core-sh}.
+	Véase el Código~\ref{lst:core-sh}.
 	
 	\item \texttt{checks.sh}: Este módulo verifica que el script se ejecute como root y solicita al usuario que seleccione la interfaz de red sobre la que actuará Snort.  
-	Representación visual en la Figura~\ref{fig:checks-sh}.
+	Representación visual en la Figura~\ref{lst:checks-sh}.
 	
 	\item \texttt{dependencies.sh}: Instala los paquetes de compilación y bibliotecas necesarios en entornos Debian/Ubuntu.  
-	La Figura~\ref{fig:dependencies-sh} muestra un fragmento de esta lógica.
+	El Código~\ref{lst:dependencies-sh} muestra esta lógica.
 	
 	\item \texttt{build\_from\_source.sh}: Gestiona y compila desde fuentes los componentes adicionales (luajit, daq, openssl, etc.).  
 	También maneja errores comunes de compatibilidad, como se muestra a continuación:
@@ -1270,16 +1335,16 @@ El script propuesto sigue una arquitectura modular, dividiendo su lógica en fun
 	\end{lstlisting}
 	
 	\item \texttt{install\_snort.sh}: Compila Snort 3.1.84.0 con correcciones específicas para evitar fallos con versiones recientes de OpenSSL y desactiva el soporte NUMA.  
-	Véase la Figura~\ref{fig:install-snort}.
+	Véase el Código~\ref{lst:install-snort}.
 	
 	\item \texttt{configure\_snort.sh}: Prepara la configuración final de Snort, cargando reglas, scripts \texttt{.lua}, y desplegando el servicio con \texttt{systemd}.  
-	Representado en la Figura~\ref{fig:configure-snort}.
+	Representado en el Código~\ref{lst:configure-snort}.
 	
 	\item \texttt{swap.sh}: Activa dinámicamente un archivo de swap temporal si se detecta menos de 1.5\,GB de RAM, evitando fallos de compilación en la Raspberry Pi.  
-	Ver la Figura~\ref{fig:swap-sh}.
+	Ver el Código~\ref{lst:swap-sh}.
 	
 	\item \texttt{stats.sh}: Recopila y presenta estadísticas del sistema tras la instalación, incluyendo versiones de Snort y ClamAV, recursos utilizados y configuración de red.  
-	Ilustrado en la Figura~\ref{fig:stats-sh}.
+	Ilustrado en el Código~\ref{lst:stats-sh}.
 \end{itemize}
 
 \subsubsection{Características de robustez y control de errores}
@@ -1294,8 +1359,8 @@ El script implementa buenas prácticas de scripting en Bash, incluyendo:
 
 Además, cada función de especial importancia o con condiciones de carrera se acompaña de validaciones explícitas. Por ejemplo, antes de descomprimir archivos \texttt{.tar.gz} o \texttt{.tar.xz}, se comprueba su integridad con \texttt{gzip -t} o \texttt{xz -t}, y se mitigan fallos comunes de \texttt{liblzma} con reinstalación forzada si es necesario.
 
-\begin{lstlisting}[language=bash, caption={Validación e instalación segura de paquetes .xz}, label=lst:xz]
-	if ! xz -t "$archivo" 2>&1 | grep -qv 'version `XZ_'; then
+\begin{lstlisting}[language=bash, caption={Validación e instalación segura de paquetes xz}, label="lst:xz"]
+	if ! xz -t "\$archivo" 2>&1 | grep -qv 'version `XZ_'; then
 	apt-get install --reinstall -y xz-utils liblzma5 liblzma-dev
 	fi
 \end{lstlisting}
@@ -1339,7 +1404,7 @@ Además, se ha verificado que, tras una ejecución limpia del instalador, Snort 
 
 \subsection{Transición a paquete \texttt{.deb}}
 
-Con el objetivo de profesionalizar el despliegue de \textbf{R-SNORT} y facilitar su uso en entornos reales, se reestructuró el proyecto como un paquete Debian estándar. Esta decisión permite que el propio sistema operativo gestione la instalación, dependencias, configuración y servicio a través de scripts como \texttt{postinst} (ver Figura~\ref{fig:postinst}), \texttt{prerm} (ver Figura~\ref{fig:prerm}) y \texttt{postrm} (ver Figura~\ref{fig:postrm}), alineándose con las buenas prácticas del ecosistema Debian \cite{debian_packaging_guide}.
+Con el objetivo de profesionalizar el despliegue de \textbf{R-SNORT} y facilitar su uso en entornos reales, se reestructuró el proyecto como un paquete Debian estándar. Esta decisión permite que el propio sistema operativo gestione la instalación, dependencias, configuración y servicio a través de scripts como \texttt{postinst} (ver Código~\ref{lst:postinst}), \texttt{prerm} (ver Código~\ref{lst:prerm}) y \texttt{postrm} (ver Código~\ref{lst:postrm}), alineándose con las buenas prácticas del ecosistema Debian \cite{debian_packaging_guide}.
 \newline
 
 El resultado es una arquitectura empaquetada bajo el nombre \texttt{r-snort-deb.deb}, que se instala fácilmente mediante un único comando y permite revertir el proceso de instalación sin dejar rastros en el sistema.
@@ -1350,14 +1415,16 @@ El resultado es una arquitectura empaquetada bajo el nombre \texttt{r-snort-deb.
 	\caption{Estructura del proyecto reempaquetado como archivo \texttt{.deb}.}
 \end{figure}
 
+\pagebreak
+
 \subsubsection{Mejoras introducidas}
 
 La transición al formato \texttt{.deb} permitió incorporar una serie de mejoras que anteriormente solo podían aplicarse de forma manual:
 
 \begin{itemize}
-	\item \textbf{Selección dinámica de interfaz:} Se desarrolló un script de instalación previa, \texttt{install\_rsnort.sh} (ver Figura~\ref{fig:install_rsnort}), que detecta automáticamente las interfaces Ethernet disponibles y permite al usuario seleccionar la que se conectará al puerto espejo del switch. La elección se guarda en \texttt{/etc/rsnort\_iface} para que pueda ser utilizada posteriormente por otros componentes del sistema.
+	\item \textbf{Selección dinámica de interfaz:} Se desarrolló un script de instalación previa, \textbf{install\_rsnort.sh} (ver Código~\ref{lst:install-rsnort}), que detecta automáticamente las interfaces Ethernet disponibles y permite al usuario seleccionar la que se conectará al puerto espejo del switch. La elección se guarda en \texttt{/etc/rsnort\_iface} para que pueda ser utilizada posteriormente por otros componentes del sistema.
 	
-	\item \textbf{Modo promiscuo y sin IP:} Se creó el script \texttt{interface\_setup.sh} (ver Figura~\ref{fig:interface_setup}) que activa automáticamente la interfaz seleccionada, elimina cualquier dirección IP existente para evitar conflictos, y la configura en modo \textit{promiscuo}. Este paso es esencial para que Snort pueda inspeccionar todo el tráfico redirigido desde el switch sin interferir en el funcionamiento de la red.
+	\item \textbf{Modo promiscuo y sin IP:} Se creó el script \textbf{interface\_setup.sh} (ver Código~\ref{lst:interface-setup}) que activa automáticamente la interfaz seleccionada, elimina cualquier dirección IP existente para evitar conflictos, y la configura en modo \textit{promiscuo}. Este paso es esencial para que Snort pueda inspeccionar todo el tráfico redirigido desde el switch sin interferir en el funcionamiento de la red.
 	
 	\begin{lstlisting}[language=bash, caption={Activación automática del modo promiscuo en interface\_setup.sh}, label=lst:promiscuo, basicstyle=\ttfamily\footnotesize, frame=single, numbers=left, numberstyle=\tiny, breaklines=true]
 	if [[ "$state" != "UP" ]]; then
@@ -1378,7 +1445,7 @@ La transición al formato \texttt{.deb} permitió incorporar una serie de mejora
 Este rediseño responde no solo a criterios técnicos, sino también a aspectos de usabilidad. En entornos reales, como pequeñas y medianas empresas (PYMEs), que desean adoptar soluciones \textit{NIDS}, es esencial que la herramienta pueda instalarse, configurarse y mantenerse sin requerir conocimientos avanzados en administración de sistemas. Gracias a esta transición, \textbf{R-SNORT} puede considerarse una solución \textit{plug-and-play}:
 
 \begin{enumerate}
-	\item El usuario ejecuta \texttt{install\_rsnort.sh} (ver Figura~\ref{fig:install_rsnort}).
+	\item El usuario ejecuta \texttt{install\_rsnort.sh}.
 	\item Selecciona la interfaz conectada al switch mediante un menú interactivo.
 	\item El paquete se instala y configura automáticamente, sin intervención adicional.
 \end{enumerate}
@@ -1533,293 +1600,460 @@ Finalmente, ejecutamos como administrador el script \texttt{installer\_snort.sh}
 
 Una vez completada la instalación, se procedió a la validación funcional del sistema y a su evaluación de rendimiento. El objetivo principal es demostrar que R-Snort es capaz de monitorizar eficazmente el tráfico de red y detectar amenazas sin sobresaturar los recursos del sistema.
 
+\subsection{Pruebas de validación del funcionamiento}
+
+\subsubsection*{Prueba 1: Preprocesadores \texttt{stream}, \texttt{stream\_ip} e \texttt{icmp}}
+
+\textbf{Objetivo:} \\
+Comprobar el funcionamiento de los preprocesadores \texttt{stream}, \texttt{stream\_ip} e \texttt{icmp}, así como la capacidad del sistema R-Snort para detectar múltiples patrones relacionados con tráfico ICMP anómalo o sospechoso.\newline
+
+\textbf{Descripción de la prueba:} \\
+Desde el equipo Ubuntu Server (\texttt{192.168.1.133}) se ejecutó un comando \texttt{ping} con valor TTL bajo hacia el servidor DNS público de Google (\texttt{8.8.8.8}), lo que genera tráfico susceptible de ser clasificado como malicioso o anómalo.
+
+\begin{lstlisting}[style=commandstyle]
+	ping -t 1 8.8.8.8
+\end{lstlisting}
+
+Este tipo de tráfico ICMP con TTL muy bajo es común en herramientas de escaneo y técnicas de reconocimiento como \texttt{traceroute}, por lo que debe ser identificado por un sistema de detección de intrusos.\newline
+
+\textbf{Resultado:} \\
+R-Snort detectó correctamente el tráfico como potencialmente sospechoso. A continuación se muestra una tabla con algunas de las alertas generadas:
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			\textbf{Timestamp} & \textbf{Protocolo} & \textbf{Origen} & \textbf{Destino} & \textbf{Mensaje de alerta} \\
+			\hline
+			17:45:54 & ICMP & 192.168.1.133 & 8.8.8.8 & PROTOCOL-ICMP PING Unix \\
+			17:45:54 & ICMP & 192.168.1.133 & 8.8.8.8 & PROTOCOL-ICMP Unusual PING detected \\
+			17:45:54 & ICMP & 192.168.1.133 & 8.8.8.8 & PROTOCOL-ICMP traceroute \\
+			17:45:54 & ICMP & 192.168.1.1 & 192.168.1.133 & PROTOCOL-ICMP Time-To-Live Exceeded \\
+			\hline
+		\end{tabular}%
+	}
+	\caption{Alertas ICMP generadas durante la prueba de TTL bajo.}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{pruebas_bien/seccion_uno/1.png}
+	\caption{Fragmento de alertas generadas por tráfico ICMP anómalo.}
+\end{figure}
+
+Esta prueba demuestra que el sistema R-Snort no solo detecta tráfico ICMP, sino que lo analiza correctamente comportamientos inusuales, patrones tipo \texttt{traceroute} y errores de TTL. El resultado valida tanto la activación de los preprocesadores como la integración de las reglas comunitarias.
+
+\subsubsection*{Prueba 2: Preprocesadores \texttt{stream\_tcp} y \texttt{http\_inspect}}
+
+\textbf{Objetivo:} \\
+Comprobar el funcionamiento de los preprocesadores \texttt{stream\_tcp} y \texttt{http\_inspect}, verificando si el sistema R-Snort es capaz de identificar comportamientos anómalos asociados a solicitudes HTTP con cabeceras excesivamente largas.\newline
+
+\textbf{Descripción de la prueba:} \\
+Desde el equipo Ubuntu Server (\texttt{192.168.1.133}) se generó una solicitud HTTP con una cabecera personalizada de 6000 caracteres. Este tipo de tráfico puede ser usado para evadir mecanismos de inspección o insertar código malicioso en el servidor receptor.
+
+\begin{lstlisting}[style=commandstyle]
+	curl -H "X-Test: $(printf '%0.sA' {1..6000})" http://192.168.1.1
+\end{lstlisting}
+
+Aunque el objetivo era activar una alerta por cabecera anómala, Snort reaccionó con una alerta más severa al detectar un patrón característico de shellcode, mostrando así un nivel de análisis más profundo.\newline
+
+\textbf{Resultado:} \\
+R-Snort generó múltiples alertas clasificadas como shellcode (`INDICATOR-SHELLCODE`), lo cual valida la efectividad del sistema ante posibles vectores de ataque que podrían comprometer la seguridad de una red.
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			\textbf{Timestamp} & \textbf{Protocolo} & \textbf{Origen} & \textbf{Destino} & \textbf{Mensaje de alerta} \\
+			\hline
+			19:07:54 & TCP & 192.168.1.133 & 192.168.1.1 & INDICATOR-SHELLCODE x86 inc ecx NOOP \\
+			19:07:54 & TCP & 192.168.1.133 & 192.168.1.1 & INDICATOR-SHELLCODE x86 inc ecx NOOP \\
+			19:07:54 & TCP & 192.168.1.133 & 192.168.1.1 & INDICATOR-SHELLCODE x86 inc ecx NOOP \\
+			\hline
+		\end{tabular}%
+	}
+	\caption{Alertas generadas por tráfico HTTP con cabecera anómala interpretado como shellcode.}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{pruebas_bien/seccion_uno/2.png}
+	\caption{Detección de shellcode.}
+\end{figure}
+
+Esta prueba valida que R-Snort es capaz de analizar en profundidad el contenido de las cabeceras HTTP y detectar patrones que puedan representar intentos de explotación o evasión. Aunque la alerta no fue específicamente la esperada, el resultado demuestra un comportamiento más inteligente y proactivo en la inspección de tráfico.
+
+\subsubsection*{Prueba 3: Preprocesador \texttt{dns}}
+
+\textbf{Objetivo:} \\
+Verificar el funcionamiento del preprocesador \texttt{dns} y la capacidad de R-Snort para detectar respuestas DNS anómalas, como aquellas con TTL bajo y sin autoridad, lo cual es característico de intentos de suplantación o respuestas manipuladas.\newline
+
+\textbf{Descripción de la prueba:} \\
+Desde el equipo Ubuntu Server (\texttt{192.168.1.133}) se ejecutó una consulta DNS directa al servidor público de Google utilizando el comando \texttt{dig}. Esta prueba simula una resolución común que puede generar respuestas mínimas o manipuladas desde el servidor, activando reglas de detección de spoofing.
+
+\begin{lstlisting}[style=commandstyle]
+	dig +noall +answer google.com @8.8.8.8
+\end{lstlisting}
+
+\textbf{Resultado:} \\
+Snort generó correctamente varias alertas clasificadas como tráfico DNS sospechoso. Estas alertas corresponden a respuestas con TTL muy bajo y sin registros de autoridad, lo cual puede indicar un intento de manipulación de DNS.
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			\textbf{Timestamp} & \textbf{Protocolo} & \textbf{Origen} & \textbf{Destino} & \textbf{Mensaje de alerta} \\
+			\hline
+			19:19:17 & UDP & 46.6.113.34 & 192.168.1.134 & PROTOCOL-DNS SPOOF ... and no authority \\
+			19:19:21 & UDP & 46.6.113.34 & 192.168.1.134 & PROTOCOL-DNS SPOOF ... and no authority \\
+			\hline
+		\end{tabular}%
+	}
+	\caption{Alertas DNS generadas por respuestas con TTL bajo y sin autoridad.}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{pruebas_bien/seccion_uno/3.png}
+	\caption{Fragmento mostrando respuestas DNS sospechosas.}
+\end{figure}
+
+Esta prueba valida que el preprocesador \texttt{dns} está activo y funcional, siendo capaz de identificar anomalías comunes en el tráfico DNS que podrían indicar intentos de suplantación o evasión.
+
+\subsubsection*{Prueba 4: Preprocesadores \texttt{rpc\_decode} y \texttt{snmp}}
+
+\textbf{Objetivo:} \\
+Evaluar la capacidad del sistema R-Snort para detectar tráfico relacionado con el protocolo SNMP, comúnmente utilizado en tareas de monitorización, pero también explotado en fases de reconocimiento mediante escaneos UDP dirigidos.\newline
+
+\textbf{Descripción de la prueba:} \\
+Desde el equipo Ubuntu Server (\texttt{192.168.1.133}) se lanzó un escaneo UDP contra el router de la red local, con el objetivo de identificar servicios SNMP activos:
+
+\begin{lstlisting}[style=commandstyle]
+	sudo nmap -sU -p 161,705 192.168.1.1
+\end{lstlisting}
+
+Este tipo de exploración intenta conectarse a los puertos SNMP estándar y AgentX, generando tráfico anómalo que debería activar alertas en los preprocesadores \texttt{snmp} y \texttt{rpc\_decode}.\newline
+
+\textbf{Resultado:} \\
+Snort detectó múltiples intentos de conexión hacia los puertos SNMP y generó alertas asociadas tanto a peticiones como a traps UDP:
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			\textbf{Timestamp} & \textbf{Protocolo} & \textbf{Origen} & \textbf{Destino} & \textbf{Mensaje de alerta} \\
+			\hline
+			19:44:33 & UDP & 192.168.1.133 & 192.168.1.1:161 & PROTOCOL-SNMP request udp \\
+			19:44:33 & UDP & 192.168.1.133 & 192.168.1.1:705 & PROTOCOL-SNMP trap udp \\
+			19:44:33 & UDP & 192.168.1.133 & 192.168.1.1:705 & PROTOCOL-SNMP request udp \\
+			19:44:34 & UDP & 192.168.1.133 & 192.168.1.1:161 & PROTOCOL-SNMP request udp \\
+			\hline
+		\end{tabular}%
+	}
+	\caption{Alertas generadas durante el escaneo SNMP contra el router.}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{pruebas_bien/seccion_uno/4.png}
+	\caption{Fragmento de las alertas SNMP generadas por el escaneo con Nmap.}
+\end{figure}
+
+Esta prueba valida el correcto funcionamiento de los preprocesadores \texttt{snmp} y \texttt{rpc\_decode}, así como la integración eficaz de las reglas comunitarias orientadas a protocolos de red clásicos.
+
+\subsubsection*{Prueba 5: Reglas personalizadas de detección de datos sensibles}
+
+\textbf{Objetivo:} \\
+Comprobar el funcionamiento de las tres reglas personalizadas añadidas al archivo \texttt{custom.rules}, diseñadas para detectar información confidencial en texto plano: direcciones de correo electrónico, números de tarjeta de crédito y números de la Seguridad Social (NUSS).\newline
+
+\textbf{Descripción de la prueba:} \\
+Desde el equipo Ubuntu Server (\texttt{192.168.1.133}) se simuló una fuga de datos sensibles mediante una petición HTTP POST conteniendo simultáneamente un correo electrónico, un número de tarjeta y un NUSS.
+
+\begin{lstlisting}[style=commandstyle]
+	curl -d "Mi email es prueba@ejemplo.com. Mi tarjeta es 4111111111111111 y mi NUSS es 123456789012" http://192.168.1.1
+\end{lstlisting}
+
+Las reglas utilizadas para esta prueba fueron desarrolladas utilizando expresiones regulares (\texttt{pcre}) y se encuentran activas en el archivo \texttt{snort.lua} bajo la sección de reglas IPS.\newline
+
+\textbf{Resultado:} \\
+Snort generó múltiples alertas, una por cada patrón detectado, confirmando la efectividad de las reglas personalizadas. A continuación se resumen las más representativas:
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			\textbf{Timestamp} & \textbf{Protocolo} & \textbf{Origen} & \textbf{Destino} & \textbf{Mensaje de alerta} \\
+			\hline
+			19:54:44 & TCP & 192.168.1.133 & 192.168.1.1 & Sensitive Data - NUSS España detectado \\
+			19:54:44 & TCP & 192.168.1.133 & 192.168.1.1 & Sensitive Data - Credit Card detected \\
+			19:54:44 & TCP & 192.168.1.133 & 192.168.1.1 & Sensitive Data - Email detected \\
+			\hline
+		\end{tabular}%
+	}
+	\caption{Alertas generadas por reglas personalizadas de fuga de datos sensibles.}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{pruebas_bien/seccion_uno/5.png}
+	\caption{Fragmento del log con alertas generadas por datos sensibles.}
+\end{figure}
+
+Esta prueba demuestra que el sistema R-Snort es capaz de analizar el contenido del tráfico en texto plano y detectar información crítica con precisión, validando la correcta integración y activación de las reglas personalizadas.
+
+
 \subsection{Pruebas de rendimiento}
 
-\subsubsection{Metodología}
+\subsection*{Metodología}
 
-Para medir el rendimiento de R-Snort, se utilizó la herramienta \texttt{dstat}, que permite monitorizar en tiempo real diversos parámetros del sistema, como el uso de CPU, memoria, red y disco. Se realizaron dos sesiones de captura de datos:
+Para evaluar el impacto del sistema R-Snort sobre el rendimiento de la Raspberry Pi 5, se ha empleado \textbf{Performance Co-Pilot (PCP)}\cite{pcp_project} mediante su herramienta gráfica \texttt{pmchart}. Esta permite registrar y visualizar métricas del sistema en tiempo real, incluyendo uso de CPU, consumo de memoria RAM, tráfico de red, escritura a disco y actividad del proceso de Snort.\newline
 
+Se han diseñado dos escenarios para cada métrica:
+\begin{enumerate}
+	\item \textbf{Snort activo}: el servicio se encuentra ejecutándose de manera habitual, recogiendo alertas desde la interfaz de red.
+	\item \textbf{Snort inactivo}: el servicio se detiene por completo, permitiendo observar la carga base del sistema operativo sin interferencias de R-Snort.
+\end{enumerate}
+
+Cada prueba tiene una duración aproximada de 3 minutos bajo condiciones normales de uso. No se induce tráfico artificial, de modo que las mediciones reflejan el consumo real de recursos en una red doméstica o de oficina típica.
+
+\bigskip
+
+\subsection*{Prueba 1: Uso global de CPU}
+
+\textbf{Objetivo:}  
+Evaluar el impacto del sistema R-Snort sobre el uso del procesador durante el funcionamiento en segundo plano.\newline
+
+\textbf{Métrica monitorizada:}
 \begin{itemize}
-	\item Una con Snort encendido y funcionando en modo \textit{inline}, procesando el tráfico en tiempo real.
-	\item Otra con Snort completamente apagado, lo que permitió establecer una línea base del consumo del sistema sin el IDS.
+	\item \texttt{kernel.all.cpu.user} – Tiempo en espacio de usuario (amarillo).
+	\item \texttt{kernel.all.cpu.sys} – Tiempo en espacio de kernel (azul).
+	\item \texttt{kernel.all.cpu.idle} – Tiempo inactivo (rojo).
 \end{itemize}
 
-Cada sesión de monitorización generó un archivo CSV con un intervalo de muestreo de 1 segundo, que posteriormente fue procesado para generar gráficas comparativas. Se utilizó Python, junto con las bibliotecas \texttt{pandas} y \texttt{matplotlib}, para el análisis y visualización de datos.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/1.png}
+	\caption{Uso global de CPU con Snort activo.}
+\end{figure}
 
-\subsubsection{Resultados e interpretación de gráficas}
-
-A continuación, se presentan las gráficas obtenidas:
-
-\subsection*{Prueba de red: Bytes recibidos por segundo}
+Se muestra la actividad del sistema con Snort funcionando en segundo plano. Aunque la CPU se mantiene inactiva la mayor parte del tiempo (\texttt{cpu.idle}), existe una actividad constante en espacio de usuario y kernel, provocada por el análisis de paquetes y la escritura de logs por parte de Snort.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{graficas/net_recv.png}
-	\caption{Red: Bytes recibidos por segundo}
+	\includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/2.png}
+	\caption{Uso global de CPU con Snort desactivado.}
 \end{figure}
-\textbf{Análisis:} Se observa un patrón de tráfico más irregular y, en ocasiones, más intenso cuando Snort está apagado. Con Snort activo, el tráfico parece más contenido, probablemente porque parte de los paquetes son descartados o procesados de forma más lenta. Esto sugiere una influencia directa del IDS sobre el tráfico recibido.
 
-\subsection*{Prueba de red: Bytes enviados por segundo}
+En contraste, la Figura 7.19 presenta un patrón más estable cuando Snort está detenido. El sistema entra en estados de inactividad casi total, con mínimas interrupciones. Se aprecia una reducción en el uso de CPU.\newline
+
+La diferencia entre ambos gráficos evidencia que Snort, incluso sin tráfico malicioso, genera una carga continua sobre la CPU aunque no es elevada.
+
+\subsection*{Prueba 2: Uso de memoria RAM}
+
+\textbf{Objetivo:}  
+Determinar el consumo de memoria generado por el sistema R-Snort durante su ejecución pasiva, sin tráfico inducido.\newline
+
+\textbf{Métrica monitorizada:}
+\begin{itemize}
+	\item \texttt{mem.util.used} – Memoria utilizada (amarillo).
+	\item \texttt{mem.util.free} – Memoria libre (azul).
+	\item \texttt{mem.util.cached} – Memoria en caché (rojo).
+\end{itemize}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{graficas/net_send.png}
-	\caption{Red: Bytes enviados por segundo}
+	\includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/3.png}
+	\caption{Uso de memoria RAM con Snort activado y posteriormente detenido.}
 \end{figure}
-\textbf{Análisis:} El patrón de tráfico enviado es bajo en ambas sesiones, aunque con Snort encendido se detecta un ligero aumento en los picos. Esto puede deberse a respuestas generadas por Snort tras detectar actividad anómala, como en pruebas de copia de datos o escaneo de puertos.
 
-\subsection*{Prueba de rendimiento: Context switches por segundo}
+En la primera mitad del gráfico se observa un consumo de memoria estable mientras Snort permanece activo. Al detener el servicio, se registra un ligero incremento de memoria libre y una reducción proporcional de la memoria utilizada. Este comportamiento confirma que Snort mantiene una huella en RAM constante pero no intensiva, lo que lo hace adecuado para dispositivos con recursos limitados como una Raspberry Pi.
+
+\subsection*{Prueba 3: Actividad de red}
+
+\textbf{Objetivo:}
+Observar el comportamiento del tráfico de red con y sin la ejecución de Snort para detectar posibles variaciones atribuibles al sistema de detección.
+
+\textbf{Métrica monitorizada:} \begin{itemize} \item \texttt{network.all.in.bytes} – Tráfico entrante en MB/s (amarillo). \item \texttt{network.all.out.bytes} – Tráfico saliente en MB/s (azul). \end{itemize}
+
+\begin{figure}[H] \centering \includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/4.png} \caption{Tráfico de red con Snort activo.} \end{figure}
+
+En esta primera figura se observa una actividad de red con múltiples picos de tráfico entrante, por otro lado, el tráfico saliente es casi nulo, esto se debe a que actualmente la Raspberry Pi 5 no está comunicando con el exterior. Esta variabilidad en el tráfico entrante se debe a la recepción de paquetes normales y las tareas de registro de eventos por parte de Snort.
+
+\begin{figure}[H] \centering \includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/5.png} \caption{Tráfico de red con Snort desactivado.} \end{figure}
+
+Aunque también se presentan picos, su intensidad general parece ligeramente menor. Sin embargo, no se puede establecer una correlación directa entre la ejecución de Snort y una diferencia significativa en el volumen de tráfico de red, dado que éste depende principalmente de la actividad de los dispositivos conectados. El impacto de Snort sobre esta métrica resulta, por tanto, poco concluyente.
+
+\subsection*{Prueba 4: Actividad del disco}
+
+\textbf{Objetivo:}  
+Evaluar el impacto del sistema R-Snort sobre la escritura y lectura en disco durante su ejecución pasiva.\newline
+
+\textbf{Métrica monitorizada:}
+\begin{itemize}
+	\item \texttt{disk.dev.write\_bytes[mmcblk0]} – Bytes escritos por segundo (amarillo).
+	\item \texttt{disk.dev.read\_bytes[mmcblk0]} – Bytes leídos por segundo (azul).
+\end{itemize}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{graficas/context_switch.png}
-	\caption{Context switches por segundo}
+	\includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/6.png}
+	\caption{Actividad de disco con Snort activo.}
 \end{figure}
-\textbf{Análisis:} El número de cambios de contexto se incrementa notablemente con Snort activo. Este comportamiento es esperable, ya que el análisis en tiempo real de paquetes obliga al sistema a alternar con mayor frecuencia entre procesos.
 
-\subsection*{Prueba de uso de CPU: Tiempo de inactividad}
+Con Snort funcionando, se observa una mayor frecuencia de picos en la escritura de disco. Esto es consistente con la generación continua de logs en tiempo real. Las lecturas desde disco son prácticamente inexistentes, ya que Snort opera principalmente en modo de captura y escritura.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{graficas/cpu_idle.png}
-	\caption{CPU inactiva (\%)}
+	\includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/7.png}
+	\caption{Actividad de disco con Snort desactivado.}
 \end{figure}
-\textbf{Análisis:} La CPU permanece prácticamente inactiva cuando Snort está apagado. Al activarlo, se reduce levemente el porcentaje de inactividad, indicando un impacto ligero pero constante sobre el procesador.
 
-\subsection*{Prueba de uso de CPU: Espacio de sistema}
+Al desactivar Snort, los picos de escritura se reducen drásticamente, quedando solo operaciones menores relacionadas con el sistema. Este cambio confirma que la carga de I/O en disco generada por R-Snort es significativa y persistente durante su ejecución pasiva.\newline
+
+\subsection*{Prueba 6: Carga media del sistema (Load Average)}
+
+\textbf{Objetivo:}  
+Observar el impacto prolongado de R-Snort sobre la carga media del sistema, utilizando la métrica de 15 minutos para evaluar si genera acumulación de procesos en cola o saturación progresiva.\newline
+
+\textbf{Métrica monitorizada:}
+\begin{itemize}
+	\item \texttt{kernel.all.load[15 minute]} – Carga promedio del sistema durante los últimos 15 minutos.
+\end{itemize}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{graficas/cpu_sys.png}
-	\caption{Uso de CPU del sistema (\%)}
+	\includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/8.png}
+	\caption{Carga media del sistema con y sin Snort activo (15 minutos).}
 \end{figure}
-\textbf{Análisis:} Se observa un aumento en el uso de CPU en espacio de sistema con Snort activo. Este comportamiento es coherente con el hecho de que el IDS opera en niveles bajos, haciendo uso intensivo de bibliotecas como \texttt{libpcap} para la captura de paquetes.
 
-\subsection*{Prueba de uso de CPU: Espacio de usuario}
+En la figura se muestra la evolución de la carga media del sistema en intervalos de 15 minutos. Esta métrica representa el número promedio de procesos que están en ejecución o esperando acceso a la CPU. Dado que el sistema no está sometido a una carga pesada y Snort no induce tráfico masivo, los valores se mantienen bajos (en torno a 0.13 – 0.16), lo cual es normal en sistemas con múltiples núcleos.\newline
+
+Aunque se aprecian pequeñas fluctuaciones, estas no son significativas ni reflejan un impacto claro de Snort. Esto confirma que el servicio no genera bloqueos o acumulación de procesos cuando opera en segundo plano bajo condiciones normales de red.
+
+\subsection{Pruebas de rendimiento bajo carga masiva}
+
+\textbf{Objetivo:}  
+Evaluar el comportamiento del sistema R-Snort cuando es sometido a tráfico de red masivo, simulando un entorno de alta exigencia como el de una red corporativa activa o un ataque volumétrico. Estas pruebas permiten analizar la capacidad de respuesta del sistema, su consumo de recursos y la estabilidad general del entorno.\newline
+
+\textbf{Metodología:}  
+Se han lanzado múltiples flujos simultáneos desde el servidor Ubuntu (192.168.1.133) hacia la Raspberry Pi (192.168.1.132), utilizando la herramienta \texttt{iperf3} en modo UDP. Para maximizar la presión sobre el sistema, se han abierto varias sesiones en paralelo y sin limitación de pacing, aumentando así la congestión de red y la carga sobre la CPU y la memoria del sistema.
+
+\begin{lstlisting}[language=bash,caption={Simulación de tráfico masivo desde Ubuntu Server hacia la Raspberry Pi},label={lst:trafico-masivo}]
+	# Ejecutar en 4 terminales distintas
+	iperf3 -c 192.168.1.132 -u -b 950M -t 600 --pacing-timer 0 -l 1470 -p 5201
+	iperf3 -c 192.168.1.132 -u -b 950M -t 600 --pacing-timer 0 -l 1470 -p 5202
+	iperf3 -c 192.168.1.132 -u -b 950M -t 600 --pacing-timer 0 -l 1470 -p 5203
+	iperf3 -c 192.168.1.132 -u -b 950M -t 600 --pacing-timer 0 -l 1470 -p 5204
+\end{lstlisting}
+
+\subsubsection*{Prueba 1: Carga promedio del sistema (kernel.all.load)}
+
+\textbf{Métrica monitorizada:}
+\begin{itemize}
+	\item \texttt{kernel.all.load[15 minute]} – Carga promedio del sistema en los últimos 15 minutos.
+\end{itemize}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{graficas/cpu_usr.png}
-	\caption{Uso de CPU del usuario (\%)}
+	\includegraphics[width=\textwidth]{pruebas_bien/seccion_tres/1.png}
+	\caption{Carga promedio del sistema durante tráfico masivo.}
 \end{figure}
-\textbf{Análisis:} El impacto en el espacio de usuario es moderado. Aunque no se alcanzan valores elevados, la diferencia entre tener Snort encendido o apagado es clara, reflejando la carga asociada al motor de detección.
 
-\subsection*{Prueba de rendimiento en disco: Escritura/Lectura en B/s}
+Este gráfico representa la evolución de la carga del sistema a medida que se inducía tráfico de red extremo desde múltiples fuentes. A diferencia de las condiciones normales (donde la carga oscilaba en torno a 0.15), se observa una progresión ascendente constante hasta valores cercanos a 3.0. Esto indica que, aunque la Raspberry Pi logra mantener la estabilidad, comienza a saturarse al acercarse al límite de sus cuatro núcleos físicos.\newline
 
+La métrica de \texttt{load average} no refleja únicamente el uso de CPU, sino también la cantidad de procesos esperando ser ejecutados, incluyendo tareas bloqueadas por I/O. Por tanto, este resultado demuestra que Snort, bajo presión, sigue funcionando sin caídas, aunque con una carga crítica sostenida que evidencia el esfuerzo del sistema por procesar, analizar y registrar grandes volúmenes de datos en tiempo real.
+
+\subsubsection*{Prueba 2: Utilización detallada de CPU (cpu.util)}
+
+\textbf{Métricas monitorizadas:}
+\begin{itemize}
+	\item \texttt{kernel.cpu.util.user} – Porcentaje de tiempo en espacio de usuario (rojo).
+	\item \texttt{kernel.cpu.util.sys} – Porcentaje de tiempo en espacio de kernel (azul).
+	\item \texttt{kernel.cpu.util.idle} – Porcentaje de tiempo inactivo (amarillo).
+\end{itemize}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{graficas/disk_read.png}
-	\caption{Lectura de disco (B/s)}
+	\includegraphics[width=\textwidth]{pruebas_bien/seccion_tres/2.png}
+	\caption{Utilización detallada de la CPU bajo tráfico extremo.}
 \end{figure}
-\textbf{Análisis:} No se detectan lecturas de disco relevantes en ninguna de las dos sesiones. Este resultado es esperado, dado que Snort opera principalmente en memoria RAM y no realiza accesos intensivos a disco en su modo de funcionamiento habitual.
 
+Este gráfico proporciona una visión más precisa del uso del procesador bajo condiciones de saturación. Se observa una clara reducción del tiempo inactivo (\texttt{idle}), que desciende a valores de entre 10\% y 20\%, en contraste con los valores habituales del sistema en reposo (superiores al 90\%).\newline
+
+Destaca el incremento del uso en espacio de kernel (\texttt{sys}), que supera con holgura al uso en espacio de usuario. Esto es coherente con el funcionamiento de Snort, ya que el procesamiento masivo de paquetes, junto con el acceso intensivo a red y disco, requiere una mayor interacción con funciones del sistema operativo.\newline
+
+La gráfica confirma que el sistema está operando al límite de su capacidad de procesamiento, con un reparto de carga constante y sostenido, validando el impacto real que un entorno de red cargado puede tener sobre la infraestructura de detección.
+
+\subsection*{Prueba 3: Escritura y lectura en disco durante tráfico masivo}
+
+\textbf{Métrica monitorizada:}
+\begin{itemize}
+	\item \texttt{disk.dev.write\_bytes[mmcblk0]} – Escrituras en disco (amarillo).
+	\item \texttt{disk.dev.read\_bytes[mmcblk0]} – Lecturas desde disco (azul).
+\end{itemize}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{graficas/disk_write.png}
-	\caption{Escritura de disco (B/s)}
+	\includegraphics[width=\textwidth]{pruebas_bien/seccion_tres/3.png}
+	\caption{Lectura y escritura en disco durante tráfico masivo.}
 \end{figure}
-\textbf{Análisis:} Se registra un aumento significativo en la escritura en disco cuando Snort está activo, correspondiente a la generación de logs y alertas de seguridad.
 
-\subsection*{Prueba de uso de memoria RAM}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{graficas/mem_used.png}
-	\caption{Memoria usada (bytes)}
-\end{figure}
-\textbf{Análisis:} El uso de memoria crece de forma progresiva cuando Snort está encendido. Esto se debe a la carga de reglas, buffers de captura y estructuras internas del IDS. Al desactivarlo, el consumo de RAM disminuye considerablemente.
+En comparación con la prueba equivalente en la sección de tráfico normal, esta gráfica muestra un aumento en la escritura sobre el dispositivo \texttt{mmcblk0}, con picos más frecuentes y pronunciados. Esto sugiere que, aunque la carga generada por Snort no saturó el sistema de archivos, sí incrementó el volumen de logs y alertas procesadas en tiempo real. La lectura en disco, como antes, se mantiene prácticamente nula, confirmando que el sistema actúa como un sensor que escribe alertas, pero no requiere leer grandes volúmenes de datos almacenados para su funcionamiento operativo.
 
 \pagebreak
 
-En conjunto, estos resultados permiten concluir que R-Snort es eficiente y tiene un impacto reducido sobre el sistema en términos de consumo de recursos. No obstante, su actividad es claramente detectable, lo cual es esperable para un sistema de detección de intrusos activo y en tiempo real.\newline
+\chapter{Resultados}
 
-Las pruebas de rendimiento se han enfocado en dos métricas principales:
+A lo largo de las pruebas realizadas, R-Snort ha demostrado ser una herramienta eficaz para la detección de intrusos en redes SOHO, operando de forma continua en segundo plano sin interferir de manera significativa en el rendimiento general del sistema. Para evaluar su impacto, se ha realizado una batería de pruebas tanto funcionales como de rendimiento, monitorizando las métricas clave del sistema mediante la herramienta \texttt{pmchart}, parte del conjunto de \texttt{Performance Co-Pilot (PCP)}.\newline
 
-\begin{itemize}
-	\item \textbf{Carga del sistema:} Se monitorizó el uso de CPU y RAM bajo escenarios de carga de red baja, media y alta. Esto se realizó utilizando herramientas como \texttt{htop}, \texttt{free -h} y el script de estadísticas internas de R-Snort.
-	\item \textbf{Capacidad de análisis:} Se evaluó la cantidad de paquetes por segundo que Snort puede procesar sin pérdidas ni errores, mediante herramientas de generación de tráfico como \texttt{iperf3} y \texttt{ping flood} desde los dos PCs.
-\end{itemize}
+Las gráficas generadas con \texttt{pmchart} han permitido visualizar el comportamiento del sistema en distintas condiciones: tráfico normal con Snort activo, tráfico normal con Snort desactivado, y finalmente tráfico masivo inducido. A partir de esta monitorización, se ha confirmado que el impacto sobre la CPU, la memoria y la E/S en disco es bajo en condiciones normales, manteniéndose dentro de los márgenes esperables para un sistema NIDS pasivo. Incluso en situaciones de carga elevada, Snort consigue mantenerse operativo, aunque con un incremento notable en el uso de CPU y escrituras a disco, especialmente cuando se multiplica el tráfico mediante herramientas como \texttt{iperf3}.\newline
 
-Para poner estos datos en contexto, se compararon con estudios previos presentes en la literatura sobre el rendimiento de sistemas IDS en dispositivos embebidos \cite{delacruz2020ids}. Los resultados obtenidos confirman que R-Snort ofrece un rendimiento competitivo incluso en hardware de bajo consumo.
+Las pruebas funcionales con tráfico real, tanto manual como automatizado, han validado el correcto funcionamiento de los preprocesadores de Snort, así como la eficacia de las reglas comunitarias y las personalizadas definidas para este proyecto. Casos como la detección de fugas de datos (emails, tarjetas de crédito, NUSS), escaneos SNMP, respuestas DNS sospechosas o tráfico ICMP fueron correctamente identificados y registrados. Esto respalda la solidez del sistema R-Snort como solución ligera y eficiente para redes de tipo SOHO o pequeñas empresas.
 
-
-\subsection{Pruebas}
-
-Se han llevado a cabo distintas pruebas funcionales para verificar el correcto comportamiento del sistema:
-
-\begin{itemize}
-	\item \textbf{Detección de escaneos:} Se lanzó un escaneo Nmap desde el PC con Ubuntu Server al equipo con Windows, generándose correctamente alertas visibles en el panel web.
-	\item \textbf{Generación de tráfico legítimo:} Navegación web, transferencia de archivos y conexión SSH, asegurando que Snort discrimina adecuadamente entre tráfico benigno y potencialmente malicioso.
-	\item \textbf{Visualización en el panel web:} Las alertas generadas por Snort se muestran en tiempo real en el dashboard desarrollado con Angular y Spring Boot.
-\end{itemize}
-
-Estas pruebas confirman que el sistema funciona de forma autónoma, detecta tráfico relevante sin incurrir en falsos positivos masivos y expone la información de manera clara y accesible para el usuario final.\newline
-
-A continuación, se presentan pruebas reales ejecutadas en el entorno definido anteriormente (ver sección de topología de red), en las que R-Snort demuestra su capacidad de detección a través de reglas personalizadas y comunitarias. Cada caso incluye la alerta generada y una breve explicación técnica.
-
-\vspace{0.5cm}
-
-\subsubsection*{1. PINGs malformados y tráfico ICMP inusual}
-
-Desde el equipo Ubuntu Server (\texttt{192.168.1.171}) se ejecutó un ping continuo hacia Google DNS (\texttt{8.8.8.8}):
-
-\begin{verbatim}
-	ping 8.8.8.8
-\end{verbatim}
-
-Snort generó múltiples alertas relacionadas con tráfico ICMP, incluyendo paquetes tipo \texttt{Unix ping}, \texttt{Echo reply} y PINGs anómalos. Esto confirma el correcto funcionamiento de los preprocesadores \texttt{stream}, \texttt{icmp} y la inspección de TTLs habilitada en \texttt{stream\_ip}.\newline
-
-\textbf{Configuración personalizada validada:} ajuste de parámetros como \texttt{min\_ttl}, \texttt{max\_overlaps} y \texttt{policy} en el bloque \texttt{stream\_ip}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{pruebas/3.png}
-	\caption{Tráfico ICMP detectado por preprocesadores y reglas comunitarias.}
-\end{figure}
-
-\vspace{0.5cm}
-
-\subsubsection*{2. Fugas de datos sensibles (emails y tarjetas)}
-
-Se evaluó el funcionamiento de las reglas definidas en \texttt{custom.rules}, simulando la filtración de datos confidenciales desde Ubuntu hacia el router:
-
-\begin{verbatim}
-	curl -d "Mi email es prueba@ejemplo.com" http://192.168.1.1
-	curl -d "Mi tarjeta es 4111111111111111" http://192.168.1.1
-\end{verbatim}
-
-Snort detectó ambas cadenas mediante expresiones regulares, generando alertas en tiempo real por detección de datos sensibles.\newline
-
-\textbf{Configuración personalizada validada:} uso de reglas propias con \texttt{pcre} y \texttt{flow}, integradas correctamente desde \texttt{custom.rules} en el archivo \texttt{snort.lua}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{pruebas/4.png}
-	\caption{Alertas generadas por reglas personalizadas ante filtraciones de datos.}
-\end{figure}
-
-\vspace{0.5cm}
-
-\subsubsection*{3. Tráfico DNS sospechoso detectado automáticamente}
-
-Sin necesidad de ejecutar comandos específicos, Snort detectó respuestas DNS con TTL muy bajo y sin autoridad, consideradas como posibles intentos de \textit{spoofing}.\newline
-
-Estas alertas se originaron durante la navegación web desde el PC con Windows, demostrando la efectividad de las reglas comunitarias aplicadas sobre el módulo DNS.
-
-\textbf{Configuración personalizada validada:} activación del módulo \texttt{dns} mediante los bloques \texttt{binder} y \texttt{default\_mod} en \texttt{snort.lua}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{pruebas/2.png}
-	\caption{Respuestas DNS con TTL anómalo detectadas como tráfico malicioso.}
-\end{figure}
-
-\vspace{0.5cm}
-
-\subsubsection*{4. Escaneo SNMP detectado con Nmap}
-
-Se realizó un escaneo UDP desde el Ubuntu Server al equipo Windows para evaluar la detección de tráfico SNMP:
-
-\begin{verbatim}
-	sudo nmap -sU -p 161,705 192.168.1.152
-\end{verbatim}
-
-Snort identificó intentos de conexión tanto al puerto SNMP clásico como al puerto de AgentX, clasificándolos como intentos de reconocimiento o fuga de información.\newline
-
-\textbf{Configuración personalizada validada:} activación explícita de \texttt{rpc\_decode} y \texttt{snmp} en \texttt{snort.lua}, además de reglas comunitarias específicas para tráfico SNMP.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{pruebas/5.png}
-	\caption{Detección de actividad SNMP sospechosa tras escaneo dirigido.}
-\end{figure}
-
-\vspace{0.5cm}
-
-\subsubsection*{5. Detección de NUSS (Número de Seguridad Social)}
-
-Se evaluó una regla personalizada para detectar cadenas numéricas de 12 dígitos que simulan un NUSS español. Desde el equipo Ubuntu se ejecutó:
-
-\begin{verbatim}
-	curl -d "Mi número de SSN es 123456789012" http://192.168.1.1
-\end{verbatim}
-
-Snort detectó la cadena como una posible violación de privacidad, generando una alerta con la clasificación y prioridad definidas manualmente.\newline
-
-\textbf{Configuración personalizada validada:} expresión regular para patrones tipo NUSS, con una \texttt{classtype} propia y prioridad 1.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{pruebas/6.png}
-	\caption{Alerta generada por la regla personalizada de detección de NUSS.}
-\end{figure}
-
-\section{Resumen}
-
-Una vez completada la instalación de R-Snort, se ha evaluado su comportamiento en un entorno de red real, midiendo tanto su impacto en los recursos de la Raspberry Pi como su capacidad de detección. Para ello, se utilizó la herramienta \texttt{dstat} con el fin de comparar el rendimiento del sistema con Snort activado y desactivado. Los resultados indican que, aunque se observa un incremento en el uso de CPU, memoria y escritura en disco, dicho impacto es moderado y esperable para un dispositivo de recursos limitados. Asimismo, el tráfico de red presenta una leve alteración con Snort activo, lo que sugiere una ligera contención de paquetes provocada por el procesamiento en tiempo real.\newline
-
-Además, se llevaron a cabo pruebas prácticas orientadas a validar las capacidades de detección del sistema. Acciones como escaneos de puertos con \texttt{Nmap} o el envío de datos sensibles (correos electrónicos, números de tarjeta o NUSS) fueron correctamente identificadas y notificadas mediante alertas. El sistema demostró una buena capacidad de diferenciación entre tráfico legítimo (por ejemplo, navegación web, transferencia de archivos o pings) y actividades potencialmente maliciosas. Estas alertas fueron reflejadas de forma inmediata en el panel web desarrollado, validando la integración completa entre el motor de detección y la interfaz de visualización.\newline
-
-En conjunto, los resultados confirman que R-Snort es una solución eficaz para proteger redes pequeñas, ofreciendo capacidades avanzadas de detección sin comprometer el rendimiento del sistema ni la experiencia de usuario.
-
-
-% Resultados y discusión
-\chapter{Resultados y discusión}
-
-\section{Síntesis de resultados}
-
-A lo largo de las pruebas realizadas, R-Snort ha demostrado ser una herramienta capaz de cara a la detección de intrusos en redes pequeñas. Los resultados del benchmark muestran un consumo de recursos moderado incluso en condiciones de tráfico elevado. Las gráficas obtenidas mediante \texttt{dstat} y procesadas con \texttt{Python} indican que la carga adicional generada por el sistema es asumible en términos de CPU, RAM y E/S en disco. Este comportamiento encaja con las expectativas de un sistema NIDS pasivo, diseñado para operar en segundo plano sin degradar la experiencia de los usuarios legítimos de la red.\newline
-
-Además, las pruebas funcionales con tráfico real han validado el correcto funcionamiento de los preprocesadores de Snort, así como la eficacia tanto de las reglas comunitarias como de las reglas personalizadas definidas para este proyecto. Casos como la detección de fugas de datos (emails, tarjetas, NUSS), escaneos activos o respuestas DNS anómalas fueron correctamente identificados y registrados.
-
-\section{Discusión crítica}
-
-\subsection*{Robustez del sistema}
-
-Uno de los principales hallazgos es la robustez operativa de R-Snort en un entorno embebido. Aunque Snort es tradicionalmente utilizado en servidores más potentes, su compilación y despliegue en una Raspberry Pi 5, junto con su correcta ejecución, demuestran que es viable trasladar capacidades avanzadas de inspección a plataformas de bajo consumo. La inclusión de mecanismos como \textit{port mirroring}, configuración en modo promiscuo y despliegue como servicio \texttt{systemd}, junto a la modularidad del paquete \texttt{.deb}, refuerzan este hecho.
-
-\subsection*{Impacto en el rendimiento}
-
-Los resultados del benchmark reflejan que el sistema introduce una carga ligera pero estable indicando que es perfectamente viable su uso en sistemas de menor potencia. El incremento de context switches, uso de CPU en espacio de sistema y la escritura en disco (asociada al logueo de eventos) es coherente con lo esperado en sistemas de inspección profunda. No obstante, el rendimiento general de la Raspberry Pi se mantuvo estable, sin caídas ni congestión apreciable, lo que sugiere que Snort está bien optimizado para su función en este contexto.
-
-\subsection*{Eficacia en la detección}
-
-La capacidad de detección ha sido prometedora. Snort detectó escaneos de puertos, tráfico DNS sospechoso, anomalías en ICMP y transmisiones de datos sensibles. La reacción del sistema fue inmediata y coherente con los patrones definidos. Sin embargo, hay que matizar que todas las pruebas fueron realizadas en un entorno controlado. La efectividad en redes más complejas y dinámicas con mayor volumen de tráfico y ataques más sofisticados quizá requiera ajustes adicionales en las reglas, thresholds de alertas y quizás el uso de motores de correlación adicionales.
-
-\subsection*{Usabilidad y mantenimiento}
-
-La experiencia de usuario ha sido positiva, en todo momento se ha tratado de ser user-friendly, tanto en la instalación como en la supervisión del sistema. El instalador modular automatizado y la arquitectura empaquetada facilitan el mantenimiento y reducen la necesidad de intervención del usuario. Este aspecto fue el objetivo desde el principio para que soluciones como R-Snort puedan ser adoptadas en entornos SOHO o por usuarios no expertos sin un alto impacto económico.
-
-\section{Limitaciones del proyecto}
+\subsection*{Limitaciones}
 
 A pesar de los buenos resultados, deben reconocerse varias limitaciones:
 
 \begin{itemize}
-	\item Las pruebas se realizaron en un entorno de red pequeño, con tráfico moderado y escasa variabilidad. No se evaluó el rendimiento bajo ataques simultáneos o flujos de datos cifrados intensivos.
-	\item Snort no realizó inspección activa sobre tráfico TLS/HTTPS más allá de los metadatos, lo cual limita su alcance en un contexto donde el cifrado es predominante.
-	\item La recolección de datos para el benchmark se centró en métricas de sistema, sin incluir análisis del ratio de falsos positivos o falsos negativos.
+	\item Las pruebas se realizaron en un entorno de red pequeño, con tráfico mayoritariamente controlado. Aunque se ha simulado carga intensiva, no se ha evaluado su comportamiento bajo ataques combinados, tráfico cifrado masivo o patrones anómalos sostenidos.
+	\item Snort no realiza inspección activa de contenido cifrado (TLS/HTTPS), limitándose a analizar metadatos del tráfico. Esto reduce su eficacia en entornos donde el cifrado extremo a extremo es la norma.
+	\item La evaluación se ha centrado en métricas de uso de recursos del sistema. No se ha llevado a cabo un análisis exhaustivo de falsos positivos o falsos negativos, que sería necesario en una validación de campo más amplia.
 \end{itemize}
 
-\section{Conclusión de los resultados}
+\pagebreak
 
-En conjunto, los resultados respaldan la viabilidad del proyecto: R-Snort es capaz de proporcionar vigilancia activa sobre una red pequeña sin requerir hardware costoso ni administración compleja. Su desempeño, adaptabilidad y facilidad de despliegue lo convierten en una alternativa prometedora para quienes buscan una solución IDS ligera, efectiva y de código abierto.\newline
+\section{Resumen}
 
-No obstante, su uso debe entenderse como una primera capa de defensa. Para entornos más exigentes o críticos, sería recomendable complementarlo con herramientas de análisis forense, correlación de eventos y sistemas de respuesta automática.
+Una vez completada la instalación de R-Snort, se evaluó su comportamiento en un entorno de red real, midiendo tanto su impacto en los recursos del sistema como su capacidad de detección. Para ello, se utilizó la herramienta \texttt{pmchart}, parte del ecosistema de \texttt{Performance Co-Pilot}, con la que se monitorizaron métricas clave de CPU, uso de memoria, escritura en disco y carga del sistema, comparando el rendimiento con Snort activado y desactivado.\newline
+
+Los resultados indican que, bajo condiciones normales de tráfico, el impacto de Snort es reducido. Se observa un incremento leve pero constante en el uso de CPU y actividad de disco, coherente con el procesamiento de paquetes y la escritura de alertas en segundo plano. En cambio, en escenarios de tráfico masivo inducido mediante \texttt{iperf3}, el sistema respondió de forma estable aunque con un aumento significativo de la carga del kernel y el consumo de recursos, lo que permite delimitar sus márgenes operativos en redes con alta actividad.\newline
+
+Además, se realizaron múltiples pruebas funcionales orientadas a validar la eficacia del sistema de detección. Acciones como escaneos de puertos, respuestas DNS anómalas, tráfico ICMP inusual o el envío de datos sensibles (como correos electrónicos, números de tarjeta o identificadores NUSS) fueron correctamente identificadas y notificadas mediante alertas. Estas respuestas, capturadas en tiempo real y almacenadas en formato JSON, validan tanto la configuración del motor Snort como la integración completa con el panel web desarrollado para su visualización.\newline
+
+En conjunto, los resultados confirman que R-Snort es una solución eficaz para proteger redes pequeñas, ofreciendo capacidades avanzadas de detección sin comprometer la estabilidad del sistema ni requerir hardware de alto rendimiento. Esta propuesta permite acercar tecnologías de inspección profunda a entornos SOHO de manera accesible y profesional.
 
 
 % Conclusiones
 \chapter*{Conclusiones}
 \addcontentsline{toc}{chapter}{Conclusiones}
 
-Tras las pruebas realizadas con R-Snort y el análisis del tráfico real, se concluye que el sistema presenta un consumo de recursos moderado y perfectamente asumible. Aunque se observa un incremento en la actividad de la CPU y la memoria cuando el motor de Snort está activo, el sistema permanece estable y responde adecuadamente en todo momento. Resulta destacable el rendimiento de la Raspberry Pi, que, a pesar de sus limitaciones de hardware, soporta con solvencia la carga asociada a la monitorización en tiempo real.\newline
+Los resultados obtenidos durante el desarrollo y evaluación de R-Snort respaldan la viabilidad del proyecto: el sistema es capaz de proporcionar vigilancia activa sobre una red SOHO sin requerir hardware costoso ni administración compleja. Su desempeño, modularidad y facilidad de despliegue lo convierten en una alternativa prometedora para quienes buscan una solución IDS ligera, efectiva y de código abierto.\newline
 
-Durante la fase de pruebas, R-Snort logró detectar una amplia variedad de eventos, desde peticiones ICMP simples (como \texttt{ping} hacia \texttt{8.8.8.8}) hasta escaneos de puertos mediante \texttt{Nmap}, pasando por intentos simulados de fuga de información con datos sensibles como correos electrónicos o números de tarjeta de crédito. En todos los casos, el sistema generó alertas precisas y en tiempo real.\newline
+A lo largo de las pruebas, se ha demostrado que R-Snort puede ejecutarse de forma sostenida en una Raspberry Pi 5 sin comprometer la estabilidad del sistema. Las métricas obtenidas mediante \texttt{pmchart} indican que el impacto sobre el rendimiento es asumible en condiciones normales de tráfico, con una carga ligera y estable sobre la CPU y un aumento moderado en la escritura en disco. Incluso cuando se indujo tráfico masivo con \texttt{iperf3}, la plataforma se mantuvo operativa, mostrando únicamente un incremento considerable en la carga del sistema y en el uso de recursos del kernel, como es esperable en contextos de estrés.\newline
 
-Un aspecto especialmente relevante es que la inspección continua del tráfico no interfiere de manera perceptible con el uso cotidiano de la red. Durante tareas como navegación web, descarga de archivos o conexiones SSH, el rendimiento se mantuvo fluido, lo que demuestra que R-Snort puede operar como una sonda pasiva sin afectar negativamente la experiencia del usuario. Incluso ante picos de tráfico, el sistema continúa funcionando de forma aceptable, aunque con una carga adicional esperada en el procesador.\newline
+Desde el punto de vista funcional, R-Snort ha logrado detectar correctamente una amplia variedad de eventos, desde paquetes ICMP y respuestas DNS anómalas hasta escaneos SNMP y transmisiones de datos sensibles como correos electrónicos, tarjetas de crédito y NUSS. Las alertas se generaron en tiempo real y fueron registradas adecuadamente, lo que valida tanto la configuración de los preprocesadores como la eficacia de las reglas, incluyendo las personalizadas.\newline
 
-En resumen, desplegar R-Snort en un dispositivo tan compacto como una Raspberry Pi proporciona una solución de monitorización efectiva, de bajo impacto y con resultados fiables. Su capacidad para detectar comportamientos anómalos, generar alertas útiles y operar de forma transparente en la red lo convierten en una herramienta idónea para entornos domésticos o pequeñas oficinas, ofreciendo una capa adicional de seguridad sin requerir una infraestructura compleja ni costosa.
+Un aspecto clave ha sido la capacidad del sistema para operar como una sonda pasiva sin interferir de manera perceptible en el uso cotidiano de la red. Durante sesiones normales de navegación, descargas o conexiones remotas, no se detectaron ralentizaciones significativas. Esto demuestra que R-Snort puede integrarse en redes pequeñas como un mecanismo de defensa continuo y no invasivo.\newline
+
+No obstante, debe entenderse que este sistema representa una primera capa de defensa. En entornos más exigentes, con mayor volumen de tráfico o amenazas más complejas, podría ser recomendable complementarlo con herramientas adicionales como motores de correlación, análisis forense o sistemas de respuesta automática.\newline
+
+En resumen, desplegar R-Snort en una Raspberry Pi proporciona una solución de monitorización efectiva, de bajo impacto y con resultados fiables. Su capacidad para detectar comportamientos anómalos, generar alertas y operar de forma autónoma lo convierte en una herramienta idónea para entornos SOHO, acercando la ciberseguridad avanzada a usuarios con recursos limitados o sin formación técnica especializada.
+
 
 \chapter*{Trabajo futuro}
 \addcontentsline{toc}{chapter}{Trabajo futuro}
@@ -1990,8 +2224,10 @@ Aunque Snort no está diseñado para detección basada en IA, podría integrarse
 	\bibitem{bartman2016snort}
 	Bartman, T., \& Kraft, J. (2016). \textit{An introduction to applying network intrusion detection for industrial control systems}. Iron \& Steel Technology, 13(12), 70--77. En este trabajo se describe cómo emplear Snort en entornos industriales mediante un switch configurado con port mirroring, lo que permite la inspección pasiva del tráfico sin afectar la red productiva. Recuperado de \url{https://assets.contentstack.io/v3/assets/bltea08f3d94a418a1b/bltfe74dab1ab1bc726/62e949c0e791ec0dc5db3668/6753_IntroductionApplying_TB_20160212_Web2.pdf}. Último acceso: 10 abril 2025.
 	
-	\bibitem{delacruz2020ids}
-	de la Cruz, J. E. C., Goyzueta, C. A. R., \& Cahuana, C. D. (2020, septiembre). \textit{Intrusion detection and prevention system for production supervision in small businesses based on Raspberry Pi and Snort}. En 2020 IEEE XXVII International Conference on Electronics, Electrical Engineering and Computing (INTERCON) (pp. 1–4). IEEE.
+%	\bibitem{delacruz2020ids}
+%	de la Cruz, J. E. C., Goyzueta, C. A. R., \& Cahuana, C. D. (2020, septiembre). %\textit{Intrusion detection and prevention system for production supervision in small %businesses based on Raspberry Pi and Snort}. En 2020 IEEE XXVII International %Conference on Electronics, Electrical Engineering and Computing (INTERCON) (pp. 1–4). %IEEE.
+
+\bibitem{pcp_project} PCP Project. (2025). \textit{Port Control Protocol (PCP) Project}. Recuperado de \url{https://pcp.io/}.
 	
 \end{thebibliography}
 
@@ -2005,7 +2241,7 @@ El código completo del instalador R-Snort, incluyendo los scripts modulares, ar
 \begin{itemize}
 	\item \textbf{Repositorio GitHub:} \url{https://github.com/deianp189/r-snort-installer.git}
 	\item \textbf{Última versión estable:} \texttt{v1.0.0}
-	\item \textbf{Tipo de licencia:} UAL
+	\item \textbf{Tipo de licencia:} Creative Commons (CC BY-NC-SA 4.0)
 \end{itemize}
 
 Este repositorio puede ser clonado con el siguiente comando:
@@ -2014,105 +2250,665 @@ Este repositorio puede ser clonado con el siguiente comando:
 	git clone https://github.com/deianp189/r-snort-installer.git
 \end{lstlisting}
 
-\chapter{Anexo B: Script de instalación}
-% Contenido del anexo B
+\section*{Dependencias del sistema}
+El instalador de R-Snort gestiona automáticamente la instalación de todas las dependencias necesarias. Estas se dividen en dos grupos:
+
+\subsection*{Dependencias instaladas mediante APT}
+Las siguientes bibliotecas y herramientas se instalan desde los repositorios oficiales de Ubuntu:
+
+\begin{itemize}
+	\item \texttt{build-essential}, \texttt{cmake}, \texttt{libtool}, \texttt{pkg-config}
+	\item \texttt{libpcap-dev}, \texttt{libpcre3-dev}, \texttt{libpcre2-dev}
+	\item \texttt{libdumbnet-dev}, \texttt{libhwloc-dev}, \texttt{liblzma-dev}
+	\item \texttt{libssl-dev}, \texttt{libnuma-dev}, \texttt{uuid-dev}
+	\item \texttt{libunwind-dev}, \texttt{libsafec-dev}, \texttt{zlib1g-dev}
+	\item \texttt{bison}, \texttt{flex}, \texttt{autoconf}, \texttt{automake}
+	\item \texttt{git}, \texttt{wget}, \texttt{curl}, \texttt{check}, \texttt{w3m}
+\end{itemize}
+
+\pagebreak
+
+\subsection*{Dependencias compiladas desde código fuente}
+Además, se compilan manualmente (o mediante scripts) los siguientes paquetes a partir de archivos comprimidos incluidos en el directorio \texttt{software/} del instalador:
+
+\begin{itemize}
+	\item \texttt{daq.tar.gz} – Data Acquisition Library (DAQ)
+	\item \texttt{hwloc.tar.gz} – Portable Hardware Locality
+	\item \texttt{libdnet.tar.gz} – DumbNet
+	\item \texttt{libpcap.tar.gz} – Packet capture library
+	\item \texttt{luajit.tar.gz} – Lightweight Lua JIT compiler
+	\item \texttt{lzma.tar.gz} – LZMA compression library
+	\item \texttt{openssl.tar.gz} – OpenSSL cryptographic library
+	\item \texttt{pcre2.tar.gz} – Perl Compatible Regular Expressions v2
+	\item \texttt{zlib.tar.gz} – Compression library
+	\item \texttt{snort3.tar.gz} – Snort 3 engine (principal)
+\end{itemize}
+
+Estas dependencias se integran automáticamente durante la ejecución de los scripts incluidos en el instalador.
+
+\section*{Capturas del repositorio en GitHub}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.08]{script_automatico/1.png}
-	\caption{Script principal \texttt{r-snort\_installer.sh}}
-	\label{fig:r-snort_installer}
+	\includegraphics[width=0.9\textwidth]{github/1.png}
+	\caption{Vista general del repositorio \texttt{r-snort-installer}.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.12]{script_automatico/2.png}
-	\caption{Banner de bienvenida \texttt{core.sh}}
-	\label{fig:core-sh}
+	\includegraphics[width=0.9\textwidth]{github/2.png}
+	\caption{Sección de características.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.12]{script_automatico/3.png}
-	\caption{Comprobador de root e interfaces \texttt{checks.sh}}
-	\label{fig:checks-sh}
+	\includegraphics[width=0.9\textwidth]{github/3.png}
+	\caption{Estructura del proyecto y árbol de carpetas.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.12]{script_automatico/4.png}
-	\caption{Instalador de dependencias \texttt{dependencies.sh}}
-	\label{fig:dependencies-sh}
+	\includegraphics[width=0.9\textwidth]{github/4.png}
+	\caption{Instrucciones de instalación.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.065]{script_automatico/5.png}
-	\caption{Instalador de paquetes \texttt{build\_from\_source.sh}}
-	\label{fig:build-from-source}
+	\includegraphics[width=0.9\textwidth]{github/5.png}
+	\caption{Uso del sistema.}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.12]{script_automatico/6.png}
-	\caption{Compilador de snort \texttt{install\_snort.sh}}
-	\label{fig:install-snort}
-\end{figure}
+\FloatBarrier
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.12]{script_automatico/8.png}
-	\caption{Configurador de snort \texttt{configure\_snort.sh}}
-	\label{fig:configure-snort}
-\end{figure}
+\chapter{Anexo B: Scripts y archivos del instalador R-Snort}
+\label{anexo_scripts}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.12]{script_automatico/10.png}
-	\caption{Comprobador de swap \texttt{swap.sh}}
-	\label{fig:swap-sh}
-\end{figure}
+Este anexo contiene el contenido completo de los scripts y archivos de control del sistema de instalación R-Snort. Los archivos están clasificados según su ubicación en la estructura de directorios del proyecto.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.12]{script_automatico/9.png}
-	\caption{Estadísticas finales \texttt{stats.sh}}
-	\label{fig:stats-sh}
-\end{figure}
+\section*{1. Script principal de instalación (nivel raíz)}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\textwidth]{script_automatico/15.png}
-	\caption{Contenido del script \texttt{postinst} utilizado durante la instalación del paquete.}
-	\label{fig:postinst}
-\end{figure}
+\subsection*{install\_rsnort.sh}
+\begin{lstlisting}[language=bash, caption={Script principal \texttt{install\_rsnort.sh}}, label={lst:install-rsnort}]
+	#!/bin/bash
+	set -e
+	
+	echo "[R-SNORT] Actualizando lista de paquetes..."
+	sudo apt update
+	
+	echo "[R-SNORT] Instalando dependencias..."
+	sudo apt install -y bash build-essential libpcap-dev xz-utils liblzma-dev clamav clamav-daemon
+	
+	echo "[R-SNORT] Dependencias instaladas."
+	
+	# Buscar interfaces Ethernet conectadas
+	echo "Buscando interfaces Ethernet disponibles..."
+	interfaces=($(ip -o link show | awk -F': ' '/^[0-9]+: e/ {print $2}'))
+	
+	if [[ ${#interfaces[@]} -eq 0 ]]; then
+	echo "No se encontraron interfaces Ethernet. ¿Está el adaptador conectado?"
+	exit 1
+	fi
+	
+	echo "Interfaces disponibles:"
+	for i in "${!interfaces[@]}"; do
+	echo "  [$i] ${interfaces[$i]}"
+	done
+	
+	read -rp "Elige la interfaz para analizar tráfico (la del switch): " index
+	IFACE="${interfaces[$index]}"
+	
+	# Guardar la interfaz en archivo para que el script dentro del .deb la use
+	echo "$IFACE" | sudo tee /etc/rsnort_iface > /dev/null
+	
+	# Verificación
+	echo "Interfaz seleccionada: $IFACE"
+	echo
+	
+	# Instalación del paquete
+	if [ ! -f r-snort-deb.deb ]; then
+	echo "[ERROR] No se encontró el archivo r-snort-deb.deb"
+	echo "Ejecuta: dpkg-deb --build r-snort-deb"
+	exit 1
+	fi
+	
+	echo "[R-SNORT] Instalando paquete .deb..."
+	sudo dpkg -i r-snort-deb.deb || {
+		echo "dpkg reportó errores. Intentando solucionarlos..."
+		sudo apt --fix-broken install -y
+	}
+	
+	echo "[R-SNORT] Instalación completa."
+\end{lstlisting}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\textwidth]{script_automatico/16.png}
-	\caption{Contenido del script \texttt{prerm} ejecutado antes de desinstalar el paquete.}
-	\label{fig:prerm}
-\end{figure}
+\section*{2. Scripts del directorio \texttt{opt/r-snort/bin}}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\textwidth]{script_automatico/17.png}
-	\caption{Contenido del script \texttt{postrm} ejecutado después de la desinstalación del paquete.}
-	\label{fig:postrm}
-\end{figure}
+\subsection*{build\_from\_source.sh}
+\begin{lstlisting}[language=bash, caption={\texttt{build\_from\_source.sh}}]
+	#!/bin/bash
+	
+	package_install() {
+		local archivo="$1"
+		
+		# Validar integridad antes de intentar descomprimir
+		if [[ "$archivo" == *.tar.gz ]]; then
+		gzip -t "$archivo" || error "Archivo corrupto (gzip): $archivo"
+		fi
+		
+		
+		log "Instalando: $(basename "$archivo")"
+		tar -xf "$archivo"
+		dir=$(find . -mindepth 1 -maxdepth 1 -type d | grep -v '^./\.' | head -n 1)
+		
+		if [[ -z "$dir" || ! -d "$dir" ]]; then
+		error "No se encontró un directorio válido tras descomprimir $archivo"
+		fi
+		
+		log "Entrando en directorio: $dir"
+		cd "$dir"
+		
+		case "$archivo" in
+		*luajit*)
+		make -j"$(nproc)"
+		make install PREFIX=/usr
+		;;
+		
+		*openssl*)
+		local target
+		if uname -m | grep -q aarch64; then
+		target="linux-aarch64"
+		else
+		target="linux-generic32"
+		fi
+		./Configure --prefix=/usr --openssldir=/etc/ssl "$target"
+		make -j"$(nproc)"
+		make install
+		;;
+		
+		*daq*)
+		log "Instalando DAQ con precauciones (desactivando 'set -e' temporalmente)..."
+		set +e
+		if [[ -f "bootstrap" ]]; then
+		chmod +x bootstrap
+		./bootstrap
+		bootstrap_status=$?
+		else
+		bootstrap_status=1
+		fi
+		if [[ $bootstrap_status -ne 0 && -f "configure.ac" && ! -f "configure" ]]; then
+		autoreconf -fi
+		fi
+		set -e
+		./configure --prefix=/usr --enable-shared
+		make -j"$(nproc)"
+		make install || error "Fallo al instalar DAQ"
+		;;
+		
+		*)
+		if [[ -f "configure.ac" && ! -f "configure" ]]; then
+		[[ -f "bootstrap" ]] && chmod +x bootstrap && ./bootstrap || autoreconf -fi
+		fi
+		if [[ -f "configure" ]]; then
+		./configure --prefix=/usr --enable-shared
+		else
+		cmake . -DCMAKE_INSTALL_PREFIX=/usr
+		fi
+		make -j"$(nproc)"
+		make install || error "Fallo al instalar $(basename "$archivo")"
+		;;
+		esac
+		
+		cd ..
+		rm -rf "$dir"
+		success "$(basename "$archivo") instalado."
+	}
+	
+	software_package_install() {
+		cd "$SOFTWARE_DIR"
+		log "Ordenando paquetes para instalación de dependencias primero..."
+		for f in $(ls *.tar.gz *.tar.xz 2>/dev/null | sort | grep -vi snort); do
+		package_install "$f"
+		done
+		log "Snort se instalará en una fase posterior. Omitido aquí."
+		
+		for pkg in clamav clamav-daemon; do
+		if ! dpkg -s "$pkg" >/dev/null 2>&1; then
+		log "[!] El paquete '$pkg' no está instalado. Instálalo manualmente con: sudo apt install clamav clamav-daemon"
+		continue
+		fi
+		done
+		
+		freshclam || log "No se pudo actualizar la base de firmas en este momento"
+		systemctl enable clamav-freshclam
+		systemctl enable clamav-daemon
+		systemctl restart clamav-daemon
+		systemctl is-active --quiet clamav-daemon && success "ClamAV está activo." || log "ClamAV instalado pero no activo."
+	}
+\end{lstlisting}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\textwidth]{script_automatico/18.png}
-	\caption{Script \texttt{install\_rsnort.sh} encargado del proceso de instalación automatizada y selección de interfaz.}
-	\label{fig:install_rsnort}
-\end{figure}
+\subsection*{checks.sh}
+\begin{lstlisting}[language=bash, caption={\texttt{checks.sh}}, label={lst:checks-sh}]
+	#!/bin/bash
+	
+	check_root() {
+		[ "$(id -u)" -eq 0 ] || error "Este script debe ejecutarse como root."
+	}
+	
+	interface_selection() {
+		if [[ -f /etc/rsnort_iface ]]; then
+		IFACE=$(cat /etc/rsnort_iface)
+		log "Interfaz cargada desde configuración previa: $IFACE"
+		else
+		error "No se encontró el archivo /etc/rsnort_iface con la interfaz seleccionada."
+		fi
+	}
+\end{lstlisting}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\textwidth]{script_automatico/19.png}
-	\caption{Script \texttt{interface\_setup.sh} encargado de configurar la interfaz en modo promiscuo y sin dirección IP.}
-	\label{fig:interface_setup}
-\end{figure}
+\subsection*{configure\_snort.sh}
+\begin{lstlisting}[language=bash, caption={\texttt{configure\_snort.sh}}, label={lst:configure-snort}]
+	#!/bin/bash
+	
+	snort_config() {
+		local CONFIG_DIR="$1"
+		local INSTALL_DIR="$2"
+		local IFACE="$3"
+		
+		log "Copiando configuración..."
+		mkdir -p "$INSTALL_DIR/etc/snort"
+		cp "$CONFIG_DIR/snort.lua" "$INSTALL_DIR/etc/snort/"
+		cp "$CONFIG_DIR/custom.rules" "$INSTALL_DIR/etc/snort/"
+		
+		if [[ -f "$CONFIG_DIR/blocklist.rules" ]]; then
+		cp "$CONFIG_DIR/blocklist.rules" "$INSTALL_DIR/etc/snort/"
+		else
+		log "No se encontró blocklist.rules, creando archivo vacío..."
+		touch "$INSTALL_DIR/etc/snort/blocklist.rules"
+		fi
+		
+		mkdir -p "$INSTALL_DIR/etc/snort/reputation" "$INSTALL_DIR/etc/snort/snort3-community-rules"
+		touch "$INSTALL_DIR/etc/snort/reputation/interface.info"
+		tar -xzf "$CONFIG_DIR/snort3-community-rules.tar.gz" -C "$INSTALL_DIR/etc/snort/snort3-community-rules" --strip-components=1
+		
+		if [ -f /etc/systemd/system/snort.service ]; then
+		cp /etc/systemd/system/snort.service /etc/systemd/system/snort.service.bak
+		log "Backup del servicio original guardado."
+		fi
+		
+		cat > /etc/systemd/system/snort.service <<EOF
+		[Unit]
+		Description=Snort NIDS Daemon
+		After=network.target
+		
+		[Service]
+		ExecStart=$INSTALL_DIR/bin/snort -c $INSTALL_DIR/etc/snort/snort.lua -i $IFACE -A alert_fast
+		ExecReload=/bin/kill -HUP \${MAINPID}
+		Restart=always
+		User=root
+		Group=root
+		LimitCORE=infinity
+		LimitNOFILE=65536
+		LimitNPROC=65536
+		PIDFile=/var/run/snort.pid
+		
+		[Install]
+		WantedBy=multi-user.target
+		EOF
+		
+		systemctl daemon-reexec
+		systemctl daemon-reload
+		systemctl enable snort.service
+		systemctl restart snort.service || error "No se pudo iniciar Snort."
+		sleep 2
+		systemctl status snort.service --no-pager
+		success "Servicio Snort configurado y activo."
+	}
+\end{lstlisting}
+
+\subsection*{core.sh}
+\begin{lstlisting}[language=bash, caption={\texttt{core.sh}}, label={lst:core-sh}]
+	#!/bin/bash
+	
+	RED='\033[0;31m'; GREEN='\033[0;32m'; BLUE='\033[0;34m'; NC='\033[0m'
+	
+	ascii_banner() {
+		cat << 'EOF'
+		#########   R-SNORT BANNER  #########
+		Snort 3 Installer
+		EOF
+	}
+	
+	log() { echo -e "${BLUE}[*] $1${NC}"; }
+	success() { echo -e "${GREEN} $1${NC}"; }
+	error() { echo -e "${RED} $1${NC}" >&2; exit 1; }
+\end{lstlisting}
+
+\subsection*{dependencies.sh}
+\begin{lstlisting}[language=bash, caption={\texttt{dependencies.sh}}, label={lst:dependencies-sh}]
+	#!/bin/bash
+	
+	dependencies_install() {
+		log "Verificando dependencias del sistema..."
+		
+		local pkgs=(build-essential libpcap-dev xz-utils liblzma-dev clamav clamav-daemon)
+		local faltantes=()
+		
+		for pkg in "${pkgs[@]}"; do
+		if ! dpkg -s "$pkg" >/dev/null 2>&1; then
+		faltantes+=("$pkg")
+		fi
+		done
+		
+		if (( ${#faltantes[@]} > 0 )); then
+		error "Faltan las siguientes dependencias del sistema: ${faltantes[*]}. Instálalas manualmente con: sudo apt install ${faltantes[*]}"
+		fi
+		
+		log "Todas las dependencias están satisfechas."
+	}
+\end{lstlisting}
+
+\subsection*{install\_snort.sh}
+\begin{lstlisting}[language=bash, caption={\texttt{install\_snort.sh}}, label={lst:install-snort}]
+	#!/bin/bash
+	
+	snort_install() {
+		local SOFTWARE_DIR="$1"
+		local INSTALL_DIR="$2"
+		
+		log "Preparando instalación de Snort 3 (versión estable sin soporte NUMA)..."
+		
+		cd "$SOFTWARE_DIR"
+		tar -xzf snort3.tar.gz
+		cd "$(find . -maxdepth 1 -type d -name 'snort3*' | head -n 1)"
+		
+		# Corrige bug de hilos si es necesario (solo versiones antiguas)
+		sed -i 's/\[ \"\\$NUMTHREADS\" -lt \"\\$MINTHREADS\" \]/[ \"${NUMTHREADS:-0}\" -lt \"${MINTHREADS:-1}\" ]/' configure_cmake.sh
+		
+		# Prevenir advertencias por OpenSSL 3+
+		unset LDFLAGS
+		unset CXXFLAGS
+		export LDFLAGS=""
+		export CXXFLAGS="-Wno-deprecated-declarations"
+		
+		./configure_cmake.sh --prefix="$INSTALL_DIR"
+		
+		cd build
+		temp_swap_if_necessary
+		
+		log "Compilando Snort 3. Puede tardar varios minutos..."
+		make -j"$(nproc)" || error "Fallo en make al compilar Snort 3."
+		make install
+		ldconfig
+		
+		ln -sf "$INSTALL_DIR/bin/snort" /usr/local/bin/snort
+		
+		success "Snort 3 instalado con éxito."
+	}
+\end{lstlisting}
+
+\subsection*{interface\_setup.sh}
+\begin{lstlisting}[language=bash, caption={\texttt{interface\_setup.sh}}, label={lst:interface-setup}]
+	#!/bin/bash
+	
+	interface_setup() {
+		local iface="$1"
+		
+		log "Verificando estado de la interfaz $iface..."
+		state=$(ip link show "$iface" | grep -o 'state [A-Z]*' | awk '{print $2}')
+		
+		if [[ "$state" != "UP" ]]; then
+		log "La interfaz $iface está DOWN. Activando..."
+		ip link set dev "$iface" up || error "No se pudo activar la interfaz $iface."
+		else
+		log "La interfaz $iface ya está UP."
+		fi
+		
+		# Verificar si tiene IP y eliminarla (para sniffeo puro)
+		if ip addr show "$iface" | grep -q 'inet '; then
+		log "Eliminando IP de $iface para sniffeo sin interferencias..."
+		ip addr flush dev "$iface"
+		fi
+		
+		# Establecer modo promiscuo si no lo está
+		if ! ip link show "$iface" | grep -q PROMISC; then
+		log "Activando modo promiscuo en $iface..."
+		ip link set "$iface" promisc on || error "No se pudo activar modo promiscuo en $iface."
+		else
+		log "$iface ya está en modo promiscuo."
+		fi
+		
+		success "Interfaz $iface preparada para análisis de red."
+	}
+	
+	[[ -n "${IFACE:-}" ]] && interface_setup "$IFACE"
+\end{lstlisting}
+
+\subsection*{stats.sh}
+\begin{lstlisting}[language=bash, caption={\texttt{stats.sh}}, label={lst:stats-sh}]
+	#!/bin/bash
+	
+	show_stats() {
+		local IFACE="$1"
+		local INSTALL_DIR="$2"
+		
+		echo
+		log "Resumen del sistema tras la instalación:"
+		uptime_str=$(uptime -p)
+		total_ram=$(free -h | awk '/Mem:/ {print $2}')
+		used_ram=$(free -h | awk '/Mem:/ {print $3}')
+		swap_enabled=$(swapon --noheadings | wc -l)
+		swap_used=$(free -h | awk '/Swap:/ {print $3 "/" $2}')
+		disk_usage=$(df -h / | awk 'NR==2 {print $3 " usados de " $2}')
+		cpu_model=$(lscpu | grep "Model name" | sed 's/Model name:\s*//')
+		cpu_cores=$(nproc)
+		snort_version=$("$INSTALL_DIR/bin/snort" -V 2>/dev/null | awk '/Version/{print $4; exit}' || echo "No encontrado")
+		clamav_version=$(clamscan -V 2>/dev/null | awk '{print $2}' || echo "No encontrado")
+		
+		echo "------------------------------------------------------"
+		echo -e "Hostname:           $(hostname)"
+		echo -e "Uptime:             $uptime_str"
+		echo -e "RAM usada:          $used_ram / $total_ram"
+		echo -e "Swap activa:        $([ "$swap_enabled" -eq 0 ] && echo "No" || echo "Sí ($swap_used)")"
+		echo -e "Espacio raíz:       $disk_usage"
+		echo -e "CPU:                $cpu_model ($cpu_cores núcleos)"
+		echo -e "Snort versión:      ${snort_version:-No encontrado}"
+		echo -e "ClamAV versión:     ${clamav_version:-No encontrado, falta instalar}"
+		echo -e "Interfaz activa:    $IFACE"
+		echo "------------------------------------------------------"
+		
+		success "Snort 3 está en ejecución en la interfaz: $IFACE."
+	}
+\end{lstlisting}
+
+\subsection*{swap.sh}
+\begin{lstlisting}[language=bash, caption={\texttt{swap.sh}}, label={lst:swap-sh}]
+	#!/bin/bash
+	
+	temp_swap_if_necessary() {
+		local mem_kb
+		mem_kb=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+		
+		if [ "$mem_kb" -lt 1500000 ]; then
+		if ! free | awk '/^Swap:/ {exit !$2}'; then
+		log "Creando swap temporal..."
+		
+		if ! fallocate -l 2G /swapfile_snort; then
+		log "fallocate falló, usando dd como alternativa..."
+		dd if=/dev/zero of=/swapfile_snort bs=1M count=2048 || {
+			error "No se pudo crear swap con dd tampoco. Abortando."
+			return 1
+		}
+		fi
+		
+		chmod 600 /swapfile_snort
+		mkswap /swapfile_snort
+		swapon /swapfile_snort
+		success "Swap temporal creada en /swapfile_snort"
+		else
+		log "Swap ya activa. No se necesita crear otra."
+		fi
+		else
+		log "RAM suficiente (≥1.5 GB). No se necesita swap temporal."
+		fi
+	}
+	
+	temp_swap_clean() {
+		if swapon --show | grep -q "/swapfile_snort"; then
+		log "Desactivando swap temporal..."
+		if swapoff /swapfile_snort; then
+		rm -f /swapfile_snort
+		success "Swap temporal eliminada."
+		else
+		log "Swap ya estaba desactivada o no se pudo eliminar. Continuando."
+		fi
+		else
+		log "No hay swap temporal activa. Nada que limpiar."
+		fi
+	}
+\end{lstlisting}
+
+\section*{3. Script general de orquestación}
+
+\subsection*{r-snort\_installer.sh}
+\begin{lstlisting}[language=bash, caption={\texttt{r-snort\_installer.sh}}, label={lst:r-snort-installer}]
+	#!/bin/bash
+	###############################################################################
+	#                           R-SNORT INSTALLER                                 #
+	###############################################################################
+	set -euo pipefail
+	trap 'echo -e "\n\033[0;31m Fallo en línea $LINENO del script principal\033[0m"' ERR
+	
+	CONFIG_DIR="$(pwd)/configuracion"
+	SOFTWARE_DIR="$(pwd)/software"
+	INSTALL_DIR="/usr/local/snort"
+	LOG_FILE="/var/log/snort_install.log"
+	
+	# Redirigir salida a log inmediatamente
+	exec > >(tee -a "$LOG_FILE") 2>&1
+	
+	# Importar funciones
+	source ./bin/core.sh
+	source ./bin/checks.sh
+	source ./bin/swap.sh
+	source ./bin/dependencies.sh
+	source ./bin/build_from_source.sh
+	source ./bin/install_snort.sh
+	source ./bin/configure_snort.sh
+	source ./bin/stats.sh
+	
+	# Verificación mínima
+	type snort_config >/dev/null || { echo "La función snort_config no está disponible"; exit 1; }
+	
+	# Comprobaciones iniciales
+	check_root
+	ascii_banner
+	log "Instalador R-SNORT iniciado"
+	
+	# Selección de interfaz
+	interface_selection
+	export IFACE
+	
+	# Configuración automática de la interfaz de sniffeo
+	source ./bin/interface_setup.sh
+	
+	# Crear estructura de directorios
+	mkdir -p "$INSTALL_DIR"/{bin,etc/snort,lib,include,share,logs,rules}
+	
+	###############################################################################
+	#                               Ejecución modular                             #
+	###############################################################################
+	
+	dependencies_install
+	software_package_install
+	snort_install "$SOFTWARE_DIR" "$INSTALL_DIR"
+	temp_swap_clean
+	
+	# Configuración final
+	if snort_config "$CONFIG_DIR" "$INSTALL_DIR" "$IFACE"; then
+	log "Configurador de Snort ejecutado correctamente."
+	else
+	error "El configurador de Snort falló."
+	fi
+	
+	# Comprobación de estado del servicio
+	log "Comprobando estado del servicio Snort..."
+	if systemctl is-enabled --quiet snort && systemctl is-active --quiet snort; then
+	log "Snort está activo y habilitado."
+	else
+	error "Snort no se encuentra activo o habilitado. Verifica manualmente con: systemctl status snort"
+	fi
+	
+	# Estadísticas
+	show_stats "$IFACE" "$INSTALL_DIR"
+\end{lstlisting}
+
+\section*{4. Archivos de control del paquete \texttt{DEBIAN/}}
+
+\subsection*{control}
+\begin{lstlisting}[language={}, caption={Archivo \texttt{lst:control}}, label={lst:control}]
+	Package: r-snort
+	Version: 1.0
+	Section: net
+	Priority: optional
+	Architecture: all
+	Depends: bash, build-essential, libpcap-dev
+	Maintainer: Deian Orlando Petrovics T. <deian.petrovics@gmail.com>
+	Description: Instalador automático de R-Snort para sistemas ARM
+	Automatiza la compilación, instalación y configuración de R-Snort con reglas locales y servicio systemd.
+\end{lstlisting}
+
+\subsection*{postinst}
+\begin{lstlisting}[language=bash, caption={Script \texttt{postinst}}, label={lst:postinst}]
+	#!/bin/bash
+	set -e
+	
+	echo "[R-SNORT] postinst ejecutado..."
+	
+	if [ ! -d /opt/r-snort ]; then
+	echo "[R-SNORT] ERROR: /opt/r-snort no existe. Instalación corrupta."
+	exit 1
+	fi
+	
+	chmod +x /opt/r-snort/*.sh /opt/r-snort/bin/*.sh
+	
+	if [ ! -f /etc/rsnort_iface ]; then
+	echo "[R-SNORT] Instalación inicial aún no realizada."
+	echo "[R-SNORT] Ejecuta manualmente: sudo /opt/r-snort/r-snort_installer.sh"
+	else
+	echo "[R-SNORT] Interfaz detectada. No se requiere reinstalación automática."
+	fi
+	
+	echo "[R-SNORT] postinst completado correctamente."
+\end{lstlisting}
+
+\pagebreak
+
+\subsection*{prerm}
+\begin{lstlisting}[language=bash, caption={Script \texttt{prerm}}, label={lst:prerm}]
+	#!/bin/bash
+	echo "[R-SNORT] Deteniendo servicio Snort antes de eliminar el paquete..."
+	systemctl stop snort.service 2>/dev/null || true
+	systemctl disable snort.service 2>/dev/null || true
+	echo "[R-SNORT] Snort detenido correctamente (si estaba en ejecución)."
+\end{lstlisting}
+
+\subsection*{postrm}
+\begin{lstlisting}[language=bash, caption={Script \texttt{postrm}}, label={lst:postrm}]
+	#!/bin/bash
+	set -e
+	
+	case "$1" in
+	remove|purge)
+	echo "[R-SNORT] Eliminando restos del paquete..."
+	rm -rf /opt/r-snort 2>/dev/null || true
+	rm -f /etc/systemd/system/snort.service 2>/dev/null || true
+	systemctl daemon-reexec 2>/dev/null || true
+	systemctl daemon-reload 2>/dev/null || true
+	echo "[R-SNORT] Limpieza completada."
+	;;
+	*)
+	echo "[R-SNORT] postrm ejecutado con modo '$1' (sin limpiar)."
+	;;
+	esac
+\end{lstlisting}
+
 
 \end{document}
