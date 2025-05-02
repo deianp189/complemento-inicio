@@ -1,93 +1,90 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {chapter}{Abreviaturas}{12}{chapter*.1}%
-\contentsline {chapter}{Introducción}{14}{chapter*.2}%
-\contentsline {chapter}{\numberline {1}Motivación}{15}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Objetivos}{16}{chapter.2}%
-\contentsline {chapter}{\numberline {3}Fases de la realización y cronograma}{17}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Fase 1: Inspiración inicial y propuesta del proyecto (junio–agosto 2024)}{17}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Fase 2: Prototipado inicial y pruebas preliminares (septiembre 2024)}{17}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Fase 3: Estudio y selección de componentes (enero–febrero 2025)}{18}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Fase 4: Desarrollo del sistema R-Snort (enero 2025)}{18}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Fase 5: Pruebas de validación y rendimiento (marzo-abril 2025)}{18}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Cronograma general}{19}{section.3.6}%
-\contentsline {chapter}{\numberline {4}Estructura y metodología}{20}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Sistemas de Detección de Intrusos}{22}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Los sistemas de detección de intrusos}{22}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Definición y propósito de los IDS}{22}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Clasificación de los IDS}{22}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Arquitectura y componentes de un IDS}{22}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Funcionalidades}{23}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}Ventajas y limitaciones de los IDS}{23}{subsection.5.1.5}%
-\contentsline {subsubsection}{Ventajas}{23}{subsection.5.1.5}%
-\contentsline {subsubsection}{Limitaciones}{23}{subsection.5.1.5}%
-\contentsline {subsection}{\numberline {5.1.6}Contexto actual}{24}{subsection.5.1.6}%
-\contentsline {section}{\numberline {5.2}Snort}{24}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Características principales}{24}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Arquitectura de Snort}{25}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Reglas y actualizaciones}{25}{subsection.5.2.3}%
-\contentsline {subsubsection}{Estructura de una regla de Snort}{25}{subsection.5.2.3}%
-\contentsline {subsubsection}{Tipos de reglas}{25}{subsection.5.2.3}%
-\contentsline {subsubsection}{Gestión de reglas}{26}{subsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.2.4}Personalización y extensibilidad}{26}{subsection.5.2.4}%
-\contentsline {subsubsection}{Creación de reglas personalizadas}{26}{subsection.5.2.4}%
-\contentsline {subsubsection}{Uso de variables y listas}{26}{subsection.5.2.4}%
-\contentsline {subsubsection}{Integración con otros sistemas}{26}{subsection.5.2.4}%
-\contentsline {subsection}{\numberline {5.2.5}Limitaciones y consideraciones}{26}{subsection.5.2.5}%
-\contentsline {subsubsection}{Rendimiento en redes de alta velocidad}{26}{subsection.5.2.5}%
-\contentsline {subsubsection}{Gestión de falsos positivos}{26}{subsection.5.2.5}%
-\contentsline {section}{\numberline {5.3}Necesidades de seguridad en pequeñas redes (SOHO)}{26}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Amenazas y vulnerabilidades comunes}{27}{subsection.5.3.1}%
-\contentsline {subsubsection}{Amenazas externas}{27}{subsection.5.3.1}%
-\contentsline {subsubsection}{Amenazas internas}{27}{subsection.5.3.1}%
-\contentsline {subsubsection}{Dispositivos IoT}{27}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Retos específicos}{27}{subsection.5.3.2}%
-\contentsline {subsubsection}{Limitaciones de recursos}{27}{subsection.5.3.2}%
-\contentsline {subsubsection}{Conectividad constante}{28}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Soluciones adecuadas para redes SOHO}{28}{subsection.5.3.3}%
-\contentsline {subsubsection}{Herramientas de código abierto}{28}{subsection.5.3.3}%
-\contentsline {subsubsection}{Dispositivos de bajo coste}{28}{subsection.5.3.3}%
-\contentsline {section}{\numberline {5.4}Beneficios y recomendaciones de los sistemas de detección en redes reducidas}{28}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Complementos y plugins para Snort}{29}{section.5.5}%
-\contentsline {chapter}{\numberline {6}Utilización de Snort en redes SOHO}{31}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Introducción}{31}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Especificaciones, características y requisitos}{32}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Especificaciones de Snort 3}{32}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Requisitos del sistema}{32}{subsection.6.2.2}%
-\contentsline {section}{\numberline {6.3}Entorno de trabajo}{33}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Esquema de red}{33}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Hardware (Raspberry Pi 5)}{34}{subsection.6.3.2}%
-\contentsline {subsection}{\numberline {6.3.3}Software (Snort y sus complementos)}{34}{subsection.6.3.3}%
-\contentsline {subsubsection}{Comparación con Snort 2}{35}{subsection.6.3.3}%
-\contentsline {subsubsection}{Plugins y complementos utilizados}{35}{subsection.6.3.3}%
-\contentsline {section}{\numberline {6.4}Instalación y personalización de complementos}{36}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Instalación de Snort V3}{36}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}Instalación de reglas y plugins}{51}{subsection.6.4.2}%
-\contentsline {section}{\numberline {6.5}Generación de un script para la instalación automática}{60}{section.6.5}%
-\contentsline {subsection}{\numberline {6.5.1}Esquema de red de monitorización con R-SNORT}{60}{subsection.6.5.1}%
-\contentsline {subsubsection}{Objetivo de este diseño}{60}{figure.6.42}%
-\contentsline {subsubsection}{Justificación técnica}{60}{Item.2}%
-\contentsline {subsubsection}{Alternativas descartadas}{61}{Item.2}%
-\contentsline {subsection}{\numberline {6.5.2}Primera fase del script automático}{61}{subsection.6.5.2}%
-\contentsline {subsubsection}{Motivación y diseño modular}{61}{subsection.6.5.2}%
-\contentsline {subsubsection}{Características de robustez y control de errores}{62}{lstnumber.6.1.4}%
-\contentsline {subsubsection}{Automatización total del servicio Snort}{62}{lstnumber.6.2.3}%
-\contentsline {subsubsection}{Mitigación de limitaciones de hardware}{63}{lstnumber.6.3.5}%
-\contentsline {subsubsection}{Instalación adicional de ClamAV y control antivirus}{63}{lstnumber.-3.2}%
-\contentsline {subsubsection}{Resultados e impacto del diseño}{63}{lstnumber.-3.2}%
-\contentsline {subsection}{\numberline {6.5.3}Transición a paquete \texttt {.deb}}{64}{subsection.6.5.3}%
-\contentsline {subsubsection}{Mejoras introducidas}{65}{figure.6.43}%
-\contentsline {subsubsection}{Justificación del rediseño}{65}{lstnumber.6.4.7}%
-\contentsline {subsubsection}{Resultado final}{66}{Item.5}%
-\contentsline {chapter}{\numberline {7}Caso práctico: utilización de R-Snort}{67}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Entorno de trabajo}{67}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Instalación}{67}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Utilización y pruebas}{73}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Pruebas de validación del funcionamiento}{73}{subsection.7.3.1}%
-\contentsline {subsection}{\numberline {7.3.2}Pruebas de rendimiento}{78}{subsection.7.3.2}%
-\contentsline {subsection}{\numberline {7.3.3}Pruebas de rendimiento bajo carga masiva}{85}{subsection.7.3.3}%
-\contentsline {chapter}{\numberline {8}Resultados}{89}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Resumen}{90}{section.8.1}%
-\contentsline {chapter}{Conclusiones}{91}{chapter*.3}%
-\contentsline {chapter}{Trabajo futuro}{92}{chapter*.4}%
-\contentsline {chapter}{\numberline {A}Anexo A: Repositorio de R-SNORT}{97}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}Anexo B: Scripts y archivos del instalador R-Snort}{101}{appendix.Alph2}%
+\contentsline {chapter}{\numberline {1}Introducción}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Motivación}{2}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Objetivos}{3}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Fases de la realización y cronograma}{4}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Fase 1: Inspiración inicial y propuesta del proyecto (junio–agosto 2024)}{4}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Fase 2: Prototipado inicial y pruebas preliminares (septiembre 2024)}{4}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Fase 3: Estudio y selección de componentes (enero–febrero 2025)}{5}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Fase 4: Desarrollo del sistema R-Snort (enero 2025)}{5}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Fase 5: Pruebas de validación y rendimiento (marzo-abril 2025)}{5}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Cronograma general}{6}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Estructura y metodología}{7}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Sistemas de Detección de Intrusos}{9}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Los sistemas de detección de intrusos}{9}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Definición y propósito de los IDS}{9}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Clasificación de los IDS}{9}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Arquitectura y componentes de un IDS}{9}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}Funcionalidades}{10}{subsection.6.1.4}%
+\contentsline {subsection}{\numberline {6.1.5}Ventajas y limitaciones de los IDS}{10}{subsection.6.1.5}%
+\contentsline {subsubsection}{Ventajas}{10}{subsection.6.1.5}%
+\contentsline {subsubsection}{Limitaciones}{10}{subsection.6.1.5}%
+\contentsline {subsection}{\numberline {6.1.6}Contexto actual}{11}{subsection.6.1.6}%
+\contentsline {section}{\numberline {6.2}Snort}{11}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Características principales}{11}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Arquitectura de Snort}{12}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Reglas y actualizaciones}{12}{subsection.6.2.3}%
+\contentsline {subsubsection}{Estructura de una regla de Snort}{12}{subsection.6.2.3}%
+\contentsline {subsubsection}{Tipos de reglas}{12}{subsection.6.2.3}%
+\contentsline {subsubsection}{Gestión de reglas}{13}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}Personalización y extensibilidad}{13}{subsection.6.2.4}%
+\contentsline {subsubsection}{Creación de reglas personalizadas}{13}{subsection.6.2.4}%
+\contentsline {subsubsection}{Uso de variables y listas}{13}{subsection.6.2.4}%
+\contentsline {subsubsection}{Integración con otros sistemas}{13}{subsection.6.2.4}%
+\contentsline {subsection}{\numberline {6.2.5}Limitaciones y consideraciones}{13}{subsection.6.2.5}%
+\contentsline {subsubsection}{Rendimiento en redes de alta velocidad}{13}{subsection.6.2.5}%
+\contentsline {subsubsection}{Gestión de falsos positivos}{13}{subsection.6.2.5}%
+\contentsline {section}{\numberline {6.3}Necesidades de seguridad en pequeñas redes (SOHO)}{13}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Amenazas y vulnerabilidades comunes}{14}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Retos específicos}{14}{subsection.6.3.2}%
+\contentsline {subsubsection}{Limitaciones de recursos}{14}{subsection.6.3.2}%
+\contentsline {subsubsection}{Conectividad constante}{14}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Soluciones adecuadas para redes SOHO}{15}{subsection.6.3.3}%
+\contentsline {subsubsection}{Herramientas de código abierto}{15}{subsection.6.3.3}%
+\contentsline {subsubsection}{Dispositivos de bajo coste}{15}{subsection.6.3.3}%
+\contentsline {section}{\numberline {6.4}Beneficios y recomendaciones de los sistemas de detección en redes reducidas}{15}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Complementos y plugins para Snort}{16}{section.6.5}%
+\contentsline {chapter}{\numberline {7}Utilización de Snort en redes SOHO}{18}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Introducción}{18}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Especificaciones, características y requisitos}{19}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Especificaciones de Snort 3}{19}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Requisitos del sistema}{19}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Entorno de trabajo}{20}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Esquema de red}{20}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Hardware (Raspberry Pi 5)}{21}{subsection.7.3.2}%
+\contentsline {subsection}{\numberline {7.3.3}Software (Snort y sus complementos)}{21}{subsection.7.3.3}%
+\contentsline {subsubsection}{Comparación con Snort 2}{22}{subsection.7.3.3}%
+\contentsline {subsubsection}{Plugins y complementos utilizados}{22}{subsection.7.3.3}%
+\contentsline {section}{\numberline {7.4}Instalación y personalización de complementos}{23}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Instalación de Snort V3}{23}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}Instalación de reglas y plugins}{39}{subsection.7.4.2}%
+\contentsline {section}{\numberline {7.5}Generación de un script para la instalación automática}{48}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Esquema de red de monitorización con R-SNORT}{48}{subsection.7.5.1}%
+\contentsline {subsubsection}{Objetivo de este diseño}{48}{figure.caption.47}%
+\contentsline {subsubsection}{Justificación técnica}{48}{Item.2}%
+\contentsline {subsubsection}{Alternativas descartadas}{49}{Item.2}%
+\contentsline {subsection}{\numberline {7.5.2}Primera fase del script automático}{49}{subsection.7.5.2}%
+\contentsline {subsubsection}{Motivación y diseño modular}{49}{subsection.7.5.2}%
+\contentsline {subsubsection}{Características de robustez y control de errores}{50}{lstnumber.7.34.4}%
+\contentsline {subsubsection}{Automatización total del servicio Snort}{51}{lstnumber.7.35.3}%
+\contentsline {subsubsection}{Mitigación de limitaciones de hardware}{51}{lstnumber.7.36.5}%
+\contentsline {subsubsection}{Instalación adicional de ClamAV y control antivirus}{51}{lstnumber.7.37.2}%
+\contentsline {subsubsection}{Resultados e impacto del diseño}{51}{lstnumber.7.37.2}%
+\contentsline {subsection}{\numberline {7.5.3}Transición a paquete \texttt {.deb}}{52}{subsection.7.5.3}%
+\contentsline {subsubsection}{Mejoras introducidas}{53}{figure.caption.48}%
+\contentsline {subsubsection}{Justificación del rediseño}{53}{lstnumber.7.38.7}%
+\contentsline {subsubsection}{Resultado final}{54}{Item.5}%
+\contentsline {chapter}{\numberline {8}Caso práctico: utilización de R-Snort}{55}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Entorno de trabajo}{55}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Instalación}{55}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Utilización y pruebas}{61}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Pruebas de validación del funcionamiento}{61}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Pruebas de rendimiento}{66}{subsection.8.3.2}%
+\contentsline {subsection}{\numberline {8.3.3}Pruebas de rendimiento bajo carga masiva}{72}{subsection.8.3.3}%
+\contentsline {chapter}{\numberline {9}Resultados}{76}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Resumen}{77}{section.9.1}%
+\contentsline {chapter}{Conclusiones}{78}{chapter*.80}%
+\contentsline {chapter}{Trabajo futuro}{79}{chapter*.81}%
+\contentsline {chapter}{Bibliografía}{81}{chapter*.81}%
+\contentsline {chapter}{\numberline {A}Anexo A: Repositorio de R-SNORT}{84}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}Anexo B: Scripts y archivos del instalador R-Snort}{88}{appendix.Alph2}%

@@ -23,7 +23,11 @@
 \usepackage{enumitem}
 \usepackage{placeins}
 \usepackage{tocloft}
+\usepackage{subcaption}
+\usepackage{pdfpages}
 \usetikzlibrary{shapes, arrows, positioning}
+
+\renewcommand{\lstlistlistingname}{Índice de Códigos}
 
 \raggedbottom
 
@@ -37,7 +41,7 @@
 % ===== Encabezado y pie de página =====
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{\textit{Utilización de un NIDS para redes SOHO (R-Snort)}}
+\fancyhead[LE,RO]{\leftmark}
 \fancyfoot[CE,CO]{\thepage}
 
 % ===== Formato de títulos =====
@@ -99,40 +103,47 @@
 
 \lstdefinestyle{commandstyle}{
 	backgroundcolor=\color{gray!10},
-	basicstyle=\ttfamily\small,
+	basicstyle=\ttfamily\small\color{black}, % Todo el texto en negro
 	frame=single,
 	breaklines=true,
 	showstringspaces=false,
 	columns=flexible,
 	xleftmargin=1.5em,
 	framexleftmargin=1.5em,
-	keywordstyle=\color{blue},
-	commentstyle=\color{mygreen},
-	stringstyle=\color{mymauve},
-	morekeywords={sudo,ls,cat,tail,echo,dig,nslookup,grep,awk,cut,printf,find},
+	stringstyle=\color{mymauve}, % Cadenas en rosado
+	commentstyle=\color{mygreen}, % Comentarios (si los hay)
+	keywordstyle=\color{black}, % Keywords en negro (elimina el azul)
 	language=bash,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	numbersep=8pt,
+	firstnumber=1,
+	stepnumber=1,
+	numberblanklines=false,
+	numberfirstline=true,
+	prebreak=\mbox{\textcolor{red}{$\hookleftarrow$}\space},
+	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+	morekeywords={} % Vaciamos completamente la lista de keywords
 }
+
+% Para evitar que \lstlistoflistings añada al TOC
+\makeatletter
+\let\oldlstlistoflistings\lstlistoflistings
+\renewcommand{\lstlistoflistings}{\begingroup\let\addcontentsline\@gobble\oldlstlistoflistings\endgroup}
+\makeatother
+
+% Título en español para el índice de códigos
+\renewcommand{\lstlistlistingname}{Índice de Códigos}
+
 
 % ===== Inicio del documento =====
 \begin{document}
 	
+	\pagenumbering{roman}
+	
 	% ===== Portada (debes sustituirla por la oficial del Anexo II en la entrega) =====
-	\begin{titlepage}
-		\centering
-		{\scshape\LARGE Universidad de Almería \par}
-		\vspace{1cm}
-		{\scshape\Large Complemento Trabajo Fin de Grado\par}
-		\vspace{1.5cm}
-		{\huge\bfseries Utilización de un NIDS para redes SOHO (R-Snort)\par}
-		\vspace{2cm}
-		{\Large Autor: Petrovics, Deian Orlando\par}
-		\vspace{0.5cm}
-		{\Large Tutor: Gómez López, Julio\par}
-		\vspace{0.5cm}
-		{\Large Cotutor: Padilla Soriano, Nicolás\par}
-		\vfill
-		{\large \today\par}
-	\end{titlepage}
+\cleardoublepage
+\includepdf[pages=1, pagecommand={\thispagestyle{empty}}, fitpaper=true]{PortadaCTFG.pdf}
 	
 	\thispagestyle{empty}
 	\cleardoublepage
@@ -154,32 +165,63 @@
 	\thispagestyle{empty}
 	\null
 	\newpage
-
 	
-	% ===== Índice =====
+	% ===== Agradecimientos =====
+	\cleardoublepage
+	\thispagestyle{empty}
+	{
+		\begin{center}
+			\Large\bfseries Agradecimientos
+		\end{center}
+		
+		\vspace{1cm}
+		
+		Quiero expresar mi más sincero agradecimiento a mi tutor, Julio Gómez López, y a mi cotutor, Nicolás Padilla Soriano, por su orientación y apoyo durante
+		todo el desarrollo de este trabajo. Su experiencia ha sido el pilar para mantener un enfoque de este proyecto.\newline
+		
+		También quiero dar las gracias a mi familia, en especial a mis padres, por haberme transmitido desde pequeño el valor del esfuerzo, la constancia y la curiosidad.
+	    Su confianza incondicional me ha permitido perseguir mis metas con libertad y determinación.\newline
+		
+		A mis amigos y compañeros de carrera, con quienes he compartido frustraciones, risas, noches de trabajo y logros, gracias por formar parte de este camino.
+		Vuestra compañía ha sido tan importante como el contenido aprendido.\newline
+		
+		Y por último, a mí mismo, por no rendirme. Por seguir adelante incluso cuando el cansancio o la duda amenazaban con paralizarme. Este trabajo representa no
+		solo un proyecto académico, sino también un ejercicio de crecimiento, disciplina y pasión por la tecnología como herramienta para construir un mundo más seguro y accesible.
+		
+		\vfill
+	}
+	
+		\newpage
+	\thispagestyle{empty}
+		\cleardoublepage
 
+	% ===== Índice general =====
 	\tableofcontents
 	\newpage
 	
+	% ===== Índice de figuras =====
 	\listoffigures
 	\newpage
 	
+	% ===== Índice de tablas/cuadros =====
 	\listoftables
+	
+	% SOLO esto para insertar página vacía después
+	\newpage
+	\thispagestyle{empty}
+	\null
 	\newpage
 	
-	\newcommand{\listoflistingscaption}{Índice de Códigos}
-	
-	\lstlistoflistings
-	\newpage
-	
-	
-	
-	
+% ===== Índice de códigos (sin TOC pero con encabezado) =====
+% ===== Índice de códigos =====
+\cleardoublepage
+\markboth{Índice de Códigos}{Índice de Códigos}
+\lstlistoflistings
 
 
-% Abreviaturas
+% ===== Abreviaturas (sin TOC pero con encabezado) =====
 \chapter*{Abreviaturas}
-\addcontentsline{toc}{chapter}{Abreviaturas}
+\markboth{Abreviaturas}{Abreviaturas}
 \begin{itemize}
 	\item \textbf{APT}: (Advanced Persistent Threat). Amenaza Avanzada Persistente. Suele involucrar ataques dirigidos y prolongados contra objetivos concretos.
 	\item \textbf{ClamAV}: Antivirus de código abierto que analiza y detecta archivos maliciosos o infecciones. Se integra como complemento en el proyecto.
@@ -213,8 +255,9 @@
 \end{itemize}
 
 % Introducción
-\chapter*{Introducción}
-\addcontentsline{toc}{chapter}{Introducción}
+
+\chapter{Introducción}
+\pagenumbering{arabic}
 La dependencia actual del uso de tecnología difiere en gran medida del uso que se le daba hace años. El crecimiento del globalismo, que impulsa la interconexión entre todos nosotros, hace que el conocimiento sobre informática y sus fallos de seguridad se dé a conocer mundialmente, permitiendo a individuos malintencionados aprovechar dichas vulnerabilidades por diversos motivos: económicos, sociales o incluso como competición entre ellos.\newline
 
 Organizaciones de renombre cuentan con los mayores expertos en seguridad informática; sin embargo, las redes domésticas o de pequeñas o medianas empresas no gozan de tal presupuesto, quedando normalmente vulnerables a todo tipo de ataques \cite{enisa_smes}. Este trabajo propone una solución accesible que permita a entornos más modestos estar protegidos mediante un sistema de detección de intrusos (IDS) basado en herramientas de bajo impacto económico y fácil implementación.
@@ -529,23 +572,19 @@ Las redes \textbf{SOHO} suelen estar compuestas por un número reducido de dispo
 
 Toda red, por pequeña que sea, está expuesta a distintos tipos de amenazas. Algunas vienen del exterior, otras desde dentro, y muchas están relacionadas con dispositivos mal configurados. A continuación se describen las más relevantes:
 
-\subsubsection{Amenazas externas}
-
-Incluyen el uso de \textit{malware}, ataques de \textit{phishing} y fuerza bruta contra servicios accesibles desde Internet.
-
-\subsubsection{Amenazas internas}
-
-Pueden deberse a un mal uso de los recursos, conexiones inseguras desde dispositivos personales o la falta de normas claras sobre seguridad en la red.
-
-\subsubsection{Dispositivos IoT}
-
-El crecimiento del número de dispositivos conectados (como cámaras, sensores o dispositivos \textit{wearables}) supone un riesgo añadido. Entre los problemas más frecuentes se encuentran:
-
 \begin{itemize}
-	\item Uso de credenciales por defecto que no pueden cambiarse.
-	\item Comunicación sin cifrado, como en versiones inseguras de MQTT.
-	\item Falta de actualizaciones o mantenimiento del firmware \cite{bakhshi2024review}.
+	\item \textbf{Amenazas externas:} Incluyen el uso de \textit{malware}, ataques de \textit{phishing} y fuerza bruta contra servicios accesibles desde Internet.
+	
+	\item \textbf{Amenazas internas:} Pueden deberse a un mal uso de los recursos, conexiones inseguras desde dispositivos personales o la falta de normas claras sobre seguridad en la red.
+	
+	\item \textbf{Dispositivos IoT:} El crecimiento del número de dispositivos conectados (como cámaras, sensores o dispositivos \textit{wearables}) supone un riesgo añadido. Entre los problemas más frecuentes se encuentran:
+	\begin{itemize}
+		\item Uso de credenciales por defecto que no pueden cambiarse.
+		\item Comunicación sin cifrado, como en versiones inseguras de MQTT.
+		\item Falta de actualizaciones o mantenimiento del firmware \cite{bakhshi2024review}.
+	\end{itemize}
 \end{itemize}
+
 
 
 Una solución práctica es implementar segmentación de red mediante VLANs para aislar estos dispositivos, combinado con reglas específicas en \textit{Snort 3} para monitorizar tráfico en puertos comunes IoT (ej: 1883 para MQTT, 5683 para CoAP).
@@ -826,19 +865,27 @@ Para potenciar las capacidades de detección de \textbf{Snort 3} en este proyect
 
 \subsubsection*{Preparación del entorno}
 
-El desarrollo de lo que será \textbf{R-SNORT} empezará con la instalación de \textbf{Snort} \cite{snort3_installation_pdf} mismo en su versión actual. Para ello, es buena práctica actualizar los repositorios y el equipo mediante un \texttt{update} y un \texttt{upgrade} antes de comenzar la instalación. Una vez hecho esto, empezaremos con la instalación de las distintas librerías y dependencias de \textbf{Snort V3}.
+El desarrollo de lo que será \textbf{R-SNORT} empezará con la instalación de \textbf{Snort} \cite{snort3_installation_pdf} mismo en su versión actual. Para ello, es buena práctica actualizar los repositorios y el equipo mediante un \lstinline|sudo apt-get update && sudo apt-get upgrade -y| antes de comenzar la instalación. Una vez hecho esto, empezaremos con la instalación de las distintas librerías y dependencias de \textbf{Snort V3}.
 
-\begin{lstlisting}
-	$ sudo apt-get update && sudo apt-get upgrade -y
+\begin{lstlisting}[style=commandstyle, caption={Actualización del sistema antes de instalar dependencias}]
+	sudo apt-get update && sudo apt-get upgrade -y
 \end{lstlisting}
 
 \subsubsection*{Instalación y configuración de \texttt{libdnet}}
 
 Primero, instalamos un par de herramientas necesarias (\texttt{libtool} y \texttt{autoconf}) para compilar Snort 3. Luego, nos movemos al directorio \texttt{/usr/local/src} y clonamos el repositorio de \texttt{libdnet} desde GitHub, que es una librería importante para que Snort funcione correctamente. Finalmente, entramos en el directorio \texttt{libdnet} para seguir con la instalación.
 
+\begin{lstlisting}[style=commandstyle, caption={Instalación y clonación de libdnet desde GitHub}]
+	sudo apt install -y libtool autoconf
+	cd /usr/local/src
+	sudo git clone https://github.com/dugsong/libdnet.git
+	cd libdnet
+\end{lstlisting}
+
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.12]{instalacion_snort/1-1.png}
+	\includegraphics[scale=0.1]{instalacion_snort/1-1.png}
 	\caption{Instalando dependencias necesarias.}
 \end{figure}
 
@@ -846,28 +893,40 @@ Primero, instalamos un par de herramientas necesarias (\texttt{libtool} y \textt
 
 A continuación, el paquete \texttt{check} es instalado. Esta herramienta servirá principalmente para ejecutar algunas pruebas en C. Es un requisito para poder compilar \texttt{libdnet} correctamente. Gracias a estas preparaciones, estamos configurando el entorno para la correcta compilación de Snort.
 
+\begin{lstlisting}[style=commandstyle, caption={Instalando dependencia check}]
+	sudo apt install -y check
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/2-2.png}
-	\caption{Instalando dependencia \texttt{check}.}
+	\caption{Instalando dependencia check.}
 \end{figure}
 
 La ejecución de \texttt{./configure} prepara el entorno para la compilación de \texttt{libdnet}, dependencia fundamental para el correcto funcionamiento del desarrollo posterior y de Snort. Su funcionamiento consiste en la revisión del sistema, verifica dependencias y configura los archivos necesarios para compilar código correctamente.
 
+\begin{lstlisting}[style=commandstyle, caption={Configurando libdnet con ./configure}]
+	sudo ./configure
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/3-3.png}
-	\caption{Configurando \texttt{libdnet} antes de la compilación.}
+	\caption{Configurando libdnet antes de la compilación.}
 \end{figure}
 
 \newpage
 
 Llevamos a cabo la compilación de \texttt{libdnet} mediante \texttt{sudo make}; este comando convierte el código fuente de la dependencia en un ejecutable con bibliotecas a disposición para la instalación. Recorre los directorios del proyecto asegurándose de que todos los archivos necesarios sean procesados.
 
+\begin{lstlisting}[style=commandstyle, caption={Compilando libdnet con make}]
+	sudo make
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/4-4.png}
-	\caption{Compilando \texttt{libdnet} con \texttt{make}.}
+	\caption{Compilando libdnet con make.}
 \end{figure}
 
 
@@ -875,15 +934,26 @@ Llevamos a cabo la compilación de \texttt{libdnet} mediante \texttt{sudo make};
 
 Ahora ejecutamos \texttt{sudo make install} para instalar \texttt{libdnet} en el sistema. Este comando copia los archivos compilados a sus directorios correspondientes, asegurando que puedan ser utilizados por otras aplicaciones y librerías.
 
+\begin{lstlisting}[style=commandstyle, caption={Instalando libdnet en el sistema}]
+	sudo make install
+\end{lstlisting}
+
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/5-5.png}
-	\caption{Instalando \texttt{libdnet} en el sistema.}
+	\caption{Instalando libdnet en el sistema.}
 \end{figure}
 
 \subsubsection*{Solución al problema de \texttt{PKG\_CONFIG\_PATH}}
 
 Listamos los archivos de \texttt{libdnet} en \texttt{/usr/local/lib} para asegurarnos de que se instalaron correctamente. Luego, intentamos verificar su versión con \texttt{pkg-config --modversion dnet}, pero aparece un error indicando que no se encuentra en el \texttt{PKG\_CONFIG\_PATH}. Esto indica que es necesario añadir la ruta correcta para que el sistema reconozca la librería.
+
+\begin{lstlisting}[style=commandstyle, caption={Listando archivos instalados y verificando libdnet}]
+	ls -l /usr/local/lib | grep libdnet
+	pkg-config --modversion dnet
+	sudo ldconfig
+\end{lstlisting}
 
 \begin{figure}[H]
 	\centering
@@ -891,22 +961,28 @@ Listamos los archivos de \texttt{libdnet} en \texttt{/usr/local/lib} para asegur
 	\caption{Verificación de la instalación de \texttt{libdnet}.}
 \end{figure}
 
-\newpage
-
 Editamos el archivo \texttt{dnet.pc} usando \texttt{nano}, añadiendo las rutas correctas para que \texttt{pkg-config} pueda encontrar \texttt{libdnet}. Definimos las variables \texttt{libdir} e \texttt{includedir}, asegurándonos de que apunten a \texttt{/usr/local/lib} y \texttt{/usr/local/include}, respectivamente. Esto soluciona el problema anterior donde \texttt{pkg-config} no encontraba la librería.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=1]{instalacion_snort/7.png}
-	\caption{Configurando \texttt{libdnet} para que sea reconocido por el sistema.}
+	\caption{Configurando libdnet para que sea reconocido por el sistema.}
 \end{figure}
 
 Ahora configuramos el entorno para que \texttt{pkg-config} pueda encontrar \texttt{libdnet}. Primero, exportamos la variable \texttt{PKG\_CONFIG\_PATH} con la ruta correcta y la agregamos permanentemente al archivo \texttt{\~{}/.bashrc}. Luego, recargamos la configuración con \texttt{source ~/.bashrc}, actualizamos las librerías con \texttt{ldconfig} y verificamos que \texttt{libdnet} es reconocido correctamente ejecutando \texttt{pkg-config --modversion dnet}, confirmando la versión instalada.
 
+\begin{lstlisting}[style=commandstyle, caption={Añadiendo libdnet al PATH y verificando su reconocimiento}]
+	export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+	echo 'export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH' >> ~/.bashrc
+	source ~/.bashrc
+	sudo ldconfig
+	pkg-config --modversion dnet
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/8-8.png}
-	\caption{Añadiendo \texttt{libdnet} al \texttt{PATH} y verificando su reconocimiento.}
+	\caption{Añadiendo libdnet al PATH y verificando su reconocimiento.}
 \end{figure}
 
 \newpage
@@ -915,18 +991,27 @@ Ahora configuramos el entorno para que \texttt{pkg-config} pueda encontrar \text
 
 Clonamos el repositorio de \texttt{libdaq}, un componente necesario para \textbf{Snort 3}, desde su fuente oficial en GitHub. Este paso descarga el código fuente necesario para su compilación e instalación en la \textbf{Raspberry Pi}.
 
+\begin{lstlisting}[style=commandstyle, caption={Descargando libdaq desde el repositorio oficial}]
+	sudo git clone https://github.com/snort3/libdaq.git
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/9-9.png}
-	\caption{Descargando \texttt{libdaq} desde el repositorio oficial.}
+	\caption{Descargando libdaq desde el repositorio oficial.}
 \end{figure}
 
 Entramos en el directorio de \texttt{libdaq} y ejecutamos el script \texttt{bootstrap}, que se encarga de generar los archivos de configuración necesarios para compilar el software correctamente. Se usa \texttt{autoreconf} para asegurarse de que todos los scripts de compilación estén en orden.
 
+\begin{lstlisting}[style=commandstyle, caption={Ejecutando bootstrap para preparar la compilación de libdaq}]
+	cd libdaq
+	sudo ./bootstrap
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/10-10.png}
-	\caption{Preparando \texttt{libdaq} para su compilación.}
+	\caption{Preparando libdaq para su compilación.}
 \end{figure}
 
 \newpage
@@ -935,36 +1020,54 @@ Entramos en el directorio de \texttt{libdaq} y ejecutamos el script \texttt{boot
 
 Ejecutamos \texttt{./configure} para preparar el entorno de compilación de \texttt{libdaq}. Como se ha comentado anteriormente, este script revisa que el sistema tenga todas las dependencias necesarias y genera los archivos de configuración adecuados para compilar el software sin complicaciones.
 
+\begin{lstlisting}[style=commandstyle, caption={Configurando libdaq antes de la compilación}]
+	sudo ./configure
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/11-11.png}
-	\caption{Configurando \texttt{libdaq} antes de la compilación.}
+	\caption{Configurando libdaq antes de la compilación.}
 \end{figure}
 
 La ejecución de \texttt{make} llevará a cabo la compilación de \texttt{libdaq}. Este proceso traduce el código fuente a binarios ejecutables, asegurándose de que todas las dependencias y archivos necesarios se generen correctamente para su posterior instalación.
 
+\begin{lstlisting}[style=commandstyle, caption={Compilando libdaq}]
+	sudo make
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/12-12.png}
-	\caption{Compilando \texttt{libdaq}.}
+	\caption{Compilando libdaq.}
 \end{figure}
 
 \newpage
 
 La instalación final la llevaremos a cabo mediante \texttt{sudo make install}. Esto copia los archivos compilados a sus ubicaciones correspondientes dentro del sistema para que puedan ser utilizados por \textbf{Snort} y otros programas que así lo requieran.
 
+\begin{lstlisting}[style=commandstyle, caption={Instalando libdaq}]
+	sudo make install
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/13-13.png}
-	\caption{Instalando \texttt{libdaq}.}
+	\caption{Instalando libdaq.}
 \end{figure}
 
 Listamos los archivos de configuración de \texttt{libdaq} en \texttt{/usr/local/lib/pkgconfig/} para asegurarnos de que la instalación se haya completado correctamente. Después, exportamos la variable \texttt{PKG\_CONFIG\_PATH} para que el sistema reconozca la librería. Finalmente, usamos \texttt{pkg-config --modversion libdaq} para confirmar que la versión instalada es la \textbf{3.0.19}.
 
+\begin{lstlisting}[style=commandstyle, caption={Verificando instalación de libdaq}]
+	ls -l /usr/local/lib/pkgconfig | grep libdaq
+	export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+	pkg-config --modversion libdaq
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.12]{instalacion_snort/14-14.png}
-	\caption{Verificando la instalación de \texttt{libdaq}.}
+	\includegraphics[scale=0.]{instalacion_snort/14-14.png}
+	\caption{Verificando la instalación de libdaq.}
 \end{figure}
 
 \newpage
@@ -972,6 +1075,10 @@ Listamos los archivos de configuración de \texttt{libdaq} en \texttt{/usr/local
 \subsubsection*{Instalación de la dependencia libhwloc-dev}
 
 Instalamos \texttt{libhwloc-dev}, una librería necesaria para la ejecución de \textbf{Snort 3} y sus dependencias. Se incluyen automáticamente otros paquetes adicionales como \texttt{libhwloc-plugins}, \texttt{libnuma-dev} y \texttt{libpciaccess0}, que ayudan en la gestión de hardware y optimización del rendimiento.
+
+\begin{lstlisting}[style=commandstyle, caption={Instalando libhwloc-dev y dependencias relacionadas}]
+	sudo apt install -y libhwloc-dev
+\end{lstlisting}
 
 \begin{figure}[H]
 	\centering
@@ -983,10 +1090,14 @@ Instalamos \texttt{libhwloc-dev}, una librería necesaria para la ejecución de 
 
 Aquí instalamos \texttt{libluajit-5.1-dev}, más dependencias para \textbf{Snort 3}, ya que utiliza \textbf{LuaJIT} para la configuración y personalización de reglas. También se instalan automáticamente \texttt{libluajit-5.1-2} y \texttt{libluajit-5.1-common}, que contienen las bibliotecas compartidas necesarias para funcionar correctamente.
 
+\begin{lstlisting}[style=commandstyle, caption={Instalando LuaJIT para Snort}]
+	sudo apt install -y libluajit-5.1-dev
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.12]{instalacion_snort/16-16.png}
-	\caption{Instalando \textbf{LuaJIT} para Snort.}
+	\includegraphics[scale=0.1]{instalacion_snort/16-16.png}
+	\caption{Instalando LuaJIT para Snort.}
 \end{figure}
 
 \newpage
@@ -995,18 +1106,27 @@ Aquí instalamos \texttt{libluajit-5.1-dev}, más dependencias para \textbf{Snor
 
 Instalamos \texttt{Flex} y \texttt{Bison}, dos herramientas para el análisis léxico y sintáctico en la compilación de Snort. Después de la instalación, verificamos la versión de \texttt{Flex} con \texttt{flex --version} para asegurarnos de que se instaló correctamente.
 
+\begin{lstlisting}[style=commandstyle, caption={Instalando Flex y Bison y verificando la versión}]
+	sudo apt install flex bison -y
+	flex --version
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/19-19.png}
-	\caption{Instalando \texttt{Flex} y \texttt{Bison}, herramientas necesarias para la compilación.}
+	\caption{Instalando Flex y Bison, herramientas necesarias para la compilación.}
 \end{figure}
 
 En este paso, instalamos \texttt{libpcre2-dev}, una biblioteca para el manejo de expresiones regulares en \textbf{Snort 3}. Nos es útil para la detección de patrones en el tráfico de red.
 
+\begin{lstlisting}[style=commandstyle, caption={Instalando la biblioteca PCRE2 para expresiones regulares}]
+	sudo apt install libpcre2-dev -y
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/20-20.png}
-	\caption{Instalando la biblioteca \texttt{PCRE2} para el manejo de expresiones regulares.}
+	\caption{Instalando la biblioteca PCRE2 para el manejo de expresiones regulares.}
 \end{figure}
 
 \newpage
@@ -1015,6 +1135,10 @@ En este paso, instalamos \texttt{libpcre2-dev}, una biblioteca para el manejo de
 
 Descargamos el código fuente de \textbf{Snort 3} directamente desde su repositorio oficial en GitHub mediante \texttt{git clone}.
 
+\begin{lstlisting}[style=commandstyle, caption={Clonando el repositorio de Snort 3}]
+	sudo git clone https://github.com/snort3/snort3.git
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/17-17.png}
@@ -1022,6 +1146,12 @@ Descargamos el código fuente de \textbf{Snort 3} directamente desde su reposito
 \end{figure}
 
 Aquí establecemos la variable \texttt{my\_path} para definir el directorio de instalación de Snort. Luego, agregamos esta configuración al archivo \texttt{~/.bashrc} para que se cargue automáticamente en futuras sesiones. Finalmente, usamos \texttt{source ~/.bashrc} para aplicar los cambios de inmediato.
+
+\begin{lstlisting}[style=commandstyle, caption={Estableciendo la ruta de instalación en la variable my\_path}]
+	export my_path=/usr/local/snort
+	echo 'export my_path=/usr/local/snort' >> ~/.bashrc
+	source ~/.bashrc
+\end{lstlisting}
 
 \begin{figure}[H]
 	\centering
@@ -1033,10 +1163,14 @@ Aquí establecemos la variable \texttt{my\_path} para definir el directorio de i
 
 Ejecutamos el script \texttt{configure\_cmake.sh} para configurar la compilación de \textbf{Snort 3}. Se especifica el prefijo de instalación con \texttt{\$my\_path}. Se generan los archivos de configuración y se definen las opciones de características, incluyendo los módulos \texttt{DAQ} que se activarán.
 
+\begin{lstlisting}[style=commandstyle, caption={Configurando Snort 3 con CMake}]
+	sudo ./configure_cmake.sh --prefix=$my_path
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/21-21.png}
-	\caption{Configurando Snort 3 con \texttt{CMake}.}
+	\caption{Configurando Snort 3 con CMake.}
 \end{figure}
 
 \newpage
@@ -1044,6 +1178,10 @@ Ejecutamos el script \texttt{configure\_cmake.sh} para configurar la compilació
 \subsubsection*{Compilación e instalación de Snort}
 
 Compilamos \textbf{Snort} con \texttt{make -j \$(nproc)}, lo que nos permite aprovechar todos los núcleos del procesador para acelerar el proceso.
+
+\begin{lstlisting}[style=commandstyle, caption={Compilando Snort utilizando todos los núcleos del procesador}]
+	make -j $(nproc)
+\end{lstlisting}
 
 \begin{figure}[H]
 	\centering
@@ -1054,6 +1192,10 @@ Compilamos \textbf{Snort} con \texttt{make -j \$(nproc)}, lo que nos permite apr
 \newpage
 
 Instalamos Snort tras haberlo compilado con \texttt{sudo make install}. Este comando copia los archivos generados en sus respectivas ubicaciones dentro del sistema.
+
+\begin{lstlisting}[style=commandstyle, caption={Instalación de Snort tras la compilación}]
+	sudo make install
+\end{lstlisting}
 
 \begin{figure}[H]
 	\centering
@@ -1066,15 +1208,23 @@ Instalamos Snort tras haberlo compilado con \texttt{sudo make install}. Este com
 Finalmente, verificamos que \textbf{Snort} se ha instalado correctamente con el comando: \\
 \texttt{/usr/local/snort/bin/snort -V}. Esto nos muestra la versión instalada (\textbf{3.7.1.0}) junto con las bibliotecas y dependencias utilizadas, como \texttt{DAQ}, \texttt{libpcap}, \texttt{LuaJIT}, \texttt{OpenSSL}, entre otras.
 
+\begin{lstlisting}[style=commandstyle, caption={Verificando que Snort se haya instalado correctamente}]
+	/usr/local/snort/bin/snort -V
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.7]{instalacion_snort/24.png}
+	\includegraphics[scale=0.5]{instalacion_snort/24.png}
 	\caption{Snort instalado con éxito.}
 \end{figure}
 
-\newpage
-
 Creamos el directorio de configuración de Snort (\texttt{/usr/local/snort/etc/snort}) y copiamos los archivos de configuración en formato \texttt{Lua} desde el directorio fuente de \textbf{Snort 3}. Luego, ejecutamos Snort con la configuración especificada para validar que todo esté correctamente configurado. La salida muestra que Snort ha cargado las reglas y módulos sin errores ni advertencias.
+
+\begin{lstlisting}[style=commandstyle, caption={Configuración y validación de Snort}]
+	sudo mkdir -p /usr/local/snort/etc/snort
+	sudo cp /usr/local/src/snort3/lua/*.lua /usr/local/snort/etc/snort/
+	sudo /usr/local/snort/bin/snort -c /usr/local/snort/etc/snort/snort.lua
+\end{lstlisting}
 
 \begin{figure}[H]
 	\centering
@@ -1086,9 +1236,14 @@ Creamos el directorio de configuración de Snort (\texttt{/usr/local/snort/etc/s
 
 \subsection{Instalación de reglas y plugins}
 
-Tras la correcta instalación de \textbf{Snort}, aprovecharemos la arquitectura modular introducida en la versión 3, la cual utiliza archivos con extensión \texttt{.lua} para gestionar su configuración de forma más flexible y estructurada. A continuación, se presenta una guía paso a paso sobre cómo instalar las reglas básicas proporcionadas por la comunidad de Snort, conocidas como \textit{Community Rules}.
+Tras la correcta instalación de \textbf{Snort}, aprovecharemos la arquitectura modular introducida en la versión 3, la cual utiliza archivos con extensión \texttt{.lua} para gestionar su configuración de forma más flexible y estructurada. A continuación, se presenta una guía paso a paso sobre cómo instalar las reglas básicas proporcionadas por la comunidad de Snort, conocidas como \textit{Community Rules}.\newline
 
 Descargamos las \textit{Community Rules} de Snort utilizando el comando \texttt{wget}, seguido de su descompresión mediante \texttt{tar}. Estas reglas constituyen un conjunto de firmas predefinidas para detectar amenazas comunes en entornos de red.
+
+\begin{lstlisting}[style=commandstyle, caption={Descargando e instalando las reglas Community Rules}]
+	sudo wget https://www.snort.org/downloads/community/snort3-community-rules.tar.gz
+	sudo tar -xvzf snort3-community-rules.tar.gz
+\end{lstlisting}
 
 \begin{figure}[H]
 	\centering
@@ -1100,13 +1255,21 @@ Descargamos las \textit{Community Rules} de Snort utilizando el comando \texttt{
 
 Posteriormente, editamos el archivo \texttt{snort.lua} \cite{snort_user_manual}, ubicado en \path{/usr/local/snort/etc/snort/}, para incluir la ruta del archivo \texttt{community.rules}. Esto permite que Snort cargue automáticamente estas reglas al iniciar y pueda utilizarlas para detectar patrones maliciosos en el tráfico de red. La edición del archivo puede realizarse con herramientas como \texttt{nano}, \texttt{vim} o cualquier otro editor de texto de preferencia.
 
+\begin{lstlisting}[style=commandstyle, caption={Editando el archivo snort.lua para incluir reglas personalizadas}]
+	sudo nano /usr/local/snort/etc/snort/snort.lua
+\end{lstlisting}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{instalacion_reglas_snort/2.png}
-	\caption{Modificación de \texttt{snort.lua} para agregar las reglas preconfiguradas.}
+	\caption{Modificación de snort.lua para agregar las reglas preconfiguradas.}
 \end{figure}
 
 Una vez agregadas las reglas a \texttt{snort.lua}, realizamos una validación de la configuración ejecutando Snort en modo prueba. Esto permite comprobar que no existan errores sintácticos o de carga, garantizando así que el sistema pueda funcionar correctamente.
+
+\begin{lstlisting}[style=commandstyle, caption={Validación de la configuración final de Snort con reglas}]
+	sudo snort -c /usr/local/snort/etc/snort/snort.lua
+\end{lstlisting}
 
 \begin{figure}[H]
 	\centering
@@ -1136,19 +1299,19 @@ Las reglas aplicadas son las siguientes:
 		\texttt{maximum\_headers}     & \texttt{200} & Detecta un número excesivo de cabeceras HTTP, que puede ser indicio de ataques por manipulación de protocolo.\\
 		\hline
 	\end{tabular}
-	\caption{Parámetros de \texttt{http\_inspect}.}
+	\caption{Parámetros de http\_inspect.}
 \end{table}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{http_inspect/4.png}
-	\caption{Configuración \texttt{http\_inspect}.}
+	\caption{Configuración http\_inspect.}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.45]{http_inspect/5.png}
-	\caption{Configuración de \texttt{binders}.}
+	\caption{Configuración de binders.}
 \end{figure}
 
 
@@ -1161,6 +1324,10 @@ Esta configuración adicional es esencial para que \textbf{Snort} pueda vincular
 \newline
 
 Por último, validamos la configuración ejecutando Snort en modo prueba para asegurarnos de que no se han introducido errores y que todas las configuraciones han sido cargadas exitosamente.
+
+\begin{lstlisting}[style=commandstyle, caption={Validación avanzada de la configuración de Snort}]
+	sudo snort -c /usr/local/snort/etc/snort/snort.lua --daq-dir /usr/local/lib/daq -T
+\end{lstlisting}
 
 \begin{figure}[H]
 	\centering
@@ -1184,21 +1351,18 @@ Posteriormente, es necesario vincular la configuración de \texttt{ssl} en la se
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{ssl_inspect/9.png}
-	\caption{Vincular con \texttt{binders}.}
+	\caption{Vincular con binders.}
 \end{figure}
 
 A continuación, verificamos la configuración de Snort para asegurarnos de que la sintaxis sea válida. Si todo es correcto, reiniciamos el servicio mediante \texttt{systemctl} para aplicar los cambios.
 
-\newpage
-
-\begin{lstlisting}[language=bash, label={lst:validacion_snort}]
-	# Validar la configuracion de Snort
+\begin{lstlisting}[style=commandstyle, caption={Validación de la configuración y reinicio del servicio Snort}, label={lst:validacion-snort}]
+	# Validar la configuración de Snort
 	sudo snort -c /usr/local/snort/etc/snort/snort.lua -T
 	
 	# Reiniciar el servicio de Snort
 	sudo systemctl restart snort
 \end{lstlisting}
-
 
 \subsubsection*{Stream IP}
 
@@ -1211,8 +1375,6 @@ Antiguamente conocido como \texttt{Frag3}, este preprocesador ha sido reemplazad
 \end{figure}
 
 Una vez completada la configuración, validamos la sintaxis del archivo y reiniciamos Snort para aplicar los cambios.
-
-\newpage
 
 \subsubsection*{Stream TCP}
 
@@ -1236,13 +1398,16 @@ Como en los casos anteriores, tras configurar el módulo, se valida la sintaxis 
 	\caption{Configuración de Reputation.}
 \end{figure}
 
-\newpage
-
 \subsubsection*{Datos sensibles}
 
 En versiones anteriores de Snort existía el preprocesador \textit{Sensitive Data}, pero ha sido descontinuado en las versiones más recientes. Sin embargo, es posible emular parte de su funcionalidad adaptando expresiones regulares personalizadas que alerten sobre la presencia de datos sensibles típicos en el entorno de una PYME, como credenciales o números de tarjetas.\newline
 
 Para ello, se crea un nuevo archivo de reglas llamado \texttt{custom.rules}, donde se definen patrones específicos a detectar.
+
+\begin{lstlisting}[style=commandstyle, caption={Editando el archivo custom.rules para incluir reglas personalizadas}]
+	sudo nano /usr/local/snort/etc/snort/custom.rulesS
+\end{lstlisting}
+
 
 \begin{figure}[H]
 	\centering
@@ -1255,14 +1420,16 @@ Posteriormente, se añade la ruta de este archivo en \texttt{snort.lua}, se comp
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{sensitive/2.png}
-	\caption{Agregación de \texttt{custom.rules}.}
+	\caption{Agregación de custom.rules.}
 \end{figure}
-
-\pagebreak
 
 \subsubsection*{Antivirus ClamAV}
 
 Finalmente, se procede con la instalación del antivirus \textbf{ClamAV}, una solución de código abierto utilizada para la detección de malware. Su integración complementa las capacidades de Snort mediante el análisis basado en firmas.
+
+\begin{lstlisting}[style=commandstyle, caption={Instalación del antivirus ClamAV}]
+	sudo apt install clamav clamav-daemon -y
+\end{lstlisting}
 
 \begin{figure}[H]
 	\centering
@@ -1271,6 +1438,12 @@ Finalmente, se procede con la instalación del antivirus \textbf{ClamAV}, una so
 \end{figure}
 
 Tras la instalación, se detiene el servicio, se actualizan las firmas de virus y se reinicia el demonio para activar la protección.
+
+\begin{lstlisting}[style=commandstyle, caption={Actualización de firmas y reinicio del servicio ClamAV}]
+	sudo systemctl stop clamav-freshclam
+	sudo freshclam
+	sudo systemctl start clamav-freshclam
+\end{lstlisting}
 
 \begin{figure}[H]
 	\centering
@@ -1350,7 +1523,7 @@ El script propuesto sigue una arquitectura modular, dividiendo su lógica en fun
 	\item \texttt{build\_from\_source.sh}: Gestiona y compila desde fuentes los componentes adicionales (luajit, daq, openssl, etc.).  
 	También maneja errores comunes de compatibilidad, como se muestra a continuación:
 	
-	\begin{lstlisting}[language=bash, caption={Corrección de versiones incompatibles de xz/liblzma}, label=lst:xz, basicstyle=\ttfamily\footnotesize, frame=single, numbers=left, numberstyle=\tiny, breaklines=true]
+	\begin{lstlisting}[style=snortstyle, caption={Corrección de versiones incompatibles de xz/liblzma}, label=lst:xz]
 		if ! xz -t "$archivo" 2>&1 | grep -qv 'version `XZ_'; then
 		apt-get install --reinstall -y xz-utils liblzma5 liblzma-dev
 		fi
@@ -1381,9 +1554,9 @@ El script implementa buenas prácticas de scripting en Bash, incluyendo:
 
 Además, cada función de especial importancia o con condiciones de carrera se acompaña de validaciones explícitas. Por ejemplo, antes de descomprimir archivos \texttt{.tar.gz} o \texttt{.tar.xz}, se comprueba su integridad con \texttt{gzip -t} o \texttt{xz -t}, y se mitigan fallos comunes de \texttt{liblzma} con reinstalación forzada si es necesario.
 
-\begin{lstlisting}[language=bash, caption={Validación e instalación segura de paquetes xz}, label="lst:xz"]
+\begin{lstlisting}[style=commandstyle, caption={Validación e instalación segura de paquetes xz}, label="lst:xz"]
 	if ! xz -t "\$archivo" 2>&1 | grep -qv 'version `XZ_'; then
-	apt-get install --reinstall -y xz-utils liblzma5 liblzma-dev
+		apt-get install --reinstall -y xz-utils liblzma5 liblzma-dev
 	fi
 \end{lstlisting}
 
@@ -1391,7 +1564,7 @@ Además, cada función de especial importancia o con condiciones de carrera se a
 
 Una vez instalado, \texttt{Snort} es configurado automáticamente como un servicio \texttt{systemd}. El script genera dinámicamente el archivo \texttt{snort.service} y lo enlaza al directorio correcto, con los parámetros adecuados de reinicio automático, límites de recursos y uso de la interfaz de red seleccionada interactivamente por el usuario.
 
-\begin{lstlisting}[language=bash, caption={Sección relevante del systemd generado}, label=lst:systemd]
+\begin{lstlisting}[style=commandstyle, caption={Sección relevante del systemd generado}, label=lst:systemd]
 	[Service]
 	ExecStart=/usr/local/snort/bin/snort -c /usr/local/snort/etc/snort/snort.lua -i eth0 -A alert_fast
 	Restart=always
@@ -1403,7 +1576,7 @@ Una vez instalado, \texttt{Snort} es configurado automáticamente como un servic
 
 Para abordar las limitaciones de memoria RAM propias de sistemas como la ARM (no presente en Raspberry Pi 5 de 8GB de RAM), el script evalúa si el sistema posee menos de 1.5GB de RAM y en ese caso crea un archivo de swap temporal de 2GB:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[style=commandstyle, caption={Sistema de swap}]
 	if [ "$mem_kb" -lt 1500000 ]; then
 	fallocate -l 2G /swapfile_snort
 \end{lstlisting}
@@ -1434,7 +1607,7 @@ El resultado es una arquitectura empaquetada bajo el nombre \texttt{r-snort-deb.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{script_automatico/13.png}
-	\caption{Estructura del proyecto reempaquetado como archivo \texttt{.deb}.}
+	\caption{Estructura del proyecto reempaquetado como archivo .deb.}
 \end{figure}
 
 \pagebreak
@@ -1448,7 +1621,7 @@ La transición al formato \texttt{.deb} permitió incorporar una serie de mejora
 	
 	\item \textbf{Modo promiscuo y sin IP:} Se creó el script \textbf{interface\_setup.sh} (ver Código~\ref{lst:interface-setup}) que activa automáticamente la interfaz seleccionada, elimina cualquier dirección IP existente para evitar conflictos, y la configura en modo \textit{promiscuo}. Este paso es esencial para que Snort pueda inspeccionar todo el tráfico redirigido desde el switch sin interferir en el funcionamiento de la red.
 	
-	\begin{lstlisting}[language=bash, caption={Activación automática del modo promiscuo en interface\_setup.sh}, label=lst:promiscuo, basicstyle=\ttfamily\footnotesize, frame=single, numbers=left, numberstyle=\tiny, breaklines=true]
+	\begin{lstlisting}[style=commandstyle, caption={Activación automática del modo promiscuo en interface\_setup.sh}, label=lst:promiscuo]
 	if [[ "$state" != "UP" ]]; then
 		ip link set dev "$iface" up
 	fi
@@ -1473,8 +1646,6 @@ Este rediseño responde no solo a criterios técnicos, sino también a aspectos 
 \end{enumerate}
 
 Esta arquitectura modular empaquetada sigue las mejores prácticas de la ingeniería de software y permite escalar, actualizar o personalizar R-SNORT en futuras versiones con mínima fricción.
-
-\pagebreak
 
 \subsubsection{Resultado final}
 
@@ -1598,18 +1769,22 @@ Finalmente, ejecutamos como administrador el script \texttt{installer\_snort.sh}
 
 \begin{figure}[H]
 	\centering
-	\begin{minipage}[b]{0.48\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\centering
 		\includegraphics[scale=0.35]{script_automatico/14.png}
-		\caption*{(a) Ejecución de R-Snort.}
-	\end{minipage}
+		\caption{Ejecución de R-Snort.}
+		\label{fig:ejecucion}
+	\end{subfigure}
 	\hfill
-	\begin{minipage}[b]{0.48\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\centering
 		\includegraphics[scale=0.35]{pruebas_config/10-10.png}
-		\caption*{(b) Finalización del instalador.}
-	\end{minipage}
+		\caption{Finalización del instalador.}
+		\label{fig:finalizacion}
+	\end{subfigure}
+	\vspace{1em}
 	\caption{Proceso completo de instalación automática de R-Snort.}
+	\label{fig:instalacion}
 \end{figure}
 
 \pagebreak
@@ -1718,6 +1893,8 @@ Desde el equipo Ubuntu Server (\texttt{192.168.1.133}) se ejecutó una consulta 
 \begin{lstlisting}[style=commandstyle]
 	dig +noall +answer google.com @8.8.8.8
 \end{lstlisting}
+
+\pagebreak
 
 \textbf{Resultado:} \\
 Snort generó correctamente varias alertas clasificadas como tráfico DNS sospechoso. Estas alertas corresponden a respuestas con TTL muy bajo y sin registros de autoridad, lo cual puede indicar un intento de manipulación de DNS.
@@ -1965,6 +2142,8 @@ Evaluar el comportamiento del sistema R-Snort cuando es sometido a tráfico de r
 \textbf{Metodología:}  
 Se han lanzado múltiples flujos simultáneos desde el servidor Ubuntu (192.168.1.133) hacia la Raspberry Pi (192.168.1.132), utilizando la herramienta \texttt{iperf3} en modo UDP. Para maximizar la presión sobre el sistema, se han abierto varias sesiones en paralelo y sin limitación de pacing, aumentando así la congestión de red y la carga sobre la CPU y la memoria del sistema.
 
+\newpage
+
 \begin{lstlisting}[language=bash,caption={Simulación de tráfico masivo desde Ubuntu Server hacia la Raspberry Pi},label={lst:trafico-masivo}]
 	# Ejecutar en 4 terminales distintas
 	iperf3 -c 192.168.1.132 -u -b 950M -t 600 --pacing-timer 0 -l 1470 -p 5201
@@ -2142,6 +2321,8 @@ Aunque Snort no está diseñado para detección basada en IA, podría integrarse
 
 
 % Bibliografía
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Bibliografía}
 \begin{thebibliography}{35}
 		
 	\bibitem{enisa_smes}
@@ -2313,7 +2494,7 @@ Estas dependencias se integran automáticamente durante la ejecución de los scr
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{github/1.png}
-	\caption{Vista general del repositorio \texttt{r-snort-installer}.}
+	\caption{Vista general del repositorio r-snort-installer.}
 \end{figure}
 
 \begin{figure}[H]
@@ -2350,7 +2531,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \section*{1. Script principal de instalación (nivel raíz)}
 
 \subsection*{install\_rsnort.sh}
-\begin{lstlisting}[language=bash, caption={Script principal \texttt{install\_rsnort.sh}}, label={lst:install-rsnort}]
+\begin{lstlisting}[language=bash, caption={Script principal install\_rsnort.sh}, label={lst:install-rsnort}]
 	#!/bin/bash
 	set -e
 	
@@ -2405,7 +2586,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \section*{2. Scripts del directorio \texttt{opt/r-snort/bin}}
 
 \subsection*{build\_from\_source.sh}
-\begin{lstlisting}[language=bash, caption={\texttt{build\_from\_source.sh}}]
+\begin{lstlisting}[language=bash, caption={build\_from\_source.sh}]
 	#!/bin/bash
 	
 	package_install() {
@@ -2508,7 +2689,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \end{lstlisting}
 
 \subsection*{checks.sh}
-\begin{lstlisting}[language=bash, caption={\texttt{checks.sh}}, label={lst:checks-sh}]
+\begin{lstlisting}[language=bash, caption={checks.sh}, label={lst:checks-sh}]
 	#!/bin/bash
 	
 	check_root() {
@@ -2526,7 +2707,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \end{lstlisting}
 
 \subsection*{configure\_snort.sh}
-\begin{lstlisting}[language=bash, caption={\texttt{configure\_snort.sh}}, label={lst:configure-snort}]
+\begin{lstlisting}[language=bash, caption={configure\_snort.sh}, label={lst:configure-snort}]
 	#!/bin/bash
 	
 	snort_config() {
@@ -2586,7 +2767,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \end{lstlisting}
 
 \subsection*{core.sh}
-\begin{lstlisting}[language=bash, caption={\texttt{core.sh}}, label={lst:core-sh}]
+\begin{lstlisting}[language=bash, caption={core.sh}, label={lst:core-sh}]
 	#!/bin/bash
 	
 	RED='\033[0;31m'; GREEN='\033[0;32m'; BLUE='\033[0;34m'; NC='\033[0m'
@@ -2604,7 +2785,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \end{lstlisting}
 
 \subsection*{dependencies.sh}
-\begin{lstlisting}[language=bash, caption={\texttt{dependencies.sh}}, label={lst:dependencies-sh}]
+\begin{lstlisting}[language=bash, caption={dependencies.sh}, label={lst:dependencies-sh}]
 	#!/bin/bash
 	
 	dependencies_install() {
@@ -2628,7 +2809,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \end{lstlisting}
 
 \subsection*{install\_snort.sh}
-\begin{lstlisting}[language=bash, caption={\texttt{install\_snort.sh}}, label={lst:install-snort}]
+\begin{lstlisting}[language=bash, caption={install\_snort.sh}, label={lst:install-snort}]
 	#!/bin/bash
 	
 	snort_install() {
@@ -2667,7 +2848,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \end{lstlisting}
 
 \subsection*{interface\_setup.sh}
-\begin{lstlisting}[language=bash, caption={\texttt{interface\_setup.sh}}, label={lst:interface-setup}]
+\begin{lstlisting}[language=bash, caption={interface\_setup.sh}, label={lst:interface-setup}]
 	#!/bin/bash
 	
 	interface_setup() {
@@ -2704,7 +2885,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \end{lstlisting}
 
 \subsection*{stats.sh}
-\begin{lstlisting}[language=bash, caption={\texttt{stats.sh}}, label={lst:stats-sh}]
+\begin{lstlisting}[language=bash, caption={stats.sh}, label={lst:stats-sh}]
 	#!/bin/bash
 	
 	show_stats() {
@@ -2741,7 +2922,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \end{lstlisting}
 
 \subsection*{swap.sh}
-\begin{lstlisting}[language=bash, caption={\texttt{swap.sh}}, label={lst:swap-sh}]
+\begin{lstlisting}[language=bash, caption={swap.sh}, label={lst:swap-sh}]
 	#!/bin/bash
 	
 	temp_swap_if_necessary() {
@@ -2790,7 +2971,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \section*{3. Script general de orquestación}
 
 \subsection*{r-snort\_installer.sh}
-\begin{lstlisting}[language=bash, caption={\texttt{r-snort\_installer.sh}}, label={lst:r-snort-installer}]
+\begin{lstlisting}[language=bash, caption={r-snort\_installer.sh}, label={lst:r-snort-installer}]
 	#!/bin/bash
 	###############################################################################
 	#                           R-SNORT INSTALLER                                 #
@@ -2865,7 +3046,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \section*{4. Archivos de control del paquete \texttt{DEBIAN/}}
 
 \subsection*{control}
-\begin{lstlisting}[language={}, caption={Archivo \texttt{lst:control}}, label={lst:control}]
+\begin{lstlisting}[language={}, caption={Archivo control}, label={lst:control}]
 	Package: r-snort
 	Version: 1.0
 	Section: net
@@ -2878,7 +3059,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \end{lstlisting}
 
 \subsection*{postinst}
-\begin{lstlisting}[language=bash, caption={Script \texttt{postinst}}, label={lst:postinst}]
+\begin{lstlisting}[language=bash, caption={Script postins}, label={lst:postinst}]
 	#!/bin/bash
 	set -e
 	
@@ -2904,7 +3085,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \pagebreak
 
 \subsection*{prerm}
-\begin{lstlisting}[language=bash, caption={Script \texttt{prerm}}, label={lst:prerm}]
+\begin{lstlisting}[language=bash, caption={Script prerm}, label={lst:prerm}]
 	#!/bin/bash
 	echo "[R-SNORT] Deteniendo servicio Snort antes de eliminar el paquete..."
 	systemctl stop snort.service 2>/dev/null || true
@@ -2913,7 +3094,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 \end{lstlisting}
 
 \subsection*{postrm}
-\begin{lstlisting}[language=bash, caption={Script \texttt{postrm}}, label={lst:postrm}]
+\begin{lstlisting}[language=bash, caption={Script postrm}, label={lst:postrm}]
 	#!/bin/bash
 	set -e
 	
@@ -2931,6 +3112,8 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 	;;
 	esac
 \end{lstlisting}
+
+\includepdf[pages=1, pagecommand={\thispagestyle{empty}}, fitpaper=true]{ContraportadaCTFG.pdf}
 
 
 \end{document}
