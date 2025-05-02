@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.17)  2 MAY 2025 03:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.17)  2 MAY 2025 11:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -874,7 +874,7 @@ File: lstlang1.sty 2023/02/27 1.9 listings language file
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
-6.
+7.
 
 (C:\Users\deian\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -890,27 +890,27 @@ LaTeX Info: Redefining \% on input line 11.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Info: Redefining \. on input line 116.
-LaTeX Info: Redefining \% on input line 116.
-Package hyperref Info: Link coloring OFF on input line 116.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Info: Redefining \. on input line 117.
+LaTeX Info: Redefining \% on input line 117.
+Package hyperref Info: Link coloring OFF on input line 117.
  (main.out) (main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
@@ -985,9 +985,9 @@ n/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}] [2
 <adicional/cc.xlarge.png, id=262, 1027.84pt x 1027.84pt>
 File: adicional/cc.xlarge.png Graphic file (type png)
 <use adicional/cc.xlarge.png>
-Package pdftex.def Info: adicional/cc.xlarge.png  used on input line 147.
+Package pdftex.def Info: adicional/cc.xlarge.png  used on input line 148.
 (pdftex.def)             Requested size: 136.57462pt x 136.57239pt.
- (main.toc
+ [3 <./adicional/cc.xlarge.png>] [4] (main.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
@@ -1020,7 +1020,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 2.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 2.
- [3 <./adicional/cc.xlarge.png>] [4]
+ [5]
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 77
 .
 
@@ -1031,1290 +1031,1292 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 \openout5 = `main.toc'.
 
 
-[5{C:/Users/deian/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
-[6
+[6{C:/Users/deian/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
+(main.lof
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [7])
+\tf@lof=\write6
+\openout6 = `main.lof'.
 
-] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 196--197
+ [8] [9] (main.lot
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@lot=\write7
+\openout7 = `main.lot'.
+
+ [10] (main.lol)
+\tf@lol=\write8
+\openout8 = `main.lol'.
+
+ [11] [12
+
+] [13]
+Underfull \hbox (badness 10000) in paragraph at lines 218--219
 
  []
 
-[8
+[14
 
 ]
 Cap\'{\i }tulo 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--203
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 204--205
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 206--207
-
- []
-
-[9
-
-]
-Cap\'{\i }tulo 2.
-
-Underfull \hbox (badness 10000) in paragraph at lines 209--210
-
- []
-
-[10
-
-]
-Cap\'{\i }tulo 3.
 
 Underfull \hbox (badness 10000) in paragraph at lines 226--227
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 232--233
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
+
+ []
+
+[15
+
+]
+Cap\'{\i }tulo 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
+
+ []
+
+[16
+
+]
+Cap\'{\i }tulo 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--235
+Underfull \hbox (badness 10000) in paragraph at lines 254--255
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 244--245
+Underfull \hbox (badness 10000) in paragraph at lines 256--257
 
  []
 
-[11
 
-] [12]
-<cronograma/cronograma.png, id=389, 1237.9851pt x 693.0693pt>
+Underfull \hbox (badness 10000) in paragraph at lines 266--267
+
+ []
+
+[17
+
+] [18]
+<cronograma/cronograma.png, id=625, 1237.9851pt x 693.0693pt>
 File: cronograma/cronograma.png Graphic file (type png)
 <use cronograma/cronograma.png>
-Package pdftex.def Info: cronograma/cronograma.png  used on input line 262.
+Package pdftex.def Info: cronograma/cronograma.png  used on input line 284.
 (pdftex.def)             Requested size: 433.30128pt x 242.57788pt.
-<cronograma/real_estimado.png, id=390, 1191.7323pt x 652.5981pt>
+<cronograma/real_estimado.png, id=626, 1191.7323pt x 652.5981pt>
 File: cronograma/real_estimado.png Graphic file (type png)
 <use cronograma/real_estimado.png>
-Package pdftex.def Info: cronograma/real_estimado.png  used on input line 268.
+Package pdftex.def Info: cronograma/real_estimado.png  used on input line 290.
 (pdftex.def)             Requested size: 417.11255pt x 228.41275pt.
- [13
+ [19
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.273 \chapter
+l.295 \chapter
               {Estructura y metodologÃ­a}
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.273 \chapter
+l.295 \chapter
               {Estructura y metodologÃ­a} <./cronograma/cronograma.png> <./cron
 ograma/real_estimado.png>]
 Cap\'{\i }tulo 4.
-[14
+[20
 
-] [15]
+] [21]
 Cap\'{\i }tulo 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--324
+Underfull \hbox (badness 10000) in paragraph at lines 345--346
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--326
+Underfull \hbox (badness 10000) in paragraph at lines 347--348
 
  []
 
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
-34.
+56.
 (C:\Users\deian\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [16
+) [22
 
 {C:/Users/deian/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 403--404
+Underfull \hbox (badness 10000) in paragraph at lines 425--426
 
  []
 
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 409--410
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 431--432
 
  []
 
-[18]
-<adicional/diagrama_arquitectura.png, id=443, 723.70375pt x 201.75375pt>
+[24]
+<adicional/diagrama_arquitectura.png, id=677, 723.70375pt x 201.75375pt>
 File: adicional/diagrama_arquitectura.png Graphic file (type png)
 <use adicional/diagrama_arquitectura.png>
 Package pdftex.def Info: adicional/diagrama_arquitectura.png  used on input lin
-e 441.
+e 463.
 (pdftex.def)             Requested size: 361.85098pt x 100.87662pt.
- [19
+ [25
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.469 \end{itemize}
+l.491 \end{itemize}
                     <./adicional/diagrama_arquitectura.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 502--503
+Underfull \hbox (badness 10000) in paragraph at lines 524--525
 
  []
 
-[20] [21] [22]
-Underfull \hbox (badness 10000) in paragraph at lines 623--624
+[26] [27] [28]
+Underfull \hbox (badness 10000) in paragraph at lines 645--646
 
  []
 
-[23] [24]
+[29] [30]
 Cap\'{\i }tulo 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 664--665
+Underfull \hbox (badness 10000) in paragraph at lines 686--687
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 666--667
+Underfull \hbox (badness 10000) in paragraph at lines 688--689
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 668--669
+Underfull \hbox (badness 10000) in paragraph at lines 690--691
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 670--671
+Underfull \hbox (badness 10000) in paragraph at lines 692--693
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 672--673
-
- []
-
-[25
-
-]
 Underfull \hbox (badness 10000) in paragraph at lines 694--695
 
  []
 
+[31
 
-Overfull \hbox (8.63618pt too wide) in paragraph at lines 707--708
+]
+Underfull \hbox (badness 10000) in paragraph at lines 716--717
+
+ []
+
+
+Overfull \hbox (8.63618pt too wide) in paragraph at lines 729--730
 []\T1/lmr/bx/n/10.95 Dependencias bá-si-cas: \T1/pcr/m/n/10.95 CMake (3.5+)\T1/
 lmr/m/n/10.95 , \T1/pcr/m/n/10.95 GCC (6.0+)\T1/lmr/m/n/10.95 , \T1/pcr/m/n/10.
 95 libpcap-dev\T1/lmr/m/n/10.95 , \T1/pcr/m/n/10.95 libpcre\T1/lmr/m/n/10.95 , 
 \T1/pcr/m/n/10.95 zlib\T1/lmr/m/n/10.95 ,
  []
 
-[26]
-<script_automatico/network.png, id=493, 743.77875pt x 302.12875pt>
+[32]
+<script_automatico/network.png, id=726, 743.77875pt x 302.12875pt>
 File: script_automatico/network.png Graphic file (type png)
 <use script_automatico/network.png>
-Package pdftex.def Info: script_automatico/network.png  used on input line 731.
+Package pdftex.def Info: script_automatico/network.png  used on input line 753.
 
 (pdftex.def)             Requested size: 446.27069pt x 181.27864pt.
- [27
+ [33
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.740 	\item U
+l.762 	\item U
               n \textbf{switch gestionable} (modelo \texttt{Tenda TEG205E}) ...
- <./script_automatico/network.png>] [28] [29]
+ <./script_automatico/network.png>] [34] [35]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 810.
+(Font)              <9> on input line 832.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 810.
-<instalacion_snort/1-1.png, id=511, 3693.8pt x 2517.405pt>
+(Font)              <5> on input line 832.
+<instalacion_snort/1-1.png, id=743, 3693.8pt x 2517.405pt>
 File: instalacion_snort/1-1.png Graphic file (type png)
 <use instalacion_snort/1-1.png>
-Package pdftex.def Info: instalacion_snort/1-1.png  used on input line 819.
+Package pdftex.def Info: instalacion_snort/1-1.png  used on input line 841.
 (pdftex.def)             Requested size: 443.23688pt x 302.07556pt.
- [30
+ [36
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.823 \newpage
+l.845 \newpage
                <./instalacion_snort/1-1.png>]
-<instalacion_snort/2-2.png, id=522, 3091.55pt x 1521.685pt>
+<instalacion_snort/2-2.png, id=753, 3091.55pt x 1521.685pt>
 File: instalacion_snort/2-2.png Graphic file (type png)
 <use instalacion_snort/2-2.png>
-Package pdftex.def Info: instalacion_snort/2-2.png  used on input line 829.
+Package pdftex.def Info: instalacion_snort/2-2.png  used on input line 851.
 (pdftex.def)             Requested size: 370.97pt x 182.59431pt.
-<instalacion_snort/3-3.png, id=523, 2834.59pt x 1614.03pt>
+<instalacion_snort/3-3.png, id=754, 2834.59pt x 1614.03pt>
 File: instalacion_snort/3-3.png Graphic file (type png)
 <use instalacion_snort/3-3.png>
-Package pdftex.def Info: instalacion_snort/3-3.png  used on input line 837.
+Package pdftex.def Info: instalacion_snort/3-3.png  used on input line 859.
 (pdftex.def)             Requested size: 340.13612pt x 193.67525pt.
- [31
+ [37
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.841 \newpage
+l.863 \newpage
               
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.4}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.841 \newpage
+l.863 \newpage
                <./instalacion_snort/2-2.png> <./instalacion_snort/3-3.png>]
-<instalacion_snort/4-4.png, id=533, 3019.28pt x 3147.76pt>
+<instalacion_snort/4-4.png, id=762, 3019.28pt x 3147.76pt>
 File: instalacion_snort/4-4.png Graphic file (type png)
 <use instalacion_snort/4-4.png>
-Package pdftex.def Info: instalacion_snort/4-4.png  used on input line 847.
+Package pdftex.def Info: instalacion_snort/4-4.png  used on input line 869.
 (pdftex.def)             Requested size: 362.29797pt x 377.7149pt.
 
-[32
+[38
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.852 \newpage
+l.874 \newpage
                <./instalacion_snort/4-4.png>]
-<instalacion_snort/5-5.png, id=540, 3452.9pt x 1806.75pt>
+<instalacion_snort/5-5.png, id=768, 3452.9pt x 1806.75pt>
 File: instalacion_snort/5-5.png Graphic file (type png)
 <use instalacion_snort/5-5.png>
-Package pdftex.def Info: instalacion_snort/5-5.png  used on input line 858.
+Package pdftex.def Info: instalacion_snort/5-5.png  used on input line 880.
 (pdftex.def)             Requested size: 414.33012pt x 216.80064pt.
-<instalacion_snort/6-6.png, id=541, 3199.955pt x 1718.42pt>
+<instalacion_snort/6-6.png, id=769, 3199.955pt x 1718.42pt>
 File: instalacion_snort/6-6.png Graphic file (type png)
 <use instalacion_snort/6-6.png>
-Package pdftex.def Info: instalacion_snort/6-6.png  used on input line 868.
+Package pdftex.def Info: instalacion_snort/6-6.png  used on input line 890.
 (pdftex.def)             Requested size: 383.97804pt x 206.2015pt.
- [33
+ [39
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.6}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.872 \newpage
+l.894 \newpage
               
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.7}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.872 \newpage
+l.894 \newpage
                <./instalacion_snort/5-5.png> <./instalacion_snort/6-6.png>]
-Overfull \hbox (19.70879pt too wide) in paragraph at lines 874--875
+Overfull \hbox (19.70879pt too wide) in paragraph at lines 896--897
 []\T1/lmr/m/n/10.95 Editamos el ar-chi-vo \T1/pcr/m/n/10.95 dnet.pc \T1/lmr/m/n
 /10.95 usan-do \T1/pcr/m/n/10.95 nano\T1/lmr/m/n/10.95 , aña-dien-do las ru-tas
  co-rrec-tas pa-ra que \T1/pcr/m/n/10.95 pkg-config
  []
 
-<instalacion_snort/7.png, id=550, 191.9672pt x 166.37157pt>
+<instalacion_snort/7.png, id=776, 191.9672pt x 166.37157pt>
 File: instalacion_snort/7.png Graphic file (type png)
 <use instalacion_snort/7.png>
-Package pdftex.def Info: instalacion_snort/7.png  used on input line 878.
+Package pdftex.def Info: instalacion_snort/7.png  used on input line 900.
 (pdftex.def)             Requested size: 191.96672pt x 166.37114pt.
-<instalacion_snort/8-8.png, id=551, 3693.8pt x 1357.07pt>
+<instalacion_snort/8-8.png, id=777, 3693.8pt x 1357.07pt>
 File: instalacion_snort/8-8.png Graphic file (type png)
 <use instalacion_snort/8-8.png>
-Package pdftex.def Info: instalacion_snort/8-8.png  used on input line 886.
+Package pdftex.def Info: instalacion_snort/8-8.png  used on input line 908.
 (pdftex.def)             Requested size: 443.23688pt x 162.84137pt.
-[34
+[40
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.8}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.890 \newpage
+l.912 \newpage
               
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.9}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.890 \newpage
+l.912 \newpage
                <./instalacion_snort/7.png> <./instalacion_snort/8-8.png>]
-<instalacion_snort/9-9.png, id=560, 3493.05pt x 1357.07pt>
+<instalacion_snort/9-9.png, id=784, 3493.05pt x 1357.07pt>
 File: instalacion_snort/9-9.png Graphic file (type png)
 <use instalacion_snort/9-9.png>
-Package pdftex.def Info: instalacion_snort/9-9.png  used on input line 898.
+Package pdftex.def Info: instalacion_snort/9-9.png  used on input line 920.
 (pdftex.def)             Requested size: 419.14792pt x 162.84137pt.
-<instalacion_snort/10-10.png, id=561, 2469.225pt x 1264.725pt>
+<instalacion_snort/10-10.png, id=785, 2469.225pt x 1264.725pt>
 File: instalacion_snort/10-10.png Graphic file (type png)
 <use instalacion_snort/10-10.png>
-Package pdftex.def Info: instalacion_snort/10-10.png  used on input line 906.
+Package pdftex.def Info: instalacion_snort/10-10.png  used on input line 928.
 (pdftex.def)             Requested size: 296.29422pt x 151.76045pt.
 
-[35
+[41
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.10})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.910 \newpage
+l.932 \newpage
               
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.11})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.910 \newpage
+l.932 \newpage
                <./instalacion_snort/9-9.png> <./instalacion_snort/10-10.png>]
-<instalacion_snort/11-11.png, id=570, 2577.63pt x 1084.05pt>
+<instalacion_snort/11-11.png, id=792, 2577.63pt x 1084.05pt>
 File: instalacion_snort/11-11.png Graphic file (type png)
 <use instalacion_snort/11-11.png>
-Package pdftex.def Info: instalacion_snort/11-11.png  used on input line 918.
+Package pdftex.def Info: instalacion_snort/11-11.png  used on input line 940.
 (pdftex.def)             Requested size: 309.30226pt x 130.08038pt.
-<instalacion_snort/12-12.png, id=571, 2396.955pt x 1357.07pt>
+<instalacion_snort/12-12.png, id=793, 2396.955pt x 1357.07pt>
 File: instalacion_snort/12-12.png Graphic file (type png)
 <use instalacion_snort/12-12.png>
-Package pdftex.def Info: instalacion_snort/12-12.png  used on input line 926.
+Package pdftex.def Info: instalacion_snort/12-12.png  used on input line 948.
 (pdftex.def)             Requested size: 287.6222pt x 162.84137pt.
 
-[36
+[42
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.12})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.930 \newpage
+l.952 \newpage
               
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.13})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.930 \newpage
+l.952 \newpage
                <./instalacion_snort/11-11.png> <./instalacion_snort/12-12.png>]
-<instalacion_snort/13-13.png, id=580, 2505.36pt x 1357.07pt>
+<instalacion_snort/13-13.png, id=800, 2505.36pt x 1357.07pt>
 File: instalacion_snort/13-13.png Graphic file (type png)
 <use instalacion_snort/13-13.png>
-Package pdftex.def Info: instalacion_snort/13-13.png  used on input line 936.
+Package pdftex.def Info: instalacion_snort/13-13.png  used on input line 958.
 (pdftex.def)             Requested size: 300.63023pt x 162.84137pt.
-<instalacion_snort/14-14.png, id=581, 3693.8pt x 1899.095pt>
+<instalacion_snort/14-14.png, id=801, 3693.8pt x 1899.095pt>
 File: instalacion_snort/14-14.png Graphic file (type png)
 <use instalacion_snort/14-14.png>
-Package pdftex.def Info: instalacion_snort/14-14.png  used on input line 944.
+Package pdftex.def Info: instalacion_snort/14-14.png  used on input line 966.
 (pdftex.def)             Requested size: 443.23688pt x 227.88156pt.
-[37
+[43
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.14})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.948 \newpage
+l.970 \newpage
               
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.15})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.948 \newpage
+l.970 \newpage
                <./instalacion_snort/13-13.png> <./instalacion_snort/14-14.png>]
-<instalacion_snort/15-15.png, id=591, 3529.185pt x 1537.745pt>
+<instalacion_snort/15-15.png, id=809, 3529.185pt x 1537.745pt>
 File: instalacion_snort/15-15.png Graphic file (type png)
 <use instalacion_snort/15-15.png>
-Package pdftex.def Info: instalacion_snort/15-15.png  used on input line 956.
+Package pdftex.def Info: instalacion_snort/15-15.png  used on input line 978.
 (pdftex.def)             Requested size: 423.48393pt x 184.52144pt.
-<instalacion_snort/16-16.png, id=592, 3236.09pt x 1445.4pt>
+<instalacion_snort/16-16.png, id=810, 3236.09pt x 1445.4pt>
 File: instalacion_snort/16-16.png Graphic file (type png)
 <use instalacion_snort/16-16.png>
-Package pdftex.def Info: instalacion_snort/16-16.png  used on input line 966.
+Package pdftex.def Info: instalacion_snort/16-16.png  used on input line 988.
 (pdftex.def)             Requested size: 388.31404pt x 173.4405pt.
-[38
+[44
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.16})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.970 \newpage
+l.992 \newpage
               
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.17})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.970 \newpage
+l.992 \newpage
                <./instalacion_snort/15-15.png> <./instalacion_snort/16-16.png>]
-<instalacion_snort/19-19.png, id=601, 2979.13pt x 1537.745pt>
+<instalacion_snort/19-19.png, id=817, 2979.13pt x 1537.745pt>
 File: instalacion_snort/19-19.png Graphic file (type png)
 <use instalacion_snort/19-19.png>
-Package pdftex.def Info: instalacion_snort/19-19.png  used on input line 978.
+Package pdftex.def Info: instalacion_snort/19-19.png  used on input line 1000.
 (pdftex.def)             Requested size: 357.48018pt x 184.52144pt.
-<instalacion_snort/20-20.png, id=602, 3051.4pt x 1445.4pt>
+<instalacion_snort/20-20.png, id=818, 3051.4pt x 1445.4pt>
 File: instalacion_snort/20-20.png Graphic file (type png)
 <use instalacion_snort/20-20.png>
-Package pdftex.def Info: instalacion_snort/20-20.png  used on input line 986.
+Package pdftex.def Info: instalacion_snort/20-20.png  used on input line 1008.
 (pdftex.def)             Requested size: 366.1522pt x 173.4405pt.
-[39
+[45
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.18})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.990 \newpage
-              
+l.1012 \newpage
+               
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.19})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.990 \newpage
-               <./instalacion_snort/19-19.png> <./instalacion_snort/20-20.png>]
-<instalacion_snort/17-17.png, id=611, 3693.8pt x 1537.745pt>
+l.1012 \newpage
+                <./instalacion_snort/19-19.png> <./instalacion_snort/20-20.png>
+]
+<instalacion_snort/17-17.png, id=825, 3693.8pt x 1537.745pt>
 File: instalacion_snort/17-17.png Graphic file (type png)
 <use instalacion_snort/17-17.png>
-Package pdftex.def Info: instalacion_snort/17-17.png  used on input line 998.
+Package pdftex.def Info: instalacion_snort/17-17.png  used on input line 1020.
 (pdftex.def)             Requested size: 443.23688pt x 184.52144pt.
-<instalacion_snort/18-18.png, id=612, 3693.8pt x 995.72pt>
+<instalacion_snort/18-18.png, id=826, 3693.8pt x 995.72pt>
 File: instalacion_snort/18-18.png Graphic file (type png)
 <use instalacion_snort/18-18.png>
-Package pdftex.def Info: instalacion_snort/18-18.png  used on input line 1006.
+Package pdftex.def Info: instalacion_snort/18-18.png  used on input line 1028.
 (pdftex.def)             Requested size: 443.23688pt x 119.48125pt.
-[40
+ [46
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.20})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1010 \newpage
+l.1032 \newpage
                
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.21})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1010 \newpage
+l.1032 \newpage
                 <./instalacion_snort/17-17.png> <./instalacion_snort/18-18.png>
 ]
-<instalacion_snort/21-21.png, id=621, 3452.9pt x 4155.525pt>
+<instalacion_snort/21-21.png, id=833, 3452.9pt x 4155.525pt>
 File: instalacion_snort/21-21.png Graphic file (type png)
 <use instalacion_snort/21-21.png>
-Package pdftex.def Info: instalacion_snort/21-21.png  used on input line 1016.
+Package pdftex.def Info: instalacion_snort/21-21.png  used on input line 1038.
 (pdftex.def)             Requested size: 414.33012pt x 498.6415pt.
- [41
+ [47
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.22})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1020 \newpage
+l.1042 \newpage
                 <./instalacion_snort/21-21.png>]
-<instalacion_snort/22-22.png, id=628, 3693.8pt x 3613.5pt>
+<instalacion_snort/22-22.png, id=839, 3693.8pt x 3613.5pt>
 File: instalacion_snort/22-22.png Graphic file (type png)
 <use instalacion_snort/22-22.png>
-Package pdftex.def Info: instalacion_snort/22-22.png  used on input line 1028.
+Package pdftex.def Info: instalacion_snort/22-22.png  used on input line 1050.
 (pdftex.def)             Requested size: 443.23688pt x 433.6013pt.
- [42
+ [48
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.23})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1032 \newpage
+l.1054 \newpage
                 <./instalacion_snort/22-22.png>]
-<instalacion_snort/23-23.png, id=635, 2798.455pt x 2348.775pt>
+<instalacion_snort/23-23.png, id=845, 2798.455pt x 2348.775pt>
 File: instalacion_snort/23-23.png Graphic file (type png)
 <use instalacion_snort/23-23.png>
-Package pdftex.def Info: instalacion_snort/23-23.png  used on input line 1038.
+Package pdftex.def Info: instalacion_snort/23-23.png  used on input line 1060.
 (pdftex.def)             Requested size: 335.80011pt x 281.84084pt.
-<instalacion_snort/24.png, id=636, 465.23813pt x 228.10219pt>
+<instalacion_snort/24.png, id=846, 465.23813pt x 228.10219pt>
 File: instalacion_snort/24.png Graphic file (type png)
 <use instalacion_snort/24.png>
-Package pdftex.def Info: instalacion_snort/24.png  used on input line 1049.
+Package pdftex.def Info: instalacion_snort/24.png  used on input line 1071.
 (pdftex.def)             Requested size: 325.66446pt x 159.67043pt.
- [43
+ [49
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.24})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1053 \newpage
+l.1075 \newpage
                
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.25})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1053 \newpage
+l.1075 \newpage
                 <./instalacion_snort/23-23.png> <./instalacion_snort/24.png>]
-<instalacion_snort/25-25.png, id=646, 3601.455pt x 3525.17pt>
+<instalacion_snort/25-25.png, id=854, 3601.455pt x 3525.17pt>
 File: instalacion_snort/25-25.png Graphic file (type png)
 <use instalacion_snort/25-25.png>
-Package pdftex.def Info: instalacion_snort/25-25.png  used on input line 1059.
+Package pdftex.def Info: instalacion_snort/25-25.png  used on input line 1081.
 (pdftex.def)             Requested size: 432.15596pt x 423.00215pt.
 
-[44
+[50
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.26})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1063 \newpage
+l.1085 \newpage
                 <./instalacion_snort/25-25.png>]
-<instalacion_reglas_snort/1-1.png, id=653, 3693.8pt x 2983.145pt>
+<instalacion_reglas_snort/1-1.png, id=860, 3693.8pt x 2983.145pt>
 File: instalacion_reglas_snort/1-1.png Graphic file (type png)
 <use instalacion_reglas_snort/1-1.png>
 Package pdftex.def Info: instalacion_reglas_snort/1-1.png  used on input line 1
-073.
+095.
 (pdftex.def)             Requested size: 443.23688pt x 357.96196pt.
- [45
+ [51
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.27})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1078 
+l.1100 
         <./instalacion_reglas_snort/1-1.png>]
-<instalacion_reglas_snort/2.png, id=661, 494.59781pt x 189.70876pt>
+<instalacion_reglas_snort/2.png, id=867, 494.59781pt x 189.70876pt>
 File: instalacion_reglas_snort/2.png Graphic file (type png)
 <use instalacion_reglas_snort/2.png>
-Package pdftex.def Info: instalacion_reglas_snort/2.png  used on input line 108
-3.
+Package pdftex.def Info: instalacion_reglas_snort/2.png  used on input line 110
+5.
 (pdftex.def)             Requested size: 395.67877pt x 151.7672pt.
-<instalacion_reglas_snort/3-3.png, id=662, 3693.8pt x 1987.425pt>
+<instalacion_reglas_snort/3-3.png, id=868, 3693.8pt x 1987.425pt>
 File: instalacion_reglas_snort/3-3.png Graphic file (type png)
 <use instalacion_reglas_snort/3-3.png>
 Package pdftex.def Info: instalacion_reglas_snort/3-3.png  used on input line 1
-091.
+113.
 (pdftex.def)             Requested size: 443.23688pt x 238.48071pt.
- [46
+ [52
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.28})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1095 \newpage
+l.1117 \newpage
                
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.29})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1095 \newpage
+l.1117 \newpage
                 <./instalacion_reglas_snort/2.png> <./instalacion_reglas_snort/
 3-3.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1101--1103
+Underfull \hbox (badness 10000) in paragraph at lines 1123--1125
 
  []
 
-<http_inspect/4.png, id=672, 476.53032pt x 508.90125pt>
+<http_inspect/4.png, id=876, 476.53032pt x 508.90125pt>
 File: http_inspect/4.png Graphic file (type png)
 <use http_inspect/4.png>
-Package pdftex.def Info: http_inspect/4.png  used on input line 1122.
+Package pdftex.def Info: http_inspect/4.png  used on input line 1144.
 (pdftex.def)             Requested size: 238.26457pt x 254.45pt.
-[47
+[53
 pdfTeX warning (ext4): destination with the same identifier (name{table.6.1}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1125 
+l.1147 
        ]
-<http_inspect/5.png, id=678, 572.89032pt x 625.58719pt>
+<http_inspect/5.png, id=881, 572.89032pt x 625.58719pt>
 File: http_inspect/5.png Graphic file (type png)
 <use http_inspect/5.png>
-Package pdftex.def Info: http_inspect/5.png  used on input line 1128.
+Package pdftex.def Info: http_inspect/5.png  used on input line 1150.
 (pdftex.def)             Requested size: 257.79826pt x 281.51163pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1135--1137
+Underfull \hbox (badness 10000) in paragraph at lines 1157--1159
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1138--1140
+Underfull \hbox (badness 10000) in paragraph at lines 1160--1162
 
  []
 
-[48
+[54
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.30})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1140 
+l.1162 
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.31})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1140 
+l.1162 
         <./http_inspect/4.png> <./http_inspect/5.png>]
-<http_inspect/6-6.png, id=687, 3693.8pt x 1626.075pt>
+<http_inspect/6-6.png, id=888, 3693.8pt x 1626.075pt>
 File: http_inspect/6-6.png Graphic file (type png)
 <use http_inspect/6-6.png>
-Package pdftex.def Info: http_inspect/6-6.png  used on input line 1145.
+Package pdftex.def Info: http_inspect/6-6.png  used on input line 1167.
 (pdftex.def)             Requested size: 369.40164pt x 162.61702pt.
-<ssl_inspect/8.png, id=688, 394.47375pt x 100.87688pt>
+<ssl_inspect/8.png, id=889, 394.47375pt x 100.87688pt>
 File: ssl_inspect/8.png Graphic file (type png)
 <use ssl_inspect/8.png>
-Package pdftex.def Info: ssl_inspect/8.png  used on input line 1156.
+Package pdftex.def Info: ssl_inspect/8.png  used on input line 1178.
 (pdftex.def)             Requested size: 315.57942pt x 80.7016pt.
-<ssl_inspect/9.png, id=689, 297.36093pt x 22.58438pt>
+<ssl_inspect/9.png, id=890, 297.36093pt x 22.58438pt>
 File: ssl_inspect/9.png Graphic file (type png)
 <use ssl_inspect/9.png>
-Package pdftex.def Info: ssl_inspect/9.png  used on input line 1164.
+Package pdftex.def Info: ssl_inspect/9.png  used on input line 1186.
 (pdftex.def)             Requested size: 237.88905pt x 18.0675pt.
- [49
+ [55
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.32})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1170 \newpage
+l.1192 \newpage
                
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.33})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1170 \newpage
+l.1192 \newpage
                
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.34})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1170 \newpage
+l.1192 \newpage
                 <./http_inspect/6-6.png> <./ssl_inspect/8.png> <./ssl_inspect/9
 .png>]
-<stream_ip/1.png, id=701, 549.55313pt x 108.405pt>
+<stream_ip/1.png, id=899, 549.55313pt x 108.405pt>
 File: stream_ip/1.png Graphic file (type png)
 <use stream_ip/1.png>
-Package pdftex.def Info: stream_ip/1.png  used on input line 1187.
+Package pdftex.def Info: stream_ip/1.png  used on input line 1209.
 (pdftex.def)             Requested size: 439.6431pt x 86.7241pt.
- [50
+ [56
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.35})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1193 \newpage
+l.1215 \newpage
                 <./stream_ip/1.png>]
-<stream_tcp/1.png, id=714, 705.38531pt x 252.945pt>
+<stream_tcp/1.png, id=911, 705.38531pt x 252.945pt>
 File: stream_tcp/1.png Graphic file (type png)
 <use stream_tcp/1.png>
-Package pdftex.def Info: stream_tcp/1.png  used on input line 1201.
+Package pdftex.def Info: stream_tcp/1.png  used on input line 1223.
 (pdftex.def)             Requested size: 423.23445pt x 151.76816pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1207--1208
+Underfull \hbox (badness 10000) in paragraph at lines 1229--1230
 
  []
 
-<reputation/1.png, id=716, 423.83344pt x 131.74219pt>
+<reputation/1.png, id=913, 423.83344pt x 131.74219pt>
 File: reputation/1.png Graphic file (type png)
 <use reputation/1.png>
-Package pdftex.def Info: reputation/1.png  used on input line 1213.
+Package pdftex.def Info: reputation/1.png  used on input line 1235.
 (pdftex.def)             Requested size: 339.06718pt x 105.39388pt.
-[51
+[57
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.36})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1217 \newpage
+l.1239 \newpage
                
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.37})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1217 \newpage
+l.1239 \newpage
                 <./stream_tcp/1.png> <./reputation/1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1221--1222
+Underfull \hbox (badness 10000) in paragraph at lines 1243--1244
 
  []
 
-<sensitive/1.png, id=726, 717.43031pt x 328.22626pt>
+<sensitive/1.png, id=921, 717.43031pt x 328.22626pt>
 File: sensitive/1.png Graphic file (type png)
 <use sensitive/1.png>
-Package pdftex.def Info: sensitive/1.png  used on input line 1227.
+Package pdftex.def Info: sensitive/1.png  used on input line 1249.
 (pdftex.def)             Requested size: 430.4615pt x 196.93727pt.
-<sensitive/2.png, id=727, 484.81125pt x 200.24812pt>
+<sensitive/2.png, id=922, 484.81125pt x 200.24812pt>
 File: sensitive/2.png Graphic file (type png)
 <use sensitive/2.png>
-Package pdftex.def Info: sensitive/2.png  used on input line 1235.
+Package pdftex.def Info: sensitive/2.png  used on input line 1257.
 (pdftex.def)             Requested size: 290.88899pt x 120.1498pt.
-[52
+[58
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.38})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1240 
+l.1262 
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.39})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1240 
+l.1262 
         <./sensitive/1.png> <./sensitive/2.png>]
-<clamAV/1.png, id=736, 716.6775pt x 618.05907pt>
+<clamAV/1.png, id=929, 716.6775pt x 618.05907pt>
 File: clamAV/1.png Graphic file (type png)
 <use clamAV/1.png>
-Package pdftex.def Info: clamAV/1.png  used on input line 1247.
+Package pdftex.def Info: clamAV/1.png  used on input line 1269.
 (pdftex.def)             Requested size: 430.00983pt x 370.8383pt.
-<clamAV/2.png, id=737, 670.00313pt x 90.3375pt>
+<clamAV/2.png, id=930, 670.00313pt x 90.3375pt>
 File: clamAV/2.png Graphic file (type png)
 <use clamAV/2.png>
-Package pdftex.def Info: clamAV/2.png  used on input line 1255.
+Package pdftex.def Info: clamAV/2.png  used on input line 1277.
 (pdftex.def)             Requested size: 402.00497pt x 54.2029pt.
- [53
+ [59
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.40})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1260 \newpage
+l.1282 \newpage
                
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.41})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1260 \newpage
+l.1282 \newpage
                 <./clamAV/1.png> <./clamAV/2.png>]
 File: script_automatico/network.png Graphic file (type png)
 <use script_automatico/network.png>
-Package pdftex.def Info: script_automatico/network.png  used on input line 1270
+Package pdftex.def Info: script_automatico/network.png  used on input line 1292
 .
 (pdftex.def)             Requested size: 446.27069pt x 181.27864pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1287--1288
+Underfull \hbox (badness 10000) in paragraph at lines 1309--1310
 
  []
 
-[54
+[60
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.42})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1294 
+l.1316 
        ]
-Underfull \hbox (badness 10000) in paragraph at lines 1310--1312
+Underfull \hbox (badness 10000) in paragraph at lines 1332--1334
 
  []
 
-[55]
+[61]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 1331.
- [56]
-Underfull \hbox (badness 10000) in paragraph at lines 1397--1398
+nput line 1353.
+ [62]
+Underfull \hbox (badness 10000) in paragraph at lines 1419--1420
 
  []
 
-[57{C:/Users/deian/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
+[63{C:/Users/deian/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
 nc}{C:/Users/deian/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.e
 nc}]
-Underfull \hbox (badness 10000) in paragraph at lines 1407--1409
+Underfull \hbox (badness 10000) in paragraph at lines 1429--1431
 
  []
 
-<script_automatico/13.png, id=808, 269.50688pt x 507.39563pt>
+<script_automatico/13.png, id=987, 269.50688pt x 507.39563pt>
 File: script_automatico/13.png Graphic file (type png)
 <use script_automatico/13.png>
-Package pdftex.def Info: script_automatico/13.png  used on input line 1414.
+Package pdftex.def Info: script_automatico/13.png  used on input line 1436.
 (pdftex.def)             Requested size: 215.60579pt x 405.91705pt.
-[58
+[64
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6.43})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1419 
-        <./script_automatico/13.png>] [59] [60]
+l.1441 
+        <./script_automatico/13.png>] [65] [66]
 Cap\'{\i }tulo 7.
 File: script_automatico/network.png Graphic file (type png)
 <use script_automatico/network.png>
-Package pdftex.def Info: script_automatico/network.png  used on input line 1480
+Package pdftex.def Info: script_automatico/network.png  used on input line 1502
 .
 (pdftex.def)             Requested size: 446.27069pt x 181.27864pt.
-[61
+[67
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1492 	\item I
+l.1514 	\item I
                nstalaciÃ³n del paquete \texttt{.deb}, que compila Snort y su...
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1495--1496
+Underfull \hbox (badness 10000) in paragraph at lines 1517--1518
 
  []
 
-<pruebas_config/1-1.JPG, id=848, 483.8075pt x 1284.8pt>
+<pruebas_config/1-1.JPG, id=1019, 483.8075pt x 1284.8pt>
 File: pruebas_config/1-1.JPG Graphic file (type jpg)
 <use pruebas_config/1-1.JPG>
-Package pdftex.def Info: pruebas_config/1-1.JPG  used on input line 1501.
+Package pdftex.def Info: pruebas_config/1-1.JPG  used on input line 1523.
 (pdftex.def)             Requested size: 136.57462pt x 362.68222pt.
-[62
+[68
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1506 
+l.1528 
         <./pruebas_config/1-1.JPG>]
-<pruebas_config/2-2.JPG, id=856, 1284.8pt x 1051.93pt>
+<pruebas_config/2-2.JPG, id=1026, 1284.8pt x 1051.93pt>
 File: pruebas_config/2-2.JPG Graphic file (type jpg)
 <use pruebas_config/2-2.JPG>
-Package pdftex.def Info: pruebas_config/2-2.JPG  used on input line 1513.
+Package pdftex.def Info: pruebas_config/2-2.JPG  used on input line 1535.
 (pdftex.def)             Requested size: 295.90588pt x 242.25983pt.
-<pruebas_config/3-router.png, id=857, 764.10469pt x 537.50812pt>
+<pruebas_config/3-router.png, id=1027, 764.10469pt x 537.50812pt>
 File: pruebas_config/3-router.png Graphic file (type png)
 <use pruebas_config/3-router.png>
-Package pdftex.def Info: pruebas_config/3-router.png  used on input line 1523.
+Package pdftex.def Info: pruebas_config/3-router.png  used on input line 1545.
 (pdftex.def)             Requested size: 295.90588pt x 208.15102pt.
- [63
+ [69
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1530 
+l.1552 
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.4}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1530 
+l.1552 
         <./pruebas_config/2-2.JPG> <./pruebas_config/3-router.png>]
-<pruebas_config/4-localizar_tenda.png, id=865, 751.30687pt x 474.27188pt>
+<pruebas_config/4-localizar_tenda.png, id=1033, 751.30687pt x 474.27188pt>
 File: pruebas_config/4-localizar_tenda.png Graphic file (type png)
 <use pruebas_config/4-localizar_tenda.png>
 Package pdftex.def Info: pruebas_config/4-localizar_tenda.png  used on input li
-ne 1533.
+ne 1555.
 (pdftex.def)             Requested size: 295.90588pt x 186.79619pt.
-<pruebas_config/5-tenda_web.png, id=866, 451.6875pt x 414.79968pt>
+<pruebas_config/5-tenda_web.png, id=1034, 451.6875pt x 414.79968pt>
 File: pruebas_config/5-tenda_web.png Graphic file (type png)
 <use pruebas_config/5-tenda_web.png>
-Package pdftex.def Info: pruebas_config/5-tenda_web.png  used on input line 153
-9.
+Package pdftex.def Info: pruebas_config/5-tenda_web.png  used on input line 156
+1.
 (pdftex.def)             Requested size: 227.62206pt x 209.03862pt.
-<pruebas_config/6-cambio_pass_tenda.png, id=867, 436.63126pt x 405.76593pt>
+<pruebas_config/6-cambio_pass_tenda.png, id=1035, 436.63126pt x 405.76593pt>
 File: pruebas_config/6-cambio_pass_tenda.png Graphic file (type png)
 <use pruebas_config/6-cambio_pass_tenda.png>
 Package pdftex.def Info: pruebas_config/6-cambio_pass_tenda.png  used on input 
-line 1549.
+line 1571.
 (pdftex.def)             Requested size: 227.62206pt x 211.53197pt.
- [64
+ [70
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1552 
+l.1574 
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.6}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1552 
+l.1574 
         <./pruebas_config/4-localizar_tenda.png> <./pruebas_config/5-tenda_web.
 png>]
-<pruebas_config/7-pagina_tenda.png, id=876, 1441.63594pt x 680.5425pt>
+<pruebas_config/7-pagina_tenda.png, id=1042, 1441.63594pt x 680.5425pt>
 File: pruebas_config/7-pagina_tenda.png Graphic file (type png)
 <use pruebas_config/7-pagina_tenda.png>
 Package pdftex.def Info: pruebas_config/7-pagina_tenda.png  used on input line 
-1559.
+1581.
 (pdftex.def)             Requested size: 364.19667pt x 171.9213pt.
-<pruebas_config/9-asignacion_port.png, id=877, 751.30687pt x 367.3725pt>
+<pruebas_config/9-asignacion_port.png, id=1043, 751.30687pt x 367.3725pt>
 File: pruebas_config/9-asignacion_port.png Graphic file (type png)
 <use pruebas_config/9-asignacion_port.png>
 Package pdftex.def Info: pruebas_config/9-asignacion_port.png  used on input li
-ne 1569.
+ne 1591.
 (pdftex.def)             Requested size: 364.19667pt x 178.08574pt.
- [65
+ [71
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.7}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1572 
+l.1594 
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.8}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1572 
+l.1594 
         <./pruebas_config/6-cambio_pass_tenda.png> <./pruebas_config/7-pagina_t
 enda.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1573--1574
+Underfull \hbox (badness 10000) in paragraph at lines 1595--1596
 
  []
 
-<script_automatico/14.png, id=888, 479.54156pt x 704.6325pt>
+<script_automatico/14.png, id=1052, 479.54156pt x 704.6325pt>
 File: script_automatico/14.png Graphic file (type png)
 <use script_automatico/14.png>
-Package pdftex.def Info: script_automatico/14.png  used on input line 1581.
+Package pdftex.def Info: script_automatico/14.png  used on input line 1603.
 (pdftex.def)             Requested size: 167.84206pt x 246.62508pt.
-<pruebas_config/10-10.png, id=889, 458.71375pt x 360.34625pt>
+<pruebas_config/10-10.png, id=1053, 458.71375pt x 360.34625pt>
 File: pruebas_config/10-10.png Graphic file (type png)
 <use pruebas_config/10-10.png>
-Package pdftex.def Info: pruebas_config/10-10.png  used on input line 1587.
+Package pdftex.def Info: pruebas_config/10-10.png  used on input line 1609.
 (pdftex.def)             Requested size: 160.55222pt x 126.12308pt.
-[66
+[72
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.9}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1594 
+l.1616 
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.10})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1594 
+l.1616 
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.11})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1594 
+l.1616 
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.12})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1594 
+l.1616 
         <./pruebas_config/9-asignacion_port.png> <./script_automatico/14.png> <
 ./pruebas_config/10-10.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1607--1609
+Underfull \hbox (badness 10000) in paragraph at lines 1629--1631
 
  []
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 1614.
+(Font)              <10> on input line 1636.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 1614.
+(Font)              <7> on input line 1636.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1617--1618
+Underfull \hbox (badness 10000) in paragraph at lines 1639--1640
 
  []
 
-<pruebas_bien/seccion_uno/1.png, id=902, 3537.215pt x 1746.525pt>
+<pruebas_bien/seccion_uno/1.png, id=1062, 3537.215pt x 1746.525pt>
 File: pruebas_bien/seccion_uno/1.png Graphic file (type png)
 <use pruebas_bien/seccion_uno/1.png>
-Package pdftex.def Info: pruebas_bien/seccion_uno/1.png  used on input line 164
-1.
+Package pdftex.def Info: pruebas_bien/seccion_uno/1.png  used on input line 166
+3.
 (pdftex.def)             Requested size: 409.71692pt x 202.29857pt.
-[67
+[73
 pdfTeX warning (ext4): destination with the same identifier (name{table.7.1}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1644 
+l.1666 
        ]
-Underfull \hbox (badness 10000) in paragraph at lines 1649--1651
+Underfull \hbox (badness 10000) in paragraph at lines 1671--1673
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1659--1660
+Underfull \hbox (badness 10000) in paragraph at lines 1681--1682
 
  []
 
-[68
+[74
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.13})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1679 
+l.1701 
         <./pruebas_bien/seccion_uno/1.png>]
-<pruebas_bien/seccion_uno/2.png, id=919, 3537.215pt x 1674.255pt>
+<pruebas_bien/seccion_uno/2.png, id=1077, 3537.215pt x 1674.255pt>
 File: pruebas_bien/seccion_uno/2.png Graphic file (type png)
 <use pruebas_bien/seccion_uno/2.png>
-Package pdftex.def Info: pruebas_bien/seccion_uno/2.png  used on input line 168
-2.
+Package pdftex.def Info: pruebas_bien/seccion_uno/2.png  used on input line 170
+4.
 (pdftex.def)             Requested size: 409.71692pt x 193.92758pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1690--1692
+Underfull \hbox (badness 10000) in paragraph at lines 1712--1714
 
  []
 
-[69
+[75
 pdfTeX warning (ext4): destination with the same identifier (name{table.7.2}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1716 \end{table}
+l.1738 \end{table}
                   
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.14})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1716 \end{table}
+l.1738 \end{table}
                    <./pruebas_bien/seccion_uno/2.png>]
-<pruebas_bien/seccion_uno/3.png, id=929, 3537.215pt x 1300.86pt>
+<pruebas_bien/seccion_uno/3.png, id=1085, 3537.215pt x 1300.86pt>
 File: pruebas_bien/seccion_uno/3.png Graphic file (type png)
 <use pruebas_bien/seccion_uno/3.png>
-Package pdftex.def Info: pruebas_bien/seccion_uno/3.png  used on input line 172
-0.
+Package pdftex.def Info: pruebas_bien/seccion_uno/3.png  used on input line 174
+2.
 (pdftex.def)             Requested size: 409.71692pt x 150.67755pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1728--1730
+Underfull \hbox (badness 10000) in paragraph at lines 1750--1752
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1738--1739
+Underfull \hbox (badness 10000) in paragraph at lines 1760--1761
 
  []
 
-[70
+[76
 pdfTeX warning (ext4): destination with the same identifier (name{table.7.3}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1759 
+l.1781 
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.15})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1759 
+l.1781 
         <./pruebas_bien/seccion_uno/3.png>]
-<pruebas_bien/seccion_uno/4.png, id=939, 3537.215pt x 1746.525pt>
+<pruebas_bien/seccion_uno/4.png, id=1093, 3537.215pt x 1746.525pt>
 File: pruebas_bien/seccion_uno/4.png Graphic file (type png)
 <use pruebas_bien/seccion_uno/4.png>
-Package pdftex.def Info: pruebas_bien/seccion_uno/4.png  used on input line 176
-2.
+Package pdftex.def Info: pruebas_bien/seccion_uno/4.png  used on input line 178
+4.
 (pdftex.def)             Requested size: 409.71692pt x 202.29857pt.
 
-Overfull \hbox (11.65019pt too wide) in paragraph at lines 1770--1772
+Overfull \hbox (11.65019pt too wide) in paragraph at lines 1792--1794
 \T1/lmr/m/n/10.95 Comprobar el fun-cio-na-mien-to de las tres re-glas per-so-na
 -li-za-das aña-di-das al ar-chi-vo \T1/pcr/m/n/10.95 custom.rules\T1/lmr/m/n/10
 .95 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1770--1772
+Underfull \hbox (badness 10000) in paragraph at lines 1792--1794
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1780--1781
+Underfull \hbox (badness 10000) in paragraph at lines 1802--1803
 
  []
 
-[71
+[77
 pdfTeX warning (ext4): destination with the same identifier (name{table.7.4}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1784 
+l.1806 
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.16})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1784 
+l.1806 
         <./pruebas_bien/seccion_uno/4.png>]
-<pruebas_bien/seccion_uno/5.png, id=951, 3537.215pt x 1674.255pt>
+<pruebas_bien/seccion_uno/5.png, id=1103, 3537.215pt x 1674.255pt>
 File: pruebas_bien/seccion_uno/5.png Graphic file (type png)
 <use pruebas_bien/seccion_uno/5.png>
-Package pdftex.def Info: pruebas_bien/seccion_uno/5.png  used on input line 180
-3.
+Package pdftex.def Info: pruebas_bien/seccion_uno/5.png  used on input line 182
+5.
 (pdftex.def)             Requested size: 409.71692pt x 193.92758pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1814--1815
+Underfull \hbox (badness 10000) in paragraph at lines 1836--1837
 
  []
 
-[72
+[78
 pdfTeX warning (ext4): destination with the same identifier (name{table.7.5}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1825 
+l.1847 
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.17})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1825 
+l.1847 
         <./pruebas_bien/seccion_uno/5.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1828--1830
+Underfull \hbox (badness 10000) in paragraph at lines 1850--1852
 
  []
 
-<pruebas_bien/seccion_dos/1.png, id=963, 1442.38875pt x 677.53125pt>
+<pruebas_bien/seccion_dos/1.png, id=1113, 1442.38875pt x 677.53125pt>
 File: pruebas_bien/seccion_dos/1.png Graphic file (type png)
 <use pruebas_bien/seccion_dos/1.png>
-Package pdftex.def Info: pruebas_bien/seccion_dos/1.png  used on input line 184
-0.
+Package pdftex.def Info: pruebas_bien/seccion_dos/1.png  used on input line 186
+2.
 (pdftex.def)             Requested size: 455.24411pt x 213.83699pt.
-<pruebas_bien/seccion_dos/2.png, id=964, 1442.38875pt x 677.53125pt>
+<pruebas_bien/seccion_dos/2.png, id=1114, 1442.38875pt x 677.53125pt>
 File: pruebas_bien/seccion_dos/2.png Graphic file (type png)
 <use pruebas_bien/seccion_dos/2.png>
-Package pdftex.def Info: pruebas_bien/seccion_dos/2.png  used on input line 184
-8.
+Package pdftex.def Info: pruebas_bien/seccion_dos/2.png  used on input line 187
+0.
 (pdftex.def)             Requested size: 455.24411pt x 213.83699pt.
-[73
+[79
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.18})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1851 
+l.1873 
         <./pruebas_bien/seccion_dos/1.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 1852--1853
+Underfull \hbox (badness 10000) in paragraph at lines 1874--1875
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1858--1860
+Underfull \hbox (badness 10000) in paragraph at lines 1880--1882
 
  []
 
-<pruebas_bien/seccion_dos/3.png, id=971, 1442.38875pt x 677.53125pt>
+<pruebas_bien/seccion_dos/3.png, id=1120, 1442.38875pt x 677.53125pt>
 File: pruebas_bien/seccion_dos/3.png Graphic file (type png)
 <use pruebas_bien/seccion_dos/3.png>
-Package pdftex.def Info: pruebas_bien/seccion_dos/3.png  used on input line 187
-0.
+Package pdftex.def Info: pruebas_bien/seccion_dos/3.png  used on input line 189
+2.
 (pdftex.def)             Requested size: 455.24411pt x 213.83699pt.
-[74
+[80
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.19})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1873 
+l.1895 
         <./pruebas_bien/seccion_dos/2.png (PNG copy)>]
-<pruebas_bien/seccion_dos/4.png, id=977, 1442.38875pt x 677.53125pt>
+<pruebas_bien/seccion_dos/4.png, id=1125, 1442.38875pt x 677.53125pt>
 File: pruebas_bien/seccion_dos/4.png Graphic file (type png)
 <use pruebas_bien/seccion_dos/4.png>
-Package pdftex.def Info: pruebas_bien/seccion_dos/4.png  used on input line 188
-3.
+Package pdftex.def Info: pruebas_bien/seccion_dos/4.png  used on input line 190
+5.
 (pdftex.def)             Requested size: 455.24411pt x 213.83699pt.
- [75
+ [81
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.20})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1884 
+l.1906 
         <./pruebas_bien/seccion_dos/3.png (PNG copy)>]
-<pruebas_bien/seccion_dos/5.png, id=983, 1442.38875pt x 677.53125pt>
+<pruebas_bien/seccion_dos/5.png, id=1130, 1442.38875pt x 677.53125pt>
 File: pruebas_bien/seccion_dos/5.png Graphic file (type png)
 <use pruebas_bien/seccion_dos/5.png>
-Package pdftex.def Info: pruebas_bien/seccion_dos/5.png  used on input line 188
-7.
+Package pdftex.def Info: pruebas_bien/seccion_dos/5.png  used on input line 190
+9.
 (pdftex.def)             Requested size: 455.24411pt x 213.83699pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1893--1895
+Underfull \hbox (badness 10000) in paragraph at lines 1915--1917
 
  []
 
-[76
+[82
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.21})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1895 
+l.1917 
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.22})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1895 
+l.1917 
         <./pruebas_bien/seccion_dos/4.png (PNG copy)> <./pruebas_bien/seccion_d
 os/5.png (PNG copy)>]
-<pruebas_bien/seccion_dos/6.png, id=990, 1442.38875pt x 677.53125pt>
+<pruebas_bien/seccion_dos/6.png, id=1135, 1442.38875pt x 677.53125pt>
 File: pruebas_bien/seccion_dos/6.png Graphic file (type png)
 <use pruebas_bien/seccion_dos/6.png>
-Package pdftex.def Info: pruebas_bien/seccion_dos/6.png  used on input line 190
-4.
+Package pdftex.def Info: pruebas_bien/seccion_dos/6.png  used on input line 192
+6.
 (pdftex.def)             Requested size: 455.24411pt x 213.83699pt.
-<pruebas_bien/seccion_dos/7.png, id=991, 1442.38875pt x 677.53125pt>
+<pruebas_bien/seccion_dos/7.png, id=1136, 1442.38875pt x 677.53125pt>
 File: pruebas_bien/seccion_dos/7.png Graphic file (type png)
 <use pruebas_bien/seccion_dos/7.png>
-Package pdftex.def Info: pruebas_bien/seccion_dos/7.png  used on input line 191
-2.
+Package pdftex.def Info: pruebas_bien/seccion_dos/7.png  used on input line 193
+4.
 (pdftex.def)             Requested size: 455.24411pt x 213.83699pt.
- [77
+ [83
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.23})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1915 
+l.1937 
         <./pruebas_bien/seccion_dos/6.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 1916--1917
+Underfull \hbox (badness 10000) in paragraph at lines 1938--1939
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1920--1922
+Underfull \hbox (badness 10000) in paragraph at lines 1942--1944
 
  []
 
-<pruebas_bien/seccion_dos/8.png, id=997, 1442.38875pt x 677.53125pt>
+<pruebas_bien/seccion_dos/8.png, id=1141, 1442.38875pt x 677.53125pt>
 File: pruebas_bien/seccion_dos/8.png Graphic file (type png)
 <use pruebas_bien/seccion_dos/8.png>
-Package pdftex.def Info: pruebas_bien/seccion_dos/8.png  used on input line 193
-0.
+Package pdftex.def Info: pruebas_bien/seccion_dos/8.png  used on input line 195
+2.
 (pdftex.def)             Requested size: 455.24411pt x 213.83699pt.
-[78
+[84
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.24})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1933 
+l.1955 
         <./pruebas_bien/seccion_dos/7.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 1934--1935
+Underfull \hbox (badness 10000) in paragraph at lines 1956--1957
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1940--1942
+Underfull \hbox (badness 10000) in paragraph at lines 1962--1964
 
  []
 
 
-Overfull \hbox (31.19052pt too wide) in paragraph at lines 1943--1945
+Overfull \hbox (31.19052pt too wide) in paragraph at lines 1965--1967
 []\T1/lmr/bx/n/10.95 Metodología: \T1/lmr/m/n/10.95 Se han lan-za-do múl-ti-ple
 s flu-jos si-mul-tá-neos des-de el ser-vi-dor Ubun-tu (192.168.1.133)
  []
 
-[79
+[85
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.25})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1958 	\item \texttt
+l.1980 	\item \texttt
                      {kernel.all.load[15 minute]} â€“ Carga promedio del sis...
  <./pruebas_bien/seccion_dos/8.png (PNG copy)>]
-<pruebas_bien/seccion_tres/1.png, id=1015, 1442.38875pt x 677.53125pt>
+<pruebas_bien/seccion_tres/1.png, id=1156, 1442.38875pt x 677.53125pt>
 File: pruebas_bien/seccion_tres/1.png Graphic file (type png)
 <use pruebas_bien/seccion_tres/1.png>
 Package pdftex.def Info: pruebas_bien/seccion_tres/1.png  used on input line 19
-63.
+85.
 (pdftex.def)             Requested size: 455.24411pt x 213.83699pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1967--1968
+Underfull \hbox (badness 10000) in paragraph at lines 1989--1990
 
  []
 
-<pruebas_bien/seccion_tres/2.png, id=1016, 1442.38875pt x 677.53125pt>
+<pruebas_bien/seccion_tres/2.png, id=1157, 1442.38875pt x 677.53125pt>
 File: pruebas_bien/seccion_tres/2.png Graphic file (type png)
 <use pruebas_bien/seccion_tres/2.png>
-Package pdftex.def Info: pruebas_bien/seccion_tres/2.png  used on input line 19
-82.
+Package pdftex.def Info: pruebas_bien/seccion_tres/2.png  used on input line 20
+04.
 (pdftex.def)             Requested size: 455.24411pt x 213.83699pt.
-[80
+[86
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.26})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1985 
+l.2007 
         <./pruebas_bien/seccion_tres/1.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 1986--1987
+Underfull \hbox (badness 10000) in paragraph at lines 2008--2009
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1988--1989
+Underfull \hbox (badness 10000) in paragraph at lines 2010--2011
 
  []
 
-<pruebas_bien/seccion_tres/3.png, id=1022, 1442.38875pt x 677.53125pt>
+<pruebas_bien/seccion_tres/3.png, id=1162, 1442.38875pt x 677.53125pt>
 File: pruebas_bien/seccion_tres/3.png Graphic file (type png)
 <use pruebas_bien/seccion_tres/3.png>
 Package pdftex.def Info: pruebas_bien/seccion_tres/3.png  used on input line 20
-02.
+24.
 (pdftex.def)             Requested size: 455.24411pt x 213.83699pt.
-[81
+[87
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.27})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2005 
-        <./pruebas_bien/seccion_tres/2.png (PNG copy)>] [82
+l.2027 
+        <./pruebas_bien/seccion_tres/2.png (PNG copy)>] [88
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.28})
  has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2009 
+l.2031 
         <./pruebas_bien/seccion_tres/3.png (PNG copy)>]
 Cap\'{\i }tulo 8.
-
-Underfull \hbox (badness 10000) in paragraph at lines 2012--2013
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2014--2015
-
- []
-
-[83
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 2032--2033
-
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 2034--2035
 
@@ -2325,208 +2327,226 @@ Underfull \hbox (badness 10000) in paragraph at lines 2036--2037
 
  []
 
-[84]
-Underfull \hbox (badness 10000) in paragraph at lines 2045--2046
+[89
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 2054--2055
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2047--2048
+Underfull \hbox (badness 10000) in paragraph at lines 2056--2057
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2049--2050
+Underfull \hbox (badness 10000) in paragraph at lines 2058--2059
+
+ []
+
+[90]
+Underfull \hbox (badness 10000) in paragraph at lines 2067--2068
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2051--2052
+Underfull \hbox (badness 10000) in paragraph at lines 2069--2070
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2053--2054
+Underfull \hbox (badness 10000) in paragraph at lines 2071--2072
 
  []
 
-[85
 
-] [86
+Underfull \hbox (badness 10000) in paragraph at lines 2073--2074
 
-] [87]
-Underfull \hbox (badness 10000) in paragraph at lines 2126--2127
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2075--2076
+
+ []
+
+[91
+
+] [92
+
+] [93]
+Underfull \hbox (badness 10000) in paragraph at lines 2148--2149
 \T1/pcr/m/n/10.95 default / files / publications / ENISA % 20Report % 20-[] % 2
 0Cybersecurity %
  []
 
 
-Underfull \hbox (badness 1097) in paragraph at lines 2126--2127
+Underfull \hbox (badness 1097) in paragraph at lines 2148--2149
 \T1/pcr/m/n/10.95 20for % 20SMES % 20Challenges % 20and % 20Recommendations . p
 df$[]\T1/lmr/m/n/10.95 . Úl-ti-mo ac-ce-so:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2156--2157
+Underfull \hbox (badness 10000) in paragraph at lines 2178--2179
 []\T1/lmr/m/n/10.95 P. Ci-chons-ki, T. Mi-llar, T. Gran-ce, K. Scar-fo-ne. \T1/
 lmr/m/it/10.95 Gui-de to In-tru-sion De-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2156--2157
+Underfull \hbox (badness 10000) in paragraph at lines 2178--2179
 \T1/lmr/m/it/10.95 tec-tion and Pre-ven-tion Sys-tems (IDPS)\T1/lmr/m/n/10.95 .
  NIST Spe-cial Pu-bli-ca-tion 800-94,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2156--2157
+Underfull \hbox (badness 10000) in paragraph at lines 2178--2179
 \T1/lmr/m/n/10.95 2012. Dis-po-ni-ble en: []$\T1/pcr/m/n/10.95 https : / / nvlp
 ubs . nist . gov / nistpubs / Legacy / SP /
  []
 
-[88
+[94
 
 ]
-Underfull \hbox (badness 1502) in paragraph at lines 2187--2188
+Underfull \hbox (badness 1502) in paragraph at lines 2209--2210
 []\T1/lmr/m/n/10.95 Cisco Sys-tems. \T1/lmr/m/it/10.95 Ru-le Wri-ter's Gui-de t
 o Snort 3 Ru-les\T1/lmr/m/n/10.95 . Dis-po-ni-ble en: []$\T1/pcr/m/n/10.95 http
 s : / /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2187--2188
+Underfull \hbox (badness 10000) in paragraph at lines 2209--2210
 \T1/pcr/m/n/10.95 snort-[]org-[]site . s3 . amazonaws . com / production / docu
 ment _ files / files /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2187--2188
+Underfull \hbox (badness 10000) in paragraph at lines 2209--2210
 \T1/pcr/m/n/10.95 000 / 000 / 596 / original / Rules _ Writers _ Guide _ to _ S
 nort _ 3 _ Rules . pdf$[]\T1/lmr/m/n/10.95 .
  []
 
-[89]
-Overfull \hbox (42.2336pt too wide) in paragraph at lines 2205--2206
+[95]
+Overfull \hbox (42.2336pt too wide) in paragraph at lines 2227--2228
 \T1/pcr/m/n/10.95 snort-[]3-[]2-[]9-[]14-[]and-[]snort-[]4-[]1-[]1-[]updates-[]
 release-[]notes-[]for-[]pfsense-[]2-[]4-[]5 _
  []
 
 
-Underfull \hbox (badness 5147) in paragraph at lines 2208--2209
+Underfull \hbox (badness 5147) in paragraph at lines 2230--2231
 []\T1/lmr/m/n/10.95 Combs, R., & Munshaw, J. (2020). \T1/lmr/m/it/10.95 The ma-
 jor dif-fe-ren-ces that set Snort 3
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2208--2209
+Underfull \hbox (badness 10000) in paragraph at lines 2230--2231
 \T1/lmr/m/it/10.95 apart from Snort 2\T1/lmr/m/n/10.95 . Re-cu-pe-ra-do de []$\
 T1/pcr/m/n/10.95 https : / / blog . snort . org / 2020 / 08 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2211--2212
+Underfull \hbox (badness 10000) in paragraph at lines 2233--2234
 \T1/lmr/m/n/10.95 en: []$\T1/pcr/m/n/10.95 https : / / snort-[]org-[]site . s3 
 . amazonaws . com / production / document _
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2211--2212
+Underfull \hbox (badness 10000) in paragraph at lines 2233--2234
 \T1/pcr/m/n/10.95 files / files / 000 / 012 / 147 / original / Snort _ 3 . 1 . 
 8 . 0 _ on _ Ubuntu _ 18 _ and _
  []
 
 
-Underfull \hbox (badness 3250) in paragraph at lines 2214--2215
+Underfull \hbox (badness 3250) in paragraph at lines 2236--2237
 []\T1/lmr/m/n/10.95 Cisco. (2023). \T1/lmr/m/it/10.95 Snort 3.1.84.0 User Ma-nu
 al\T1/lmr/m/n/10.95 . La do-cu-men-ta-ción ofi-cial pro-por-cio-
  []
 
 
-Underfull \hbox (badness 4673) in paragraph at lines 2214--2215
+Underfull \hbox (badness 4673) in paragraph at lines 2236--2237
 \T1/lmr/m/n/10.95 na una guía de-ta-lla-da so-bre la con-fi-gu-ra-ción de \T1/p
 cr/m/n/10.95 snort.lua\T1/lmr/m/n/10.95 . Re-cu-pe-ra-do de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2214--2215
+Underfull \hbox (badness 10000) in paragraph at lines 2236--2237
 []$\T1/pcr/m/n/10.95 https : / / snort-[]org-[]site . s3 . amazonaws . com / pr
 oduction / release _ files /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2225--2226
+Underfull \hbox (badness 10000) in paragraph at lines 2247--2248
 \T1/pcr/m/n/10.95 bltea08f3d94a418a1b / bltfe74dab1ab1bc726 / 62e949c0e791ec0dc
 5db3668 /
  []
 
-[90]
+[96]
 Ap\'{e}ndice A.
-[91
+[97
 
 ]
-<github/1.png, id=1125, 935.74594pt x 417.81094pt>
+<github/1.png, id=1263, 935.74594pt x 417.81094pt>
 File: github/1.png Graphic file (type png)
 <use github/1.png>
-Package pdftex.def Info: github/1.png  used on input line 2293.
+Package pdftex.def Info: github/1.png  used on input line 2315.
 (pdftex.def)             Requested size: 409.71692pt x 182.93846pt.
-<github/2.png, id=1126, 945.5325pt x 557.08125pt>
+<github/2.png, id=1264, 945.5325pt x 557.08125pt>
 File: github/2.png Graphic file (type png)
 <use github/2.png>
-Package pdftex.def Info: github/2.png  used on input line 2299.
+Package pdftex.def Info: github/2.png  used on input line 2321.
 (pdftex.def)             Requested size: 409.71692pt x 241.39334pt.
- [92
+ [98
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.
 1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2302 
+l.2324 
         <./github/1.png>]
-<github/3.png, id=1133, 650.43pt x 222.07968pt>
+<github/3.png, id=1270, 650.43pt x 222.07968pt>
 File: github/3.png Graphic file (type png)
 <use github/3.png>
-Package pdftex.def Info: github/3.png  used on input line 2305.
+Package pdftex.def Info: github/3.png  used on input line 2327.
 (pdftex.def)             Requested size: 409.71692pt x 139.89398pt.
-<github/4.png, id=1134, 653.44125pt x 385.44pt>
+<github/4.png, id=1271, 653.44125pt x 385.44pt>
 File: github/4.png Graphic file (type png)
 <use github/4.png>
-Package pdftex.def Info: github/4.png  used on input line 2311.
+Package pdftex.def Info: github/4.png  used on input line 2333.
 (pdftex.def)             Requested size: 409.71692pt x 241.67574pt.
- [93
+ [99
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.
 2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2314 
+l.2336 
        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.
 3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2314 
+l.2336 
         <./github/2.png> <./github/3.png>]
-<github/5.png, id=1143, 663.98062pt x 546.54187pt>
+<github/5.png, id=1278, 663.98062pt x 546.54187pt>
 File: github/5.png Graphic file (type png)
 <use github/5.png>
-Package pdftex.def Info: github/5.png  used on input line 2317.
+Package pdftex.def Info: github/5.png  used on input line 2339.
 (pdftex.def)             Requested size: 409.71692pt x 337.25125pt.
- [94
+ [100
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.
 4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2323 \chapter
+l.2345 \chapter
                {Anexo B: Scripts y archivos del instalador R-Snort}
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.
 5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2323 \chapter
+l.2345 \chapter
                {Anexo B: Scripts y archivos del instalador R-Snort} <./github/4
 .png> <./github/5.png>]
 Ap\'{e}ndice B.
-[95
+[101
 
-] [96] [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] (main.aux
+] [102] [103] [104] [105] [106] [107] [108] [109] [110] [111] [112]
+(main.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -2538,10 +2558,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 5D55AC0C07DE7AAEF1596A3DF47E3C17;13406.
  ) 
 Here is how much of TeX's memory you used:
- 29604 strings out of 474486
- 579547 string characters out of 5743754
+ 29634 strings out of 474486
+ 579985 string characters out of 5743754
  2574542 words of memory out of 5000000
- 50517 multiletter control sequences out of 15000+600000
+ 50532 multiletter control sequences out of 15000+600000
  640270 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,12n,87p,964b,2081s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2559,9 +2579,9 @@ b><C:/Users/deian/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb
 /Users/deian/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrb8a.pfb><
 C:/Users/deian/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb
 >
-Output written on main.pdf (106 pages, 65968154 bytes).
+Output written on main.pdf (112 pages, 65996495 bytes).
 PDF statistics:
- 1963 PDF objects out of 2073 (max. 8388607)
- 880 named destinations out of 1000 (max. 500000)
+ 2096 PDF objects out of 2487 (max. 8388607)
+ 886 named destinations out of 1000 (max. 500000)
  886 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -22,6 +22,7 @@
 \usepackage{pgfgantt}
 \usepackage{enumitem}
 \usepackage{placeins}
+\usepackage{tocloft}
 \usetikzlibrary{shapes, arrows, positioning}
 
 \raggedbottom
@@ -148,11 +149,32 @@
 		Este trabajo está bajo una licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional.
 		\vspace*{\fill}
 	\end{center}
+	
+	\newpage
 	\thispagestyle{empty}
+	\null
+	\newpage
+
 	
 	% ===== Índice =====
+
 	\tableofcontents
 	\newpage
+	
+	\listoffigures
+	\newpage
+	
+	\listoftables
+	\newpage
+	
+	\newcommand{\listoflistingscaption}{Índice de Códigos}
+	
+	\lstlistoflistings
+	\newpage
+	
+	
+	
+	
 
 
 % Abreviaturas
