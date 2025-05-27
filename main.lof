@@ -1,89 +1,84 @@
 \babel@toc {spanish}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Cronograma de las tareas.}}{4}{figure.caption.5}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Comparación entre el tiempo estimado y el real.}}{4}{figure.caption.6}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Arquitectura del funcionamiento de Snort.}}{10}{figure.caption.7}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Esquema de red real del proyecto.}}{19}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Instalando dependencias necesarias.}}{22}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Instalando dependencia check.}}{23}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Configurando libdnet antes de la compilación.}}{23}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Compilando libdnet con make.}}{24}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Instalando libdnet en el sistema.}}{25}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Verificación de la instalación de \texttt {libdnet}.}}{26}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Configurando libdnet para que sea reconocido por el sistema.}}{26}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Añadiendo libdnet al PATH y verificando su reconocimiento.}}{27}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Descargando libdaq desde el repositorio oficial.}}{27}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Preparando libdaq para su compilación.}}{28}{figure.caption.18}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Configurando libdaq antes de la compilación.}}{29}{figure.caption.19}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Compilando libdaq.}}{29}{figure.caption.20}%
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Instalando libdaq.}}{30}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Verificando la instalación de libdaq.}}{30}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Instalando dependencias necesarias.}}{31}{figure.caption.23}%
+\contentsline {figure}{\numberline {2.17}{\ignorespaces Instalando LuaJIT para Snort.}}{31}{figure.caption.24}%
+\contentsline {figure}{\numberline {2.18}{\ignorespaces Instalando Flex y Bison, herramientas necesarias para la compilación.}}{32}{figure.caption.25}%
+\contentsline {figure}{\numberline {2.19}{\ignorespaces Instalando la biblioteca PCRE2 para el manejo de expresiones regulares.}}{32}{figure.caption.26}%
+\contentsline {figure}{\numberline {2.20}{\ignorespaces Clonando el repositorio de Snort 3.}}{33}{figure.caption.27}%
+\contentsline {figure}{\numberline {2.21}{\ignorespaces Definiendo la ruta de instalación de Snort.}}{33}{figure.caption.28}%
+\contentsline {figure}{\numberline {2.22}{\ignorespaces Configurando Snort 3 con CMake.}}{34}{figure.caption.29}%
+\contentsline {figure}{\numberline {2.23}{\ignorespaces Compilación de Snort.}}{35}{figure.caption.30}%
+\contentsline {figure}{\numberline {2.24}{\ignorespaces Instalación de Snort.}}{36}{figure.caption.31}%
+\contentsline {figure}{\numberline {2.25}{\ignorespaces Snort instalado con éxito.}}{36}{figure.caption.32}%
+\contentsline {figure}{\numberline {2.26}{\ignorespaces Configuración de Snort validada con éxito.}}{37}{figure.caption.33}%
+\contentsline {figure}{\numberline {2.27}{\ignorespaces Añadiendo reglas preconfiguradas a Snort.}}{38}{figure.caption.34}%
+\contentsline {figure}{\numberline {2.28}{\ignorespaces Modificación de snort.lua para agregar las reglas preconfiguradas.}}{39}{figure.caption.35}%
+\contentsline {figure}{\numberline {2.29}{\ignorespaces Validación configuración de Snort.}}{39}{figure.caption.36}%
+\contentsline {figure}{\numberline {2.30}{\ignorespaces Configuración http\_inspect.}}{41}{figure.caption.38}%
+\contentsline {figure}{\numberline {2.31}{\ignorespaces Configuración de binders.}}{41}{figure.caption.39}%
+\contentsline {figure}{\numberline {2.32}{\ignorespaces Validación de la configuración.}}{42}{figure.caption.40}%
+\contentsline {figure}{\numberline {2.33}{\ignorespaces Configuración de SSL.}}{42}{figure.caption.41}%
+\contentsline {figure}{\numberline {2.34}{\ignorespaces Vincular con binders.}}{42}{figure.caption.42}%
+\contentsline {figure}{\numberline {2.35}{\ignorespaces Configuración de Stream IP.}}{43}{figure.caption.43}%
+\contentsline {figure}{\numberline {2.36}{\ignorespaces Configuración de Stream TCP.}}{43}{figure.caption.44}%
+\contentsline {figure}{\numberline {2.37}{\ignorespaces Configuración de Reputation.}}{43}{figure.caption.45}%
+\contentsline {figure}{\numberline {2.38}{\ignorespaces Expresiones regulares para protección de datos sensibles.}}{44}{figure.caption.46}%
+\contentsline {figure}{\numberline {2.39}{\ignorespaces Agregación de custom.rules.}}{44}{figure.caption.47}%
+\contentsline {figure}{\numberline {2.40}{\ignorespaces Instalación de ClamAV.}}{45}{figure.caption.48}%
+\contentsline {figure}{\numberline {2.41}{\ignorespaces Actualización de firmas y reinicio del servicio ClamAV.}}{45}{figure.caption.49}%
+\contentsline {figure}{\numberline {2.42}{\ignorespaces Esquema de red real del proyecto.}}{46}{figure.caption.50}%
+\contentsline {figure}{\numberline {2.43}{\ignorespaces Estructura del proyecto reempaquetado como archivo .deb.}}{50}{figure.caption.51}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Esquema de red real del proyecto.}}{54}{figure.caption.52}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Raspberry Pi conectada con dos interfaces Ethernet.}}{55}{figure.caption.53}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Conexiones físicas al switch gestionable.}}{56}{figure.caption.54}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Dispositivos visibles en la red doméstica.}}{56}{figure.caption.55}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces IP local del switch detectada desde el router.}}{57}{figure.caption.56}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Pantalla de acceso al panel de administración.}}{57}{figure.caption.57}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Cambio obligatorio de contraseña en el primer inicio.}}{58}{figure.caption.58}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Vista general del panel de gestión del switch.}}{58}{figure.caption.59}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Verificación del estado de los puertos tras la configuración.}}{59}{figure.caption.60}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Proceso completo de instalación automática de R-Snort.}}{59}{figure.caption.61}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Fragmento de alertas generadas por tráfico ICMP anómalo.}}{61}{figure.caption.63}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Detección de shellcode.}}{62}{figure.caption.65}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Fragmento mostrando respuestas DNS sospechosas.}}{63}{figure.caption.67}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Fragmento de las alertas SNMP generadas por el escaneo con Nmap.}}{64}{figure.caption.69}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Fragmento del log con alertas generadas por datos sensibles.}}{65}{figure.caption.71}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Uso global de CPU con Snort activo.}}{66}{figure.caption.72}%
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Uso global de CPU con Snort desactivado.}}{67}{figure.caption.73}%
+\contentsline {figure}{\numberline {3.18}{\ignorespaces Uso de memoria RAM con Snort activado y posteriormente detenido.}}{67}{figure.caption.74}%
+\contentsline {figure}{\numberline {3.19}{\ignorespaces Tráfico de red con Snort activo.}}{68}{figure.caption.75}%
+\contentsline {figure}{\numberline {3.20}{\ignorespaces Tráfico de red con Snort desactivado.}}{69}{figure.caption.76}%
+\contentsline {figure}{\numberline {3.21}{\ignorespaces Actividad de disco con Snort activo.}}{69}{figure.caption.77}%
+\contentsline {figure}{\numberline {3.22}{\ignorespaces Actividad de disco con Snort desactivado.}}{70}{figure.caption.78}%
+\contentsline {figure}{\numberline {3.23}{\ignorespaces Carga media del sistema con y sin Snort activo (15 minutos).}}{71}{figure.caption.79}%
+\contentsline {figure}{\numberline {3.24}{\ignorespaces Carga promedio del sistema durante tráfico masivo.}}{72}{figure.caption.80}%
+\contentsline {figure}{\numberline {3.25}{\ignorespaces Utilización detallada de la CPU bajo tráfico extremo.}}{73}{figure.caption.81}%
+\contentsline {figure}{\numberline {3.26}{\ignorespaces Lectura y escritura en disco durante tráfico masivo.}}{73}{figure.caption.82}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Cronograma de las tareas.}}{6}{figure.caption.2}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Comparación entre el tiempo estimado y el real.}}{6}{figure.caption.3}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Arquitectura del funcionamiento de Snort.}}{12}{figure.caption.4}%
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Esquema de red real del proyecto.}}{20}{figure.caption.5}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Instalando dependencias necesarias.}}{23}{figure.caption.6}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Instalando dependencia check.}}{24}{figure.caption.7}%
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Configurando libdnet antes de la compilación.}}{24}{figure.caption.8}%
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Compilando libdnet con make.}}{25}{figure.caption.9}%
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Instalando libdnet en el sistema.}}{26}{figure.caption.10}%
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Verificación de la instalación de \texttt {libdnet}.}}{27}{figure.caption.11}%
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Configurando libdnet para que sea reconocido por el sistema.}}{27}{figure.caption.12}%
-\contentsline {figure}{\numberline {7.9}{\ignorespaces Añadiendo libdnet al PATH y verificando su reconocimiento.}}{28}{figure.caption.13}%
-\contentsline {figure}{\numberline {7.10}{\ignorespaces Descargando libdaq desde el repositorio oficial.}}{29}{figure.caption.14}%
-\contentsline {figure}{\numberline {7.11}{\ignorespaces Preparando libdaq para su compilación.}}{29}{figure.caption.15}%
-\contentsline {figure}{\numberline {7.12}{\ignorespaces Configurando libdaq antes de la compilación.}}{30}{figure.caption.16}%
-\contentsline {figure}{\numberline {7.13}{\ignorespaces Compilando libdaq.}}{30}{figure.caption.17}%
-\contentsline {figure}{\numberline {7.14}{\ignorespaces Instalando libdaq.}}{31}{figure.caption.18}%
-\contentsline {figure}{\numberline {7.15}{\ignorespaces Verificando la instalación de libdaq.}}{31}{figure.caption.19}%
-\contentsline {figure}{\numberline {7.16}{\ignorespaces Instalando dependencias necesarias.}}{32}{figure.caption.20}%
-\contentsline {figure}{\numberline {7.17}{\ignorespaces Instalando LuaJIT para Snort.}}{32}{figure.caption.21}%
-\contentsline {figure}{\numberline {7.18}{\ignorespaces Instalando Flex y Bison, herramientas necesarias para la compilación.}}{33}{figure.caption.22}%
-\contentsline {figure}{\numberline {7.19}{\ignorespaces Instalando la biblioteca PCRE2 para el manejo de expresiones regulares.}}{33}{figure.caption.23}%
-\contentsline {figure}{\numberline {7.20}{\ignorespaces Clonando el repositorio de Snort 3.}}{34}{figure.caption.24}%
-\contentsline {figure}{\numberline {7.21}{\ignorespaces Definiendo la ruta de instalación de Snort.}}{34}{figure.caption.25}%
-\contentsline {figure}{\numberline {7.22}{\ignorespaces Configurando Snort 3 con CMake.}}{35}{figure.caption.26}%
-\contentsline {figure}{\numberline {7.23}{\ignorespaces Compilación de Snort.}}{36}{figure.caption.27}%
-\contentsline {figure}{\numberline {7.24}{\ignorespaces Instalación de Snort.}}{37}{figure.caption.28}%
-\contentsline {figure}{\numberline {7.25}{\ignorespaces Snort instalado con éxito.}}{37}{figure.caption.29}%
-\contentsline {figure}{\numberline {7.26}{\ignorespaces Configuración de Snort validada con éxito.}}{38}{figure.caption.30}%
-\contentsline {figure}{\numberline {7.27}{\ignorespaces Añadiendo reglas preconfiguradas a Snort.}}{39}{figure.caption.31}%
-\contentsline {figure}{\numberline {7.28}{\ignorespaces Modificación de snort.lua para agregar las reglas preconfiguradas.}}{40}{figure.caption.32}%
-\contentsline {figure}{\numberline {7.29}{\ignorespaces Validación configuración de Snort.}}{40}{figure.caption.33}%
-\contentsline {figure}{\numberline {7.30}{\ignorespaces Configuración http\_inspect.}}{42}{figure.caption.35}%
-\contentsline {figure}{\numberline {7.31}{\ignorespaces Configuración de binders.}}{42}{figure.caption.36}%
-\contentsline {figure}{\numberline {7.32}{\ignorespaces Validación de la configuración.}}{43}{figure.caption.37}%
-\contentsline {figure}{\numberline {7.33}{\ignorespaces Configuración de SSL.}}{43}{figure.caption.38}%
-\contentsline {figure}{\numberline {7.34}{\ignorespaces Vincular con binders.}}{43}{figure.caption.39}%
-\contentsline {figure}{\numberline {7.35}{\ignorespaces Configuración de Stream IP.}}{44}{figure.caption.40}%
-\contentsline {figure}{\numberline {7.36}{\ignorespaces Configuración de Stream TCP.}}{45}{figure.caption.41}%
-\contentsline {figure}{\numberline {7.37}{\ignorespaces Configuración de Reputation.}}{45}{figure.caption.42}%
-\contentsline {figure}{\numberline {7.38}{\ignorespaces Expresiones regulares para protección de datos sensibles.}}{46}{figure.caption.43}%
-\contentsline {figure}{\numberline {7.39}{\ignorespaces Agregación de custom.rules.}}{46}{figure.caption.44}%
-\contentsline {figure}{\numberline {7.40}{\ignorespaces Instalación de ClamAV.}}{47}{figure.caption.45}%
-\contentsline {figure}{\numberline {7.41}{\ignorespaces Actualización de firmas y reinicio del servicio ClamAV.}}{47}{figure.caption.46}%
-\contentsline {figure}{\numberline {7.42}{\ignorespaces Esquema de red real del proyecto.}}{48}{figure.caption.47}%
-\contentsline {figure}{\numberline {7.43}{\ignorespaces Estructura del proyecto reempaquetado como archivo .deb.}}{52}{figure.caption.48}%
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Esquema de red real del proyecto.}}{55}{figure.caption.49}%
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Raspberry Pi conectada con dos interfaces Ethernet.}}{56}{figure.caption.50}%
-\contentsline {figure}{\numberline {8.3}{\ignorespaces Conexiones físicas al switch gestionable.}}{57}{figure.caption.51}%
-\contentsline {figure}{\numberline {8.4}{\ignorespaces Dispositivos visibles en la red doméstica.}}{57}{figure.caption.52}%
-\contentsline {figure}{\numberline {8.5}{\ignorespaces IP local del switch detectada desde el router.}}{58}{figure.caption.53}%
-\contentsline {figure}{\numberline {8.6}{\ignorespaces Pantalla de acceso al panel de administración.}}{58}{figure.caption.54}%
-\contentsline {figure}{\numberline {8.7}{\ignorespaces Cambio obligatorio de contraseña en el primer inicio.}}{59}{figure.caption.55}%
-\contentsline {figure}{\numberline {8.8}{\ignorespaces Vista general del panel de gestión del switch.}}{59}{figure.caption.56}%
-\contentsline {figure}{\numberline {8.9}{\ignorespaces Verificación del estado de los puertos tras la configuración.}}{60}{figure.caption.57}%
-\contentsline {figure}{\numberline {8.10}{\ignorespaces Proceso completo de instalación automática de R-Snort.}}{60}{figure.caption.58}%
-\contentsline {figure}{\numberline {8.11}{\ignorespaces Fragmento de alertas generadas por tráfico ICMP anómalo.}}{62}{figure.caption.60}%
-\contentsline {figure}{\numberline {8.12}{\ignorespaces Detección de shellcode.}}{63}{figure.caption.62}%
-\contentsline {figure}{\numberline {8.13}{\ignorespaces Fragmento mostrando respuestas DNS sospechosas.}}{64}{figure.caption.64}%
-\contentsline {figure}{\numberline {8.14}{\ignorespaces Fragmento de las alertas SNMP generadas por el escaneo con Nmap.}}{65}{figure.caption.66}%
-\contentsline {figure}{\numberline {8.15}{\ignorespaces Fragmento del log con alertas generadas por datos sensibles.}}{66}{figure.caption.68}%
-\contentsline {figure}{\numberline {8.16}{\ignorespaces Uso global de CPU con Snort activo.}}{67}{figure.caption.69}%
-\contentsline {figure}{\numberline {8.17}{\ignorespaces Uso global de CPU con Snort desactivado.}}{68}{figure.caption.70}%
-\contentsline {figure}{\numberline {8.18}{\ignorespaces Uso de memoria RAM con Snort activado y posteriormente detenido.}}{69}{figure.caption.71}%
-\contentsline {figure}{\numberline {8.19}{\ignorespaces Tráfico de red con Snort activo.}}{69}{figure.caption.72}%
-\contentsline {figure}{\numberline {8.20}{\ignorespaces Tráfico de red con Snort desactivado.}}{70}{figure.caption.73}%
-\contentsline {figure}{\numberline {8.21}{\ignorespaces Actividad de disco con Snort activo.}}{71}{figure.caption.74}%
-\contentsline {figure}{\numberline {8.22}{\ignorespaces Actividad de disco con Snort desactivado.}}{71}{figure.caption.75}%
-\contentsline {figure}{\numberline {8.23}{\ignorespaces Carga media del sistema con y sin Snort activo (15 minutos).}}{72}{figure.caption.76}%
-\contentsline {figure}{\numberline {8.24}{\ignorespaces Carga promedio del sistema durante tráfico masivo.}}{73}{figure.caption.77}%
-\contentsline {figure}{\numberline {8.25}{\ignorespaces Utilización detallada de la CPU bajo tráfico extremo.}}{74}{figure.caption.78}%
-\contentsline {figure}{\numberline {8.26}{\ignorespaces Lectura y escritura en disco durante tráfico masivo.}}{75}{figure.caption.79}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Vista general del repositorio r-snort-installer.}}{85}{figure.caption.83}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Sección de características.}}{86}{figure.caption.84}%
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Estructura del proyecto y árbol de carpetas.}}{86}{figure.caption.85}%
-\contentsline {figure}{\numberline {A.4}{\ignorespaces Instrucciones de instalación.}}{87}{figure.caption.86}%
-\contentsline {figure}{\numberline {A.5}{\ignorespaces Uso del sistema.}}{87}{figure.caption.87}%
+\contentsline {figure}{\numberline {I.1}{\ignorespaces Vista general del repositorio r-snort-installer.}}{84}{figure.caption.86}%
+\contentsline {figure}{\numberline {I.2}{\ignorespaces Sección de características.}}{85}{figure.caption.87}%
+\contentsline {figure}{\numberline {I.3}{\ignorespaces Estructura del proyecto y árbol de carpetas.}}{85}{figure.caption.88}%
+\contentsline {figure}{\numberline {I.4}{\ignorespaces Instrucciones de instalación.}}{86}{figure.caption.89}%
+\contentsline {figure}{\numberline {I.5}{\ignorespaces Uso del sistema.}}{86}{figure.caption.90}%
 \addvspace {10\p@ }

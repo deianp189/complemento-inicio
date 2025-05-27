@@ -28,7 +28,11 @@
 \usetikzlibrary{shapes, arrows, positioning}
 
 \renewcommand{\lstlistlistingname}{Índice de Códigos}
-
+\addto\captionsspanish{%
+	\renewcommand{\tablename}{Tabla}
+	\renewcommand{\listtablename}{Índice de tablas}
+	\renewcommand{\lstlistingname}{Código}
+}
 \raggedbottom
 
 \titlespacing*{\subsection}{0pt}{1em}{0.5em}
@@ -256,21 +260,24 @@
 
 % Introducción
 
-\chapter{Introducción}
+\chapter*{Introducción}
+\addcontentsline{toc}{chapter}{Introducción}
+\markboth{Introducción}{Introducción}
 \pagenumbering{arabic}
+\setcounter{secnumdepth}{0} % ← NO numerar secciones temporalmente
 La dependencia actual del uso de tecnología difiere en gran medida del uso que se le daba hace años. El crecimiento del globalismo, que impulsa la interconexión entre todos nosotros, hace que el conocimiento sobre informática y sus fallos de seguridad se dé a conocer mundialmente, permitiendo a individuos malintencionados aprovechar dichas vulnerabilidades por diversos motivos: económicos, sociales o incluso como competición entre ellos.\newline
 
-Organizaciones de renombre cuentan con los mayores expertos en seguridad informática; sin embargo, las redes domésticas o de pequeñas o medianas empresas no gozan de tal presupuesto, quedando normalmente vulnerables a todo tipo de ataques \cite{enisa_smes}. Este trabajo propone una solución accesible que permita a entornos más modestos estar protegidos mediante un sistema de detección de intrusos (IDS) basado en herramientas de bajo impacto económico y fácil implementación.
+Organizaciones de renombre cuentan con los mayores expertos en seguridad informática; sin embargo, las redes domésticas o de pequeñas y medianas empresas no disponen de esos recursos, quedando expuestas a todo tipo de ataques \cite{enisa_smes}. Este trabajo propone una solución accesible que permita a estos entornos incorporar capacidades de monitorización y alerta temprana frente a intrusiones mediante un sistema de detección de intrusos (IDS) basado en herramientas de bajo impacto económico y fácil implementación.
 
 % Capítulos
-\chapter{Motivación}
+\section{Motivación}
 Desde antes de empezar el grado de Ingeniería Informática me sentía atraído por los entornos sin interfaz gráfica: terminales, comandos... Esto despertó en mí una inclinación hacia la ciberseguridad. Al llegar a la carrera, este gusto por la seguridad informática se ha visto impulsado por asignaturas como Sistemas Operativos, Seguridad Informática, Tecnologías de Acceso a Red, Administración de Redes y Sistemas Operativos, entre otras que también han puesto su grano de arena.\newline
 
 Esto me ha llevado a implementar algunas prácticas en mi propia red doméstica, haciéndome ver lo evidente que es la falta de seguridad y protección de cualquier tipo en los hogares y también en algunas PYMES. Esta realidad me ha hecho tratar de buscar alternativas prácticas y asequibles para menguar esta problemática.\newline
 
 El objetivo principal de este trabajo es llevar la seguridad informática al alcance de quien lo necesite, de forma automatizada y sin la necesidad de un profundo conocimiento técnico para su instalación, haciendo posible que cualquiera pueda defenderse del vasto mundo de Internet. De esta manera nace R-Snort.\newline
 
-\chapter{Objetivos}
+\section{Objetivos}
 El objetivo principal de este trabajo es el desarrollo de un sistema automático de instalación de un detector de intrusos personalizado, con los requerimientos generales que puedan tener la amplia mayoría de redes SOHO o PYMES. El nombre del proyecto R-Snort proviene de los dos protagonistas de este sistema: una Raspberry Pi 5 \cite{rodriguez2018cluster} por su bajo coste y eficiencia energética, que será el equipo embebido utilizado —aunque se puede extrapolar a otras máquinas similares— y Snort \cite{roesch1999snort}, el IDS elegido para la tarea de detectar intrusos. Este ha sido seleccionado por ser de código abierto y, en su nueva versión Snort 3, por ser altamente configurable gracias al uso de archivos en formato LUA \cite{snort3_official}, lo cual lo hace modular y facilita su personalización.\newline
 
 Los objetivos específicos serán:
@@ -286,13 +293,13 @@ Los objetivos específicos serán:
 
 Este trabajo se enfoca en proporcionar una solución económica, sencilla y eficiente que refuerce la seguridad de redes a menor escala.
 
-\chapter{Fases de la realización y cronograma}
+\section{Fases de la realización y cronograma}
 
 Para el desarrollo de R-Snort se ha seguido una estrategia iterativa. Se pretende adaptar todos los recursos disponibles junto con los conocimientos adquiridos a lo largo del grado, entremezclándose con los requerimientos universales que pueda tener una red SOHO. Comenzando con ideas sencillas, R-Snort fue madurando hacia el sistema robusto de detección de intrusos que es ahora.\newline
 
 A continuación, se van a describir las distintas fases del proyecto, desde el concepto inicial hasta el producto actual.
 
-\section{Fase 1: Inspiración inicial y propuesta del proyecto (junio–agosto 2024)}
+\subsection{Fase 1: Inspiración inicial y propuesta del proyecto (mes 1 - mes 3)}
 
 Durante el verano de 2024 comencé un proyecto personal ajeno a lo académico. Este proyecto plantó, de manera informal, la semilla de lo que sería el proyecto final. Para concretar, se puso en marcha un servidor personal a mi servicio y al de algunos conocidos y amigos, sin ningún objetivo más allá del ocio y entretenimiento. A lo largo del tiempo, iba agregando prácticas de seguridad informática para proteger dicho servidor de ataques indeseables, ya que, al estar conectado a la red de manera pública, no fueron pocos los que trataron de vulnerarlo y acceder a nuestra información privada.\newline
 
@@ -300,42 +307,42 @@ Estas prácticas puestas en marcha, aunque inicialmente rudimentarias, despertar
 
 En septiembre de ese mismo año, tras disipar la abstracción acerca del proyecto final, la idea era clara: perfilar y diseñar un sistema de detección de intrusos basado en Snort, para una red PYME o SOHO, empleando una Raspberry Pi.
 
-\section{Fase 2: Prototipado inicial y pruebas preliminares (septiembre 2024)}
+\subsection{Fase 2: Prototipado inicial y pruebas preliminares (mes 4)}
 
 El primer esbozo de R-Snort consistió en un equipo de segunda mano con Ubuntu Server \cite{insani2023implementation}, donde se instaló la versión por defecto de Snort que viene en los repositorios oficiales de Ubuntu. Apenas se activaron algunas reglas para comprobar que funcionaba correctamente. Posteriormente, se agregó una base de datos PostgreSQL relacional \cite{gkamas2022performance} desplegada en Docker. Esta versión preliminar, si bien contaba con falta de optimización y escalabilidad, ya era capaz de recoger algunos eventos generados por el IDS.
 
-\section{Fase 3: Estudio y selección de componentes (enero–febrero 2025)}
+\subsection{Fase 3: Estudio, selección y desarrollo del sistema R-Snort (mes 5)}
 
-Teniendo en cuenta los requisitos principales, que eran la \textbf{eficiencia energética} y de consumo, se analizaron los componentes necesarios para un \textit{entorno de producción realista}. Un gran número de \textit{plugins}, preprocesadores y distintas configuraciones disponibles han sido tenidas en cuenta para posteriormente evaluar las más adecuadas para entornos \textbf{SOHO}.\newline
+Guiados por los requisitos de \textbf{eficiencia energética} y bajo consumo, se analizaron los componentes necesarios para un \textit{entorno de producción realista}. Se evaluaron numerosos \textit{plugins}, preprocesadores y configuraciones con el fin de identificar la combinación más adecuada para redes \textbf{SOHO}. Durante este proceso se detectaron varias \textbf{incompatibilidades}: herramientas como \textit{Barnyard2} \cite{o2015snort} y el formato \textit{Unified2} dejaron de ser compatibles con las versiones recientes de \textit{Snort}, mientras que la versión \textbf{3.7} presentaba errores de \textit{NUMA (Non-Uniform Memory Access)} que impedían su instalación automática. Por ello se adoptó la versión \textbf{Snort 3.1.84.0} \cite{snort3_3184}, verificada como la opción más estable y ligera para dispositivos embebidos.\newline
 
-Durante esta fase, y antes de poner en marcha las configuraciones seleccionadas, se descartaron algunas por \textbf{incompatibilidades} con la versión de \textit{Snort}. Herramientas como \textit{Barnyard2} \cite{o2015snort} y el formato \textit{Unified2} ya no eran compatibles. También se decidió abandonar la versión \textbf{3.7 de Snort} debido a errores de \textit{NUMA (Non-Uniform Memory Access)} que dificultaban su instalación automática. Tras ello, se propuso el uso de la versión \textbf{Snort 3.1.84.0} \cite{snort3_3184}, más estable para entornos embebidos.
+Con la pila de componentes definida, se consolidó el proyecto en un \textbf{sistema modular} que instala Snort 3 de forma totalmente automática sobre una \textit{Raspberry Pi}. El instalador configura sus dependencias, habilita los módulos necesarios para la operación y ajusta la asignación de memoria RAM según los recursos disponibles del dispositivo, completando así la fase de desarrollo del prototipo funcional.
 
-\section{Fase 4: Desarrollo del sistema R-Snort (enero 2025)}
-
-Esta fase supuso la consolidación del proyecto como producto técnico funcional. Se diseñó un sistema modular que permitía instalar Snort 3 de forma completamente automática sobre una \textit{Raspberry Pi}, configurando tanto sus dependencias como los módulos necesarios para su operación además de tener en cuenta la memoria RAM del sistema para la instalación.
-
-\section{Fase 5: Pruebas de validación y rendimiento (marzo-abril 2025)}
+\subsection{Fase 4: Pruebas de validación y rendimiento (mes 6)}
 
 Con \textbf{R-Snort} ya en funcionamiento, había que probarlo bajo distintos tipos de ataques simulados en una \textit{red doméstica} y ver cómo responde a nivel de \textbf{eficiencia}. Se llevaron a cabo varias pruebas y el rendimiento fue evaluado en distintos escenarios, recopilando información sobre el uso de la \textbf{CPU}, \textbf{red} y \textbf{memoria}, comparándola con \textit{Snort} activado y desactivado, para posteriormente generar \textbf{gráficas ilustrativas} que ayuden al lector a comprender de mejor manera el impacto sobre el equipo que supone \textit{Snort} \cite{kuruvila2022explainable}.
 
 \pagebreak
 
-\section{Cronograma general}
+\subsection{Cronograma general}
+
+En las Figuras \ref{fig:cronograma-tareas} y \ref{fig:tiempo-real-estimado} se muestra el cronograma general del proyecto junto con el tiempo estimado y real que se ha seguido para desarrollo.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.35]{cronograma/cronograma.png}
+	\includegraphics[scale=0.37]{cronograma/cronograma.png}
 	\caption{Cronograma de las tareas.}
+	\label{fig:cronograma-tareas}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.35]{cronograma/real_estimado.png}
+	\includegraphics[scale=0.4]{cronograma/real_estimado.png}
 	\caption{Comparación entre el tiempo estimado y el real.}
+	\label{fig:tiempo-real-estimado}
 \end{figure}
 
 
-\chapter{Estructura y metodología}
+\section{Estructura y metodología}
 
 El enfoque seguido ha sido principalmente \textbf{empírico}, centrado en la construcción de un sistema funcional y su posterior optimización. La metodología puede resumirse en lo siguiente:
 
@@ -353,20 +360,20 @@ El enfoque seguido ha sido principalmente \textbf{empírico}, centrado en la con
 
 \pagebreak
 
-\section*{Estructura del documento}
+\subsection*{Estructura del documento}
 
 El documento se ha dividido en distintos puntos que pretenden ayudar al lector a seguir sin complicación el flujo de trabajo:
 
 \begin{itemize}
-	\item \textbf{Capítulos 1 al 4:} Introducen la motivación personal y los objetivos generales, junto con las fases de realización y la estructura del presente documento.
+	\item \textbf{Introducción:} Introducen la motivación personal y los objetivos generales, junto con las fases de realización y la estructura del presente documento.
 	
-	\item \textbf{Capítulo 5:} Se exponen las principales funcionalidades, ventajas y explicación del comportamiento de los \textit{IDS}; posteriormente, se hace una introducción didáctica a \textit{Snort} como IDS.
+	\item \textbf{Capítulo 1:} Se exponen las principales funcionalidades, ventajas y explicación del comportamiento de los \textit{IDS}; posteriormente, se hace una introducción didáctica a \textit{Snort} como IDS.
 	
-	\item \textbf{Capítulo 6:} Este punto describe la utilización de un \textit{NIDS} en las redes objetivo. Se muestran las especificaciones de \textbf{Snort 3}, los requisitos de su instalación con sus \textit{preprocesadores} y configuración personalizada para \textbf{SOHO} \cite{cocsar2017firewall}, junto con la descripción de su transformación a \textit{script} automática para, finalmente, convertirse en un paquete automático \texttt{.deb}, que en esencia es el corazón de instalación de \textbf{R-Snort}.
+	\item \textbf{Capítulo 2:} Este punto describe la utilización de un \textit{NIDS} en las redes objetivo. Se muestran las especificaciones de \textbf{Snort 3}, los requisitos de su instalación con sus \textit{preprocesadores} y configuración personalizada para \textbf{SOHO} \cite{cocsar2017firewall}, junto con la descripción de su transformación a \textit{script} automática para, finalmente, convertirse en un paquete automático \texttt{.deb}, que en esencia es el corazón de instalación de \textbf{R-Snort}.
 	
-	\item \textbf{Capítulo 7:} Casos prácticos de \textbf{R-Snort} funcionando en un entorno real como es una \textit{red doméstica}, puesta a prueba y evaluación del rendimiento.
+	\item \textbf{Capítulo 3:} Casos prácticos de \textbf{R-Snort} funcionando en un entorno real como es una \textit{red doméstica}, puesta a prueba y evaluación del rendimiento.
 	
-	\item \textbf{Capítulo 8:} Finalizando el proyecto, se discuten los resultados obtenidos durante este trabajo.
+	\item \textbf{Capítulo 4:} Finalizando el proyecto, se discuten los resultados obtenidos durante este trabajo.
 	
 	\item \textbf{Conclusiones:} Recoge las pruebas prácticas realizadas sobre el sistema, así como las gráficas de rendimiento obtenidas.
 	
@@ -375,7 +382,7 @@ El documento se ha dividido en distintos puntos que pretenden ayudar al lector a
 
 Esta estructura ha sido cuidadosamente diseñada para poder replicarse y adaptarse a otros entornos, contribuyendo así a la difusión de herramientas de seguridad accesibles.
 
-
+\setcounter{secnumdepth}{2} 
 
 \chapter{Sistemas de Detección de Intrusos}
 
@@ -438,12 +445,9 @@ El sistema incorpora una serie de funcionalidades principalmente orientadas a la
 	\item \textbf{Integración con otros sistemas de seguridad}: Trabaja en conjunto con \textit{cortafuegos}, sistemas de gestión de eventos (\textbf{SIEM}), entre otras herramientas, con el objetivo de mejorar la defensa continuamente y estar preparados para amenazas posteriores.
 \end{itemize}
 
-
-
-
 \subsection{Ventajas y limitaciones de los IDS}
 
-Como todo sistema de seguridad, los IDS tienen puntos fuertes y aspectos mejorables. A continuación se resumen sus principales ventajas y limitaciones:
+Como todo sistema de seguridad, los IDS tienen puntos fuertes y aspectos mejorables. A continuación, se resumen sus principales ventajas y limitaciones:
 
 \subsubsection{Ventajas}
 
@@ -493,7 +497,7 @@ Snort se distingue por algunas funciones que le permiten adaptarse a distintos e
 
 \subsection{Arquitectura de Snort}
 
-El funcionamiento de Snort se basa en una arquitectura modular, donde cada componente cumple un papel específico dentro del proceso de detección. Sus principales elementos son:
+El funcionamiento de Snort se basa en una arquitectura modular, véase Figura \ref{fig:arquitectura-snort}, donde cada componente cumple un papel específico dentro del proceso de detección. Sus principales elementos son:
 
 \begin{itemize}
 	\item \textbf{Preprocesadores}: Adaptan el tráfico para su análisis, resolviendo fragmentaciones y otros detalles técnicos.
@@ -505,6 +509,7 @@ El funcionamiento de Snort se basa en una arquitectura modular, donde cada compo
 	\centering
 	\includegraphics[scale=0.5]{adicional/diagrama_arquitectura.png}
 	\caption{Arquitectura del funcionamiento de Snort.}
+	\label{fig:arquitectura-snort}
 \end{figure}
 
 \subsection{Reglas y actualizaciones}
@@ -719,6 +724,10 @@ A continuación, se detallan los complementos activados y configurados en el arc
 Cabe destacar que \textbf{Snort 3} ya no utiliza el formato de salida \texttt{Unified2}, por lo que herramientas como \textbf{Barnyard2} no son compatibles \cite{snort_gui_update}. En su lugar, \textbf{R-SNORT} se apoya en registros en texto plano y en el análisis posterior mediante un sistema de visualización web personalizado.
 
 % Continúa con el resto de capítulos y secciones siguiendo la estructura
+\clearpage
+\null
+\thispagestyle{empty}
+\newpage
 \chapter{Utilización de Snort en redes SOHO}
 \section{Introducción}
 
@@ -785,12 +794,13 @@ El entorno de trabajo define los componentes físicos y lógicos involucrados en
 
 \subsection{Esquema de red}
 
-El esquema de red presente en el desarrollo del trabajo está compuesto por un \textbf{router doméstico}, un \textbf{switch gestionable} que permite \textit{port mirroring} hacia el puerto de \textbf{R-SNORT}. De esta manera, no se produce latencia ya que no es necesario interponer el proyecto entre la red local de máquinas y el router, desarrollándose así las comunicaciones con la fluidez habitual del sistema, junto a otros dos equipos que más adelante servirán para las pruebas de \textbf{detección de intrusos} y de \textbf{rendimiento}. La \textbf{Raspberry Pi} cuenta con dos interfaces \textit{ethernet}: la interfaz \texttt{enxc8a362b4a702}, proporcionada por un adaptador externo, será la encargada de recoger el \textbf{tráfico total de la red}, y la interfaz predeterminada \texttt{eth0}, que será la encargada de suministrar \textbf{acceso a internet} a la Raspberry Pi.
+El esquema de red presente en la Figura \ref{fig:esquema-red} y usado para el desarrollo  del trabajo está compuesto por un \textbf{router doméstico}, un \textbf{switch gestionable} que permite \textit{port mirroring} hacia el puerto de \textbf{R-SNORT}. De esta manera, no se produce latencia ya que no es necesario interponer el proyecto entre la red local de máquinas y el router, desarrollándose así las comunicaciones con la fluidez habitual del sistema, junto a otros dos equipos que más adelante servirán para las pruebas de \textbf{detección de intrusos} y de \textbf{rendimiento}. La \textbf{Raspberry Pi} cuenta con dos interfaces \textit{ethernet}: la interfaz \texttt{enxc8a362b4a702}, proporcionada por un adaptador externo, será la encargada de recoger el \textbf{tráfico total de la red}, y la interfaz predeterminada \texttt{eth0}, que será la encargada de suministrar \textbf{acceso a internet} a la Raspberry Pi.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{script_automatico/network.png}
 	\caption{Esquema de red real del proyecto.}
+	\label{fig:esquema-red}
 \end{figure}
 
 \subsubsection*{Descripción del esquema}
@@ -865,35 +875,40 @@ Para potenciar las capacidades de detección de \textbf{Snort 3} en este proyect
 
 \subsubsection*{Preparación del entorno}
 
-El desarrollo de lo que será \textbf{R-SNORT} empezará con la instalación de \textbf{Snort} \cite{snort3_installation_pdf} mismo en su versión actual. Para ello, es buena práctica actualizar los repositorios y el equipo mediante un \lstinline|sudo apt-get update && sudo apt-get upgrade -y| antes de comenzar la instalación. Una vez hecho esto, empezaremos con la instalación de las distintas librerías y dependencias de \textbf{Snort V3}.
+El desarrollo de lo que será \textbf{R-SNORT} empezará con la instalación de \textbf{Snort} \cite{snort3_installation_pdf} mismo en su versión actual. Para ello, es buena práctica actualizar los repositorios y el equipo mediante un \lstinline|sudo apt-get update && sudo apt-get upgrade -y| antes de comenzar la instalación (véase el Código~\ref{cod:update-upgrade}). Una vez hecho esto, empezaremos con la instalación de las distintas librerías y dependencias de \textbf{Snort V3}.
 
-\begin{lstlisting}[style=commandstyle, caption={Actualización del sistema antes de instalar dependencias}]
+\begin{lstlisting}[style=commandstyle, caption={Comando para actualizar el sistema antes de instalar dependencias}, label={cod:update-upgrade}]
 	sudo apt-get update && sudo apt-get upgrade -y
 \end{lstlisting}
 
 \subsubsection*{Instalación y configuración de \texttt{libdnet}}
 
-Primero, instalamos un par de herramientas necesarias (\texttt{libtool} y \texttt{autoconf}) para compilar Snort 3. Luego, nos movemos al directorio \texttt{/usr/local/src} y clonamos el repositorio de \texttt{libdnet} desde GitHub, que es una librería importante para que Snort funcione correctamente. Finalmente, entramos en el directorio \texttt{libdnet} para seguir con la instalación.
+Primero, instalamos un par de herramientas necesarias (\texttt{libtool} y \texttt{autoconf}) para compilar Snort 3. Luego, nos movemos al directorio \texttt{/usr/local/src} y clonamos el repositorio de \texttt{libdnet} desde GitHub, que es una librería importante para que Snort funcione correctamente (véase el Código~\ref{cod:libdnet-clone}). Finalmente, entramos en el directorio \texttt{libdnet} para seguir con la instalación.
 
-\begin{lstlisting}[style=commandstyle, caption={Instalación y clonación de libdnet desde GitHub}]
+\begin{lstlisting}[style=commandstyle, caption={Comando para la instalación y clonación de libdnet desde GitHub}, label={cod:libdnet-clone}]
 	sudo apt install -y libtool autoconf
 	cd /usr/local/src
 	sudo git clone https://github.com/dugsong/libdnet.git
 	cd libdnet
 \end{lstlisting}
 
+Como puede verse en la Figura~\ref{fig:dep-libtool}, este paso instala las herramientas necesarias antes de compilar.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.1]{instalacion_snort/1-1.png}
+	\includegraphics[scale=0.09]{instalacion_snort/1-1.png}
 	\caption{Instalando dependencias necesarias.}
+	\label{fig:dep-libtool}
 \end{figure}
 
 \newpage
 
-A continuación, el paquete \texttt{check} es instalado. Esta herramienta servirá principalmente para ejecutar algunas pruebas en C. Es un requisito para poder compilar \texttt{libdnet} correctamente. Gracias a estas preparaciones, estamos configurando el entorno para la correcta compilación de Snort.
+A continuación, el paquete \texttt{check} es instalado. Esta herramienta servirá principalmente para
+ejecutar algunas pruebas en C. Es un requisito para poder compilar libdnet correctamente.
+Gracias a estas preparaciones, estamos configurando el entorno para la correcta compilación de
+Snort. (Véase el Código~\ref{cod:check-install} y Figura~\ref{fig:check-install})
 
-\begin{lstlisting}[style=commandstyle, caption={Instalando dependencia check}]
+\begin{lstlisting}[style=commandstyle, caption={Comando para instalar dependencia check}, label={cod:check-install}]
 	sudo apt install -y check
 \end{lstlisting}
 
@@ -901,11 +916,14 @@ A continuación, el paquete \texttt{check} es instalado. Esta herramienta servir
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/2-2.png}
 	\caption{Instalando dependencia check.}
+	\label{fig:check-install}
 \end{figure}
 
-La ejecución de \texttt{./configure} prepara el entorno para la compilación de \texttt{libdnet}, dependencia fundamental para el correcto funcionamiento del desarrollo posterior y de Snort. Su funcionamiento consiste en la revisión del sistema, verifica dependencias y configura los archivos necesarios para compilar código correctamente.
+La ejecución de \texttt{./configure} prepara el entorno para la compilación de libdnet, dependencia fundamental para el correcto funcionamiento del desarrollo posterior y de Snort. Su
+funcionamiento consiste en la revisión del sistema, verifica dependencias y configura los archivos
+necesarios para compilar código correctamente. (Véanse el Código~\ref{cod:configure-libdnet} y la Figura~\ref{fig:configure-libdnet}).
 
-\begin{lstlisting}[style=commandstyle, caption={Configurando libdnet con ./configure}]
+\begin{lstlisting}[style=commandstyle, caption={Comando para configurar libdnet con ./configure}, label={cod:configure-libdnet}]
 	sudo ./configure
 \end{lstlisting}
 
@@ -913,13 +931,16 @@ La ejecución de \texttt{./configure} prepara el entorno para la compilación de
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/3-3.png}
 	\caption{Configurando libdnet antes de la compilación.}
+	\label{fig:configure-libdnet}
 \end{figure}
 
 \newpage
 
-Llevamos a cabo la compilación de \texttt{libdnet} mediante \texttt{sudo make}; este comando convierte el código fuente de la dependencia en un ejecutable con bibliotecas a disposición para la instalación. Recorre los directorios del proyecto asegurándose de que todos los archivos necesarios sean procesados.
+Llevamos a cabo la compilación de libdnet mediante \texttt{sudo make}; este comando convierte
+el código fuente de la dependencia en un ejecutable con bibliotecas a disposición para la instalación. Recorre los directorios del proyecto asegurándose de que todos los archivos necesarios sean
+procesados. (Véanse el Código~\ref{cod:make-libdnet} y la Figura~\ref{fig:make-libdnet}).
 
-\begin{lstlisting}[style=commandstyle, caption={Compilando libdnet con make}]
+\begin{lstlisting}[style=commandstyle, caption={Comando para compilar libdnet con make}, label={cod:make-libdnet}]
 	sudo make
 \end{lstlisting}
 
@@ -927,29 +948,31 @@ Llevamos a cabo la compilación de \texttt{libdnet} mediante \texttt{sudo make};
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/4-4.png}
 	\caption{Compilando libdnet con make.}
+	\label{fig:make-libdnet}
 \end{figure}
-
 
 \newpage
 
-Ahora ejecutamos \texttt{sudo make install} para instalar \texttt{libdnet} en el sistema. Este comando copia los archivos compilados a sus directorios correspondientes, asegurando que puedan ser utilizados por otras aplicaciones y librerías.
+Ahora ejecutamos \texttt{sudo make install} para instalar libdnet en el sistema. Este comando copia los archivos compilados a sus directorios correspondientes, asegurando que puedan
+ser utilizados por otras aplicaciones y librerías. (Véanse el Código~\ref{cod:make-install-libdnet} y la Figura~\ref{fig:install-libdnet}).
 
-\begin{lstlisting}[style=commandstyle, caption={Instalando libdnet en el sistema}]
+\begin{lstlisting}[style=commandstyle, caption={Comando para instalar libdnet en el sistema}, label={cod:make-install-libdnet}]
 	sudo make install
 \end{lstlisting}
-
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/5-5.png}
 	\caption{Instalando libdnet en el sistema.}
+	\label{fig:install-libdnet}
 \end{figure}
 
 \subsubsection*{Solución al problema de \texttt{PKG\_CONFIG\_PATH}}
 
-Listamos los archivos de \texttt{libdnet} en \texttt{/usr/local/lib} para asegurarnos de que se instalaron correctamente. Luego, intentamos verificar su versión con \texttt{pkg-config --modversion dnet}, pero aparece un error indicando que no se encuentra en el \texttt{PKG\_CONFIG\_PATH}. Esto indica que es necesario añadir la ruta correcta para que el sistema reconozca la librería.
+Listamos los archivos de libdnet en \path{/usr/local/lib} para asegurarnos de que se instalaron correctamente. Luego, intentamos verificar su versión con \texttt{pkg-config -modversion dnet}, pero aparece un error indicando que no se encuentra en el PKG\_CONFIG\_PATH. Esto
+indica que es necesario añadir la ruta correcta para que el sistema reconozca la librería. (Véanse el Código~\ref{cod:pkgconfig-verificacion} y la Figura~\ref{fig:verificar-libdnet}).
 
-\begin{lstlisting}[style=commandstyle, caption={Listando archivos instalados y verificando libdnet}]
+\begin{lstlisting}[style=commandstyle, caption={Comando para listar archivos instalados y verificación libdnet}, label={cod:pkgconfig-verificacion}]
 	ls -l /usr/local/lib | grep libdnet
 	pkg-config --modversion dnet
 	sudo ldconfig
@@ -959,19 +982,24 @@ Listamos los archivos de \texttt{libdnet} en \texttt{/usr/local/lib} para asegur
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/6-6.png}
 	\caption{Verificación de la instalación de \texttt{libdnet}.}
+	\label{fig:verificar-libdnet}
 \end{figure}
 
-Editamos el archivo \texttt{dnet.pc} usando \texttt{nano}, añadiendo las rutas correctas para que \texttt{pkg-config} pueda encontrar \texttt{libdnet}. Definimos las variables \texttt{libdir} e \texttt{includedir}, asegurándonos de que apunten a \texttt{/usr/local/lib} y \texttt{/usr/local/include}, respectivamente. Esto soluciona el problema anterior donde \texttt{pkg-config} no encontraba la librería.
+Editamos el archivo dnet.pc usando nano, añadiendo las rutas correctas para que \texttt{pkg-config}
+pueda encontrar libdnet. Definimos las variables libdir e includedir, asegurándonos de
+que apunten a \path{/usr/local/lib} y \path{/usr/local/include}, respectivamente. Esto soluciona
+el problema anterior donde \texttt{pkg-config} no encontraba la librería. (Véase Figura \ref{fig:editar-dnet-pc})
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=1]{instalacion_snort/7.png}
 	\caption{Configurando libdnet para que sea reconocido por el sistema.}
+	\label{fig:editar-dnet-pc}
 \end{figure}
 
-Ahora configuramos el entorno para que \texttt{pkg-config} pueda encontrar \texttt{libdnet}. Primero, exportamos la variable \texttt{PKG\_CONFIG\_PATH} con la ruta correcta y la agregamos permanentemente al archivo \texttt{\~{}/.bashrc}. Luego, recargamos la configuración con \texttt{source ~/.bashrc}, actualizamos las librerías con \texttt{ldconfig} y verificamos que \texttt{libdnet} es reconocido correctamente ejecutando \texttt{pkg-config --modversion dnet}, confirmando la versión instalada.
+Añadimos la ruta a \texttt{PKG\_CONFIG\_PATH} y verificamos de nuevo confirmando la versión instalada (véanse el Código~\ref{cod:export-path-libdnet} y la Figura~\ref{fig:export-path-libdnet}).
 
-\begin{lstlisting}[style=commandstyle, caption={Añadiendo libdnet al PATH y verificando su reconocimiento}]
+\begin{lstlisting}[style=commandstyle, caption={Comando para agregar libdnet al PATH y verificar su reconocimiento}, label={cod:export-path-libdnet}]
 	export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 	echo 'export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH' >> ~/.bashrc
 	source ~/.bashrc
@@ -983,15 +1011,16 @@ Ahora configuramos el entorno para que \texttt{pkg-config} pueda encontrar \text
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/8-8.png}
 	\caption{Añadiendo libdnet al PATH y verificando su reconocimiento.}
+	\label{fig:export-path-libdnet}
 \end{figure}
-
-\newpage
 
 \subsubsection*{Compilación e instalación de \texttt{libdaq}}
 
-Clonamos el repositorio de \texttt{libdaq}, un componente necesario para \textbf{Snort 3}, desde su fuente oficial en GitHub. Este paso descarga el código fuente necesario para su compilación e instalación en la \textbf{Raspberry Pi}.
+Clonamos el repositorio de libdaq, un componente necesario para Snort 3, desde su fuente
+oficial en GitHub. Este paso descarga el código fuente necesario para su compilación e instalación
+en la Raspberry Pi. (véanse el Código~\ref{cod:clone-libdaq} y la Figura~\ref{fig:clone-libdaq}).
 
-\begin{lstlisting}[style=commandstyle, caption={Descargando libdaq desde el repositorio oficial}]
+\begin{lstlisting}[style=commandstyle, caption={Comando para descargar libdaq desde el repositorio oficial}, label={cod:clone-libdaq}]
 	sudo git clone https://github.com/snort3/libdaq.git
 \end{lstlisting}
 
@@ -999,11 +1028,14 @@ Clonamos el repositorio de \texttt{libdaq}, un componente necesario para \textbf
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/9-9.png}
 	\caption{Descargando libdaq desde el repositorio oficial.}
+	\label{fig:clone-libdaq}
 \end{figure}
 
-Entramos en el directorio de \texttt{libdaq} y ejecutamos el script \texttt{bootstrap}, que se encarga de generar los archivos de configuración necesarios para compilar el software correctamente. Se usa \texttt{autoreconf} para asegurarse de que todos los scripts de compilación estén en orden.
+Entramos en el directorio de libdaq y ejecutamos el script bootstrap, que se encarga de
+generar los archivos de configuración necesarios para compilar el software correctamente. Se usa
+\texttt{autoreconf} para asegurarse de que todos los scripts de compilación estén en orden. (Véanse el Código~\ref{cod:bootstrap-libdaq} y la Figura~\ref{fig:bootstrap-libdaq}).
 
-\begin{lstlisting}[style=commandstyle, caption={Ejecutando bootstrap para preparar la compilación de libdaq}]
+\begin{lstlisting}[style=commandstyle, caption={Comando para ejecutar bootstrap y preparar la compilación de libdaq}, label={cod:bootstrap-libdaq}]
 	cd libdaq
 	sudo ./bootstrap
 \end{lstlisting}
@@ -1012,15 +1044,17 @@ Entramos en el directorio de \texttt{libdaq} y ejecutamos el script \texttt{boot
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/10-10.png}
 	\caption{Preparando libdaq para su compilación.}
+	\label{fig:bootstrap-libdaq}
 \end{figure}
+
 
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%HECHO2%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Ejecutamos \texttt{./configure} para preparar el entorno de compilación de \texttt{libdaq}. Como se ha comentado anteriormente, este script revisa que el sistema tenga todas las dependencias necesarias y genera los archivos de configuración adecuados para compilar el software sin complicaciones.
+Ejecutamos \texttt{./configure} para preparar el entorno de compilación de \texttt{libdaq}. Como se ha comentado anteriormente, este script revisa que el sistema tenga todas las dependencias necesarias y genera los archivos de configuración adecuados para compilar el software sin complicaciones (véase el Código~\ref{cod:configure-libdaq}).
 
-\begin{lstlisting}[style=commandstyle, caption={Configurando libdaq antes de la compilación}]
+\begin{lstlisting}[style=commandstyle, caption={Comando para configurar libdaq antes de la compilación}, label={cod:configure-libdaq}]
 	sudo ./configure
 \end{lstlisting}
 
@@ -1028,11 +1062,12 @@ Ejecutamos \texttt{./configure} para preparar el entorno de compilación de \tex
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/11-11.png}
 	\caption{Configurando libdaq antes de la compilación.}
+	\label{fig:configure-libdaq}
 \end{figure}
 
-La ejecución de \texttt{make} llevará a cabo la compilación de \texttt{libdaq}. Este proceso traduce el código fuente a binarios ejecutables, asegurándose de que todas las dependencias y archivos necesarios se generen correctamente para su posterior instalación.
+La ejecución de \texttt{make} llevará a cabo la compilación de \texttt{libdaq}. Este proceso traduce el código fuente a binarios ejecutables, asegurándose de que todas las dependencias y archivos necesarios se generen correctamente para su posterior instalación (véanse el Código~\ref{cod:make-libdaq} y la Figura~\ref{fig:make-libdaq}).
 
-\begin{lstlisting}[style=commandstyle, caption={Compilando libdaq}]
+\begin{lstlisting}[style=commandstyle, caption={Comando de compilación de libdaq}, label={cod:make-libdaq}]
 	sudo make
 \end{lstlisting}
 
@@ -1040,13 +1075,14 @@ La ejecución de \texttt{make} llevará a cabo la compilación de \texttt{libdaq
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/12-12.png}
 	\caption{Compilando libdaq.}
+	\label{fig:make-libdaq}
 \end{figure}
 
 \newpage
 
-La instalación final la llevaremos a cabo mediante \texttt{sudo make install}. Esto copia los archivos compilados a sus ubicaciones correspondientes dentro del sistema para que puedan ser utilizados por \textbf{Snort} y otros programas que así lo requieran.
+La instalación final la llevaremos a cabo mediante \texttt{sudo make install}. Esto copia los archivos compilados a sus ubicaciones correspondientes dentro del sistema para que puedan ser utilizados por \textbf{Snort} y otros programas que así lo requieran (véanse el Código~\ref{cod:install-libdaq} y la Figura~\ref{fig:install-libdaq}).
 
-\begin{lstlisting}[style=commandstyle, caption={Instalando libdaq}]
+\begin{lstlisting}[style=commandstyle, caption={Comando de instalación de libdaq}, label={cod:install-libdaq}]
 	sudo make install
 \end{lstlisting}
 
@@ -1054,11 +1090,12 @@ La instalación final la llevaremos a cabo mediante \texttt{sudo make install}. 
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/13-13.png}
 	\caption{Instalando libdaq.}
+	\label{fig:install-libdaq}
 \end{figure}
 
-Listamos los archivos de configuración de \texttt{libdaq} en \texttt{/usr/local/lib/pkgconfig/} para asegurarnos de que la instalación se haya completado correctamente. Después, exportamos la variable \texttt{PKG\_CONFIG\_PATH} para que el sistema reconozca la librería. Finalmente, usamos \texttt{pkg-config --modversion libdaq} para confirmar que la versión instalada es la \textbf{3.0.19}.
+Listamos los archivos de configuración de \texttt{libdaq} en \texttt{/usr/local/lib/pkgconfig/} para asegurarnos de que la instalación se haya completado correctamente. Después, exportamos la variable \texttt{PKG\_CONFIG\_PATH} para que el sistema reconozca la librería. Finalmente, usamos \texttt{pkg-config --modversion libdaq} para confirmar que la versión instalada es la \textbf{3.0.19} (véase el Código~\ref{cod:verify-libdaq} y la Figura~\ref{fig:verify-libdaq}).
 
-\begin{lstlisting}[style=commandstyle, caption={Verificando instalación de libdaq}]
+\begin{lstlisting}[style=commandstyle, caption={Comando de verificación de libdaq}, label={cod:verify-libdaq}]
 	ls -l /usr/local/lib/pkgconfig | grep libdaq
 	export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 	pkg-config --modversion libdaq
@@ -1066,17 +1103,18 @@ Listamos los archivos de configuración de \texttt{libdaq} en \texttt{/usr/local
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.]{instalacion_snort/14-14.png}
+	\includegraphics[scale=0.1]{instalacion_snort/14-14.png}
 	\caption{Verificando la instalación de libdaq.}
+	\label{fig:verify-libdaq}
 \end{figure}
 
 \newpage
 
 \subsubsection*{Instalación de la dependencia libhwloc-dev}
 
-Instalamos \texttt{libhwloc-dev}, una librería necesaria para la ejecución de \textbf{Snort 3} y sus dependencias. Se incluyen automáticamente otros paquetes adicionales como \texttt{libhwloc-plugins}, \texttt{libnuma-dev} y \texttt{libpciaccess0}, que ayudan en la gestión de hardware y optimización del rendimiento.
+Instalamos \texttt{libhwloc-dev}, una librería necesaria para la ejecución de \textbf{Snort 3} y sus dependencias. Se incluyen automáticamente otros paquetes adicionales como \texttt{libhwloc-plugins}, \texttt{libnuma-dev} y \texttt{libpciaccess0}, que ayudan en la gestión de hardware y optimización del rendimiento (véanse el Código~\ref{cod:install-hwloc} y la Figura~\ref{fig:install-hwloc}).
 
-\begin{lstlisting}[style=commandstyle, caption={Instalando libhwloc-dev y dependencias relacionadas}]
+\begin{lstlisting}[style=commandstyle, caption={Comando de instalación de libhwloc-dev}, label={cod:install-hwloc}]
 	sudo apt install -y libhwloc-dev
 \end{lstlisting}
 
@@ -1084,13 +1122,14 @@ Instalamos \texttt{libhwloc-dev}, una librería necesaria para la ejecución de 
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/15-15.png}
 	\caption{Instalando dependencias necesarias.}
+	\label{fig:install-hwloc}
 \end{figure}
 
 \subsubsection*{Instalación de la dependencia libluajit}
 
-Aquí instalamos \texttt{libluajit-5.1-dev}, más dependencias para \textbf{Snort 3}, ya que utiliza \textbf{LuaJIT} para la configuración y personalización de reglas. También se instalan automáticamente \texttt{libluajit-5.1-2} y \texttt{libluajit-5.1-common}, que contienen las bibliotecas compartidas necesarias para funcionar correctamente.
+Aquí instalamos \texttt{libluajit-5.1-dev}, más dependencias para \textbf{Snort 3}, ya que utiliza \textbf{LuaJIT} para la configuración y personalización de reglas. También se instalan automáticamente \texttt{libluajit-5.1-2} y \texttt{libluajit-5.1-common}, que contienen las bibliotecas compartidas necesarias para funcionar correctamente (véanse el Código~\ref{cod:install-luajit} y la Figura~\ref{fig:install-luajit}).
 
-\begin{lstlisting}[style=commandstyle, caption={Instalando LuaJIT para Snort}]
+\begin{lstlisting}[style=commandstyle, caption={Comando de instalación de LuaJIT para Snort}, label={cod:install-luajit}]
 	sudo apt install -y libluajit-5.1-dev
 \end{lstlisting}
 
@@ -1098,15 +1137,16 @@ Aquí instalamos \texttt{libluajit-5.1-dev}, más dependencias para \textbf{Snor
 	\centering
 	\includegraphics[scale=0.1]{instalacion_snort/16-16.png}
 	\caption{Instalando LuaJIT para Snort.}
+	\label{fig:install-luajit}
 \end{figure}
 
 \newpage
 
 \subsubsection*{Instalación de Flex y Bison}
 
-Instalamos \texttt{Flex} y \texttt{Bison}, dos herramientas para el análisis léxico y sintáctico en la compilación de Snort. Después de la instalación, verificamos la versión de \texttt{Flex} con \texttt{flex --version} para asegurarnos de que se instaló correctamente.
+Instalamos \texttt{Flex} y \texttt{Bison}, dos herramientas para el análisis léxico y sintáctico en la compilación de Snort. Después de la instalación, verificamos la versión de \texttt{Flex} con \texttt{flex --version} para asegurarnos de que se instaló correctamente (véanse el Código~\ref{cod:install-flex} y la Figura~\ref{fig:install-flex}).
 
-\begin{lstlisting}[style=commandstyle, caption={Instalando Flex y Bison y verificando la versión}]
+\begin{lstlisting}[style=commandstyle, caption={Comando de instalación de Flex y Bison}, label={cod:install-flex}]
 	sudo apt install flex bison -y
 	flex --version
 \end{lstlisting}
@@ -1115,11 +1155,12 @@ Instalamos \texttt{Flex} y \texttt{Bison}, dos herramientas para el análisis l�
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/19-19.png}
 	\caption{Instalando Flex y Bison, herramientas necesarias para la compilación.}
+	\label{fig:install-flex}
 \end{figure}
 
-En este paso, instalamos \texttt{libpcre2-dev}, una biblioteca para el manejo de expresiones regulares en \textbf{Snort 3}. Nos es útil para la detección de patrones en el tráfico de red.
+En este paso, instalamos \texttt{libpcre2-dev}, una biblioteca para el manejo de expresiones regulares en \textbf{Snort 3}. Nos es útil para la detección de patrones en el tráfico de red (véanse el Código~\ref{cod:install-pcre2} y la Figura~\ref{fig:install-pcre2}).
 
-\begin{lstlisting}[style=commandstyle, caption={Instalando la biblioteca PCRE2 para expresiones regulares}]
+\begin{lstlisting}[style=commandstyle, caption={Comando de instalación de la biblioteca PCRE2 para expresiones regulares}, label={cod:install-pcre2}]
 	sudo apt install libpcre2-dev -y
 \end{lstlisting}
 
@@ -1127,15 +1168,16 @@ En este paso, instalamos \texttt{libpcre2-dev}, una biblioteca para el manejo de
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/20-20.png}
 	\caption{Instalando la biblioteca PCRE2 para el manejo de expresiones regulares.}
+	\label{fig:install-pcre2}
 \end{figure}
 
 \newpage
 
 \subsubsection*{Clonación y compilación del código fuente de Snort}
 
-Descargamos el código fuente de \textbf{Snort 3} directamente desde su repositorio oficial en GitHub mediante \texttt{git clone}.
+Descargamos el código fuente de \textbf{Snort 3} directamente desde su repositorio oficial en GitHub mediante \texttt{git clone} (véase el Código~\ref{cod:clone-snort}).
 
-\begin{lstlisting}[style=commandstyle, caption={Clonando el repositorio de Snort 3}]
+\begin{lstlisting}[style=commandstyle, caption={Comando de clonación del repositorio de Snort 3}, label={cod:clone-snort}]
 	sudo git clone https://github.com/snort3/snort3.git
 \end{lstlisting}
 
@@ -1143,11 +1185,12 @@ Descargamos el código fuente de \textbf{Snort 3} directamente desde su reposito
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/17-17.png}
 	\caption{Clonando el repositorio de Snort 3.}
+	\label{fig:clone-snort}
 \end{figure}
 
-Aquí establecemos la variable \texttt{my\_path} para definir el directorio de instalación de Snort. Luego, agregamos esta configuración al archivo \texttt{~/.bashrc} para que se cargue automáticamente en futuras sesiones. Finalmente, usamos \texttt{source ~/.bashrc} para aplicar los cambios de inmediato.
+Aquí establecemos la variable \texttt{my\_path} para definir el directorio de instalación de Snort. Luego, agregamos esta configuración al archivo \texttt{/.bashrc} para que se cargue automáticamente en futuras sesiones. Finalmente, usamos \texttt{source /.bashrc} para aplicar los cambios de inmediato (véase el Código~\ref{cod:export-mypath}).
 
-\begin{lstlisting}[style=commandstyle, caption={Estableciendo la ruta de instalación en la variable my\_path}]
+\begin{lstlisting}[style=commandstyle, caption={Comando para establecer la ruta de instalación en la variable my\_path}, label={cod:export-mypath}]
 	export my_path=/usr/local/snort
 	echo 'export my_path=/usr/local/snort' >> ~/.bashrc
 	source ~/.bashrc
@@ -1157,13 +1200,14 @@ Aquí establecemos la variable \texttt{my\_path} para definir el directorio de i
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/18-18.png}
 	\caption{Definiendo la ruta de instalación de Snort.}
+	\label{fig:export-mypath}
 \end{figure}
 
 \newpage
 
-Ejecutamos el script \texttt{configure\_cmake.sh} para configurar la compilación de \textbf{Snort 3}. Se especifica el prefijo de instalación con \texttt{\$my\_path}. Se generan los archivos de configuración y se definen las opciones de características, incluyendo los módulos \texttt{DAQ} que se activarán.
+Ejecutamos el script \texttt{configure\_cmake.sh} para configurar la compilación de \textbf{Snort 3} (véase el Código~\ref{cod:configure-cmake}). Se especifica el prefijo de instalación con \texttt{\$my\_path}.
 
-\begin{lstlisting}[style=commandstyle, caption={Configurando Snort 3 con CMake}]
+\begin{lstlisting}[style=commandstyle, caption={Comando de configuración de Snort 3 con CMake}, label={cod:configure-cmake}]
 	sudo ./configure_cmake.sh --prefix=$my_path
 \end{lstlisting}
 
@@ -1171,15 +1215,16 @@ Ejecutamos el script \texttt{configure\_cmake.sh} para configurar la compilació
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/21-21.png}
 	\caption{Configurando Snort 3 con CMake.}
+	\label{fig:configure-cmake}
 \end{figure}
 
 \newpage
 
 \subsubsection*{Compilación e instalación de Snort}
 
-Compilamos \textbf{Snort} con \texttt{make -j \$(nproc)}, lo que nos permite aprovechar todos los núcleos del procesador para acelerar el proceso.
+Compilamos \textbf{Snort} con \texttt{make -j \$(nproc)}, lo que nos permite aprovechar todos los núcleos del procesador para acelerar el proceso (véase el Código~\ref{cod:make-snort}).
 
-\begin{lstlisting}[style=commandstyle, caption={Compilando Snort utilizando todos los núcleos del procesador}]
+\begin{lstlisting}[style=commandstyle, caption={Comando de compilación de Snort utilizando todos los núcleos del procesador}, label={cod:make-snort}]
 	make -j $(nproc)
 \end{lstlisting}
 
@@ -1187,13 +1232,14 @@ Compilamos \textbf{Snort} con \texttt{make -j \$(nproc)}, lo que nos permite apr
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/22-22.png}
 	\caption{Compilación de Snort.}
+	\label{fig:make-snort}
 \end{figure}
 
 \newpage
 
-Instalamos Snort tras haberlo compilado con \texttt{sudo make install}. Este comando copia los archivos generados en sus respectivas ubicaciones dentro del sistema.
+Instalamos Snort tras haberlo compilado con \texttt{sudo make install}. Este comando copia los archivos generados en sus respectivas ubicaciones dentro del sistema (véanse el Código~\ref{cod:install-snort} y la Figura~\ref{fig:install-snort}).
 
-\begin{lstlisting}[style=commandstyle, caption={Instalación de Snort tras la compilación}]
+\begin{lstlisting}[style=commandstyle, caption={Comando de instalación de Snort tras la compilación}, label={cod:install-snort}]
 	sudo make install
 \end{lstlisting}
 
@@ -1201,14 +1247,14 @@ Instalamos Snort tras haberlo compilado con \texttt{sudo make install}. Este com
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/23-23.png}
 	\caption{Instalación de Snort.}
+	\label{fig:install-snort}
 \end{figure}
 
 \subsubsection*{Configuración inicial y validación}
 
-Finalmente, verificamos que \textbf{Snort} se ha instalado correctamente con el comando: \\
-\texttt{/usr/local/snort/bin/snort -V}. Esto nos muestra la versión instalada (\textbf{3.7.1.0}) junto con las bibliotecas y dependencias utilizadas, como \texttt{DAQ}, \texttt{libpcap}, \texttt{LuaJIT}, \texttt{OpenSSL}, entre otras.
+Finalmente, verificamos que \textbf{Snort} se ha instalado correctamente (véase el Código~\ref{cod:snort-version} y Figura \ref{fig:snort-version}).
 
-\begin{lstlisting}[style=commandstyle, caption={Verificando que Snort se haya instalado correctamente}]
+\begin{lstlisting}[style=commandstyle, caption={Comando de verificación de que Snort se haya instalado correctamente}, label={cod:snort-version}]
 	/usr/local/snort/bin/snort -V
 \end{lstlisting}
 
@@ -1216,11 +1262,14 @@ Finalmente, verificamos que \textbf{Snort} se ha instalado correctamente con el 
 	\centering
 	\includegraphics[scale=0.5]{instalacion_snort/24.png}
 	\caption{Snort instalado con éxito.}
+	\label{fig:snort-version}
 \end{figure}
 
-Creamos el directorio de configuración de Snort (\texttt{/usr/local/snort/etc/snort}) y copiamos los archivos de configuración en formato \texttt{Lua} desde el directorio fuente de \textbf{Snort 3}. Luego, ejecutamos Snort con la configuración especificada para validar que todo esté correctamente configurado. La salida muestra que Snort ha cargado las reglas y módulos sin errores ni advertencias.
+Creamos el directorio de configuración de Snort \path{/usr/local/snort/etc/snort} y copiamos los archivos de configuración en formato Lua desde el directorio fuente de Snort 3.
+Luego, ejecutamos Snort con la configuración especificada para validar que todo esté correctamente configurado. La salida muestra que Snort ha cargado las reglas y módulos sin errores ni
+advertencias. (Véase el Código~\ref{cod:snort-setup} y Figura \ref{fig:snort-setup}).
 
-\begin{lstlisting}[style=commandstyle, caption={Configuración y validación de Snort}]
+\begin{lstlisting}[style=commandstyle, caption={Comando de configuración y validación de Snort}, label={cod:snort-setup}]
 	sudo mkdir -p /usr/local/snort/etc/snort
 	sudo cp /usr/local/src/snort3/lua/*.lua /usr/local/snort/etc/snort/
 	sudo /usr/local/snort/bin/snort -c /usr/local/snort/etc/snort/snort.lua
@@ -1230,6 +1279,7 @@ Creamos el directorio de configuración de Snort (\texttt{/usr/local/snort/etc/s
 	\centering
 	\includegraphics[scale=0.12]{instalacion_snort/25-25.png}
 	\caption{Configuración de Snort validada con éxito.}
+	\label{fig:snort-setup}
 \end{figure}
 
 \newpage
@@ -1238,9 +1288,9 @@ Creamos el directorio de configuración de Snort (\texttt{/usr/local/snort/etc/s
 
 Tras la correcta instalación de \textbf{Snort}, aprovecharemos la arquitectura modular introducida en la versión 3, la cual utiliza archivos con extensión \texttt{.lua} para gestionar su configuración de forma más flexible y estructurada. A continuación, se presenta una guía paso a paso sobre cómo instalar las reglas básicas proporcionadas por la comunidad de Snort, conocidas como \textit{Community Rules}.\newline
 
-Descargamos las \textit{Community Rules} de Snort utilizando el comando \texttt{wget}, seguido de su descompresión mediante \texttt{tar}. Estas reglas constituyen un conjunto de firmas predefinidas para detectar amenazas comunes en entornos de red.
+Descargamos las \textit{Community Rules} de Snort utilizando el comando \texttt{wget}, seguido de su descompresión mediante \texttt{tar}. Estas reglas constituyen un conjunto de firmas predefinidas para detectar amenazas comunes en entornos de red, como se muestra en el Código~\ref{cod:descargar-reglas}.
 
-\begin{lstlisting}[style=commandstyle, caption={Descargando e instalando las reglas Community Rules}]
+\begin{lstlisting}[style=commandstyle, caption={Descargando e instalando las reglas Community Rules}, label={cod:descargar-reglas}]
 	sudo wget https://www.snort.org/downloads/community/snort3-community-rules.tar.gz
 	sudo tar -xvzf snort3-community-rules.tar.gz
 \end{lstlisting}
@@ -1249,13 +1299,14 @@ Descargamos las \textit{Community Rules} de Snort utilizando el comando \texttt{
 	\centering
 	\includegraphics[scale=0.12]{instalacion_reglas_snort/1-1.png}
 	\caption{Añadiendo reglas preconfiguradas a Snort.}
+	\label{fig:anadir-reglas}
 \end{figure}
 
 \pagebreak
 
-Posteriormente, editamos el archivo \texttt{snort.lua} \cite{snort_user_manual}, ubicado en \path{/usr/local/snort/etc/snort/}, para incluir la ruta del archivo \texttt{community.rules}. Esto permite que Snort cargue automáticamente estas reglas al iniciar y pueda utilizarlas para detectar patrones maliciosos en el tráfico de red. La edición del archivo puede realizarse con herramientas como \texttt{nano}, \texttt{vim} o cualquier otro editor de texto de preferencia.
+Posteriormente, editamos el archivo \texttt{snort.lua} \cite{snort_user_manual}, ubicado en \path{/usr/local/snort/etc/snort/}, para incluir la ruta del archivo \texttt{community.rules}. Esto permite que Snort cargue automáticamente estas reglas al iniciar y pueda utilizarlas para detectar patrones maliciosos en el tráfico de red. La edición del archivo puede realizarse con herramientas como \texttt{nano}, \texttt{vim} o cualquier otro editor de texto de preferencia. El proceso se muestra en el Código~\ref{cod:editar-snort-lua}.
 
-\begin{lstlisting}[style=commandstyle, caption={Editando el archivo snort.lua para incluir reglas personalizadas}]
+\begin{lstlisting}[style=commandstyle, caption={Editando el archivo snort.lua para incluir reglas personalizadas}, label={cod:editar-snort-lua}]
 	sudo nano /usr/local/snort/etc/snort/snort.lua
 \end{lstlisting}
 
@@ -1263,18 +1314,20 @@ Posteriormente, editamos el archivo \texttt{snort.lua} \cite{snort_user_manual},
 	\centering
 	\includegraphics[scale=0.8]{instalacion_reglas_snort/2.png}
 	\caption{Modificación de snort.lua para agregar las reglas preconfiguradas.}
+	\label{fig:modificar-snortlua}
 \end{figure}
 
-Una vez agregadas las reglas a \texttt{snort.lua}, realizamos una validación de la configuración ejecutando Snort en modo prueba. Esto permite comprobar que no existan errores sintácticos o de carga, garantizando así que el sistema pueda funcionar correctamente.
+Una vez agregadas las reglas a \texttt{snort.lua}, realizamos una validación de la configuración ejecutando Snort en modo prueba, tal y como se muestra en el Código~\ref{cod:validar-config}. Esto permite comprobar que no existan errores sintácticos o de carga, garantizando así que el sistema pueda funcionar correctamente.
 
-\begin{lstlisting}[style=commandstyle, caption={Validación de la configuración final de Snort con reglas}]
+\begin{lstlisting}[style=commandstyle, caption={Validación de la configuración final de Snort con reglas}, label={cod:validar-config}]
 	sudo snort -c /usr/local/snort/etc/snort/snort.lua
 \end{lstlisting}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.12]{instalacion_reglas_snort/3-3.png}
+	\includegraphics[scale=0.09]{instalacion_reglas_snort/3-3.png}
 	\caption{Validación configuración de Snort.}
+	\label{fig:validar-snort}
 \end{figure}
 
 \newpage
@@ -1283,8 +1336,7 @@ Una vez agregadas las reglas a \texttt{snort.lua}, realizamos una validación de
 
 Accedemos al archivo \texttt{snort.lua} y localizamos la sección correspondiente al preprocesador \texttt{http\_inspect = \{\}}. En ella escribimos los parámetros adecuados para la gestión y protección de una red corporativa de pequeña o mediana empresa (PYME). Esta configuración permite a Snort analizar a fondo el tráfico HTTP y detectar comportamientos anómalos asociados a amenazas comunes como ataques por inyección, carga de malware o manipulación de cabeceras.
 
-Las reglas aplicadas son las siguientes:
-\newline
+Las reglas aplicadas se resumen en la Tabla~\ref{tab:http-inspect}.
 
 \begin{table}[ht]
 	\centering
@@ -1300,32 +1352,28 @@ Las reglas aplicadas son las siguientes:
 		\hline
 	\end{tabular}
 	\caption{Parámetros de http\_inspect.}
+	\label{tab:http-inspect}
 \end{table}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{http_inspect/4.png}
 	\caption{Configuración http\_inspect.}
+	\label{fig:http-inspect}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.45]{http_inspect/5.png}
 	\caption{Configuración de binders.}
+	\label{fig:binders-http}
 \end{figure}
 
+Además de la configuración general mostrada en la Figura~\ref{fig:http-inspect}, es necesario agregar al final de la sección de \texttt{binders} el bloque representado en la Figura~\ref{fig:binders-http} para asegurar su correcto funcionamiento.\newline
 
-%%%%%%%%%%%%%%%%%%HECHO4
+Para finalizar, validamos la configuración de forma avanzada, como se muestra en el Código~\ref{cod:validacion-avanzada}.
 
-Además de la configuración general de \texttt{http\_inspect} mostrada en la Figura 6.30, es necesario agregar, al final de la sección de \texttt{binders} en el archivo \texttt{snort.lua}, el bloque de código representado en la Figura 6.31 para asegurar su correcto funcionamiento.
-\newline
-
-Esta configuración adicional es esencial para que \textbf{Snort} pueda vincular correctamente el tráfico HTTP con su correspondiente módulo de inspección durante el análisis en tiempo real. Sin este paso, es posible que el motor de detección no aplique correctamente las reglas diseñadas para HTTP, reduciendo así la eficacia del sistema de detección de intrusiones.
-\newline
-
-Por último, validamos la configuración ejecutando Snort en modo prueba para asegurarnos de que no se han introducido errores y que todas las configuraciones han sido cargadas exitosamente.
-
-\begin{lstlisting}[style=commandstyle, caption={Validación avanzada de la configuración de Snort}]
+\begin{lstlisting}[style=commandstyle, caption={Validación avanzada de la configuración de Snort}, label={cod:validacion-avanzada}]
 	sudo snort -c /usr/local/snort/etc/snort/snort.lua --daq-dir /usr/local/lib/daq -T
 \end{lstlisting}
 
@@ -1333,101 +1381,98 @@ Por último, validamos la configuración ejecutando Snort en modo prueba para as
 	\centering
 	\includegraphics[scale=0.1]{http_inspect/6-6.png}
 	\caption{Validación de la configuración.}
+	\label{fig:validacion-http}
 \end{figure}
-
 
 \subsubsection*{SSL Inspector}
 
-El siguiente módulo que habilitaremos será el \textbf{SSL Inspector}. El procedimiento de activación es similar al seguido en módulos anteriores. Comenzaremos por modificar el archivo \texttt{snort.lua}, donde localizaremos la sección correspondiente a \texttt{ssl} y añadiremos el bloque de configuración mostrado a continuación.
+El siguiente módulo que habilitaremos será el \textbf{SSL Inspector}. Su configuración se realiza como muestra la Figura~\ref{fig:ssl-config}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{ssl_inspect/8.png}
 	\caption{Configuración de SSL.}
+	\label{fig:ssl-config}
 \end{figure}
 
-Posteriormente, es necesario vincular la configuración de \texttt{ssl} en la sección \texttt{binders}, en caso de que no se haya hecho previamente. Esta vinculación garantiza que el tráfico cifrado sea correctamente dirigido al módulo de inspección SSL.
+Luego, se debe vincular el módulo con los binders como se muestra en la Figura~\ref{fig:ssl-binders}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{ssl_inspect/9.png}
 	\caption{Vincular con binders.}
+	\label{fig:ssl-binders}
 \end{figure}
 
-A continuación, verificamos la configuración de Snort para asegurarnos de que la sintaxis sea válida. Si todo es correcto, reiniciamos el servicio mediante \texttt{systemctl} para aplicar los cambios.
+Finalmente, validamos y reiniciamos el servicio como en el Código~\ref{cod:validar-reiniciar}.
 
-\begin{lstlisting}[style=commandstyle, caption={Validación de la configuración y reinicio del servicio Snort}, label={lst:validacion-snort}]
-	# Validar la configuración de Snort
+\begin{lstlisting}[style=commandstyle, caption={Validación de la configuración y reinicio del servicio Snort}, label={cod:validar-reiniciar}]
 	sudo snort -c /usr/local/snort/etc/snort/snort.lua -T
-	
-	# Reiniciar el servicio de Snort
 	sudo systemctl restart snort
 \end{lstlisting}
 
+\newpage
+
 \subsubsection*{Stream IP}
 
-Antiguamente conocido como \texttt{Frag3}, este preprocesador ha sido reemplazado por una versión más moderna bajo el nombre de \textbf{Stream IP}. Este módulo es responsable de reensamblar fragmentos de paquetes IP para prevenir técnicas de evasión. Su configuración se realiza en el archivo \texttt{snort.lua}.
+La configuración del preprocesador Stream IP se muestra en la Figura~\ref{fig:stream-ip}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{stream_ip/1.png}
 	\caption{Configuración de Stream IP.}
+	\label{fig:stream-ip}
 \end{figure}
-
-Una vez completada la configuración, validamos la sintaxis del archivo y reiniciamos Snort para aplicar los cambios.
 
 \subsubsection*{Stream TCP}
 
-Otro preprocesador que puede marcar la diferencia en protección de redes SOHO es \textbf{Stream TCP}, sucesor de \texttt{Stream5}. Este módulo permite el reensamblado de flujos TCP, lo cual es esencial para una inspección precisa del tráfico de red a nivel de sesión. Su configuración se realiza de forma similar a \texttt{Stream IP}. Tras editar \texttt{snort.lua}, comprobamos la validez de la sintaxis y reiniciamos el servicio.
+Este módulo, sucesor de \texttt{Stream5}, se configura como muestra la Figura~\ref{fig:stream-tcp}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{stream_tcp/1.png}
 	\caption{Configuración de Stream TCP.}
+	\label{fig:stream-tcp}
 \end{figure}
 
 \subsubsection*{Reputation}
 
-Este preprocesador permite bloquear IPs clasificadas como maliciosas utilizando listas negras. Para su funcionamiento se ha creado una carpeta \texttt{/reputation}, donde se almacena un archivo con IPs sospechosas, obtenidas del repositorio de \textit{emergingthreats.net} \cite{emerging_block_ips}.  Esta funcionalidad es útil para evitar conexiones no deseadas hacia o desde nodos peligrosos.\newline
-
-Como en los casos anteriores, tras configurar el módulo, se valida la sintaxis y se reinicia Snort para aplicar los cambios.
+El preprocesador Reputation se configura como se muestra en la Figura~\ref{fig:reputation}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{reputation/1.png}
 	\caption{Configuración de Reputation.}
+	\label{fig:reputation}
 \end{figure}
 
 \subsubsection*{Datos sensibles}
 
-En versiones anteriores de Snort existía el preprocesador \textit{Sensitive Data}, pero ha sido descontinuado en las versiones más recientes. Sin embargo, es posible emular parte de su funcionalidad adaptando expresiones regulares personalizadas que alerten sobre la presencia de datos sensibles típicos en el entorno de una PYME, como credenciales o números de tarjetas.\newline
+Creamos un archivo \texttt{custom.rules} para definir reglas específicas, como se ve en el Código~\ref{cod:custom-rules} y la Figura~\ref{fig:sensitive-rules}.
 
-Para ello, se crea un nuevo archivo de reglas llamado \texttt{custom.rules}, donde se definen patrones específicos a detectar.
-
-\begin{lstlisting}[style=commandstyle, caption={Editando el archivo custom.rules para incluir reglas personalizadas}]
+\begin{lstlisting}[style=commandstyle, caption={Editando el archivo custom.rules para incluir reglas personalizadas}, label={cod:custom-rules}]
 	sudo nano /usr/local/snort/etc/snort/custom.rulesS
 \end{lstlisting}
-
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{sensitive/1.png}
 	\caption{Expresiones regulares para protección de datos sensibles.}
+	\label{fig:sensitive-rules}
 \end{figure}
-
-Posteriormente, se añade la ruta de este archivo en \texttt{snort.lua}, se comprueba la validez de la configuración utilizando \texttt{libdaq} y se reinicia el servicio para aplicar los cambios.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{sensitive/2.png}
 	\caption{Agregación de custom.rules.}
+	\label{fig:agregar-customrules}
 \end{figure}
 
 \subsubsection*{Antivirus ClamAV}
 
-Finalmente, se procede con la instalación del antivirus \textbf{ClamAV}, una solución de código abierto utilizada para la detección de malware. Su integración complementa las capacidades de Snort mediante el análisis basado en firmas.
+Se instala ClamAV según el Código~\ref{cod:clamav-install}, y se actualizan las firmas como se ve en la Figura~\ref{fig:clamav1} y Figura~\ref{fig:clamav2}.
 
-\begin{lstlisting}[style=commandstyle, caption={Instalación del antivirus ClamAV}]
+\begin{lstlisting}[style=commandstyle, caption={Instalación del antivirus ClamAV}, label={cod:clamav-install}]
 	sudo apt install clamav clamav-daemon -y
 \end{lstlisting}
 
@@ -1435,11 +1480,10 @@ Finalmente, se procede con la instalación del antivirus \textbf{ClamAV}, una so
 	\centering
 	\includegraphics[scale=0.6]{clamAV/1.png}
 	\caption{Instalación de ClamAV.}
+	\label{fig:clamav1}
 \end{figure}
 
-Tras la instalación, se detiene el servicio, se actualizan las firmas de virus y se reinicia el demonio para activar la protección.
-
-\begin{lstlisting}[style=commandstyle, caption={Actualización de firmas y reinicio del servicio ClamAV}]
+\begin{lstlisting}[style=commandstyle, caption={Actualización de firmas y reinicio del servicio ClamAV}, label={cod:clamav-update}]
 	sudo systemctl stop clamav-freshclam
 	sudo freshclam
 	sudo systemctl start clamav-freshclam
@@ -1449,7 +1493,9 @@ Tras la instalación, se detiene el servicio, se actualizan las firmas de virus 
 	\centering
 	\includegraphics[scale=0.6]{clamAV/2.png}
 	\caption{Actualización de firmas y reinicio del servicio ClamAV.}
+	\label{fig:clamav2}
 \end{figure}
+
 
 
 \newpage
@@ -1460,13 +1506,17 @@ Tras la instalación, se detiene el servicio, se actualizan las firmas de virus 
 
 \subsection{Esquema de red de monitorización con R-SNORT}
 
+La Figura~\ref{fig:esquema-red-monitorizacion} muestra el entorno real utilizado para la monitorización de tráfico con R-SNORT, donde intervienen varios dispositivos conectados a través de un switch gestionable y una Raspberry Pi 5 configurada como sensor pasivo.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{script_automatico/network.png}
 	\caption{Esquema de red real del proyecto.}
+	\label{fig:esquema-red-monitorizacion}
 \end{figure}
 
-El \textit{Port Mirroring} se configura para duplicar el tráfico de los puertos 1, 2 y 3 (los dispositivos productivos y el router) hacia el puerto 4, permitiendo que la interfaz \texttt{enxc8a362b4a702} de la Raspberry Pi capture de forma pasiva y en tiempo real todo el tráfico interno y externo de la red.
+El \textit{Port Mirroring}—una función del conmutador que clona el tráfico de uno o varios puertos hacia otro puerto designado para tareas de monitorización (su funcionamiento y puesta en marcha se describe con mayor detalle en la Sección \ref{sec:port-mirroring})—se configuró para duplicar el tráfico de los puertos 1, 2 y 3 (dispositivos y router) hacia el puerto 4. De este modo, la interfaz \texttt{enxc8a362b4a702} de la Raspberry Pi puede capturar de forma pasiva y en tiempo real todo el tráfico interno y externo de la red.
+
 
 \subsubsection{Objetivo de este diseño}
 
@@ -1552,9 +1602,9 @@ El script implementa buenas prácticas de scripting en Bash, incluyendo:
 	\item Registro detallado en \texttt{/var/log/snort\_install.log} mediante redirección directa del flujo de salida.
 \end{itemize}
 
-Además, cada función de especial importancia o con condiciones de carrera se acompaña de validaciones explícitas. Por ejemplo, antes de descomprimir archivos \texttt{.tar.gz} o \texttt{.tar.xz}, se comprueba su integridad con \texttt{gzip -t} o \texttt{xz -t}, y se mitigan fallos comunes de \texttt{liblzma} con reinstalación forzada si es necesario.
+Además, cada función de especial importancia o con condiciones de carrera se acompaña de validaciones explícitas. Por ejemplo, antes de descomprimir archivos \texttt{.tar.gz} o \texttt{.tar.xz}, se comprueba su integridad con \texttt{gzip -t} o \texttt{xz -t}, y se mitigan fallos comunes de \texttt{liblzma} con reinstalación forzada si es necesario. Véase Código \ref{lst:xz-dos}
 
-\begin{lstlisting}[style=commandstyle, caption={Validación e instalación segura de paquetes xz}, label="lst:xz"]
+\begin{lstlisting}[style=commandstyle, caption={Validación e instalación segura de paquetes xz}, label=lst:xz-dos]
 	if ! xz -t "\$archivo" 2>&1 | grep -qv 'version `XZ_'; then
 		apt-get install --reinstall -y xz-utils liblzma5 liblzma-dev
 	fi
@@ -1562,7 +1612,7 @@ Además, cada función de especial importancia o con condiciones de carrera se a
 
 \subsubsection{Automatización total del servicio Snort}
 
-Una vez instalado, \texttt{Snort} es configurado automáticamente como un servicio \texttt{systemd}. El script genera dinámicamente el archivo \texttt{snort.service} y lo enlaza al directorio correcto, con los parámetros adecuados de reinicio automático, límites de recursos y uso de la interfaz de red seleccionada interactivamente por el usuario.
+Una vez instalado, \texttt{Snort} es configurado automáticamente como un servicio \texttt{systemd}. El script genera dinámicamente el archivo \texttt{snort.service} y lo enlaza al directorio correcto, con los parámetros adecuados de reinicio automático, límites de recursos y uso de la interfaz de red seleccionada interactivamente por el usuario (Véase Código \ref{lst:systemd}).
 
 \begin{lstlisting}[style=commandstyle, caption={Sección relevante del systemd generado}, label=lst:systemd]
 	[Service]
@@ -1574,9 +1624,9 @@ Una vez instalado, \texttt{Snort} es configurado automáticamente como un servic
 
 \subsubsection{Mitigación de limitaciones de hardware}
 
-Para abordar las limitaciones de memoria RAM propias de sistemas como la ARM (no presente en Raspberry Pi 5 de 8GB de RAM), el script evalúa si el sistema posee menos de 1.5GB de RAM y en ese caso crea un archivo de swap temporal de 2GB:
+Para abordar las limitaciones de memoria RAM propias de sistemas como la ARM (no presente en Raspberry Pi 5 de 8GB de RAM), el script evalúa si el sistema posee menos de 1.5GB de RAM y en ese caso crea un archivo de swap temporal de 2GB (Véase Código \ref{lst:system-swap}).
 
-\begin{lstlisting}[style=commandstyle, caption={Sistema de swap}]
+\begin{lstlisting}[style=commandstyle, caption={Sistema de swap}, label=lst:system-swap]
 	if [ "$mem_kb" -lt 1500000 ]; then
 	fallocate -l 2G /swapfile_snort
 \end{lstlisting}
@@ -1589,7 +1639,7 @@ Dado que el proyecto R-Snort está pensado como un sistema IDS autónomo para pe
 
 \subsubsection{Resultados e impacto del diseño}
 
-El instalador automático consigue reducir a menos de 15 minutos la instalación completa de Snort, desde dependencias hasta configuración funcional. Esta reducción de complejidad aumenta la fiabilidad y la reproducibilidad del entorno, dos factores muy demandados para sistemas de detección de intrusos.\newline
+El instalador automático consigue reducir a menos de 15 minutos la instalación completa de Snort, desde dependencias hasta la configuración funcional. Esta reducción de complejidad aumenta la fiabilidad y la reproducción del entorno, dos factores muy demandados para sistemas de detección de intrusos.\newline
 
 Además, se ha verificado que, tras una ejecución limpia del instalador, Snort queda operativo como servicio persistente, escuchando tráfico en tiempo real y generando alertas sobre tráfico malicioso, todo ello sin intervención posterior del usuario.
 
@@ -1599,15 +1649,16 @@ Además, se ha verificado que, tras una ejecución limpia del instalador, Snort 
 
 \subsection{Transición a paquete \texttt{.deb}}
 
-Con el objetivo de profesionalizar el despliegue de \textbf{R-SNORT} y facilitar su uso en entornos reales, se reestructuró el proyecto como un paquete Debian estándar. Esta decisión permite que el propio sistema operativo gestione la instalación, dependencias, configuración y servicio a través de scripts como \texttt{postinst} (ver Código~\ref{lst:postinst}), \texttt{prerm} (ver Código~\ref{lst:prerm}) y \texttt{postrm} (ver Código~\ref{lst:postrm}), alineándose con las buenas prácticas del ecosistema Debian \cite{debian_packaging_guide}.
+Con el objetivo de profesionalizar el despliegue de \textbf{R-SNORT} y facilitar su uso en entornos reales, se reestructuró el proyecto como un paquete Debian estándar. Esta decisión permite que el propio sistema operativo gestione la instalación, dependencias, configuración y servicio a través de scripts como \texttt{postinst} (ver Código~\ref{lst:postinst}), \texttt{prerm} (ver Código~\ref{lst:prerm}) y \texttt{postrm} (ver Código~\ref{lst:postrm}), siguiendo buenas prácticas del ecosistema Debian \cite{debian_packaging_guide}.
 \newline
 
-El resultado es una arquitectura empaquetada bajo el nombre \texttt{r-snort-deb.deb}, que se instala fácilmente mediante un único comando y permite revertir el proceso de instalación sin dejar rastros en el sistema.
+El resultado es una arquitectura empaquetada bajo el nombre \texttt{r-snort-deb.deb}, que se instala fácilmente mediante un único comando y permite revertir el proceso de instalación sin dejar rastros en el sistema. En la Figura \ref{fig:estructura-carpeta} se observa la estructura del proyecto.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{script_automatico/13.png}
 	\caption{Estructura del proyecto reempaquetado como archivo .deb.}
+	\label{fig:estructura-carpeta}
 \end{figure}
 
 \pagebreak
@@ -1619,7 +1670,7 @@ La transición al formato \texttt{.deb} permitió incorporar una serie de mejora
 \begin{itemize}
 	\item \textbf{Selección dinámica de interfaz:} Se desarrolló un script de instalación previa, \textbf{install\_rsnort.sh} (ver Código~\ref{lst:install-rsnort}), que detecta automáticamente las interfaces Ethernet disponibles y permite al usuario seleccionar la que se conectará al puerto espejo del switch. La elección se guarda en \texttt{/etc/rsnort\_iface} para que pueda ser utilizada posteriormente por otros componentes del sistema.
 	
-	\item \textbf{Modo promiscuo y sin IP:} Se creó el script \textbf{interface\_setup.sh} (ver Código~\ref{lst:interface-setup}) que activa automáticamente la interfaz seleccionada, elimina cualquier dirección IP existente para evitar conflictos, y la configura en modo \textit{promiscuo}. Este paso es esencial para que Snort pueda inspeccionar todo el tráfico redirigido desde el switch sin interferir en el funcionamiento de la red.
+	\item \textbf{Modo promiscuo y sin IP:} Se creó el script \textbf{interface\_setup.sh} (ver Código~\ref{lst:interface-setup}) que activa automáticamente la interfaz seleccionada, elimina cualquier dirección IP existente para evitar conflictos, y la configura en modo \textit{promiscuo}. Este paso es esencial para que Snort pueda inspeccionar todo el tráfico redirigido desde el switch sin interferir en el funcionamiento de la red. El Código \ref{lst:promiscuo} muestra un segmento de la lógica encargada de esta función.
 	
 	\begin{lstlisting}[style=commandstyle, caption={Activación automática del modo promiscuo en interface\_setup.sh}, label=lst:promiscuo]
 	if [[ "$state" != "UP" ]]; then
@@ -1651,27 +1702,29 @@ Esta arquitectura modular empaquetada sigue las mejores prácticas de la ingenie
 
 Gracias a la evolución hacia un paquete \texttt{.deb}, \textbf{R-SNORT} se consolida como una herramienta más robusta, mantenible y amigable con el usuario final. Es importante recordar que este proyecto busca ofrecer una solución eficaz, ligera y accesible para redes SOHO (\textit{Small Office / Home Office}). Con un enfoque modular interno y una experiencia de instalación unificada, el sistema mantiene toda su capacidad de inspección avanzada sin renunciar a la simplicidad en su despliegue.
 
-%HECHO7
-
-
+\clearpage
+\null
+\thispagestyle{empty}
+\newpage
 \chapter{Caso práctico: utilización de R-Snort}
 
 \section{Entorno de trabajo}
 
-El sistema R-Snort ha sido desplegado en un entorno de red realista a pequeña escala, compuesto por los siguientes elementos:
+El sistema R-Snort ha sido desplegado en un entorno de red realista a pequeña escala (Véase Figura \ref{fig:esquema-real-red}), compuesto por los siguientes elementos:
 
 \begin{itemize}
 	\item Una Raspberry Pi 5 con sistema operativo Ubuntu Server, encargada de ejecutar el paquete automatizado con Snort.
 	\item Un switch gestionable Tenda TEG205E, configurado para replicar todo el tráfico de red mediante la funcionalidad de \textit{port mirroring}.
 	\item Un adaptador UGREEN USB 3.0 a Ethernet Gigabit conectado a la Raspberry, que actúa como interfaz de captura para Snort.
 	\item Un router doméstico (F@st 5670) que proporciona conectividad a Internet a toda la red.
-	\item Dos equipos cliente: un PC con Windows y otro con Ubuntu Server, ambos conectados al switch.
+	\item Varios equipos cliente conectados al switch, entre los que se encuentran un PC con Windows y otro con Ubuntu Server que se usarán para hacer pruebas en la Sección \ref{sec:pruebas}.
 \end{itemize}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{script_automatico/network.png}
 	\caption{Esquema de red real del proyecto.}
+	\label{fig:esquema-real-red}
 \end{figure}
 
 El puerto 4 del switch se ha configurado como destino del \textit{mirroring}, recibiendo una copia del tráfico de los puertos 1 a 3 (correspondientes al router y los dos PCs). De esta manera, R-Snort es capaz de recibir una copia tanto del tráfico interno como del proveniente de Internet. La Raspberry escucha dicho tráfico a través del adaptador UGREEN, el cual se configura automáticamente en modo promiscuo, sin dirección IP asignada, para evitar interferencias en la red.
@@ -1685,85 +1738,94 @@ La instalación se ha simplificado al máximo para que cualquier usuario pueda d
 	\item Instalación del paquete \texttt{.deb}, que compila Snort y sus dependencias, configura la interfaz en modo promiscuo, crea el servicio en \texttt{systemd}, e inicia automáticamente el demonio de Snort.
 \end{enumerate}
 
-A continuación, se presentan algunas capturas del proceso, incluyendo tanto la preparación del hardware como de la instalación software:\newline
+A continuación, se presentan algunas capturas del proceso, incluyendo tanto la preparación del hardware como de la instalación software.
 
-La Raspberry Pi 5 cuenta con dos interfaces Ethernet: una conectada directamente al router para acceder a Internet desde fuera de la red local (\texttt{eth0}), y otra a través de un adaptador USB 3.0 (UGREEN) destinada exclusivamente a capturar tráfico de red (\texttt{enxc8a362b4a702}). Esta segunda interfaz es la que recibe todo el tráfico replicado desde el switch mediante \textit{port mirroring}.
+La Raspberry Pi 5 cuenta con dos interfaces Ethernet: una conectada directamente al router para acceder a Internet desde fuera de la red local (\texttt{eth0}), y otra a través de un adaptador USB 3.0 (UGREEN) destinada exclusivamente a capturar tráfico de red (\texttt{enxc8a362b4a702}). Esta segunda interfaz es la que recibe todo el tráfico replicado desde el switch mediante \textit{port mirroring} (véase Figura~\ref{fig:interfaces-pi}).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\textwidth]{pruebas_config/1-1.JPG}
 	\caption{Raspberry Pi conectada con dos interfaces Ethernet.}
+	\label{fig:interfaces-pi}
 \end{figure}
 
 \pagebreak
 
 \subsection*{Asignación de dispositivos al switch}
 
-El switch gestionable Tenda permite configurar el tráfico de cada puerto. En este caso, se conectaron el router, los dos PCs (Windows y Ubuntu Server) y la Raspberry Pi. Esta última se conecta a un puerto configurado como espejo de los demás, lo que le permite capturar el tráfico replicado.
+El switch gestionable Tenda permite configurar el tráfico de cada puerto. En este caso, se conectaron el router, los equipos (entre ellos los equipos Windows y Ubuntu Server anteriormente mencionados) y la Raspberry Pi. Esta última se conecta a un puerto configurado como espejo de los demás, lo que le permite capturar el tráfico replicado (véase Figura~\ref{fig:switch-conexion}).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.65\textwidth]{pruebas_config/2-2.JPG}
 	\caption{Conexiones físicas al switch gestionable.}
+	\label{fig:switch-conexion}
 \end{figure}
 
 \subsection*{Identificación del entorno LAN}
 
-Desde la interfaz web del router se pueden visualizar todos los dispositivos conectados. Esto permite verificar que tanto el switch como la Raspberry Pi están correctamente integrados en la red y responden a su dirección IP.
+Desde la interfaz web del router se pueden visualizar todos los dispositivos conectados. Esto permite verificar que tanto el switch como la Raspberry Pi están correctamente integrados en la red y responden a su dirección IP (Figura~\ref{fig:router-lan}).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.65\textwidth]{pruebas_config/3-router.png}
 	\caption{Dispositivos visibles en la red doméstica.}
+	\label{fig:router-lan}
 \end{figure}
 
 \subsection*{Acceso al switch Tenda}
 
-Para configurar el port mirroring es necesario acceder al panel web del switch. Para ello, se localiza su dirección IP desde el router (192.168.1.169) y se accede a ella mediante un navegador web.
+Para configurar el port mirroring es necesario acceder al panel web del switch. Para ello, se localiza su dirección IP del switch desde la interfaz del gateway (192.168.1.1) y se accede a ella mediante un navegador web a la IP correspondiente al switch, en este caso 192.168.1.169 (Figuras~\ref{fig:ip-switch} y \ref{fig:login-switch}).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.65\textwidth]{pruebas_config/4-localizar_tenda.png}
 	\caption{IP local del switch detectada desde el router.}
+	\label{fig:ip-switch}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{pruebas_config/5-tenda_web.png}
 	\caption{Pantalla de acceso al panel de administración.}
+	\label{fig:login-switch}
 \end{figure}
 
 \subsection*{Seguridad inicial del dispositivo}
 
-En el primer acceso al switch, el sistema solicita el cambio obligatorio de la contraseña predeterminada para mejorar la seguridad del entorno.
+En el primer acceso al switch, el sistema solicita el cambio obligatorio de la contraseña predeterminada para mejorar la seguridad del entorno (Figura~\ref{fig:pass-switch}).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{pruebas_config/6-cambio_pass_tenda.png}
 	\caption{Cambio obligatorio de contraseña en el primer inicio.}
+	\label{fig:pass-switch}
 \end{figure}
 
 \subsection*{Configuración avanzada del switch}
 
-Una vez autenticados, accedemos a la interfaz de administración, donde es posible configurar diversos parámetros del dispositivo. Desde esta sección se define el \textit{port mirroring}, se habilitan o deshabilitan puertos y se monitoriza el estado de la red.
+Una vez autenticados, accedemos a la interfaz de administración, donde es posible configurar diversos parámetros del dispositivo. Desde esta sección se define el \textit{port mirroring}, se habilitan o deshabilitan puertos y se monitoriza el estado de la red (Figura~\ref{fig:tenda-config}).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{pruebas_config/7-pagina_tenda.png}
 	\caption{Vista general del panel de gestión del switch.}
+	\label{fig:tenda-config}
 \end{figure}
 
 \subsection*{Activación del Port Mirroring}
+\label{sec:port-mirroring}
 
-Desde el apartado \texttt{switching > port mirroring}, activamos esta funcionalidad para duplicar el tráfico de red. Se configura el switch para replicar el tráfico de los puertos donde están conectados el router y los PCs (puertos 1, 2 y 3) hacia el puerto 4, que está vinculado a la interfaz de análisis de la Raspberry Pi. Esto permite que Snort reciba una copia completa del tráfico local y externo.
+Desde el apartado \texttt{switching > port mirroring}, activamos esta funcionalidad para duplicar el tráfico de red. Se configura el switch para replicar el tráfico de los puertos donde están conectados el router y los PCs (puertos 1, 2 y 3) hacia el puerto 4, que está vinculado a la interfaz de análisis de la Raspberry Pi (véase Figura~\ref{fig:mirror-config}).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{pruebas_config/9-asignacion_port.png}
 	\caption{Verificación del estado de los puertos tras la configuración.}
+	\label{fig:mirror-config}
 \end{figure}
 
-Una vez la Raspberry Pi 5 sea capaz de recibir todo el tráfico en modo espejo por la interfaz correspondiente de toda la red local al mismo tiempo que tiene conexión a internet externo por la interfaz predeterminada del sistema se pone en marcha el paquete automatizado para instalar la Snort junto con la configuración completa.\newline
+Una vez la Raspberry Pi 5 sea capaz de recibir todo el tráfico en modo espejo por la interfaz correspondiente de toda la red local al mismo tiempo que tiene conexión a internet externo por la interfaz predeterminada del sistema, se pone en marcha el paquete automatizado para instalar Snort junto con la configuración completa.
 
 Finalmente, ejecutamos como administrador el script \texttt{installer\_snort.sh} para iniciar la instalación de R-Snort. Se selecciona la interfaz de red correspondiente al puerto 4 del switch, que es el que recibe el tráfico duplicado \cite{bartman2016snort}. Una vez finalizado el proceso, el sistema queda completamente operativo. El código fuente del instalador puede consultarse en el Anexo~\ref{anexo_repositorio}.
 
@@ -1787,6 +1849,7 @@ Finalmente, ejecutamos como administrador el script \texttt{installer\_snort.sh}
 	\label{fig:instalacion}
 \end{figure}
 
+
 \pagebreak
 
 %HECHO8
@@ -1794,8 +1857,9 @@ Finalmente, ejecutamos como administrador el script \texttt{installer\_snort.sh}
 % --> Aquí se insertan las figuras
 
 \section{Utilización y pruebas}
+\label{sec:pruebas}
 
-Una vez completada la instalación, se procedió a la validación funcional del sistema y a su evaluación de rendimiento. El objetivo principal es demostrar que R-Snort es capaz de monitorizar eficazmente el tráfico de red y detectar amenazas sin sobresaturar los recursos del sistema.
+Una vez completada la instalación, se procedió a la validación funcional del sistema y a su evaluación de rendimiento. El objetivo principal es demostrar que R-Snort puede monitorizar eficazmente el tráfico de red y detectar amenazas sin sobresaturar los recursos del sistema.
 
 \subsection{Pruebas de validación del funcionamiento}
 
@@ -1811,10 +1875,10 @@ Desde el equipo Ubuntu Server (\texttt{192.168.1.133}) se ejecutó un comando \t
 	ping -t 1 8.8.8.8
 \end{lstlisting}
 
-Este tipo de tráfico ICMP con TTL muy bajo es común en herramientas de escaneo y técnicas de reconocimiento como \texttt{traceroute}, por lo que debe ser identificado por un sistema de detección de intrusos.\newline
+El parámetro TTL (\textit{Time To Live}) define cuántos saltos puede atravesar un paquete antes de ser descartado por los routers. Usar un valor muy bajo, como \texttt{1}, provoca que el paquete expire en el primer salto, lo que es característico de técnicas de reconocimiento como \texttt{traceroute}. Por ello, este tipo de tráfico puede ser indicativo de un escaneo y debe ser detectado por un sistema de detección de intrusos.\newline
 
 \textbf{Resultado:} \\
-R-Snort detectó correctamente el tráfico como potencialmente sospechoso. A continuación se muestra una tabla con algunas de las alertas generadas:
+R-Snort detectó correctamente el tráfico como potencialmente sospechoso. A continuación se muestra una tabla con algunas de las alertas generadas (Tabla~\ref{tab:icmp-alerts}) y un fragmento visual de las mismas (Figura~\ref{fig:icmp-alerts}).
 
 \begin{table}[H]
 	\centering
@@ -1831,15 +1895,17 @@ R-Snort detectó correctamente el tráfico como potencialmente sospechoso. A con
 		\end{tabular}%
 	}
 	\caption{Alertas ICMP generadas durante la prueba de TTL bajo.}
+	\label{tab:icmp-alerts}
 \end{table}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{pruebas_bien/seccion_uno/1.png}
 	\caption{Fragmento de alertas generadas por tráfico ICMP anómalo.}
+	\label{fig:icmp-alerts}
 \end{figure}
 
-Esta prueba demuestra que el sistema R-Snort no solo detecta tráfico ICMP, sino que lo analiza correctamente comportamientos inusuales, patrones tipo \texttt{traceroute} y errores de TTL. El resultado valida tanto la activación de los preprocesadores como la integración de las reglas comunitarias.
+Esta prueba demuestra que el sistema R-Snort no solo detecta tráfico ICMP, sino que analiza correctamente comportamientos inusuales, patrones tipo \texttt{traceroute} y errores de TTL. El resultado valida tanto la activación de los preprocesadores como la integración de las reglas comunitarias.
 
 \subsubsection*{Prueba 2: Preprocesadores \texttt{stream\_tcp} y \texttt{http\_inspect}}
 
@@ -1856,7 +1922,7 @@ Desde el equipo Ubuntu Server (\texttt{192.168.1.133}) se generó una solicitud 
 Aunque el objetivo era activar una alerta por cabecera anómala, Snort reaccionó con una alerta más severa al detectar un patrón característico de shellcode, mostrando así un nivel de análisis más profundo.\newline
 
 \textbf{Resultado:} \\
-R-Snort generó múltiples alertas clasificadas como shellcode (`INDICATOR-SHELLCODE`), lo cual valida la efectividad del sistema ante posibles vectores de ataque que podrían comprometer la seguridad de una red.
+R-Snort generó múltiples alertas clasificadas como shellcode (\texttt{INDICATOR-SHELLCODE}), lo cual valida la efectividad del sistema ante posibles vectores de ataque que podrían comprometer la seguridad de una red. Véase la Tabla~\ref{tab:http-alerts} y Figura~\ref{fig:http-alerts}.
 
 \begin{table}[H]
 	\centering
@@ -1872,12 +1938,14 @@ R-Snort generó múltiples alertas clasificadas como shellcode (`INDICATOR-SHELL
 		\end{tabular}%
 	}
 	\caption{Alertas generadas por tráfico HTTP con cabecera anómala interpretado como shellcode.}
+	\label{tab:http-alerts}
 \end{table}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{pruebas_bien/seccion_uno/2.png}
 	\caption{Detección de shellcode.}
+	\label{fig:http-alerts}
 \end{figure}
 
 Esta prueba valida que R-Snort es capaz de analizar en profundidad el contenido de las cabeceras HTTP y detectar patrones que puedan representar intentos de explotación o evasión. Aunque la alerta no fue específicamente la esperada, el resultado demuestra un comportamiento más inteligente y proactivo en la inspección de tráfico.
@@ -1897,7 +1965,7 @@ Desde el equipo Ubuntu Server (\texttt{192.168.1.133}) se ejecutó una consulta 
 \pagebreak
 
 \textbf{Resultado:} \\
-Snort generó correctamente varias alertas clasificadas como tráfico DNS sospechoso. Estas alertas corresponden a respuestas con TTL muy bajo y sin registros de autoridad, lo cual puede indicar un intento de manipulación de DNS.
+Snort generó correctamente varias alertas clasificadas como tráfico DNS sospechoso. Estas alertas corresponden a respuestas con TTL muy bajo y sin registros de autoridad, lo cual puede indicar un intento de manipulación de DNS (véase Tabla~\ref{tab:dns-alerts} y Figura~\ref{fig:dns-alerts}).
 
 \begin{table}[H]
 	\centering
@@ -1912,12 +1980,14 @@ Snort generó correctamente varias alertas clasificadas como tráfico DNS sospec
 		\end{tabular}%
 	}
 	\caption{Alertas DNS generadas por respuestas con TTL bajo y sin autoridad.}
+	\label{tab:dns-alerts}
 \end{table}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{pruebas_bien/seccion_uno/3.png}
 	\caption{Fragmento mostrando respuestas DNS sospechosas.}
+	\label{fig:dns-alerts}
 \end{figure}
 
 Esta prueba valida que el preprocesador \texttt{dns} está activo y funcional, siendo capaz de identificar anomalías comunes en el tráfico DNS que podrían indicar intentos de suplantación o evasión.
@@ -1937,7 +2007,7 @@ Desde el equipo Ubuntu Server (\texttt{192.168.1.133}) se lanzó un escaneo UDP 
 Este tipo de exploración intenta conectarse a los puertos SNMP estándar y AgentX, generando tráfico anómalo que debería activar alertas en los preprocesadores \texttt{snmp} y \texttt{rpc\_decode}.\newline
 
 \textbf{Resultado:} \\
-Snort detectó múltiples intentos de conexión hacia los puertos SNMP y generó alertas asociadas tanto a peticiones como a traps UDP:
+Snort detectó múltiples intentos de conexión hacia los puertos SNMP y generó alertas asociadas tanto a peticiones como a traps UDP, como se resume en la Tabla~\ref{tab:snmp-alerts} y la Figura~\ref{fig:snmp-alerts}.
 
 \begin{table}[H]
 	\centering
@@ -1954,12 +2024,14 @@ Snort detectó múltiples intentos de conexión hacia los puertos SNMP y generó
 		\end{tabular}%
 	}
 	\caption{Alertas generadas durante el escaneo SNMP contra el router.}
+	\label{tab:snmp-alerts}
 \end{table}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{pruebas_bien/seccion_uno/4.png}
 	\caption{Fragmento de las alertas SNMP generadas por el escaneo con Nmap.}
+	\label{fig:snmp-alerts}
 \end{figure}
 
 Esta prueba valida el correcto funcionamiento de los preprocesadores \texttt{snmp} y \texttt{rpc\_decode}, así como la integración eficaz de las reglas comunitarias orientadas a protocolos de red clásicos.
@@ -1979,7 +2051,7 @@ Desde el equipo Ubuntu Server (\texttt{192.168.1.133}) se simuló una fuga de da
 Las reglas utilizadas para esta prueba fueron desarrolladas utilizando expresiones regulares (\texttt{pcre}) y se encuentran activas en el archivo \texttt{snort.lua} bajo la sección de reglas IPS.\newline
 
 \textbf{Resultado:} \\
-Snort generó múltiples alertas, una por cada patrón detectado, confirmando la efectividad de las reglas personalizadas. A continuación se resumen las más representativas:
+Snort generó múltiples alertas, una por cada patrón detectado, confirmando la efectividad de las reglas personalizadas. A continuación se resumen las más representativas en la Tabla~\ref{tab:sensitive-alerts} y Figura~\ref{fig:sensitive-alerts}.
 
 \begin{table}[H]
 	\centering
@@ -1995,12 +2067,14 @@ Snort generó múltiples alertas, una por cada patrón detectado, confirmando la
 		\end{tabular}%
 	}
 	\caption{Alertas generadas por reglas personalizadas de fuga de datos sensibles.}
+	\label{tab:sensitive-alerts}
 \end{table}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{pruebas_bien/seccion_uno/5.png}
 	\caption{Fragmento del log con alertas generadas por datos sensibles.}
+	\label{fig:sensitive-alerts}
 \end{figure}
 
 Esta prueba demuestra que el sistema R-Snort es capaz de analizar el contenido del tráfico en texto plano y detectar información crítica con precisión, validando la correcta integración y activación de las reglas personalizadas.
@@ -2025,7 +2099,7 @@ Cada prueba tiene una duración aproximada de 3 minutos bajo condiciones normale
 \subsection*{Prueba 1: Uso global de CPU}
 
 \textbf{Objetivo:}  
-Evaluar el impacto del sistema R-Snort sobre el uso del procesador durante el funcionamiento en segundo plano.\newline
+Evaluar el impacto del sistema R-Snort sobre el uso del procesador durante el funcionamiento en segundo plano (Véase Figura \ref{fig:uso-global-cpu})\newline
 
 \textbf{Métrica monitorizada:}
 \begin{itemize}
@@ -2038,24 +2112,26 @@ Evaluar el impacto del sistema R-Snort sobre el uso del procesador durante el fu
 	\centering
 	\includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/1.png}
 	\caption{Uso global de CPU con Snort activo.}
+	\label{fig:uso-global-cpu}
 \end{figure}
 
-Se muestra la actividad del sistema con Snort funcionando en segundo plano. Aunque la CPU se mantiene inactiva la mayor parte del tiempo (\texttt{cpu.idle}), existe una actividad constante en espacio de usuario y kernel, provocada por el análisis de paquetes y la escritura de logs por parte de Snort.
+Se muestra la actividad del sistema con Snort funcionando en segundo plano. Aunque la CPU se mantiene inactiva la mayor parte del tiempo (\texttt{cpu.idle}), existe una actividad constante en espacio de usuario y kernel, provocada por el análisis de paquetes y la escritura de logs por parte de Snort.\newline
+
+En contraste, la Figura \ref{fig:cpu-snort-desactivado} presenta un patrón más estable cuando Snort está detenido. El sistema entra en estados de inactividad casi total, con mínimas interrupciones. Se aprecia una reducción en el uso de CPU.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/2.png}
 	\caption{Uso global de CPU con Snort desactivado.}
+	\label{fig:cpu-snort-desactivado}
 \end{figure}
-
-En contraste, la Figura 7.19 presenta un patrón más estable cuando Snort está detenido. El sistema entra en estados de inactividad casi total, con mínimas interrupciones. Se aprecia una reducción en el uso de CPU.\newline
 
 La diferencia entre ambos gráficos evidencia que Snort, incluso sin tráfico malicioso, genera una carga continua sobre la CPU aunque no es elevada.
 
 \subsection*{Prueba 2: Uso de memoria RAM}
 
 \textbf{Objetivo:}  
-Determinar el consumo de memoria generado por el sistema R-Snort durante su ejecución pasiva, sin tráfico inducido.\newline
+Determinar el consumo de memoria generado por el sistema R-Snort durante su ejecución pasiva, sin tráfico inducido (Véase Figura \ref{fig:sin-trafico}).\newline
 
 \textbf{Métrica monitorizada:}
 \begin{itemize}
@@ -2068,6 +2144,7 @@ Determinar el consumo de memoria generado por el sistema R-Snort durante su ejec
 	\centering
 	\includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/3.png}
 	\caption{Uso de memoria RAM con Snort activado y posteriormente detenido.}
+	\label{fig:sin-trafico}
 \end{figure}
 
 En la primera mitad del gráfico se observa un consumo de memoria estable mientras Snort permanece activo. Al detener el servicio, se registra un ligero incremento de memoria libre y una reducción proporcional de la memoria utilizada. Este comportamiento confirma que Snort mantiene una huella en RAM constante pero no intensiva, lo que lo hace adecuado para dispositivos con recursos limitados como una Raspberry Pi.
@@ -2077,15 +2154,29 @@ En la primera mitad del gráfico se observa un consumo de memoria estable mientr
 \textbf{Objetivo:}
 Observar el comportamiento del tráfico de red con y sin la ejecución de Snort para detectar posibles variaciones atribuibles al sistema de detección.
 
-\textbf{Métrica monitorizada:} \begin{itemize} \item \texttt{network.all.in.bytes} – Tráfico entrante en MB/s (amarillo). \item \texttt{network.all.out.bytes} – Tráfico saliente en MB/s (azul). \end{itemize}
+\textbf{Métrica monitorizada:}
+\begin{itemize}
+	\item \texttt{network.all.in.bytes} – Tráfico entrante en MB/s (amarillo).
+	\item \texttt{network.all.out.bytes} – Tráfico saliente en MB/s (azul).
+\end{itemize}
 
-\begin{figure}[H] \centering \includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/4.png} \caption{Tráfico de red con Snort activo.} \end{figure}
+En la Figura~\ref{fig:trafico-snort-activo} se observa una actividad de red con múltiples picos de tráfico entrante, por otro lado, el tráfico saliente es casi nulo, esto se debe a que actualmente la Raspberry Pi 5 no está comunicando con el exterior. Esta variabilidad en el tráfico entrante se debe a la recepción de paquetes normales y las tareas de registro de eventos por parte de Snort.
 
-En esta primera figura se observa una actividad de red con múltiples picos de tráfico entrante, por otro lado, el tráfico saliente es casi nulo, esto se debe a que actualmente la Raspberry Pi 5 no está comunicando con el exterior. Esta variabilidad en el tráfico entrante se debe a la recepción de paquetes normales y las tareas de registro de eventos por parte de Snort.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/4.png}
+	\caption{Tráfico de red con Snort activo.}
+	\label{fig:trafico-snort-activo}
+\end{figure}
 
-\begin{figure}[H] \centering \includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/5.png} \caption{Tráfico de red con Snort desactivado.} \end{figure}
+Aunque también se presentan picos (Figura~\ref{fig:trafico-snort-desactivado}), su intensidad general parece ligeramente menor. Sin embargo, no se puede establecer una correlación directa entre la ejecución de Snort y una diferencia significativa en el volumen de tráfico de red, dado que éste depende principalmente de la actividad de los dispositivos conectados. El impacto de Snort sobre esta métrica resulta, por tanto, poco concluyente.
 
-Aunque también se presentan picos, su intensidad general parece ligeramente menor. Sin embargo, no se puede establecer una correlación directa entre la ejecución de Snort y una diferencia significativa en el volumen de tráfico de red, dado que éste depende principalmente de la actividad de los dispositivos conectados. El impacto de Snort sobre esta métrica resulta, por tanto, poco concluyente.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/5.png}
+	\caption{Tráfico de red con Snort desactivado.}
+	\label{fig:trafico-snort-desactivado}
+\end{figure}
 
 \subsection*{Prueba 4: Actividad del disco}
 
@@ -2098,21 +2189,23 @@ Evaluar el impacto del sistema R-Snort sobre la escritura y lectura en disco dur
 	\item \texttt{disk.dev.read\_bytes[mmcblk0]} – Bytes leídos por segundo (azul).
 \end{itemize}
 
+Con Snort funcionando, se observa una mayor frecuencia de picos en la escritura de disco (Figura~\ref{fig:disco-snort-activo}). Esto es consistente con la generación continua de logs en tiempo real. Las lecturas desde disco son prácticamente inexistentes, ya que Snort opera principalmente en modo de captura y escritura.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/6.png}
 	\caption{Actividad de disco con Snort activo.}
+	\label{fig:disco-snort-activo}
 \end{figure}
 
-Con Snort funcionando, se observa una mayor frecuencia de picos en la escritura de disco. Esto es consistente con la generación continua de logs en tiempo real. Las lecturas desde disco son prácticamente inexistentes, ya que Snort opera principalmente en modo de captura y escritura.
+Al desactivar Snort, los picos de escritura se reducen drásticamente (Figura~\ref{fig:disco-snort-desactivado}), quedando solo operaciones menores relacionadas con el sistema. Este cambio confirma que la carga de I/O en disco generada por R-Snort es significativa y persistente durante su ejecución pasiva.\newline
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/7.png}
 	\caption{Actividad de disco con Snort desactivado.}
+	\label{fig:disco-snort-desactivado}
 \end{figure}
-
-Al desactivar Snort, los picos de escritura se reducen drásticamente, quedando solo operaciones menores relacionadas con el sistema. Este cambio confirma que la carga de I/O en disco generada por R-Snort es significativa y persistente durante su ejecución pasiva.\newline
 
 \subsection*{Prueba 6: Carga media del sistema (Load Average)}
 
@@ -2124,15 +2217,16 @@ Observar el impacto prolongado de R-Snort sobre la carga media del sistema, util
 	\item \texttt{kernel.all.load[15 minute]} – Carga promedio del sistema durante los últimos 15 minutos.
 \end{itemize}
 
+En la Figura~\ref{fig:load-average} se muestra la evolución de la carga media del sistema en intervalos de 15 minutos. Esta métrica representa el número promedio de procesos que están en ejecución o esperando acceso a la CPU. Dado que el sistema no está sometido a una carga pesada y Snort no induce tráfico masivo, los valores se mantienen bajos (en torno a 0.13 – 0.16), lo cual es normal en sistemas con múltiples núcleos.\newline
+
+Aunque se aprecian pequeñas fluctuaciones, estas no son significativas ni reflejan un impacto claro de Snort. Esto confirma que el servicio no genera bloqueos o acumulación de procesos cuando opera en segundo plano bajo condiciones normales de red.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{pruebas_bien/seccion_dos/8.png}
 	\caption{Carga media del sistema con y sin Snort activo (15 minutos).}
+	\label{fig:load-average}
 \end{figure}
-
-En la figura se muestra la evolución de la carga media del sistema en intervalos de 15 minutos. Esta métrica representa el número promedio de procesos que están en ejecución o esperando acceso a la CPU. Dado que el sistema no está sometido a una carga pesada y Snort no induce tráfico masivo, los valores se mantienen bajos (en torno a 0.13 – 0.16), lo cual es normal en sistemas con múltiples núcleos.\newline
-
-Aunque se aprecian pequeñas fluctuaciones, estas no son significativas ni reflejan un impacto claro de Snort. Esto confirma que el servicio no genera bloqueos o acumulación de procesos cuando opera en segundo plano bajo condiciones normales de red.
 
 \subsection{Pruebas de rendimiento bajo carga masiva}
 
@@ -2140,9 +2234,7 @@ Aunque se aprecian pequeñas fluctuaciones, estas no son significativas ni refle
 Evaluar el comportamiento del sistema R-Snort cuando es sometido a tráfico de red masivo, simulando un entorno de alta exigencia como el de una red corporativa activa o un ataque volumétrico. Estas pruebas permiten analizar la capacidad de respuesta del sistema, su consumo de recursos y la estabilidad general del entorno.\newline
 
 \textbf{Metodología:}  
-Se han lanzado múltiples flujos simultáneos desde el servidor Ubuntu (192.168.1.133) hacia la Raspberry Pi (192.168.1.132), utilizando la herramienta \texttt{iperf3} en modo UDP. Para maximizar la presión sobre el sistema, se han abierto varias sesiones en paralelo y sin limitación de pacing, aumentando así la congestión de red y la carga sobre la CPU y la memoria del sistema.
-
-\newpage
+Se han lanzado múltiples flujos simultáneos desde el servidor Ubuntu (\texttt{192.168.1.133}) hacia la Raspberry Pi (\texttt{192.168.1.132}), utilizando la herramienta \texttt{iperf3} en modo UDP. Para maximizar la presión sobre el sistema, se han abierto varias sesiones en paralelo y sin limitación de pacing, aumentando así la congestión de red y la carga sobre la CPU y la memoria del sistema.
 
 \begin{lstlisting}[language=bash,caption={Simulación de tráfico masivo desde Ubuntu Server hacia la Raspberry Pi},label={lst:trafico-masivo}]
 	# Ejecutar en 4 terminales distintas
@@ -2152,24 +2244,25 @@ Se han lanzado múltiples flujos simultáneos desde el servidor Ubuntu (192.168.
 	iperf3 -c 192.168.1.132 -u -b 950M -t 600 --pacing-timer 0 -l 1470 -p 5204
 \end{lstlisting}
 
-\subsubsection*{Prueba 1: Carga promedio del sistema (kernel.all.load)}
+\subsubsection*{Prueba 1: Carga promedio del sistema (\texttt{kernel.all.load})}
 
 \textbf{Métrica monitorizada:}
 \begin{itemize}
 	\item \texttt{kernel.all.load[15 minute]} – Carga promedio del sistema en los últimos 15 minutos.
 \end{itemize}
 
+En esta prueba (Figura~\ref{fig:carga-trafico-masivo}) representa la evolución de la carga del sistema a medida que se inducía tráfico de red extremo desde múltiples fuentes. A diferencia de las condiciones normales (donde la carga oscilaba en torno a 0.15), se observa una progresión ascendente constante hasta valores cercanos a 3.0. Esto indica que, aunque la Raspberry Pi logra mantener la estabilidad, comienza a saturarse al acercarse al límite de sus cuatro núcleos físicos.\newline
+
+La métrica de \texttt{load average} no refleja únicamente el uso de CPU, sino también la cantidad de procesos esperando ser ejecutados, incluyendo tareas bloqueadas por I/O. Por tanto, este resultado demuestra que Snort, bajo presión, sigue funcionando sin caídas, aunque con una carga crítica sostenida que evidencia el esfuerzo del sistema por procesar, analizar y registrar grandes volúmenes de datos en tiempo real.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{pruebas_bien/seccion_tres/1.png}
 	\caption{Carga promedio del sistema durante tráfico masivo.}
+	\label{fig:carga-trafico-masivo}
 \end{figure}
 
-Este gráfico representa la evolución de la carga del sistema a medida que se inducía tráfico de red extremo desde múltiples fuentes. A diferencia de las condiciones normales (donde la carga oscilaba en torno a 0.15), se observa una progresión ascendente constante hasta valores cercanos a 3.0. Esto indica que, aunque la Raspberry Pi logra mantener la estabilidad, comienza a saturarse al acercarse al límite de sus cuatro núcleos físicos.\newline
-
-La métrica de \texttt{load average} no refleja únicamente el uso de CPU, sino también la cantidad de procesos esperando ser ejecutados, incluyendo tareas bloqueadas por I/O. Por tanto, este resultado demuestra que Snort, bajo presión, sigue funcionando sin caídas, aunque con una carga crítica sostenida que evidencia el esfuerzo del sistema por procesar, analizar y registrar grandes volúmenes de datos en tiempo real.
-
-\subsubsection*{Prueba 2: Utilización detallada de CPU (cpu.util)}
+\subsubsection*{Prueba 2: Utilización detallada de CPU (\texttt{cpu.util})}
 
 \textbf{Métricas monitorizadas:}
 \begin{itemize}
@@ -2178,17 +2271,18 @@ La métrica de \texttt{load average} no refleja únicamente el uso de CPU, sino 
 	\item \texttt{kernel.cpu.util.idle} – Porcentaje de tiempo inactivo (amarillo).
 \end{itemize}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{pruebas_bien/seccion_tres/2.png}
-	\caption{Utilización detallada de la CPU bajo tráfico extremo.}
-\end{figure}
-
-Este gráfico proporciona una visión más precisa del uso del procesador bajo condiciones de saturación. Se observa una clara reducción del tiempo inactivo (\texttt{idle}), que desciende a valores de entre 10\% y 20\%, en contraste con los valores habituales del sistema en reposo (superiores al 90\%).\newline
+El gráfico obtenido (Figura~\ref{fig:cpu-trafico-masivo}) proporciona una visión más precisa del uso del procesador bajo condiciones de saturación. Se observa una clara reducción del tiempo inactivo (\texttt{idle}), que desciende a valores de entre 10\% y 20\%, en contraste con los valores habituales del sistema en reposo (superiores al 90\%).\newline
 
 Destaca el incremento del uso en espacio de kernel (\texttt{sys}), que supera con holgura al uso en espacio de usuario. Esto es coherente con el funcionamiento de Snort, ya que el procesamiento masivo de paquetes, junto con el acceso intensivo a red y disco, requiere una mayor interacción con funciones del sistema operativo.\newline
 
 La gráfica confirma que el sistema está operando al límite de su capacidad de procesamiento, con un reparto de carga constante y sostenido, validando el impacto real que un entorno de red cargado puede tener sobre la infraestructura de detección.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{pruebas_bien/seccion_tres/2.png}
+	\caption{Utilización detallada de la CPU bajo tráfico extremo.}
+	\label{fig:cpu-trafico-masivo}
+\end{figure}
 
 \subsection*{Prueba 3: Escritura y lectura en disco durante tráfico masivo}
 
@@ -2198,13 +2292,15 @@ La gráfica confirma que el sistema está operando al límite de su capacidad de
 	\item \texttt{disk.dev.read\_bytes[mmcblk0]} – Lecturas desde disco (azul).
 \end{itemize}
 
+En comparación con la prueba equivalente en la sección de tráfico normal, esta gráfica (Figura~\ref{fig:disco-trafico-masivo}) muestra un aumento en la escritura sobre el dispositivo \texttt{mmcblk0}, con picos más frecuentes y pronunciados. Esto sugiere que, aunque la carga generada por Snort no saturó el sistema de archivos, sí incrementó el volumen de logs y alertas procesadas en tiempo real. La lectura en disco, como antes, se mantiene prácticamente nula, confirmando que el sistema actúa como un sensor que escribe alertas, pero no requiere leer grandes volúmenes de datos almacenados para su funcionamiento operativo.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{pruebas_bien/seccion_tres/3.png}
 	\caption{Lectura y escritura en disco durante tráfico masivo.}
+	\label{fig:disco-trafico-masivo}
 \end{figure}
 
-En comparación con la prueba equivalente en la sección de tráfico normal, esta gráfica muestra un aumento en la escritura sobre el dispositivo \texttt{mmcblk0}, con picos más frecuentes y pronunciados. Esto sugiere que, aunque la carga generada por Snort no saturó el sistema de archivos, sí incrementó el volumen de logs y alertas procesadas en tiempo real. La lectura en disco, como antes, se mantiene prácticamente nula, confirmando que el sistema actúa como un sensor que escribe alertas, pero no requiere leer grandes volúmenes de datos almacenados para su funcionamiento operativo.
 
 \pagebreak
 
@@ -2222,7 +2318,7 @@ A pesar de los buenos resultados, deben reconocerse varias limitaciones:
 
 \begin{itemize}
 	\item Las pruebas se realizaron en un entorno de red pequeño, con tráfico mayoritariamente controlado. Aunque se ha simulado carga intensiva, no se ha evaluado su comportamiento bajo ataques combinados, tráfico cifrado masivo o patrones anómalos sostenidos.
-	\item Snort no realiza inspección activa de contenido cifrado (TLS/HTTPS), limitándose a analizar metadatos del tráfico. Esto reduce su eficacia en entornos donde el cifrado extremo a extremo es la norma.
+	\item Snort no realiza inspección activa de contenido cifrado (TLS/HTTPS), limitándose a analizar metadatos del tráfico. Esto reduce su eficacia en entornos donde el cifrado de extremo a extremo es la norma.
 	\item La evaluación se ha centrado en métricas de uso de recursos del sistema. No se ha llevado a cabo un análisis exhaustivo de falsos positivos o falsos negativos, que sería necesario en una validación de campo más amplia.
 \end{itemize}
 
@@ -2242,6 +2338,8 @@ En conjunto, los resultados confirman que R-Snort es una solución eficaz para p
 % Conclusiones
 \chapter*{Conclusiones}
 \addcontentsline{toc}{chapter}{Conclusiones}
+\markboth{Conclusiones}{Conclusiones}
+\setcounter{secnumdepth}{0}
 
 Los resultados obtenidos durante el desarrollo y evaluación de R-Snort respaldan la viabilidad del proyecto: el sistema es capaz de proporcionar vigilancia activa sobre una red SOHO sin requerir hardware costoso ni administración compleja. Su desempeño, modularidad y facilidad de despliegue lo convierten en una alternativa prometedora para quienes buscan una solución IDS ligera, efectiva y de código abierto.\newline
 
@@ -2256,68 +2354,24 @@ No obstante, debe entenderse que este sistema representa una primera capa de def
 En resumen, desplegar R-Snort en una Raspberry Pi proporciona una solución de monitorización efectiva, de bajo impacto y con resultados fiables. Su capacidad para detectar comportamientos anómalos, generar alertas y operar de forma autónoma lo convierte en una herramienta idónea para entornos SOHO, acercando la ciberseguridad avanzada a usuarios con recursos limitados o sin formación técnica especializada.
 
 
-\chapter*{Trabajo futuro}
+\section*{Trabajo futuro}
 \addcontentsline{toc}{chapter}{Trabajo futuro}
 
-Si bien R-Snort demuestra ser una solución funcional y eficiente en entornos SOHO, existen múltiples líneas de mejora que podrían explorarse para ampliar sus capacidades. A continuación, se detallan algunas propuestas que podrían aportar valor al sistema en versiones futuras:
+Aunque R-Snort ha demostrado ser una solución eficaz y adecuada para entornos SOHO, existen diversas áreas de mejora y ampliación que pueden explorarse para futuras versiones.\newline
 
-\section*{1. Soporte mejorado para tráfico cifrado}
+Una de estas áreas es la mejora del soporte para tráfico cifrado. Actualmente, Snort puede identificar metadatos de sesiones TLS (Transport Layer Security), pero no realiza una inspección profunda del contenido cifrado. Para abordar esta limitación, podría considerarse la integración de un proxy TLS para realizar una inspección completa. Otra opción sería utilizar técnicas heurísticas que analicen patrones específicos del tráfico cifrado, como frecuencia, duración o tamaño de paquetes, para detectar comportamientos anómalos.\newline
 
-Snort puede detectar metadatos de sesiones TLS, pero no realiza inspección profunda del contenido cifrado. Para mejorar la cobertura:
+Otro aspecto a mejorar es la correlación de eventos y análisis de comportamiento. El enfoque actual, basado en reglas aisladas, puede no ser suficiente para detectar ataques distribuidos o técnicas más sofisticadas de evasión. Por ello, futuras versiones podrían incluir un motor de correlación que agrupe alertas relacionadas por criterios como IP, hora o tipo de ataque. También sería útil desarrollar reglas que monitoricen patrones de comportamiento inusuales, como múltiples conexiones a puertos poco habituales en intervalos breves, así como implementar mecanismos de limitación de tasas de tráfico que permitan detectar rápidamente escaneos o ataques de fuerza bruta.\newline
 
-\begin{itemize}
-	\item Se podría integrar un proxy TLS para inspección SSL mediante técnicas de \textit{SSL interception}, aunque esto plantea implicaciones legales y éticas.
-	\item Alternativamente, se podrían usar heurísticas sobre patrones de tráfico cifrado (frecuencia, duración, tamaño) para inferir comportamientos anómalos.
-\end{itemize}
+Además, podría ser ventajoso integrar herramientas de respuesta activa, transformando a R-Snort en un sistema que no solo detecte amenazas sino que también pueda responder automáticamente a ellas. Algunas acciones prácticas podrían incluir el bloqueo temporal de direcciones IP sospechosas mediante reglas dinámicas en herramientas como \texttt{iptables}, o su integración con sistemas tipo fail2ban para aplicar bloqueos más estrictos. Asimismo, sería interesante implementar notificaciones en tiempo real a través de correo electrónico o plataformas como Telegram, correo electrónico o Discord.\newline
 
-\section*{2. Correlación de eventos y análisis de comportamiento}
+En términos de compatibilidad y accesibilidad, se propone ampliar el paquete instalador actual para que soporte otras plataformas más allá de Raspberry Pi 5 y el sistema Ubuntu/Debian. Esto podría implicar adaptaciones para otras arquitecturas ARM populares, tales como Orange Pi, Odroid o Rock Pi.\newline
 
-El uso de reglas aisladas tiene limitaciones frente a ataques distribuidos o técnicas evasivas. Por ello, se propone:
+Otra línea importante de mejora sería establecer métricas de calidad y procesos formales de validación. Esto podría lograrse implementando pruebas automatizadas de regresión para asegurar que cada cambio en las reglas no afecte negativamente al rendimiento del sistema, además de evaluar sistemáticamente el rendimiento de R-Snort frente a ataques generados con herramientas como Metasploit o Scapy.\newline
 
-\begin{itemize}
-	\item Integrar un motor de correlación simple que agrupe alertas relacionadas por IP, hora o tipo.
-	\item Desarrollar reglas basadas en comportamiento (por ejemplo, múltiples conexiones en puertos no estándar en un corto intervalo de tiempo).
-	\item Implementar funciones de \textit{rate limiting} y alertas por umbral para detectar escaneos o ataques de fuerza bruta progresivos.
-\end{itemize}
+Finalmente, aunque Snort no está originalmente diseñado para incorporar aprendizaje automático, sería interesante explorar la posibilidad de añadir un módulo externo que analice datos históricos del tráfico de red para detectar patrones o anomalías relevantes. Técnicas de clustering como k-means o DBSCAN podrían emplearse para identificar comportamientos anómalos, mientras que métodos de clasificación binaria mediante árboles de decisión o redes neuronales simples podrían ayudar a distinguir entre tráfico legítimo y malicioso con mayor precisión.\newline
 
-\section*{3. Integración con herramientas de respuesta activa}
-
-R-Snort actúa como sistema de detección pasiva. En un futuro, podría complementarse con capacidades de respuesta automatizada:
-
-\begin{itemize}
-	\item Bloqueo temporal de IPs detectadas como maliciosas mediante reglas en \texttt{iptables} o listas negras.
-	\item Integración con fail2ban o sistemas similares para el bloqueo parcial o definitivo de los atacantes.
-	\item Notificaciones en tiempo real por correo o servicios como Telegram o Discord Webhooks.
-\end{itemize}
-
-\section*{4. Paquete multi-plataforma y documentación extendida}
-
-El actual instalador está optimizado para Raspberry Pi 5 y Ubuntu Server. Sería útil ampliar la compatibilidad para:
-
-\begin{itemize}
-	\item Otras arquitecturas ARM (como Orange Pi, Odroid o Rock Pi).
-	\item Versiones de Debian y derivados (como Raspberry Pi OS o Ubuntu Desktop).
-	\item Profesionalizar más el repositorio con documentación técnica detallada, guía de usuario y plantilla de personalización de reglas. Actualmente el repositorio existe pero se podría mejorar.
-\end{itemize}
-
-\section*{5. Métricas de calidad y validación formal}
-
-Para futuras versiones se podrían incluir:
-
-\begin{itemize}
-	\item Pruebas automáticas de regresión tras cada cambio en las reglas.
-	\item Métricas de rendimiento bajo ataques reales generados con herramientas como Metasploit o Scapy.
-	\item Evaluación sistemática del ratio de falsos positivos y negativos.
-\end{itemize}
-
-\section*{6. Incorporación de aprendizaje automático}
-
-Aunque Snort no está diseñado para detección basada en IA, podría integrarse con un módulo externo que analice el tráfico histórico y proponga reglas o patrones de interés. Se podría investigar:
-
-\begin{itemize}
-	\item Detección de anomalías mediante clustering como k-means o DBSCAN.
-	\item Clasificación binaria de tráfico legítimo vs malicioso con árboles de decisión o redes neuronales simples.
-\end{itemize}
+Estas propuestas de mejora fortalecerían el sistema R-Snort y también abrirían nuevas oportunidades para su evolución en el ámbito de la ciberseguridad.
 
 
 % Bibliografía
@@ -2435,8 +2489,17 @@ Aunque Snort no está diseñado para detección basada en IA, podría integrarse
 \end{thebibliography}
 
 % Anexos
+\clearpage
+\null
+\thispagestyle{empty}
+\newpage
+\markboth{}{} 
+
 \appendix
-\chapter{Anexo A: Repositorio de R-SNORT}
+\renewcommand{\appendixname}{Anexo}                % Cambia "Apéndice" por "Anexo" (para \appendixpage, si lo usas)
+\renewcommand{\chaptername}{Anexo}                 % Cambia el encabezado de capítulo
+\renewcommand{\thechapter}{\Roman{chapter}}   
+\chapter{Repositorio de R-SNORT}
 \label{anexo_repositorio}
 
 El código completo del instalador R-Snort, incluyendo los scripts modulares, archivos de configuración, reglas y paquetes necesarios para compilar Snort 3 en sistemas ARM como Raspberry Pi 5, se encuentra disponible en el siguiente repositorio:
@@ -2453,10 +2516,10 @@ Este repositorio puede ser clonado con el siguiente comando:
 	git clone https://github.com/deianp189/r-snort-installer.git
 \end{lstlisting}
 
-\section*{Dependencias del sistema}
+\section{Dependencias del sistema}
 El instalador de R-Snort gestiona automáticamente la instalación de todas las dependencias necesarias. Estas se dividen en dos grupos:
 
-\subsection*{Dependencias instaladas mediante APT}
+\subsection{Dependencias instaladas mediante APT}
 Las siguientes bibliotecas y herramientas se instalan desde los repositorios oficiales de Ubuntu:
 
 \begin{itemize}
@@ -2471,7 +2534,7 @@ Las siguientes bibliotecas y herramientas se instalan desde los repositorios ofi
 
 \pagebreak
 
-\subsection*{Dependencias compiladas desde código fuente}
+\subsection{Dependencias compiladas desde código fuente}
 Además, se compilan manualmente (o mediante scripts) los siguientes paquetes a partir de archivos comprimidos incluidos en el directorio \texttt{software/} del instalador:
 
 \begin{itemize}
@@ -2489,7 +2552,7 @@ Además, se compilan manualmente (o mediante scripts) los siguientes paquetes a 
 
 Estas dependencias se integran automáticamente durante la ejecución de los scripts incluidos en el instalador.
 
-\section*{Capturas del repositorio en GitHub}
+\section{Capturas del repositorio en GitHub}
 
 \begin{figure}[H]
 	\centering
@@ -2523,12 +2586,12 @@ Estas dependencias se integran automáticamente durante la ejecución de los scr
 
 \FloatBarrier
 
-\chapter{Anexo B: Scripts y archivos del instalador R-Snort}
+\chapter{Scripts y archivos del instalador R-Snort}
 \label{anexo_scripts}
 
 Este anexo contiene el contenido completo de los scripts y archivos de control del sistema de instalación R-Snort. Los archivos están clasificados según su ubicación en la estructura de directorios del proyecto.
 
-\section*{1. Script principal de instalación (nivel raíz)}
+\section{Script principal de instalación (nivel raíz)}
 
 \subsection*{install\_rsnort.sh}
 \begin{lstlisting}[language=bash, caption={Script principal install\_rsnort.sh}, label={lst:install-rsnort}]
@@ -2583,7 +2646,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 	echo "[R-SNORT] Instalación completa."
 \end{lstlisting}
 
-\section*{2. Scripts del directorio \texttt{opt/r-snort/bin}}
+\section{Scripts del directorio \texttt{opt/r-snort/bin}}
 
 \subsection*{build\_from\_source.sh}
 \begin{lstlisting}[language=bash, caption={build\_from\_source.sh}]
@@ -2968,7 +3031,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 	}
 \end{lstlisting}
 
-\section*{3. Script general de orquestación}
+\section{Script general de orquestación}
 
 \subsection*{r-snort\_installer.sh}
 \begin{lstlisting}[language=bash, caption={r-snort\_installer.sh}, label={lst:r-snort-installer}]
@@ -3043,7 +3106,7 @@ Este anexo contiene el contenido completo de los scripts y archivos de control d
 	show_stats "$IFACE" "$INSTALL_DIR"
 \end{lstlisting}
 
-\section*{4. Archivos de control del paquete \texttt{DEBIAN/}}
+\section{Archivos de control del paquete \texttt{DEBIAN/}}
 
 \subsection*{control}
 \begin{lstlisting}[language={}, caption={Archivo control}, label={lst:control}]
