@@ -56,23 +56,23 @@
 \contentsline {subsubsection}{Plugins y complementos utilizados}{21}{subsection.2.3.3}%
 \contentsline {section}{\numberline {2.4}Instalación y personalización de complementos}{22}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Instalación de Snort 3}{22}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Instalación de reglas y plugins}{39}{subsection.2.4.2}%
-\contentsline {section}{\numberline {2.5}Generación de un script para la instalación automática}{48}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Esquema de red de monitorización con R-SNORT}{48}{subsection.2.5.1}%
-\contentsline {subsubsection}{Objetivo de este diseño}{48}{figure.caption.50}%
-\contentsline {subsubsection}{Justificación técnica}{48}{Item.2}%
-\contentsline {subsubsection}{Alternativas descartadas}{49}{Item.2}%
-\contentsline {subsection}{\numberline {2.5.2}Primera fase del script automático}{49}{subsection.2.5.2}%
-\contentsline {subsubsection}{Motivación y diseño modular}{49}{subsection.2.5.2}%
-\contentsline {subsubsection}{Características de robustez y control de errores}{50}{lstnumber.2.34.4}%
-\contentsline {subsubsection}{Automatización total del servicio Snort}{51}{lstnumber.2.35.3}%
-\contentsline {subsubsection}{Mitigación de limitaciones de hardware}{51}{lstnumber.2.36.5}%
-\contentsline {subsubsection}{Instalación adicional de ClamAV y control antivirus}{51}{lstnumber.2.37.2}%
-\contentsline {subsubsection}{Resultados e impacto del diseño}{51}{lstnumber.2.37.2}%
-\contentsline {subsection}{\numberline {2.5.3}Transición a paquete \texttt {.deb}}{52}{subsection.2.5.3}%
-\contentsline {subsubsection}{Mejoras introducidas}{53}{figure.caption.51}%
-\contentsline {subsubsection}{Justificación del rediseño}{53}{lstnumber.2.38.7}%
-\contentsline {subsubsection}{Resultado final}{54}{Item.5}%
+\contentsline {subsection}{\numberline {2.4.2}Instalación de reglas y plugins}{38}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Generación de un script para la instalación automática}{47}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Esquema de red de monitorización con R-SNORT}{47}{subsection.2.5.1}%
+\contentsline {subsubsection}{Objetivo de este diseño}{47}{figure.caption.50}%
+\contentsline {subsubsection}{Justificación técnica}{47}{Item.2}%
+\contentsline {subsubsection}{Alternativas descartadas}{48}{Item.2}%
+\contentsline {subsection}{\numberline {2.5.2}Primera fase del script automático}{48}{subsection.2.5.2}%
+\contentsline {subsubsection}{Motivación y diseño modular}{48}{subsection.2.5.2}%
+\contentsline {subsubsection}{Características de robustez y control de errores}{49}{lstnumber.2.34.4}%
+\contentsline {subsubsection}{Automatización total del servicio Snort}{50}{lstnumber.2.35.3}%
+\contentsline {subsubsection}{Mitigación de limitaciones de hardware}{50}{lstnumber.2.36.5}%
+\contentsline {subsubsection}{Instalación adicional de ClamAV y control antivirus}{50}{lstnumber.2.37.2}%
+\contentsline {subsubsection}{Resultados e impacto del diseño}{50}{lstnumber.2.37.2}%
+\contentsline {subsection}{\numberline {2.5.3}Transición a paquete \texttt {.deb}}{51}{subsection.2.5.3}%
+\contentsline {subsubsection}{Mejoras introducidas}{52}{figure.caption.51}%
+\contentsline {subsubsection}{Justificación del rediseño}{52}{lstnumber.2.38.7}%
+\contentsline {subsubsection}{Resultado final}{53}{Item.5}%
 \contentsline {chapter}{\numberline {3}Caso práctico: utilización de R-Snort}{55}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Entorno de trabajo}{55}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Instalación}{56}{section.3.2}%
@@ -84,10 +84,10 @@
 \contentsline {section}{\numberline {4.1}Resumen}{76}{section.4.1}%
 \contentsline {chapter}{Conclusiones}{77}{chapter*.83}%
 \contentsline {section}{Trabajo futuro}{77}{section*.84}%
-\contentsline {chapter}{Bibliografía}{79}{section*.84}%
-\contentsline {chapter}{\numberline {I}Repositorio de R-SNORT}{83}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {II}Scripts y archivos del instalador R-Snort}{87}{appendix.Alph2}%
-\contentsline {section}{Script principal de instalación (nivel raíz)}{87}{section*.91}%
-\contentsline {section}{Scripts del directorio \texttt {opt/r-snort/bin}}{88}{lstnumber.Alph2.1.49}%
-\contentsline {section}{Script general de orquestación}{95}{lstnumber.Alph2.10.43}%
-\contentsline {section}{Archivos de control del paquete \texttt {DEBIAN/}}{97}{lstnumber.Alph2.11.69}%
+\contentsline {chapter}{Bibliografía}{79}{section*.85}%
+\contentsline {chapter}{Anexo I. \hspace {0.5em} Repositorio de R-SNORT}{83}{chapter*.87}%
+\contentsline {chapter}{Anexo II. \hspace {0.5em} Scripts y archivos del instalador R-Snort}{87}{chapter*.93}%
+\contentsline {section}{Script principal de instalación (nivel raíz)}{87}{section*.94}%
+\contentsline {section}{Scripts del directorio \texttt {opt/r-snort/bin}}{88}{lstnumber.4.1.49}%
+\contentsline {section}{Script general de orquestación}{95}{lstnumber.4.10.43}%
+\contentsline {section}{Archivos de control del paquete \texttt {DEBIAN/}}{97}{lstnumber.4.11.69}%

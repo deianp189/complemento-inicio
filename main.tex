@@ -139,6 +139,24 @@
 % Título en español para el índice de códigos
 \renewcommand{\lstlistlistingname}{Índice de Códigos}
 
+\newcounter{anexo}
+
+\newcommand{\anexo}[1]{%
+	\refstepcounter{anexo}%      I, II, III …
+	\setcounter{section}{0}%     reinicia secciones
+	\setcounter{figure}{0}%      reinicia figuras
+	\setcounter{lstlisting}{0}%  ▼ reinicia listados
+	% -------- Numeraciones internas ----------
+	\renewcommand{\thesection}{\Roman{anexo}.\arabic{section}}
+	\renewcommand{\thefigure}{\Roman{anexo}.\arabic{figure}}
+	\renewcommand{\thelstlisting}{\Roman{anexo}.\arabic{lstlisting}}% ▼
+	% ------------------------------------------
+	\clearpage\thispagestyle{plain}
+	\chapter*{Anexo \Roman{anexo}. \hspace{0.5em} #1}
+	\addcontentsline{toc}{chapter}{Anexo \Roman{anexo}. \hspace{0.5em} #1}
+	\markboth{Anexo \Roman{anexo}. #1}{Anexo \Roman{anexo}. #1}
+}
+
 
 % ===== Inicio del documento =====
 \begin{document}
@@ -908,8 +926,6 @@ Como puede verse en la Figura~\ref{fig:dep-libtool}, este paso instala las herra
 	\label{fig:dep-libtool}
 \end{figure}
 
-\newpage
-
 A continuación, el paquete \texttt{check} es instalado. Esta herramienta servirá principalmente para
 ejecutar algunas pruebas en C. Es un requisito para poder compilar libdnet correctamente.
 Gracias a estas preparaciones, estamos configurando el entorno para la correcta compilación de
@@ -930,6 +946,8 @@ La ejecución de \texttt{./configure} prepara el entorno para la compilación de
 funcionamiento consiste en la revisión del sistema, verifica dependencias y configura los archivos
 necesarios para compilar código correctamente. (Véanse el Código~\ref{cod:configure-libdnet} y la Figura~\ref{fig:configure-libdnet}).
 
+\newpage
+
 \begin{lstlisting}[style=commandstyle, caption={Comando para configurar libdnet con ./configure.}, label={cod:configure-libdnet}]
 	sudo ./configure
 \end{lstlisting}
@@ -940,8 +958,6 @@ necesarios para compilar código correctamente. (Véanse el Código~\ref{cod:con
 	\caption{Configurando libdnet antes de la compilación.}
 	\label{fig:configure-libdnet}
 \end{figure}
-
-\newpage
 
 Llevamos a cabo la compilación de libdnet mediante \texttt{sudo make}; este comando convierte
 el código fuente de la dependencia en un ejecutable con bibliotecas a disposición para la instalación. Recorre los directorios del proyecto asegurándose de que todos los archivos necesarios sean
@@ -957,8 +973,6 @@ procesados. (Véanse el Código~\ref{cod:make-libdnet} y la Figura~\ref{fig:make
 	\caption{Compilando libdnet con make.}
 	\label{fig:make-libdnet}
 \end{figure}
-
-\newpage
 
 Ahora ejecutamos \texttt{sudo make install} para instalar libdnet en el sistema. Este comando copia los archivos compilados a sus directorios correspondientes, asegurando que puedan
 ser utilizados por otras aplicaciones y librerías. (Véanse el Código~\ref{cod:make-install-libdnet} y la Figura~\ref{fig:install-libdnet}).
@@ -1729,6 +1743,11 @@ Esta arquitectura modular empaquetada sigue las mejores prácticas de la ingenie
 
 Gracias a la evolución hacia un paquete \texttt{.deb}, \textbf{R-SNORT} se consolida como una herramienta más robusta, mantenible y amigable con el usuario final. Es importante recordar que este proyecto busca ofrecer una solución eficaz, ligera y accesible para redes SOHO (\textit{Small Office / Home Office}). Con un enfoque modular interno y una experiencia de instalación unificada, el sistema mantiene toda su capacidad de inspección avanzada sin renunciar a la simplicidad en su despliegue.
 
+\clearpage
+\null
+\thispagestyle{empty}
+\newpage
+
 \chapter{Caso práctico: utilización de R-Snort}
 
 \section{Entorno de trabajo}
@@ -2374,7 +2393,7 @@ Un aspecto clave ha sido la capacidad del sistema para operar como una sonda pas
 
 No obstante, debe entenderse que este sistema representa una primera capa de defensa. En entornos más exigentes, con mayor volumen de tráfico o amenazas más complejas, podría ser recomendable complementarlo con herramientas adicionales como motores de correlación, análisis forense o sistemas de respuesta automática.\newline
 
-En resumen, desplegar R-Snort en una Raspberry Pi proporciona una solución de monitorización efectiva, de bajo impacto y con resultados fiables. Su capacidad para detectar comportamientos anómalos, generar alertas y operar de forma autónoma lo convierte en una herramienta idónea para entornos SOHO, acercando la ciberseguridad avanzada a usuarios con recursos limitados o sin formación técnica especializada.
+Desplegar R-Snort en una Raspberry Pi proporciona una solución de monitorización efectiva, de bajo impacto y con resultados fiables. Su capacidad para detectar comportamientos anómalos, generar alertas y operar de forma autónoma lo convierte en una herramienta idónea para entornos SOHO, acercando la ciberseguridad avanzada a usuarios con recursos limitados o sin formación técnica especializada.
 
 
 \section{Trabajo futuro}
@@ -2398,7 +2417,9 @@ Estas propuestas de mejora fortalecerían el sistema R-Snort y también abriría
 
 % Bibliografía
 \cleardoublepage
+\phantomsection
 \addcontentsline{toc}{chapter}{Bibliografía}
+
 \begin{thebibliography}{34}
 		
 	\bibitem{enisa_smes}
@@ -2517,11 +2538,8 @@ Netgate. \textit{Snort 3.2.9.14 and Snort 4.1.1 Updates – Release Notes for pf
 \newpage
 \markboth{}{} 
 
-\appendix
-\renewcommand{\appendixname}{Anexo}                % Cambia "Apéndice" por "Anexo" (para \appendixpage, si lo usas)
-\renewcommand{\chaptername}{Anexo}                 % Cambia el encabezado de capítulo
-\renewcommand{\thechapter}{\Roman{chapter}}   
-\chapter{Repositorio de R-SNORT}
+
+\anexo{Repositorio de R-SNORT}
 \label{anexo_repositorio}
 
 El desarrollo de R-Snort se ha centrado desde el principio en ofrecer una solución práctica y funcional para la protección de redes pequeñas y medianas, con especial atención a la facilidad de despliegue y mantenimiento en hardware como Raspberry Pi. Todo el código, junto con los scripts de instalación y automatización, los archivos de configuración y las reglas de ejemplo, se encuentra disponible de forma pública en GitHub. El objetivo de este repositorio es permitir que cualquier usuario, incluso con conocimientos limitados de administración de sistemas, pueda poner en marcha un sistema NIDS con solo seguir unos pocos pasos.\newline
@@ -2588,7 +2606,7 @@ El complemento R-Snort busca no solo simplificar la instalación, sino también 
 
 \FloatBarrier
 
-\chapter{Scripts y archivos del instalador R-Snort}
+\anexo{Scripts y archivos del instalador R-Snort}
 \label{anexo_scripts}
 
 Este anexo contiene el contenido completo de los scripts y archivos de control del sistema de instalación R-Snort. Los archivos están clasificados según su ubicación en la estructura de directorios del proyecto.
